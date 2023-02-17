@@ -1,2 +1,1 @@
-# C.A.P
-Desenvolvendo o "Cade a Perua?".
+# CADE-A-PERUA
