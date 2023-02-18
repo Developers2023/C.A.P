@@ -1,19 +1,25 @@
-const express= require('express');
+const express = require("express");
 const app = express();
-const path = require('path');
-const router = express.Router();
 
-router.get('/',function(req,res){
 
-    res.sendFile(path.join(__dirname+'/index.html'));
+
+
+
+app.get("/",function(req,res){
+
+    res.send("/index.html");
 })
 
-router.get('/sobre',function(req,res){
 
-    res.sendFile(path.join(__dirname+'/sobre.html'));
+app.get("/sobre/:nome",function(req,res){
+    var nome = req.params.nome;
+    res.send("<h1>ola</h1>"+nome);
 })
 
-app.use('/',router);
-app.listen(process.env.port || 3000);
 
-console.log('server rodando');
+app.listen(3000, function(error){
+    if(error){
+        console.log("erro");
+    }else{
+        console.log("server rodando");
+    }})
