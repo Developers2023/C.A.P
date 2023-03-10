@@ -2,10 +2,8 @@ const express = require("express");
 const server = express();
 const api = require("./api");
 
-
 server.use(express.json());
 
-// rotas
 server.get("/",function(req,res){
 
     res.send("/index.html");
@@ -26,7 +24,6 @@ server.get("/pokemon", async(req,res) => {
     }
 });
 
-// teste de servidor 
 server.listen(3000, function(error){
     if(error){
         console.log("erro");
