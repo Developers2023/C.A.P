@@ -1,6 +1,6 @@
 const express = require("express");
 const server = express();
-const api = require("./api");
+const api = require("./server/db/api");
 
 
 server.use(express.json());
