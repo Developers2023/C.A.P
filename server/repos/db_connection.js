@@ -1,40 +1,53 @@
-var mysql = require('mysql');
+const Sequelize = require('sequelize');
 
-var con = mysql.createConnection({
-  host: "localhost",
-  user: "yourusername",
-  password: "yourpassword",
-  database: "mydb"
+const sequelize = new Sequelize('database', 'username', 'password', {
+  host: 'localhost',
+  dialect: 'mysql'
 });
 
-const query = (con) => {
-  return connection.query(con);
-};
+const Usuario = sequelize.define('usuario', {
+  nome: {
+    type: Sequelize.STRING
+  },
+  email: {
+    type: Sequelize.STRING
+  }
+});
 
-async function createUser(email, password){
+Usuario.create({
+  nome: 'João',
+  email: 'joao@example.com'
+})
+.then(usuario => {
+  console.log(usuario.toJSON());
+});
 
-  query("SELECT * FROM customers", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
+Usuario.findAll()
+.then(usuarios => {
+  console.log(usuarios.map(usuario => usuario.toJSON()));
+});
 
-}
+Usuario.findByPk(1)
+.then(usuario => {
+  console.log(usuario.toJSON());
+});
 
-async function readUser(email, password){
+Usuario.update({
+  nome: 'Maria'
+}, {
+  where: {
+    id: 1
+  }
+})
+.then(() => {
+  console.log('Usuário atualizado com sucesso.');
+});
 
-  query("SELECT * FROM customers", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-
-}
-
-async function deleteUser(email, password){
-  
-  query("SELECT * FROM customers", function (err, result, fields) {
-    if (err) throw err;
-    console.log(result);
-  });
-
-
-}
+Usuario.destroy({
+  where: {
+    id: 1
+  }
+})
+.then(() => {
+  console.log('Usuário excluído com sucesso.');
+});
