@@ -1,6 +1,7 @@
 import React from 'react' 
 import {Text, SafeAreaView, Image, TextInput, TouchableOpacity} from 'react-native'
-import Css from './Css'
+import Css from './Css';
+
 export default props => {
 
      return (
@@ -20,14 +21,14 @@ export default props => {
      style = {Css.InputLogin}
      />
 
-<TouchableOpacity style = {Css.btnLogin}>
+<TouchableOpacity style = {Css.btnLogin} onPress={() => navigation.navigate('Cadastro')}>
      <Text style = {Css.txtBtnLogin}>
           ACESSAR
      </Text>
 </TouchableOpacity>
 
-<TouchableOpacity style = {Css.btnLogin}>
-     <Text style = {Css.txtBtnLogin}>
+<TouchableOpacity style = {Css.btnLogin} onPress={() => navigation.goBack()}>
+     <Text style = {Css.txtBtnLogin} >
           VOLTAR
      </Text>
 </TouchableOpacity>
