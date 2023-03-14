@@ -1,8 +1,8 @@
 const baseClient = require('./baseClient');
 
 class transporter extends baseClient {
-  constructor(cnh) {
-    super(nome, sexo, email, cpf, celular, endereco, numCasa, cidade, cep, senha, cfsenha)
+  constructor() {
+    super(nome, sexo, email, cpf, celular, endereco, numCasa, cidade, cep, senha, cfSenha)
     this.nome = nome;
     this.sexo = sexo;
     this.email = email;
@@ -13,7 +13,7 @@ class transporter extends baseClient {
     this.cidade = cidade;
     this.cep = cep;
     this.senha = senha;
-    this.cfsenha = cfsenha;
+    this.cfSenha = cfSenha;
   }
 }
 

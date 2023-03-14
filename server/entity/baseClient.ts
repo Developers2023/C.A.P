@@ -11,7 +11,7 @@ abstract class baseClient {
   cidade: string;
   cep: string;
   senha: string;
-  cfsenha: string;
+  cfSenha: string;
 
     constructor(nome: string,
       sexo: string,
@@ -23,7 +23,7 @@ abstract class baseClient {
       cidade: string,
       cep: string,
       senha: string,
-      cfsenha: string) {
+      cfSenha: string) {
         
       this.nome = nome;
       this.sexo = sexo;
@@ -35,7 +35,7 @@ abstract class baseClient {
       this.cidade = cidade;
       this.cep = cep;
       this.senha = senha;
-      this.cfsenha = cfsenha;
+      this.cfSenha = cfSenha;
     }
   }
 
