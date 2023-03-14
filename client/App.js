@@ -19,7 +19,7 @@ export default props => {
 
      return (
 <SafeAreaView>  
-  <ListaCrianca/>
+  
    <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
            <Stack.Screen name="Telainicial" component={TelaInicial} />
@@ -32,6 +32,7 @@ export default props => {
          </Stack.Navigator>
        </NavigationContainer>
   {/*
+  <ListaCrianca/>
   <Login/>
   <Entrada />
   */}

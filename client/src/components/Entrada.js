@@ -10,13 +10,13 @@ export default props => {
       <Text style = {Css.cap}>C.A.P - CADÊ A PERUA</Text>
    </>
         
-        <TouchableOpacity style = {Css.btnEntrada}>
+        <TouchableOpacity style = {Css.btnEntrada} onPress={() => navigation.navigate('Login')}>
             <Text style = {Css.txtBtnEntrada} >
                 LOGIN
             </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity style = {Css.btnEntrada}>
+        <TouchableOpacity style = {Css.btnEntrada} onPress={() => navigation.navigate('Cadastro')}>
             <Text style = {Css.txtBtnEntrada} >
                 CADASTRO
             </Text>

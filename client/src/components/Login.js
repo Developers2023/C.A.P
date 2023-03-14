@@ -21,7 +21,7 @@ export default props => {
      style = {Css.InputLogin}
      />
 
-<TouchableOpacity style = {Css.btnLogin} onPress={() => navigation.navigate('Cadastro')}>
+<TouchableOpacity style = {Css.btnLogin} >
      <Text style = {Css.txtBtnLogin}>
           ACESSAR
      </Text>
