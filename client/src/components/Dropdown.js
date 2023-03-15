@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {View } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import {css} from './assets/Css';
+import Css from './Css';
 
 export default function Dropdown(){
     const [open,setOpen] = useState(false);

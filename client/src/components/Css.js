@@ -23,7 +23,11 @@ btnEntrada: {
     backgroundColor: "#8CD5F0",
     textAlign: 'center',
     borderRadius: 15,
-    marginTop: 34
+    marginTop: 34,
+    borderColor:'#000',
+    borderWidth:1,
+    borderRadius:14,
+
 },
 
 txtBtnEntrada: {
@@ -34,14 +38,18 @@ txtBtnEntrada: {
     fontWeight: '400',
     lineHeight: 29,
     fontFamily: 'Lato'
+
 },
 
 InputLogin: {
     width: 340,
     height: 40,
     backgroundColor: '#8CD5F099',
-    borderRadius: 5,
-    margin: 5
+    borderRadius: 4,
+    margin: 5,
+    borderColor:'#000',
+    borderWidth:1,
+    borderRadius:14
 },
 
 btnLogin: {
@@ -50,7 +58,10 @@ btnLogin: {
     height: 40,
     backgroundColor: '#8CD5F0',
     borderRadius: 15,
-    margin: 10
+    margin: 10,
+    borderColor:'#000',
+    borderWidth:1,
+    borderRadius:14
 },
 
 txtBtnLogin: {

@@ -1,11 +1,11 @@
 import React from 'react'
 import {Text, SafeAreaView} from 'react-native'
 
-export default props => {
+export default ({navigation})=> {
 
      return (
 <SafeAreaView>
-    <Text></Text>
+    <Text>Esse é o MAPA</Text>
 </SafeAreaView>
      )
 }

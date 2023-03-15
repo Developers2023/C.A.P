@@ -2,7 +2,7 @@ import React from 'react'
 import {Text, SafeAreaView, Image, TextInput, TouchableOpacity} from 'react-native'
 import Css from './Css';
 
-export default props => {
+export default ({navigation}) => {
 
      return (
 <SafeAreaView style = {Css.Container}>
@@ -21,7 +21,7 @@ export default props => {
      style = {Css.InputLogin}
      />
 
-<TouchableOpacity style = {Css.btnLogin} >
+<TouchableOpacity style = {Css.btnLogin} onPress={() => navigation.navigate('Maps')}>
      <Text style = {Css.txtBtnLogin}>
           ACESSAR
      </Text>
