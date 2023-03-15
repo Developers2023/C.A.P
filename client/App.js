@@ -11,6 +11,13 @@ import DadosVeiculo from './src/components/DadosVeiculo';
 import DadosPessoais from './src/components/DadosPessoais';
 import CopiarID from './src/components/CopiarID';
 import Maps from './src/components/Maps';
+import Atividades from './src/components/Atividades'
+import MensagensRecebidas from './src/components/MensagensRecebidas'
+import InfoAlunos from './src/components/InfoAlunos'
+import EnviarAlertas from './src/components/EnviarAlertas'
+import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
+import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola'
+import Perfil from './src/components/Perfil'
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +35,13 @@ export default props => {
            <Stack.Screen name="DadosVeiculo" component={DadosVeiculo}/>
            <Stack.Screen name="DadosPessoais" component={DadosPessoais}/>
            <Stack.Screen name="CopiarID" component={CopiarID}/>
+           <Stack.Screen name="Atividades" component={Atividades}/>
+           <Stack.Screen name="MensagensRecebidas" component={MensagensRecebidas}/>
+           <Stack.Screen name="InfoAlunos" component={InfoAlunos}/>
+           <Stack.Screen name="EnviarAlertas" component={EnviarAlertas}/>
+           <Stack.Screen name="Perfil" component={Perfil}/>
+           <Stack.Screen name="ConfirmarEntrega_Casa" component={ConfirmarEntrega_Casa}/>
+           <Stack.Screen name="ConfirmarEntrega_Escola" component={ConfirmarEntrega_Escola}/>
          </Stack.Navigator>
        </NavigationContainer>
 
