@@ -21,7 +21,7 @@ export default ({navigation}) => {
      style = {Css.InputLogin}
      />
 
-<TouchableOpacity style = {Css.btnLogin} >
+<TouchableOpacity style = {Css.btnLogin} onPress={() => navigation.navigate('Maps')}>
      <Text style = {Css.txtBtnLogin}>
           ACESSAR
      </Text>

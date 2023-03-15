@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { View,Text,SafeAreaView, TextInput,KeyboardAvoidingView, TouchableOpacity } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Css from './components/Css';
+import Css from './Css';
 
 export default function DadosPessoais({navigation}){
   const nome = 'Paulo Santos Santiago';

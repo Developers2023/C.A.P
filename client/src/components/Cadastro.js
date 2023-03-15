@@ -1,6 +1,6 @@
 import React from 'react';
 import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity } from 'react-native';
-import Css from './components/Css';
+import Css from './Css';
 import Dropdown from './Dropdown';
 import Dropdown_User from './Dropdown_User';
 
@@ -79,6 +79,7 @@ return(
       placeholder='Senha:' placeholderTextColor={'#282B29'} 
       inputMode='text'
       secureTextEntry={true}/>
+
       <TextInput style={[Css.inputs,Css.inputs_all]}
        placeholder='Confirmar senha:' placeholderTextColor={'#282B29'} 
       inputMode='text'
@@ -88,7 +89,7 @@ return(
     
     <Text>*Dados Obrigatórios</Text>
     <TouchableOpacity style={Css.btn_v1}
-    onPress={() => navigation.navigate('CopiarID')}>
+    onPress={() => navigation.navigate('Login')}>
       <Text style={Css.txt}>Cadastrar</Text>
     </TouchableOpacity>
     

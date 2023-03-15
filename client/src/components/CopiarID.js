@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { SafeAreaView, View,Text,TouchableOpacity,Image, ToastAndroid} from 'react-native';
-import Css from './components/Css';
+import Css from './Css';
 
 export default function CopiarID({navigation}){
  

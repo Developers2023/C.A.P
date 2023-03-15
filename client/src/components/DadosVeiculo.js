@@ -1,6 +1,6 @@
 import React from 'react';
 import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity } from 'react-native';
-import Css from './components/Css';
+import Css from './Css';
 
 export default function DadosVeiculo(){
 

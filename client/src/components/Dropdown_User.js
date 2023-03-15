@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import DropDownPicker from 'react-native-dropdown-picker';
-import Css from './components/Css';
+import Css from './Css';
 
 export default function Dropdown_User(){
     const [userOpen, setUserOpen] = useState(false);

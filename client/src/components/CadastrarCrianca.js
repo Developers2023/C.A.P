@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 
 import { View,Text, KeyboardAvoidingView,TextInput,TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Css from './components/Css';
+import Css from './Css';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function CadastrarCrianca({navigation}){

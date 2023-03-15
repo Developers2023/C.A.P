@@ -5,11 +5,12 @@ import Login from './src/components/Login'
 import ListaCrianca from './src/components/ListaCrianca'
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import Cadastro from './src/Cadastro';
-import CadastrarCrianca from './src/CadastrarCrianca';
-import DadosVeiculo from './src/DadosVeiculo';
-import DadosPessoais from './src/DadosPessoais';
-import CopiarID from './src/CopiarID';
+import Cadastro from './src/components/Cadastro';
+import CadastrarCrianca from './src/components/CadastrarCrianca';
+import DadosVeiculo from './src/components/DadosVeiculo';
+import DadosPessoais from './src/components/DadosPessoais';
+import CopiarID from './src/components/CopiarID';
+import Maps from './src/components/Maps';
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,7 @@ export default props => {
           <Stack.Screen name="Entrada" component={Entrada}/>
            <Stack.Screen name="Cadastro" component={Cadastro}/>
            <Stack.Screen name="Login" component={Login}/>
+           <Stack.Screen name="Maps" component={Maps}/>
            <Stack.Screen name="CadastrarCrianca" component={CadastrarCrianca}/>
            <Stack.Screen name="DadosVeiculo" component={DadosVeiculo}/>
            <Stack.Screen name="DadosPessoais" component={DadosPessoais}/>
