@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 
 import { View,Text, KeyboardAvoidingView,TextInput,TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import {css} from './assets/Css';
+import Css from './components/Css';
 import DropDownPicker from 'react-native-dropdown-picker';
 
 export default function CadastrarCrianca({navigation}){
@@ -21,17 +21,17 @@ export default function CadastrarCrianca({navigation}){
         marginTop:50}}>
         <KeyboardAvoidingView style={{zIndex:1, marginHorizontal:50}}>
         <TextInput 
-          style={[css.inputs,css.inputs_all]}
+          style={[Css.inputs,Css.inputs_all]}
           placeholder='Nome:' placeholderTextColor={'#282B29'}
           inputMode='text'/>
 
         <TextInput 
-          style={[css.inputs,css.inputs_all]}
+          style={[Css.inputs,Css.inputs_all]}
           placeholder='Escola:' placeholderTextColor={'#282B29'}
           inputMode='text'/>
 
         <TextInput 
-          style={[css.inputs,css.inputs_all]}
+          style={[Css.inputs,Css.inputs_all]}
           placeholder='Cidade:' placeholderTextColor={'#282B29'}
           inputMode='text'/>
 
@@ -63,7 +63,7 @@ export default function CadastrarCrianca({navigation}){
                     </View>
 
             <TextInput 
-              style={[css.inputs,css.input_time]}
+              style={[Css.inputs,Css.input_time]}
               placeholder='Horário:' placeholderTextColor={'#282B29'}
               inputMode='text'/>
     
@@ -71,9 +71,9 @@ export default function CadastrarCrianca({navigation}){
 
       <Text>*Dados Obrigatórios</Text>
           
-          <TouchableOpacity style={css.btn_v1}
+          <TouchableOpacity style={Css.btn_v1}
               onPress={() => navigation.navigate('DadosPessoais')}>
-                <Text style={css.txt}>Salvar</Text>
+                <Text style={Css.txt}>Salvar</Text>
           </TouchableOpacity>
 
 </SafeAreaView>

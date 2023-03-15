@@ -1,7 +1,7 @@
 import React from 'react' 
 import {Text, SafeAreaView, Image, TouchableOpacity} from 'react-native'
 import Css from './Css'
-export default props => {
+export default ({navigation}) => {
 
      return (
 <SafeAreaView style = {Css.Container}>
