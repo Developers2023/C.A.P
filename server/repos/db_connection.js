@@ -1,11 +1,12 @@
 const Sequelize = require('sequelize');
+const userController = require('../controller/userController');
 
-const sequelize = new Sequelize('cap', 'DESKTOP-EIUHP7M', '', {
+const sequelize = new Sequelize('cap', 'root', 'DevelopersCap.', {
   host: 'localhost',
-  dialect: 'mysql'
+  dialect: 'mssql'
 });
 
-const Usuario = sequelize.define('usuario', {
+const Usuario = sequelize.define('dbo.responsavel', {
   nome: {
     type: Sequelize.STRING
   },

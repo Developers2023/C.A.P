@@ -6,4 +6,4 @@ class client  extends baseClient {
   }
 }
 
-module.exports = transporter;
+module.exports = client;
