@@ -1,6 +1,6 @@
-class baseClient {
-    constructor(nome,sexo,email,cpf,celular,endereco,numCasa,cidade,cep,senha){
+class BaseClient {
+    constructor(nome,sexo,email,cpf,telefone,logradouro,numero,cidade,cep,senha){    
     }
   }
 
-module.exports= baseClient;
+module.exports= BaseClient;

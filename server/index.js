@@ -1,5 +1,8 @@
 const api = require("./application/api");
 const express = require("express");
+const userController = require("./controller/userController");
+const responsavel = require("./repos/responsavel");
+
 const server = express();
 
 
@@ -25,9 +28,15 @@ server.get("/pokemon", async(req,res) => {
     }
 });
 
+
+server.post("/cadastrar",async function(req,res){
+    const result = await userController.cadastrar(req.body)
+    res.send(result)
+})
+
 server.listen(3000, function(error){
     if(error){
-        console.log("erro");
+    console.log("erro");
     }else{
         console.log("server rodando");
     }})
