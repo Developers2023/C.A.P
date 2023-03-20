@@ -3,8 +3,6 @@ import {Text, SafeAreaView} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ListaCrianca from './ListaCrianca'
-import
-const Tab = createBottomTabNavigator();
 
 export default ({navigation})=> {
 

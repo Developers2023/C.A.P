@@ -7,7 +7,7 @@ export default function CopiarID({navigation}){
 
     return(
       <SafeAreaView style={Css.container_principal} >
-        <Image style={{margin:20}} source={require('./components/images/Codigo.png')} />
+        <Image style={{margin:20}} source={require('./images/Codigo.png')} />
 
       <View style={Css.boxid}>
         <Text style={Css.txt_instrucao}>Bem Vindo/a ao C.A.P!

@@ -196,10 +196,6 @@ boxid:{
     borderWidth:1,
     borderRadius:10,
     
-
-    
-
-
 },
 img:{
     width:'30%',
@@ -207,6 +203,22 @@ img:{
     padding:100,
     alignSelf:'center'
 
+},
+
+search: {
+    margin: 20
+},
+
+txtCria:{
+    color: "#000",
+    fontSize: 30,
+    textAlign: 'center',
+    marginBottom: 30    
+},
+
+searchArea: {
+    flexDirection: 'row',
+    alignItems: 'center'
 }
 
 });
