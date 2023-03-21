@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from "react";
-import { SafeAreaView, View, FlatList, StyleSheet, Text } from "react-native";
+import { SafeAreaView, View, FlatList, Text } from "react-native";
 import SearchBar from "react-native-dynamic-search-bar";
 import { ListItem } from "@react-native-material/core";
 import Css from "./Css";

@@ -18,11 +18,8 @@
     "react": "18.1.0",
     "react-native": "0.70.0",
     "react-native-dropdown-picker": "^5.4.6",
-<<<<<<< HEAD
-    "react-native-mask-text": "^0.13.1",
-=======
     "react-native-dynamic-search-bar": "^2.0.2",
->>>>>>> 666783ca9979cebd16c43c8d1fcc32037fdbdd1a
+    "react-native-mask-text": "^0.13.1",
     "react-native-safe-area-context": "^4.5.0",
     "react-native-screens": "^3.20.0",
     "yup": "^1.0.2"

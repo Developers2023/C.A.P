@@ -1,6 +1,6 @@
 import React from 'react';
 import {Text, View, Image, TextInput, TouchableOpacity, KeyboardAvoidingView,ScrollView} from 'react-native';
-import Css from './Pasta/Css';
+import Css from './Css';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 

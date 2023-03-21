@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import { View,Text,SafeAreaView, TextInput,KeyboardAvoidingView,ScrollView,TouchableOpacity } from 'react-native';
-import Css from './Pasta/Css';
+import Css from './Css';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';

@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import { View,Text, KeyboardAvoidingView,TextInput,TouchableOpacity,ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import Css from './Pasta/Css';
+import Css from './Css';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { MaskedTextInput } from 'react-native-mask-text';
 import { Formik } from 'formik';

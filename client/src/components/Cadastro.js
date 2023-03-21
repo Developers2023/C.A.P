@@ -1,6 +1,6 @@
 import React from 'react';
 import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity, ScrollView } from 'react-native';
-import Css from './Pasta/Css';
+import Css from './Css';
 import Dropdown from './Dropdown';
 import Dropdown_User from './Dropdown_User';
 import {Formik} from 'formik';
