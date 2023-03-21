@@ -7,15 +7,14 @@ export default function Dropdown(){
     const [open,setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items,setItems] = useState([
-      {label: 'Fem', value: 'f'},
-      {label: 'Masc', value: 'm'}
+      {label: 'F', value: 'f'},
+      {label: 'M', value: 'm'}
     ]);
     return(
         <View  style={{ 
             width:88,
             height:29,
-            marginBottom:20
-    
+            marginBottom:20    
             }}>
         <DropDownPicker  
             open={open}
