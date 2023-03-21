@@ -24,10 +24,10 @@ const Stack = createNativeStackNavigator();
 export default props => {
 
      return ( 
-<View>
-<ListaCrianca/>
 
-  {/*
+
+
+
    <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="Entrada" component={Entrada}/>
@@ -47,8 +47,7 @@ export default props => {
            <Stack.Screen name="ConfirmarEntrega_Escola" component={ConfirmarEntrega_Escola}/>
          </Stack.Navigator>
        </NavigationContainer>
-*/}
-</View>
+
 
      );
 }
