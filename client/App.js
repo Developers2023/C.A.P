@@ -25,12 +25,6 @@ export default props => {
 
      return ( 
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 13bb0669455499d8ecf47c0e61d6f4b388d20494
    <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="Entrada" component={Entrada}/>
