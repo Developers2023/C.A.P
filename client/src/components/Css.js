@@ -196,10 +196,6 @@ boxid:{
     borderWidth:1,
     borderRadius:10,
     
-
-    
-
-
 },
 img:{
     width:'30%',
@@ -207,6 +203,71 @@ img:{
     padding:100,
     alignSelf:'center'
 
+},
+
+search: {
+    margin: 20
+},
+
+txtCria:{
+    color: "#000",
+    fontSize: 30,
+    textAlign: 'center',
+    marginBottom: 30    
+},
+
+searchArea: {
+    flexDirection: 'row',
+    alignItems: 'center'
+},
+
+mask_cep:{
+    backgroundColor:'#87ceeb',
+    height:29,
+    padding:3,
+    margin:7,
+    borderRadius:4,
+    borderWidth:1,
+    textAlign:'left',
+    width:117
+},
+mask:{
+    backgroundColor:'#87ceeb',
+    height:29,
+    padding:3,
+    margin:7,
+    borderRadius:4,
+    borderWidth:1,
+    textAlign:'left',
+    width:330
+},
+mask_time:{
+    backgroundColor:'#87ceeb',
+    height:29,
+    padding:3,
+    margin:7,
+    borderRadius:4,
+    borderWidth:1,
+    textAlign:'left',
+    width:158,
+    position:'absolute',
+    left:172,
+    top:150
+},
+errors:{
+    fontWeight:'bold',
+    color:'red',
+    width:'90%',
+    fontSize:14,
+    marginLeft:7,
+},
+errors_senha:{
+    fontWeight:'bold',
+    color:'red',
+    width:300,
+    fontSize:14,
+    marginLeft:7,
+    marginTop:-7
 }
 
 });

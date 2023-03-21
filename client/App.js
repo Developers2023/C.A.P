@@ -1,5 +1,5 @@
 import React from 'react' 
-import {SafeAreaView} from 'react-native'
+import {SafeAreaView, View} from 'react-native'
 import Entrada from './src/components/Entrada'
 import Login from './src/components/Login'
 import ListaCrianca from './src/components/ListaCrianca'
@@ -24,7 +24,10 @@ const Stack = createNativeStackNavigator();
 export default props => {
 
      return ( 
-  
+<View>
+<ListaCrianca/>
+
+  {/*
    <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="Entrada" component={Entrada}/>
@@ -44,6 +47,8 @@ export default props => {
            <Stack.Screen name="ConfirmarEntrega_Escola" component={ConfirmarEntrega_Escola}/>
          </Stack.Navigator>
        </NavigationContainer>
+*/}
+</View>
 
      );
 }
