@@ -1,4 +1,4 @@
-const BaseClient = require('./baseClient');
+const BaseClient = require('./BaseClient');
 
 class Responsavel extends BaseClient{
     
