@@ -1,20 +1,13 @@
-const Alertas = require('../entity/Alertas');
-const Condutor = require("./condutor");
-const Viagem = require('../entity/Viagem');
-const Responsavel = require("./Responsavel");
-
 const Sequelize = require('sequelize');
 
-const Usuario = Sequelize.define('Alertas', {
-    condutor: {
+const alertas = Sequelize.define('Alertas', {
+    atrasos: {
       type: Sequelize.STRING
     },
-    Viagem: {
+    faltas: {
       type: Sequelize.STRING
     },
-    Responsavel: {
+    idCrianca: {
       type: Sequelize.STRING
     },
-
-      
   });

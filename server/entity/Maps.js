@@ -1,6 +1,6 @@
-const BaseCLient = require("./BaseClient");
+const Endereco = require("./Endereco");
 
-class Maps extends BaseClient{
+class Maps extends Endereco{
     constructor(logradouro, numero, cidade, cep,longitude, latitude){
       super(logradouro, numero, cidade, cep,longitude, latitude)
       this.logradouro = logradouro;
@@ -12,3 +12,5 @@ class Maps extends BaseClient{
 
   }   
 }
+
+module.exports = Maps;

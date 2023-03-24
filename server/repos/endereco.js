@@ -1,20 +1,8 @@
-const endereco = require('../entity/Endereco');
-const Sequelize = require('sequelize');
+const db = require('./db_connection');
+const Endereco = require('../entity/Endereco');
 
-const Usuario = Sequelize.define('dbo.endereco', {
-    logradouro: {
-      type: Sequelize.STRING
-    },
-    numero: {
-      type: Sequelize.INTEGER
-    },
-    cidade: {
-      type: Sequelize.STRING
-    },
-    cep: {
-      type: Sequelize.INTEGER
-    },
-    IdCrianca: {
-        type: Sequelize.INTEGER
-      },
+module.exports = db.define('endereco', {
+    endereco: {
+      type: new Endereco
+    }
   });

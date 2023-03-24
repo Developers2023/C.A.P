@@ -1,18 +1,15 @@
-const BaseClient = require('./BaseClient');
-const Endereco = require('./Endereco');
+const Endereco = require("./Endereco");
 
-class Condutor extends BaseClient {
-  constructor(nome, sexo, email, cpf, celular, senha) {
-    super(nome, sexo, email, cpf, celular, senha)
+class Condutor{
+  constructor(nome, sexo, email, cpf, telefone, logradouro, numero, cidade, cep, senha) {
     this.nome = nome;
     this.sexo = sexo;
     this.email = email;
     this.cpf = cpf;
-    this.celular = celular;
+    this.telefone = telefone;
+    this.endereco = new Endereco(logradouro, numero, cidade, cep);
     this.senha = senha;
-  }
-
-  
+  } 
 }
 
 module.exports = transporter;

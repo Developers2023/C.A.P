@@ -1,6 +1,4 @@
-const Condutor = require('../entity/Condutor');
 const Sequelize = require('sequelize');
-
 
 const Usuario = Sequelize.define('condutor.js', {
     nome: {
@@ -20,6 +18,5 @@ const Usuario = Sequelize.define('condutor.js', {
       },
       senha: {
         type: Sequelize.INTEGER
-      },
-      
+      },   
   });

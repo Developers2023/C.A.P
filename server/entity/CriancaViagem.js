@@ -1,6 +1,4 @@
-const BaseCLient = require("./BaseClient");
-
-class CriancaViagem extends BaseCliente{
+class CriancaViagem {
     constructor(presenca, viagem, crianca) {
         super(presenca, viagem, crianca)
       this.presenca = presenca;

@@ -4,8 +4,8 @@ const responsavelRepository = require("../repos/responsavel");
 module.exports = {
 
      async index(req, res) {
-       const responsavel = await responsavel.findAll(nome, sexo, email, cpf, celular, logradouro, numero, cidade, cep, senha);
-       return res.json(responsavel);
+       const Responsavel = await Responsavel.findAll(nome, sexo, email, cpf, telefone, logradouro, numero, cidade, cep, senha);
+       return res.json(Responsavel);
      },
   
     async cadastrar(body) {
