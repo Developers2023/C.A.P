@@ -13,19 +13,20 @@ import CopiarID from './src/components/CopiarID';
 import Maps from './src/components/Maps';
 import Atividades from './src/components/Atividades'
 import MensagensRecebidas from './src/components/MensagensRecebidas'
-import InfoAlunos from './src/components/InfoAlunos'
 import EnviarAlertas from './src/components/EnviarAlertas'
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola'
 import Perfil from './src/components/Perfil'
-
+import Informa from './src/components/informacao/Informa'
 const Stack = createNativeStackNavigator();
 
 export default props => {
 
      return ( 
-
-   <NavigationContainer>
+<View>
+     <Informa/>
+{/*
+ <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="Entrada" component={Entrada}/>
            <Stack.Screen name="Cadastro" component={Cadastro}/>
@@ -44,8 +45,8 @@ export default props => {
            <Stack.Screen name="ConfirmarEntrega_Escola" component={ConfirmarEntrega_Escola}/>
          </Stack.Navigator>
        </NavigationContainer>
-
-
+     */}
+     </View>
      );
 }
 //reate a simple nodejs express server
