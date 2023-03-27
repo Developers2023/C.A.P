@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize');
+const db = require('sequelize');
 
-const Usuario = Sequelize.define('condutor.js', {
+module.exports = db.define('condutor', {
     nome: {
       type: Sequelize.STRING
     },
@@ -13,10 +14,16 @@ const Usuario = Sequelize.define('condutor.js', {
     cpf: {
       type: Sequelize.INTEGER
     },
-    celular: {
+    telefone: {
         type: Sequelize.INTEGER
-      },
-      senha: {
-        type: Sequelize.INTEGER
-      },   
+    },
+    senha: {
+      type: Sequelize.INTEGER
+    }, 
+    enderecoId: {
+      type: Sequelize.INTEGER,
+      references: {
+        model: "endereco",
+      }
+    }  
   });

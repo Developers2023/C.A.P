@@ -18,6 +18,5 @@ const Usuario = Sequelize.define('Maps', {
     },
     latitude: {
       type: Sequelize.INTEGER
-    },
-      
-  });
+    }    
+});

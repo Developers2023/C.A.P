@@ -1,5 +1,3 @@
-const Endereco = require("./Endereco");
-
 class Responsavel{ 
   constructor(nome, sexo, email, cpf, telefone, endereco, senha) {
     this.nome = nome;

@@ -1,13 +1,15 @@
 const Sequelize = require('sequelize');
+const db = require('sequelize');
 
-const alertas = Sequelize.define('Alertas', {
+module.exports = db.define('alertas', {
     atrasos: {
       type: Sequelize.STRING
     },
     faltas: {
       type: Sequelize.STRING
     },
-    idCrianca: {
+    criancaId: {
       type: Sequelize.STRING
-    },
+      
+    }
   });

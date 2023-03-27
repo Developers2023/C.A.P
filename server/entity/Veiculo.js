@@ -4,6 +4,5 @@ class Veiculo{
       this.modelo = modelo;
       this.ano = ano;
       this.placa = placa;
-      this.condutor = new Condutor();
   }   
 }

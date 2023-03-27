@@ -15,15 +15,15 @@ module.exports = db.define('responsavel', {
       type: Sequelize.STRING
     },
     telefone: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     cpf: {
-      type: Sequelize.STRING
+      type: Sequelize.INTEGER
     },
     enderecoId: {
       type: Sequelize.INTEGER,
       references: {
-        model: "Endereco",
+        model: "endereco",
       }
     }
   });

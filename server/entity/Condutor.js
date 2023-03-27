@@ -1,5 +1,3 @@
-const Endereco = require("./Endereco");
-
 class Condutor{
   constructor(nome, sexo, email, cpf, telefone, logradouro, numero, cidade, cep, senha) {
     this.nome = nome;
@@ -7,7 +5,7 @@ class Condutor{
     this.email = email;
     this.cpf = cpf;
     this.telefone = telefone;
-    this.endereco = new Endereco(logradouro, numero, cidade, cep);
+    this.endereco = endereco;
     this.senha = senha;
   } 
 }

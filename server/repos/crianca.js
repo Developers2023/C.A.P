@@ -1,32 +1,23 @@
-const Crianca = require('../entity/Crianca');
+const db = require('./db_connection');
 const Sequelize = require('sequelize');
 
-const Usuario = Sequelize.define('dbo.endereco', {
-    logradouro: {
+module.exports = db.define('crianca', {
+    nome: {
       type: Sequelize.STRING
     },
-    numero: {
+    idade: {
       type: Sequelize.INTEGER
     },
-    cidade: {
+    horario: {
       type: Sequelize.STRING
     },
-    cep: {
+    escola: {
       type: Sequelize.INTEGER
     },
-    IdCrianca: {
-        type: Sequelize.STRING
-      },
-      senhas: {
-        type: Sequelize.INTEGER
-      },
-      email: {
-        type: Sequelize.STRING
-      },
-      nome: {
-        type: Sequelize.STRING
-      },
-      sexo: {
-        type: Sequelize.STRING
-        },
+    responsavelId:{
+      type: Sequelize.INTEGER,
+      references: {
+        model: 'responsavel'
+      }
+    }
   });
