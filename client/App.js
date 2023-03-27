@@ -1,5 +1,5 @@
 import React from 'react' 
-import {SafeAreaView, View} from 'react-native'
+import {SafeAreaView, View, Text} from 'react-native'
 import Entrada from './src/components/Entrada'
 import Login from './src/components/Login'
 import ListaCrianca from './src/components/ListaCrianca'
@@ -16,16 +16,21 @@ import MensagensRecebidas from './src/components/MensagensRecebidas'
 import EnviarAlertas from './src/components/EnviarAlertas'
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola'
-import Perfil from './src/components/Perfil'
 import Informa from './src/components/informacao/Informa'
-const Stack = createNativeStackNavigator();
+import Perfil from './src/components/Perfil'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+const Tab = createBottomTabNavigator();
 
 export default props => {
 
-     return ( 
+     return (         
 <View>
-     <Informa/>
+<Perfil/>
+
 {/*
+
+<Informa/>
  <NavigationContainer>
          <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="Entrada" component={Entrada}/>

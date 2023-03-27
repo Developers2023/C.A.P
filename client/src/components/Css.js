@@ -289,7 +289,8 @@ txtinfo: {
 },
 listCria: {
     color: '#000'
-}
+},
+
 
 });
 
