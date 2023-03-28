@@ -1,4 +1,3 @@
-const Maps = require('../entity/Maps');
 const Sequelize = require('sequelize');
 
 const Usuario = Sequelize.define('Maps', {
@@ -15,10 +14,9 @@ const Usuario = Sequelize.define('Maps', {
       type: Sequelize.INTEGER
     },
     longitude: {
-        type: Sequelize.INTEGER
-      },
-      latitude: {
-        type: Sequelize.INTEGER
-      },
-      
-  });
+      type: Sequelize.INTEGER
+    },
+    latitude: {
+      type: Sequelize.INTEGER
+    }    
+});

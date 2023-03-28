@@ -1,30 +1,29 @@
-const db = require('./db_connection');
 const Sequelize = require('sequelize');
+const db = require('sequelize');
 
-module.exports = db.define('responsavel', {
+module.exports = db.define('condutor', {
     nome: {
-      type: Sequelize.STRING
-    },
-    email: {
-      type: Sequelize.STRING
-    },
-    senha: {
       type: Sequelize.STRING
     },
     sexo: {
       type: Sequelize.STRING
     },
-    telefone: {
-      type: Sequelize.INTEGER
+    email: {
+      type: Sequelize.STRING
     },
     cpf: {
       type: Sequelize.INTEGER
     },
+    telefone: {
+        type: Sequelize.INTEGER
+    },
+    senha: {
+      type: Sequelize.INTEGER
+    }, 
     enderecoId: {
       type: Sequelize.INTEGER,
       references: {
         model: "endereco",
       }
-    }
+    }  
   });
-  

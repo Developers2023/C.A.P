@@ -1,7 +1,9 @@
-const BaseCLient = require("./BaseClient");
-
-class Crianca extends BaseCliente{
-    constructor(nome, sexo, email, cpf, celular, logradouro, numero, cidade, cep, senha) {
-        super(nome, sexo, email, cpf, celular, logradouro, numero, cidade, cep, senha)
-      }
+class Crianca{
+    constructor(nome, idade,horario, escola, responsavelId) {
+      this.nome = nome;
+      this.idade = idade;
+      this.horario = horario;
+      this.escola = escola;
+      this.responsavelId = responsavelId;
+    }
 }

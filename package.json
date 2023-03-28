@@ -1,5 +1,0 @@
-{
-  "dependencies": {
-    "sequelize-msnodesqlv8": "^0.2.6-beta.8"
-  }
-}

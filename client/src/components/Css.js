@@ -269,7 +269,29 @@ errors_senha:{
     fontSize:14,
     marginLeft:7,
     marginTop:-7
-}
+},
+info: {
+    backgroundColor: "#8CD5F099",
+    width:340,
+    height:67,
+    borderRadius: 10
+     
+},
+container: {
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 150
+
+},
+txtinfo: {
+    position: 'relative',
+    left: 10,
+    top: 3,
+},
+listCria: {
+    color: '#000'
+},
+
 
 });
 

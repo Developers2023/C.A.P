@@ -1,5 +1,5 @@
 import React from 'react' 
-import {SafeAreaView, View} from 'react-native'
+import {SafeAreaView, View, Text} from 'react-native'
 import Entrada from './src/components/Entrada'
 import Login from './src/components/Login'
 import ListaCrianca from './src/components/ListaCrianca'
@@ -13,21 +13,35 @@ import CopiarID from './src/components/CopiarID';
 import Maps from './src/components/Maps';
 import Atividades from './src/components/Atividades'
 import MensagensRecebidas from './src/components/MensagensRecebidas'
-import InfoAlunos from './src/components/InfoAlunos'
 import EnviarAlertas from './src/components/EnviarAlertas'
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola'
+import Informa from './src/components/informacao/Informa'
 import Perfil from './src/components/Perfil'
+<<<<<<< HEAD
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+=======
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+>>>>>>> 251de8f2f685d0d17fad5ed565ac5dbd3ed5b806
 
 const Tab = createBottomTabNavigator();
 
 export default props => {
 
-     return ( 
+     return (         
+<View>
+<Perfil/>
 
+<<<<<<< HEAD
    <NavigationContainer>
     {/*      <Stack.Navigator screenOptions={{headerShown:false}}>
+=======
+{/*
+
+<Informa/>
+ <NavigationContainer>
+         <Stack.Navigator screenOptions={{headerShown:false}}>
+>>>>>>> 251de8f2f685d0d17fad5ed565ac5dbd3ed5b806
           <Stack.Screen name="Entrada" component={Entrada}/>
            <Stack.Screen name="Cadastro" component={Cadastro}/>
            <Stack.Screen name="Login" component={Login}/>
@@ -53,8 +67,8 @@ export default props => {
      <Tab.Screen name="Perfil" component={Perfil} />
    </Tab.Navigator>
        </NavigationContainer>
-
-
+     */}
+     </View>
      );
 }
 //reate a simple nodejs express server

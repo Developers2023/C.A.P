@@ -1,7 +1,6 @@
 const api = require("./application/api");
 const express = require("express");
 const userController = require("./controller/userController");
-const responsavel = require("./repos/responsavel");
 
 const server = express();
 
