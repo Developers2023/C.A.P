@@ -250,9 +250,10 @@ mask_time:{
     borderWidth:1,
     textAlign:'left',
     width:158,
-    position:'absolute',
-    left:172,
-    top:150
+    position:'relative',
+    left:170,
+    bottom:70
+
 },
 errors:{
     fontWeight:'bold',

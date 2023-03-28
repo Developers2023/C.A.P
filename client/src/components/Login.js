@@ -7,8 +7,7 @@ import * as yup from 'yup';
 const loginValidation = yup.object().shape({
      email:yup.string().email('Insira um email válido').required('Email é obrigatório'),
      password:yup.string().min(8,({min}) =>`Senha deve ter pelo menos ${min} caracteres`).required(`Senha é obrigatória`)
-     .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-     "A senha deve conter 8 caracteres, incluindo: uma letra maiúscula, uma minúscula, um número e um caracter especial"
+     .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,"A senha deve conter 8 caracteres, incluindo: uma letra maiúscula, uma minúscula, um número e um caracter especial"
    )
 })
 
@@ -58,7 +57,7 @@ export default ({navigation}) => {
           </KeyboardAvoidingView>
           <TouchableOpacity style = {Css.btnLogin} onPress={()=>{
                handleSubmit()
-               navigation.navigate('DadosPessoais')
+               navigation.navigate('CadastrarCrianca')
           }}
           rounded disabled={!isValid}>
                <Text style = {Css.txtBtnLogin}>
