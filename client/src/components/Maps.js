@@ -1,18 +1,31 @@
 import React from 'react'
-import {Text, SafeAreaView} from 'react-native'
+import {View} from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import ListaCrianca from './ListaCrianca'
+import Atividades from './Atividades'
+import Perfil from './Perfil'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import DadosPessoais from './DadosPessoais'
 
-export default ({navigation})=> {
+const Tab = createBottomTabNavigator();
+
+export default ()=> {
 
      return (
-     <NavigationContainer>
-      <Tab.Navigator>
-        <Tab.Screen name="Lista de crianças" component={ListaCrianca} />
-        <Tab.Screen name="Settings" component={SettingsScreen} />
-      </Tab.Navigator>
-    </NavigationContainer>
-     
+
+  <View>
+        
+     <ListaCrianca/>
+
+     <View>
+ 
+
+</View>
+  </View>
+
+  
+  
+
+      
      )
 }

@@ -18,15 +18,16 @@ import EnviarAlertas from './src/components/EnviarAlertas'
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola'
 import Perfil from './src/components/Perfil'
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 export default props => {
 
      return ( 
 
    <NavigationContainer>
-         <Stack.Navigator screenOptions={{headerShown:false}}>
+    {/*      <Stack.Navigator screenOptions={{headerShown:false}}>
           <Stack.Screen name="Entrada" component={Entrada}/>
            <Stack.Screen name="Cadastro" component={Cadastro}/>
            <Stack.Screen name="Login" component={Login}/>
@@ -42,7 +43,15 @@ export default props => {
            <Stack.Screen name="Perfil" component={Perfil}/>
            <Stack.Screen name="ConfirmarEntrega_Casa" component={ConfirmarEntrega_Casa}/>
            <Stack.Screen name="ConfirmarEntrega_Escola" component={ConfirmarEntrega_Escola}/>
-         </Stack.Navigator>
+         </Stack.Navigator> */}
+ <Tab.Navigator 
+      initialRouteName='Maps'
+      barStyle={{backgroundColor:'tomato'}}
+      activeColor="tomato">
+     <Tab.Screen name="Maps" component={Maps} />
+     <Tab.Screen name="Atividades" component={Atividades} />
+     <Tab.Screen name="Perfil" component={Perfil} />
+   </Tab.Navigator>
        </NavigationContainer>
 
 
