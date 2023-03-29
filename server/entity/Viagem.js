@@ -1,7 +1,7 @@
 class Viagem {
-    constructor(escola, casa, condutor, alertas) {
+    constructor(escola, endereco, condutor, alertas) {
       this.escola = escola;
-      this.casa = casa;
+      this.endereco = endereco;
       this.condutor = condutor;
       this.alertas = alertas;
     }

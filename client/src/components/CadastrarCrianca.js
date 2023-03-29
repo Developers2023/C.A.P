@@ -2,7 +2,7 @@ import React,{useState} from 'react';
 import { View,Text, KeyboardAvoidingView,TextInput,TouchableOpacity,ScrollView } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Css from './Css';
-import DropDownPicker from 'react-native-dropdown-picker';
+import Dropdown_Turno from './Dropdown_Turno';
 import { MaskedTextInput } from 'react-native-mask-text';
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -19,14 +19,6 @@ const registerKids = yup.object().shape({
 
 export default function CadastrarCrianca({navigation}){
 
-  const [open,setOpen] = useState(false);
-  const [value, setValue] = useState(null);
-  const [items,setItems] = useState([
-    {label: 'Manhã', value: 'manha'},
-    {label: 'Tarde', value: 'tarde'},
-    {label: 'Integral', value: 'integral'}
-  ]);
-
     return(
       <Formik
       initialValues={{
@@ -38,11 +30,13 @@ export default function CadastrarCrianca({navigation}){
       validationOnMount={true}
       validationSchema={registerKids}
       onSubmit={values=> console.log(values)}>
+
       {({handleSubmit,handleChange,handleBlur,values,touched,errors,isValid}) => (
+     <ScrollView>  
       <SafeAreaView style={{flex:1,
         alignItems:'center',
         justifyContent:'center',
-        marginTop:50}}>
+        marginTop:178}}>
 
         <KeyboardAvoidingView style={{zIndex:1, marginHorizontal:50}}>
         <TextInput 
@@ -82,28 +76,14 @@ export default function CadastrarCrianca({navigation}){
               width:158,
               height:50,
               marginBottom:20,
-              marginLeft:7
-      
+              marginLeft:7,
+              marginTop:7
               }}>
-                <DropDownPicker  
-                    open={open}
-                    value={value}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setValue}
-                    setItems={setItems}
-                    style={{backgroundColor:'#87ceeb',fontWeight:'bold'}}
-                    translation={{  PLACEHOLDER:'Turno'}}
-                    placeholderStyle={{fontWeight:'bold'}}
-                    closeAfterSelecting={true}
-                    selectedItemLabelStyle={{
-                    fontWeight: "bold",
-                    color:'#FFBC16'               
-                  }}/> 
-                     
-                    </View>
-                    {(errors.turno && touched.turno)&&
-                      <Text style={Css.errors}>{errors.turno}</Text>}  
+            
+             <Dropdown_Turno/>        
+              </View>
+              {(errors.turno && touched.turno)&&
+                <Text style={Css.errors}>{errors.turno}</Text>}  
 
               <MaskedTextInput 
               style={Css.mask_time}
@@ -124,7 +104,6 @@ export default function CadastrarCrianca({navigation}){
     
       </KeyboardAvoidingView>
 
-      <Text>*Dados Obrigatórios</Text>
           
           <TouchableOpacity style={Css.btn_v1}
               onPress={() =>{ 
@@ -135,6 +114,7 @@ export default function CadastrarCrianca({navigation}){
           </TouchableOpacity>
           
         </SafeAreaView>
+        </ScrollView> 
       )} 
     </Formik>
     );

@@ -20,6 +20,10 @@ module.exports = db.define('responsavel', {
     cpf: {
       type: Sequelize.INTEGER
     },
+    condutorId: {
+      type: Sequelize.INTEGER,
+      references:'condutor',
+    },
     enderecoId: {
       type: Sequelize.INTEGER,
       references: {

@@ -10,7 +10,7 @@ export default ({navigation}) => {
       <Text style = {Css.cap}>C.A.P - CADÊ A PERUA</Text>
    </>
         
-        <TouchableOpacity style = {Css.btnEntrada} onPress={() => navigation.navigate('Login')}>
+        <TouchableOpacity style = {Css.btnEntrada} onPress={() => navigation.navigate('Maps')}>
             <Text style = {Css.txtBtnEntrada} >
                 LOGIN
             </Text>
