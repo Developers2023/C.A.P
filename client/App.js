@@ -8,35 +8,56 @@ import { createMaterialBottomTabNavigator } from '@react-navigation/material-bot
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
-export default props => {
+export default () => {
 
      return (         
 
 <NavigationContainer>
   <Tab.Navigator 
       initialRouteName='Maps'
-      barStyle={{backgroundColor:'#87ceeb' }}
       activeColor="#fff"
-      shifting={true}>
+      shifting={true}
+      screenOptions = {{
+      tabBarStyle: {backgroundColor: '#87ceeb'},
+     }}
+      >
      
-     <Tab.Screen name="Maps" component={Maps} 
+     <Tab.Screen 
+     name="Mapa" 
+     component={Maps} 
      options={{
-      tabBarIcon:()=>(
-    <MaterialCommunityIcons name="google-maps" color={'#000'} size={26}/>
+      tabBarIcon:(color)=>(
+    <MaterialCommunityIcons 
+    name="google-maps" 
+    color={color}
+    size={26}/>
       )
      }}/>
-     <Tab.Screen name="Atividades" component={Atividades}
+
+     <Tab.Screen 
+     name="Atividades" 
+     component={Atividades}
       options={{
+        tabBarLabel: "atividades",
         tabBarIcon:({linkpark})=>(
-      <MaterialCommunityIcons name="message-alert" color={linkpark} size={26}/>
+      <MaterialCommunityIcons 
+      name="message-alert" 
+      color={linkpark} 
+      size={26}/>
         )
-       }} />
-     <Tab.Screen name="Perfil" component={Perfil} 
+       }}/>
+
+     <Tab.Screen 
+     name="Perfil"
+     component={Perfil} 
       options={{
         tabBarIcon:({linkpark})=>(
-      <MaterialCommunityIcons name="face-man-profile" color={linkpark} size={26}/>
+      <MaterialCommunityIcons
+      name="face-man-profile"
+      color={linkpark} 
+      size={26}/>
         )
        }}/>
   </Tab.Navigator>
