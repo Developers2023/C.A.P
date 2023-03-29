@@ -1,18 +1,7 @@
 const Sequelize = require('sequelize');
+const db = require('./db_connection');
 
-const Usuario = Sequelize.define('Maps', {
-    logradouro: {
-      type: Sequelize.STRING
-    },
-    numero: {
-      type: Sequelize.INTEGER
-    },
-    cidade: {
-      type: Sequelize.STRING
-    },
-    cep: {
-      type: Sequelize.INTEGER
-    },
+module.exports = db.define('Maps', {
     longitude: {
       type: Sequelize.INTEGER
     },
