@@ -1,6 +1,6 @@
 const { Sequelize } = require("sequelize");
 
-const db = new Sequelize('cap', null, null, {
+const db = new Sequelize('test', 'keven', null, {
   host: 'localhost',
   dialect: 'mssql',
   trustedConnection: true,

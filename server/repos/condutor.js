@@ -24,6 +24,7 @@ module.exports = db.define('condutor', {
       type: Sequelize.INTEGER,
       references: {
         model: "endereco",
+        id: id
       }
     }  
   });
