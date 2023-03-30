@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const db = require('sequelize');
+const db = require('./db_connection');
 
 module.exports = db.define('condutor', {
     nome: {
@@ -24,7 +24,6 @@ module.exports = db.define('condutor', {
       type: Sequelize.INTEGER,
       references: {
         model: "endereco",
-        id: id
       }
     }  
   });

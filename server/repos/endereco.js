@@ -19,5 +19,11 @@ module.exports = db.define('endereco', {
     references: {
       model: "responsavel",
     }
+  },
+  condutorlId: {
+    type: Sequelize.INTEGER,
+    references: {
+      model: "condutor",
+    }
   }
 });

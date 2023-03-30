@@ -1,5 +1,5 @@
 class Condutor{
-  constructor(nome, sexo, email, cpf, telefone, logradouro, numero, cidade, cep, senha) {
+  constructor(nome, sexo, email, cpf, telefone, endereco, senha) {
     this.nome = nome;
     this.sexo = sexo;
     this.email = email;
@@ -10,4 +10,4 @@ class Condutor{
   } 
 }
 
-module.exports = transporter;
+module.exports = Condutor;
