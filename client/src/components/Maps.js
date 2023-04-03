@@ -1,46 +1,90 @@
 import * as React from 'react';
-import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
+import MapView, { PROVIDER_GOOGLE, Marker, LocalTile } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
 import { View, StyleSheet, Button, PermissionsAndroid } from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
 import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
-import {request, PERMISSIONS} from 'react-native-permissions';
 import Geolocation from 'react-native-geolocation-service'
-
 
 const busImage = require('./images/bus-gps7.png')
 
+LogBox.ignoreAllLogs();
+
 export default () => {
 
-     const [local, setlocal] = React.useState([])
-
      const [origin, setOrigin] = React.useState({
-          latitude: -23.469749,
-          longitude: -46.709606,
+          latitude: latitudeAtual,
+          longitude: longitudeAtual,
+          latitudeDelta: 0.09,
+          longitudeDelta:0.04
      });
 
-     const [destino, setDestino] = React.useState(
-          {
-               latitude: -23.465796,
-               longitude: -46.714701
-          }
-     );
+     const [destino, setDestino] = React.useState({
+               latitude: 37.416896,
+               longitude: -122.078016,
+          });
 
-     React.useEffect(() => {
+     const [latitudeAtual, setLatitudeAtual] = React.useState('');
+
+     const [longitudeAtual, setLongitudeAtual] = React.useState(''); 
+
+    /*   React.useEffect(() => {
           (async () => {
-               await PermissionsAndroid.request(
-                    "android.permission.ACCESS_FINE_LOCATION",
-               );
-               Geolocation.getCurrentPosition(
-                    (position) => {
-                         setlocal([position.coords]);
-                    },
-                    (error) => {
-                         console.log(error.code, error.message);
-                    },
-               );
+            await PermissionsAndroid.request(
+              "android.permission.ACCESS_FINE_LOCATION",
+            );
+            Geolocation.getCurrentPosition(
+              (position) => {
+                setlocal([position.coords]);
+              },
+              (error) => {
+                console.log(error.code, error.message);
+              },
+            );
           })();
-     }, []);
+        }, []);  */
+
+
+
+
+        const requestLocationPermission = async () => {
+          const granted = await PermissionsAndroid.request(
+            PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+            {
+              title: "Permissão de Acesso à Localização",
+              message: "Este aplicativo precisa acessar sua localização.",
+              buttonNeutral: "Pergunte-me depois",
+              buttonNegative: "Cancelar",
+              buttonPositive: "OK"
+            }
+          );
+          if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+            getLocation();
+          } else {
+            alert('Permissão de Localização negada');
+          }
+        };
+
+        const getLocation = () => {
+          Geolocation.getCurrentPosition(position => {
+               const currentLatitude = JSON.stringify(position.coords.latitude);
+               const currentLongitude = JSON.stringify(position.coords.longitude);
+               setLatitudeAtual(currentLatitude)
+               setLongitudeAtual(currentLongitude)
+               console.log(currentLatitude, currentLongitude)
+          },
+          (error) => alert(error.message),
+          {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}      
+          );
+        }
+
+
+     
+       React.useEffect(() => {
+          requestLocationPermission();
+       },[])
+        
+       
 
      let listener = null;
 
@@ -72,31 +116,27 @@ export default () => {
      <View style={styles.container}>
 
      <MapView
-       onPress={() => {}}
        provider={PROVIDER_GOOGLE}
        style={styles.map}
-       initialRegion = {{
-          latitude: origin.latitude,
-          longitude: origin.longitude,
-          latitudeDelta: 0.02,
-          longitudeDelta: 0.0004
-       }}
+       showsUserLocation = {true}
+       followsUserLocation = {true}
+       rotateEnabled = {true}
+       zoomEnabled = {true}
+       
      >
 
           <Marker
-          draggable = {true}
-          coordinate = {origin}
-          image = {busImage}
-          onDragEnd={(diretion) => setOrigin(diretion.nativeEvent.coordinate)}
+          coordinate={origin}
           />
 
-           <Marker
+          <Marker
           coordinate={destino}
           />
 
+         
+
           <MapViewDirections
-          origin={origin}
-          destination = {destino}
+          
           apikey = {GOOGLE_MAPS_APIKEY}
           strokeColor = "#007fff"
           strokeWidth={5}
