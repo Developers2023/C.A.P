@@ -6,6 +6,7 @@ import Perfil from './src/components/Perfil'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import { View } from 'react-native';
 
 
 const Tab = createBottomTabNavigator();
@@ -13,8 +14,13 @@ const Tab = createBottomTabNavigator();
 export default () => {
 
      return (         
+<View>
 
-<NavigationContainer>
+      <Maps/>
+
+
+{/*
+ <NavigationContainer>
   <Tab.Navigator 
       initialRouteName='Maps'
       activeColor="#fff"
@@ -61,7 +67,9 @@ export default () => {
         )
        }}/>
   </Tab.Navigator>
-</NavigationContainer>
+</NavigationContainer> */}
+</View>
+
      );
 }
 //reate a simple nodejs express server

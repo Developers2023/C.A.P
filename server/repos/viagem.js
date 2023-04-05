@@ -1,12 +1,13 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
+const condutor = require('./condutor');
 
-module.exports = db.define('viagem', {
+const viagem = db.define('viagem', {
     escola:{
       type: Sequelize.STRING
     },
     horario:{
-      type: Sequelize.INTEGER  
+      type: Sequelize.STRING  
     },
     endereco:{
       type: Sequelize.STRING
@@ -15,6 +16,7 @@ module.exports = db.define('viagem', {
       type: Sequelize.INTEGER,
       references:{
         model:"condutor",
+<<<<<<< HEAD
         key: "id"
       }
     },
@@ -26,3 +28,14 @@ module.exports = db.define('viagem', {
       }
     },
 })
+=======
+        key:"id"
+    }
+  }
+});
+
+viagem.belongsTo(condutor)
+condutor.hasMany(viagem)
+
+module.exports = viagem;
+>>>>>>> ee5394e304f5d9a1ff0e9228e59e1b4f4f629fc7

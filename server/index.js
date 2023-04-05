@@ -28,7 +28,6 @@ server.get("/pokemon", async(req,res) => {
     }
 });
 
-
 server.post("/responsavel/cadastrar",async function(req,res){
     const result = await responsavelController.cadastrar(req.body)
     res.send(result)
@@ -49,6 +48,27 @@ server.delete("/responsavel/delete/:id",async function(req,res){
 
 server.post("/responsavel/getById",async function(req,res){
     const result = await responsavelController.find(req.body)
+    res.send(result)
+});
+
+server.post("/condutor/cadastrar",async function(req,res){
+    const result = await condutorController.cadastrar(req.body)
+    res.send(result)
+});
+
+server.post("/condutor/update",async function(req,res){
+    const result = await condutorController.update(req.body)
+    res.send(result)
+});
+
+server.post("/condutor/delete",async function(req,res){
+    const result = await condutorController.delete(req.body)
+    res.send(result)
+});
+
+
+server.post("/condutor/getById",async function(req,res){
+    const result = await condutorController.find(req.body)
     res.send(result)
 });
 

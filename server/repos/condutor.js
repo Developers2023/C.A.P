@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
+const Endereco = require('../entity/Endereco');
 
-module.exports = db.define('condutor', {
+ const condutor = db.define('condutor', {
     nome: {
       type: Sequelize.STRING
     },
@@ -24,6 +25,12 @@ module.exports = db.define('condutor', {
       type: Sequelize.INTEGER,
       references: {
         model: "endereco",
+        key:"id"
       }
     }  
   });
+
+  condutor.belongsTo(Endereco);
+  Endereco.belongsTo(condutor);
+
+  module.exports = condutor;

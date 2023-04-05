@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
 
-module.exports = db.define('Maps', {
+const maps = db.define('maps', {
     longitude: {
       type: Sequelize.INTEGER
     },
@@ -9,3 +9,5 @@ module.exports = db.define('Maps', {
       type: Sequelize.INTEGER
     }    
 });
+
+module.exports = maps;

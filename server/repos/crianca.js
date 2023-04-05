@@ -1,7 +1,7 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
 
-module.exports = db.define('crianca', {
+const crianca = db.define('crianca', {
     nome: {
       type: Sequelize.STRING
     },
@@ -22,3 +22,5 @@ module.exports = db.define('crianca', {
       }
     }
   });
+
+  module.exports = crianca;
