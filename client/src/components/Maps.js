@@ -13,11 +13,12 @@ LogBox.ignoreAllLogs();
 export default () => {
 
      const [origin, setOrigin] = React.useState({
-          latitude: latitudeAtual,
-          longitude: longitudeAtual,
-          latitudeDelta: 0.09,
-          longitudeDelta:0.04
+          latitude: 0,
+          longitude: 0,
+          latitudeDelta: 0.005,
+          longitudeDelta:0.005
      });
+ 
 
      const [destino, setDestino] = React.useState({
                latitude: 37.416896,
@@ -67,17 +68,26 @@ export default () => {
 
         const getLocation = () => {
           Geolocation.getCurrentPosition(position => {
-               const currentLatitude = JSON.stringify(position.coords.latitude);
-               const currentLongitude = JSON.stringify(position.coords.longitude);
+               const currentLatitude = (position.coords.latitude);
+               const currentLongitude = (position.coords.longitude);
                setLatitudeAtual(currentLatitude)
                setLongitudeAtual(currentLongitude)
+
+               setOrigin ({
+                latitude: currentLatitude,
+                longitude: currentLongitude,
+                latitudeDelta: 0.005,
+                longitudeDelta:0.005
+               });
+               
                console.log(currentLatitude, currentLongitude)
           },
           (error) => alert(error.message),
           {enableHighAccuracy: true, timeout: 20000, maximumAge: 1000}      
           );
+          
         }
-
+      
 
      
        React.useEffect(() => {
@@ -114,14 +124,20 @@ export default () => {
 
      return (    
      <View style={styles.container}>
-
+      
      <MapView
+ 
+
+      initialRegion={{
+        latitude:
+      }}
        provider={PROVIDER_GOOGLE}
        style={styles.map}
        showsUserLocation = {true}
        followsUserLocation = {true}
        rotateEnabled = {true}
        zoomEnabled = {true}
+
        
      >
 
@@ -136,9 +152,10 @@ export default () => {
          
 
           <MapViewDirections
-          
+          origin = {origin}
+          destination = {destino}
           apikey = {GOOGLE_MAPS_APIKEY}
-          strokeColor = "#007fff"
+          strokeColor = "#00f"
           strokeWidth={5}
           />
          
