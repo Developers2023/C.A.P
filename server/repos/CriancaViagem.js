@@ -5,11 +5,14 @@ module.exports = db.define('criancaViagem', {
     presenca: {
       type: Sequelize.STRING
     },
-    criancaId: {
-      type: Sequelize.INTEGER,
-      references:'crianca'
-    },
     horario: {
       type: Sequelize.STRING
     },
-});
+    criancaId: {
+      type: Sequelize.INTEGER,
+      references:{
+        model:"crianca",
+        key:"id"
+      }
+    },
+})

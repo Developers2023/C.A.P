@@ -14,7 +14,15 @@ module.exports = db.define('viagem', {
     condutorId:{
       type: Sequelize.INTEGER,
       references:{
-        model:"condutor"
-    }
-  }
-});
+        model:"condutor",
+        key: "id"
+      }
+    },
+    criancaId: {
+      type: Sequelize.INTEGER,
+      references:{
+        model:"crianca",
+        key:"id"
+      }
+    },
+})

@@ -5,30 +5,33 @@ module.exports = db.define('responsavel', {
     nome: {
       type: Sequelize.STRING
     },
-    email: {
-      type: Sequelize.STRING
+    cpf: {
+      type: Sequelize.INTEGER
     },
-    senha: {
+    telefone: {
+      type: Sequelize.INTEGER
+    },
+    email: {
       type: Sequelize.STRING
     },
     sexo: {
       type: Sequelize.STRING
     },
-    telefone: {
-      type: Sequelize.INTEGER
-    },
-    cpf: {
-      type: Sequelize.INTEGER
-    },
-    condutorId: {
-      type: Sequelize.INTEGER,
-      references:'condutor',
+    senha: {
+      type: Sequelize.STRING
     },
     enderecoId: {
       type: Sequelize.INTEGER,
-      references: {
-        model: "endereco",
+      references:{
+        model:"endereco",
+        key:"id"
       }
-    }
-  });
-  
+    },
+    criancaId: {
+      type: Sequelize.INTEGER,
+      references:{
+        model:"crianca",
+        key:"id"
+      }
+    },
+  })

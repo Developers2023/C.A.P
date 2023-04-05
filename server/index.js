@@ -34,14 +34,16 @@ server.post("/responsavel/cadastrar",async function(req,res){
     res.send(result)
 });
 
-server.post("/responsavel/update",async function(req,res){
+server.put("/responsavel/update:id",async function(req,res){
     const result = await responsavelController.update(req.body)
     res.send(result)
 });
 
-server.post("/responsavel/delete",async function(req,res){
-    const result = await responsavelController.delete(req.body)
-    res.send(result)
+server.delete("/responsavel/delete/:id",async function(req,res){
+    const result = await responsavelController.delete(req.params.id)
+    res.send({
+        suceso: result > 0 ? true : false
+    })
 });
 
 
@@ -49,12 +51,6 @@ server.post("/responsavel/getById",async function(req,res){
     const result = await responsavelController.find(req.body)
     res.send(result)
 });
-
-server.post("/responsavel/findAll",async function(req,res){
-    const result = await responsavelController.getAll(req.body)
-    res.send(result)
-});
-
 
 server.listen(3000, function(error){
     if(error){

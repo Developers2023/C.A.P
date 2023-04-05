@@ -9,7 +9,8 @@ module.exports = db.define('alertas', {
       type: Sequelize.STRING
     },
     criancaId: {
-      type: Sequelize.STRING
-      
+      type: Sequelize.INTEGER,
+      model:"crianca",
+      key:"id"
     }
   });

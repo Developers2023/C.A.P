@@ -17,7 +17,8 @@ module.exports = db.define('crianca', {
     responsavelId:{
       type: Sequelize.INTEGER,
       references: {
-        model: 'responsavel'
+        model: 'responsavel',
+        key:"id"
       }
     }
   });
