@@ -8,12 +8,7 @@ module.exports = {
         const endereco = await enderecoRepository.findAll();
         return res.json(endereco);
     },
-
-    async getById(req, res) {
-        const endereco = await enderecoRepository.find({id:req.body.cpf});
-        return res.json(endereco);
-      },
-  
+    
       async delete(req, res) {
         const endereco = await enderecoRepository.findAll({id:req.body.cpf});
         return res.json(endereco);

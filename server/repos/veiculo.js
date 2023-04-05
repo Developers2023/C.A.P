@@ -1,7 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
+const condutor = require('./condutor');
 
-module.exports = db.define('veiculo', {
+const veiculo = db.define('veiculo', {
     marca:{
       type: Sequelize.STRING
     },
@@ -13,5 +14,17 @@ module.exports = db.define('veiculo', {
     },
     modelo:{
       type: Sequelize.STRING
+    },
+    condutorId:{
+      type: Sequelize.INTEGER,
+      references:{
+        model:"condutor",
+        key:"id"
+      }
     }
 });
+
+veiculo.belongsToMany(condutor)
+condutor.belongsTo(veiculo)
+
+module.exports = veiculo;

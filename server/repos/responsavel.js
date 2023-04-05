@@ -1,7 +1,8 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
+const endereco = require('./endereco');
 
-module.exports = db.define('responsavel', {
+const responsavel = db.define('responsavel', {
     nome: {
       type: Sequelize.STRING
     },
@@ -22,13 +23,21 @@ module.exports = db.define('responsavel', {
     },
     condutorId: {
       type: Sequelize.INTEGER,
-      references:'condutor',
+      references:{
+        model:"condutor",
+        key:"id"
+      }
     },
     enderecoId: {
       type: Sequelize.INTEGER,
       references: {
         model: "endereco",
+        key:"id"
       }
     }
   });
-  
+
+responsavel.belongsTo(endereco);
+endereco.belongsTo(responsavel);
+
+module.exports = responsavel;  

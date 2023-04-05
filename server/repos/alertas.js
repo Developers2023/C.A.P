@@ -1,15 +1,32 @@
 const Sequelize = require('sequelize');
-const db = require('sequelize');
+const db = require('./db_connection');
+const condutor = require('./condutor');
 
-module.exports = db.define('alertas', {
+const alertas = db.define('alertas', {
     atrasos: {
       type: Sequelize.STRING
     },
     faltas: {
       type: Sequelize.STRING
     },
-    criancaId: {
-      type: Sequelize.STRING
-      
+    condutorId: {
+      type: Sequelize.INTEGER,
+      References:{
+        model:"condutor",
+        key:"id"
+      }
+    },
+    reponsavelId: {
+      type: Sequelize.INTEGER,
+      References:{
+        model:"condutor",
+        key:"id"
+      }
     }
   });
+
+  condutor.hasMany(alertas);
+  alertas.belongsTo(condutor);
+
+
+  module.exports = alertas;

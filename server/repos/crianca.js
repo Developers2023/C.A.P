@@ -1,7 +1,7 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
 
-module.exports = db.define('crianca', {
+const crianca = db.define('crianca', {
     nome: {
       type: Sequelize.STRING
     },
@@ -17,7 +17,10 @@ module.exports = db.define('crianca', {
     responsavelId:{
       type: Sequelize.INTEGER,
       references: {
-        model: 'responsavel'
+        model: 'responsavel',
+        key:"id"
       }
     }
   });
+
+  module.exports = crianca;

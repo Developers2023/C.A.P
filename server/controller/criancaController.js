@@ -26,10 +26,7 @@ module.exports = {
       },
 
     async cadastrar(body) {
-      
-      const responsavel = new Responsavel(body.nome, body.sexo, body.email, body.cpf, body.telefone, bosy.endereco, Crianca ,  body.senha);
-      const crianca = new Crianca(body.nome, body.idade, body.horario,responsavel, body.escola)
-
+      const crianca = new Crianca(body.nome, body.idade, body.horario, body.escola)
       const cliente = await criancaRepository.create(crianca)
       return res.json(cliente);
     }

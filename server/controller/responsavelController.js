@@ -4,11 +4,6 @@ const responsavelRepository = require("../repos/responsavel");
 
 module.exports = {
 
-    async getAll(req, res) {
-        const responsavel = await responsavelRepository.findAll();
-        return res.json(responsavel);
-    },
-
     async getById(req, res) {
         const responsavel = await responsavelRepository.find({id:req.body.cpf});
         return res.json(responsavel);
