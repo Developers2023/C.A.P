@@ -5,6 +5,7 @@ import MapViewDirections from 'react-native-maps-directions';
 import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
 const busImage = require('./images/bus-gps7.png')
 
@@ -21,13 +22,16 @@ export default () => {
  
 
      const [destino, setDestino] = React.useState({
-               latitude: 37.416896,
-               longitude: -122.078016,
+               latitude: -23.4447883,
+               longitude: -46.7188449,
+               latitudeDelta: 0.000922,
+               lagitudeDelta: 0.000421
           });
 
-     const [latitudeAtual, setLatitudeAtual] = React.useState('');
 
-     const [longitudeAtual, setLongitudeAtual] = React.useState(''); 
+     const [latitudeAtual, setLatitudeAtual] = React.useState(0);
+
+     const [longitudeAtual, setLongitudeAtual] = React.useState(0); 
 
     /*   React.useEffect(() => {
           (async () => {
@@ -120,24 +124,28 @@ export default () => {
                console.log(result);
              });
      } */
-
-
+    
      return (    
      <View style={styles.container}>
       
-     <MapView
+   
+    
  
+      
+     <MapView
+     
 
-      initialRegion={{
-        latitude:
-      }}
+    
+ 
        provider={PROVIDER_GOOGLE}
+       region={origin}
        style={styles.map}
        showsUserLocation = {true}
        followsUserLocation = {true}
        rotateEnabled = {true}
        zoomEnabled = {true}
-
+       
+       
        
      >
 
@@ -149,22 +157,47 @@ export default () => {
           coordinate={destino}
           />
 
-         
+          
 
-          <MapViewDirections
-          origin = {origin}
-          destination = {destino}
-          apikey = {GOOGLE_MAPS_APIKEY}
-          strokeColor = "#00f"
-          strokeWidth={5}
-          />
+         
+    {destino &&
+        <MapViewDirections
+        origin = {origin}
+        destination = {destino}
+        apikey = {GOOGLE_MAPS_APIKEY}
+        strokeColor = "#00f"
+        strokeWidth={3}
+      
+          
+          
+        
+        />
+     }
+         
          
      </MapView>
-     <Button title='Começar' onPress={comecarTracking}/>
-     <Button title='Parar' onPress={pararTracking}/>
-   </View>
-     );
+     <GooglePlacesAutocomplete
+        placeholder="Para onde vamos"
+        onPress={(data, details = null) => {
+           console.log(data, details);
+          }}
+          query={{
+            apikey: 'GOOGLE_MAPS_APIKEY',
+            lenguage: 'pt-br,'
+          
+        }}
+        enablePoweredByContainer={false}
+        fetchDetails={true}
+        styles={{listView:{height:100}}}
+      
+       
+      />
+      
+    </View>
+  );
 };
+     
+
 
 const styles = StyleSheet.create({
      container: {
