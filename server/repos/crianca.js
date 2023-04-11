@@ -1,5 +1,6 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
+const responsavel = require('./responsavel');
 
 const crianca = db.define('crianca', {
     nome: {
@@ -22,5 +23,8 @@ const crianca = db.define('crianca', {
       }
     }
   });
+
+  crianca.belongsTo(responsavel)
+  responsavel.belongsTo(crianca)
 
   module.exports = crianca;
