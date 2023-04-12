@@ -1,7 +1,7 @@
 class CriancaViagem {
-    constructor(presenca, viagem, crianca) {
-      this.presenca = presenca;
-      this.viagem = viagem;
-      this.crianca = crianca;
+    constructor(ausencia, horario, criancaId) {
+      this.ausencia = ausencia;
+      this.horario = horario;
+      this.criancaId = criancaId;
     }
 }

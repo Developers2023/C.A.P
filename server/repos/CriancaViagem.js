@@ -13,19 +13,9 @@ const criancaViagem = db.define('criancaViagem', {
       type: Sequelize.INTEGER,
       references:{
         model:"crianca",
-        key:"id"
+        key:"idcrianca"
       }
     },
-    criancaId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:'crianca',
-        key:"id"
-      }
-    },
-    horario: {
-      type: Sequelize.STRING
-    }
 });
 
 criancaViagem.belongsToMany(crianca)

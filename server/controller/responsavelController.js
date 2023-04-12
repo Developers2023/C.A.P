@@ -24,9 +24,7 @@ module.exports = {
 
     async cadastrar(body) {
       // const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep)
-
-      const responsavel = new Responsavel(body.nome, body.sexo, body.email, body.cpf, body.telefone,1, body.senha);
-      
+      const responsavel = new Responsavel(body.nome, body.sexo, body.email, body.cpf, body.telefone,1, body.senha);     
       return await responsavelRepository.create(responsavel)
     }
   };

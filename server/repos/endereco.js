@@ -20,14 +20,14 @@ const endereco = db.define('endereco', {
     type: Sequelize.INTEGER,
     references: {
       model: "responsavel",
-      key:"id"
+      key:"idresponsavel"
     }
   },
   condutorlId: {
     type: Sequelize.INTEGER,
     references: {
       model: "condutor",
-      key:"id"
+      key:"idcondutor"
     }
   }
 });

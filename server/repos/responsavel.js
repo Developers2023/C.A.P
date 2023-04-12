@@ -1,6 +1,7 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
 const endereco = require('./endereco');
+const crianca = require('./crianca');
 
 const responsavel = db.define('responsavel', {
     nome: {
@@ -25,19 +26,29 @@ const responsavel = db.define('responsavel', {
       type: Sequelize.INTEGER,
       references:{
         model:"endereco",
-        key:"id"
+        key:"idendereco"
       }
     },
     criancaId: {
       type: Sequelize.INTEGER,
       references:{
         model:"crianca",
-        key:"id"
+        key:"idcrianca"
       }
     },
+    condutorId: {
+      type: Sequelize.INTEGER,
+      references:{
+        model:"condutor",
+        key:"idcondutor"
+      }
+    }
   })
 
 responsavel.hasOne(endereco);
 endereco.belongsTo(responsavel);
+
+responsavel.belongsTo(crianca);
+crianca.belongsTo(responsavel);
 
 module.exports = responsavel;  
