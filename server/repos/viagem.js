@@ -16,14 +16,14 @@ const viagem = db.define('viagem', {
       type: Sequelize.INTEGER,
       references:{
         model:"condutor",
-        key: "id"
+        key: "idcondutor"
       }
     },
     criancaId: {
       type: Sequelize.INTEGER,
       references:{
         model:"crianca",
-        key:"id"
+        key:"idcrianca"
       }
     },
 })

@@ -26,21 +26,21 @@ const responsavel = db.define('responsavel', {
       type: Sequelize.INTEGER,
       references:{
         model:"endereco",
-        key:"id"
+        key:"idendereco"
       }
     },
     criancaId: {
       type: Sequelize.INTEGER,
       references:{
         model:"crianca",
-        key:"id"
+        key:"idcrianca"
       }
     },
     condutorId: {
       type: Sequelize.INTEGER,
       references:{
         model:"condutor",
-        key:"id"
+        key:"idcondutor"
       }
     }
   })

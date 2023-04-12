@@ -19,7 +19,7 @@ const veiculo = db.define('veiculo', {
       type: Sequelize.INTEGER,
       references:{
         model:"condutor",
-        key:"id"
+        key:"idcondutor"
       }
     }
 });
