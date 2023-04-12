@@ -29,6 +29,8 @@ const responsavel = db.define('responsavel', {
         key:"idendereco"
       }
     },
+  })
+    /*
     criancaId: {
       type: Sequelize.INTEGER,
       references:{
@@ -44,11 +46,11 @@ const responsavel = db.define('responsavel', {
       }
     }
   })
-
+*/
 responsavel.hasOne(endereco);
 endereco.belongsTo(responsavel);
-
+/*
 responsavel.belongsTo(crianca);
 crianca.belongsTo(responsavel);
-
+*/
 module.exports = responsavel;  
