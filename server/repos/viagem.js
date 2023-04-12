@@ -16,7 +16,6 @@ const viagem = db.define('viagem', {
       type: Sequelize.INTEGER,
       references:{
         model:"condutor",
-<<<<<<< HEAD
         key: "id"
       }
     },
@@ -28,14 +27,8 @@ const viagem = db.define('viagem', {
       }
     },
 })
-=======
-        key:"id"
-    }
-  }
-});
 
-viagem.belongsTo(condutor)
+viagem.hasOne(condutor)
 condutor.hasMany(viagem)
 
 module.exports = viagem;
->>>>>>> ee5394e304f5d9a1ff0e9228e59e1b4f4f629fc7

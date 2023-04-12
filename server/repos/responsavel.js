@@ -18,7 +18,6 @@ const responsavel = db.define('responsavel', {
     sexo: {
       type: Sequelize.STRING
     },
-<<<<<<< HEAD
     senha: {
       type: Sequelize.STRING
     },
@@ -37,31 +36,8 @@ const responsavel = db.define('responsavel', {
       }
     },
   })
-=======
-    telefone: {
-      type: Sequelize.INTEGER
-    },
-    cpf: {
-      type: Sequelize.INTEGER
-    },
-    condutorId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:"condutor",
-        key:"id"
-      }
-    },
-    enderecoId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: "endereco",
-        key:"id"
-      }
-    }
-  });
 
-responsavel.belongsTo(endereco);
+responsavel.hasOne(endereco);
 endereco.belongsTo(responsavel);
 
 module.exports = responsavel;  
->>>>>>> ee5394e304f5d9a1ff0e9228e59e1b4f4f629fc7

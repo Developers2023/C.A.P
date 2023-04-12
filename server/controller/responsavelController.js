@@ -1,5 +1,4 @@
 const Responsavel = require("../entity/Responsavel");
-const Endereco = require("../entity/Endereco");
 const responsavelRepository = require("../repos/responsavel");
 
 module.exports = {
