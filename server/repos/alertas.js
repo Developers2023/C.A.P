@@ -12,20 +12,20 @@ const alertas = db.define('alertas', {
     criancaId: {
       type: Sequelize.INTEGER,
       model:"crianca",
-      key:"id"
+      key:"idcrianca"
     },
     condutorId: {
       type: Sequelize.INTEGER,
       References:{
         model:"condutor",
-        key:"id"
+        key:"idcondutor"
       }
     },
     reponsavelId: {
       type: Sequelize.INTEGER,
       References:{
         model:"condutor",
-        key:"id"
+        key:"idresponsavel"
       }
     }
   });

@@ -25,7 +25,7 @@ const Endereco = require('../entity/Endereco');
       type: Sequelize.INTEGER,
       references: {
         model: "endereco",
-        key:"id"
+        key:"idendereco"
       }
     }  
   });

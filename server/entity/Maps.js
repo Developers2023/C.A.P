@@ -1,5 +1,3 @@
-const Endereco = require("./Endereco");
-
 class Maps{
     constructor(longitude, latitude){
       this.longitude = longitude;
