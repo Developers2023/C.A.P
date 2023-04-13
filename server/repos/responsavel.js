@@ -2,6 +2,7 @@ const db = require('./db_connection');
 const Sequelize = require('sequelize');
 const endereco = require('./endereco');
 const crianca = require('./crianca');
+const condutor = require('./condutor');
 
 const responsavel = db.define('responsavel', {
     nome: {
@@ -48,9 +49,8 @@ const responsavel = db.define('responsavel', {
   })
 */
 responsavel.hasOne(endereco);
-endereco.belongsTo(responsavel);
-/*
-responsavel.belongsTo(crianca);
-crianca.belongsTo(responsavel);
-*/
+//responsavel.hasOne(condutor);
+//responsavel.belongsTo(crianca);
+
+
 module.exports = responsavel;  

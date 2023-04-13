@@ -4,18 +4,13 @@ const condutorRepository = require("../repos/condutor");
 
 module.exports = {
 
-    async getById(req, res) {
-        const condutor = await condutorRepository.find({id:req.body.cpf});
-        return res.json(condutor);
-      },
-  
       async delete(req, res) {
         const condutor = await condutorRepository.findAll({id:req.body.cpf});
         return res.json(condutor);
       },
 
       async update(req, res) {
-        const condutor = await condutorRepository.update(id, req.body);
+        const condutor = await condutorRepository.update({id:req.body.cpf});
         return res.json(condutor);
       },
 

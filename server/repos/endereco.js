@@ -33,9 +33,7 @@ const endereco = db.define('endereco', {
 });
 
 endereco.belongsTo(responsavel)
-responsavel.belongsTo(endereco)
 
-condutor.belongsTo(endereco);
-endereco.belongsTo(condutor)
+endereco.belongsTo(condutor);
 
 module.exports = endereco;

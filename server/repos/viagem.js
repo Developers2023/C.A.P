@@ -29,6 +29,5 @@ const viagem = db.define('viagem', {
 })
 
 viagem.hasOne(condutor)
-condutor.hasMany(viagem)
 
 module.exports = viagem;

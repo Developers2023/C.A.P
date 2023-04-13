@@ -24,7 +24,6 @@ const crianca = db.define('crianca', {
     }
   });
 
-  crianca.belongsTo(responsavel)
-  responsavel.belongsTo(crianca)
+  crianca.hasOne(responsavel)
 
   module.exports = crianca;

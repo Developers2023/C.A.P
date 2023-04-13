@@ -30,7 +30,6 @@ const Endereco = require('../entity/Endereco');
     }  
   });
 
-  condutor.belongsTo(Endereco);
-  Endereco.belongsTo(condutor);
+  condutor.hasOne(Endereco);
 
   module.exports = condutor;

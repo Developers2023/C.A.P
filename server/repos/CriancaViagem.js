@@ -18,7 +18,6 @@ const criancaViagem = db.define('criancaViagem', {
     },
 });
 
-criancaViagem.belongsToMany(crianca)
-crianca.belongsTo(criancaViagem)
+criancaViagem.hasMany(crianca)
 
 module.exports = criancaViagem;

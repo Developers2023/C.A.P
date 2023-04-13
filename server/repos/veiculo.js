@@ -24,7 +24,6 @@ const veiculo = db.define('veiculo', {
     }
 });
 
-veiculo.hasOne(condutor)
-condutor.belongsTo(veiculo)
+veiculo.belongsTo(condutor)
 
 module.exports = veiculo;
