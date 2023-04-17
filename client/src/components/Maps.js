@@ -1,13 +1,11 @@
 import * as React from 'react';
-import MapView, { PROVIDER_GOOGLE, Marker, LocalTile } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
-import { View, StyleSheet, Button, PermissionsAndroid } from 'react-native';
+import MapView, { PROVIDER_GOOGLE, Marker } from 'react-native-maps'; // remove PROVIDER_GOOGLE import if not using Google Maps
+import { View, StyleSheet, PermissionsAndroid, TouchableOpacity, Text} from 'react-native';
 import MapViewDirections from 'react-native-maps-directions';
 import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
-import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-
-const busImage = require('./images/bus-gps7.png')
+import Geocoder from 'react-native-geocoding';
 
 LogBox.ignoreAllLogs();
 
@@ -18,40 +16,20 @@ export default () => {
           longitude: 0,
           latitudeDelta: 0.005,
           longitudeDelta:0.005
-     });
+     }); //Origem do motorista
  
-
      const [destino, setDestino] = React.useState({
-               latitude: -23.4447883,
-               longitude: -46.7188449,
+               latitude: 0,
+               longitude: 0,
                latitudeDelta: 0.000922,
                lagitudeDelta: 0.000421
-          });
+          }); //Destino: para onde o motorista vai
 
-
-     const [latitudeAtual, setLatitudeAtual] = React.useState(0);
-
+     const [latitudeAtual, setLatitudeAtual] = React.useState(0); 
      const [longitudeAtual, setLongitudeAtual] = React.useState(0); 
-
-    /*   React.useEffect(() => {
-          (async () => {
-            await PermissionsAndroid.request(
-              "android.permission.ACCESS_FINE_LOCATION",
-            );
-            Geolocation.getCurrentPosition(
-              (position) => {
-                setlocal([position.coords]);
-              },
-              (error) => {
-                console.log(error.code, error.message);
-              },
-            );
-          })();
-        }, []);  */
-
-
-
-
+     const [locationStr, setLocationStr] = React.useState({
+        NomeLocal: 'N Shoreline Blvd'
+     }); //Nome da rua 
         const requestLocationPermission = async () => {
           const granted = await PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -92,120 +70,89 @@ export default () => {
           
         }
       
-
-     
        React.useEffect(() => {
-          requestLocationPermission();
+          requestLocationPermission(); //função que pega a localização atual do usuário
        },[])
-        
-       
 
-     let listener = null;
+    Geocoder.init(GOOGLE_MAPS_APIKEY, {language: "pt-BR"});
 
-     const comecarTracking = () => {
-          listener = Geolocation.watchPosition(
-               (position) => {
-                    console.log(position)
-               },
-               (error) => {
-                    console.log(error.code, error.message);
-               },
-               {interval: 1000, distanceFilter: 0, fastestInterval: 0},
-          );
-     };
-
-     const pararTracking = () => {
-          Geolocation.clearWatch(listener);
-          }
-
-/* 
-     const perguntarPorPermissao = (permission) =>{
-          request(permission).then((result) => {
-               console.log(result);
-             });
-     } */
-    
-     return (    
-     <View style={styles.container}>
-      
-   
-    
- 
-      
-     <MapView
+    Geocoder.from(locationStr.NomeLocal)
+     .then(JSON => {
      
+      let enderecoDest = JSON.results[0].geometry;
+      const localLat = enderecoDest.location.lat;
+      const localLong = enderecoDest.location.lng;
 
-    
- 
+      console.log(localLat, localLong);
+
+      setDestino({
+        latitude: localLat,
+        longitude: localLong
+      })
+     })
+     .catch(error => console.warn(error)); // Função que pega o endereço e converte em latitude e longitude
+
+     return (    
+     <View>
+       <MapView
        provider={PROVIDER_GOOGLE}
        region={origin}
        style={styles.map}
        showsUserLocation = {true}
        followsUserLocation = {true}
        rotateEnabled = {true}
-       zoomEnabled = {true}
-       
-       
-       
+       zoomEnabled = {true}           
      >
-
-          <Marker
+        {origin &&
+        <Marker
           coordinate={origin}
           />
-
+        }  
+          {destino &&
           <Marker
           coordinate={destino}
           />
+          }
 
-          
-
-         
     {destino &&
         <MapViewDirections
         origin = {origin}
         destination = {destino}
         apikey = {GOOGLE_MAPS_APIKEY}
         strokeColor = "#00f"
-        strokeWidth={3}
-      
-          
-          
-        
+        strokeWidth={3}     
         />
-     }
-         
-         
-     </MapView>
-     <GooglePlacesAutocomplete
-        placeholder="Para onde vamos"
-        onPress={(data, details = null) => {
-           console.log(data, details);
-          }}
-          query={{
-            apikey: 'GOOGLE_MAPS_APIKEY',
-            lenguage: 'pt-br,'
-          
-        }}
-        enablePoweredByContainer={false}
-        fetchDetails={true}
-        styles={{listView:{height:100}}}
-      
-       
-      />
-      
+     } 
+     </MapView> 
     </View>
   );
 };
      
-
-
 const styles = StyleSheet.create({
-     container: {
-       justifyContent: 'flex-end',
-       alignItems: 'center',
-     },
+  
      map: {
        width: '100%',
-       height: '100%'
+       height: '100%',
      },
+     input: {
+      borderColor: "#888",
+      borderWidth: 1, 
+     },
+
+     buttonGo: {
+      alignSelf: 'center',
+      position: 'absolute',
+      top: 50,
+      backgroundColor: '#FFBC16',
+      width: 160,
+      height: 30,
+      borderRadius: 30
+     }
+     
+    
     });
+
+
+  
+
+    
