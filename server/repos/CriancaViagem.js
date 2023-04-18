@@ -9,15 +9,8 @@ const criancaViagem = db.define('criancaViagem', {
     horario: {
       type: Sequelize.STRING
     },
-    criancaId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:"crianca",
-        key:"idcrianca"
-      }
-    },
 });
 
-criancaViagem.hasMany(crianca)
+criancaViagem.hasMany(crianca, {foreignKey:'idCrianca'})
 
 module.exports = criancaViagem;

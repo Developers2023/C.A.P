@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
-const Endereco = require('../entity/Endereco');
+const endereco = require('./endereco');
+const veiculo = require('./veiculo');
+const viagem = require('./viagem');
 
  const condutor = db.define('condutor', {
     nome: {
@@ -20,16 +22,11 @@ const Endereco = require('../entity/Endereco');
     },
     senha: {
       type: Sequelize.INTEGER
-    }, 
-    enderecoId: {
-      type: Sequelize.INTEGER,
-      references: {
-        model: "endereco",
-        key:"idendereco"
-      }
-    }  
+    },   
   });
 
-  condutor.hasOne(Endereco);
+  condutor.belongsTo(endereco, {foreignKey:'idCondutor'})
+  condutor.belongsTo(veiculo, {foreignKey:'idVeiculo'})
+  condutor.belongsTo(viagem, {foreignKey:'idViagem'})
 
   module.exports = condutor;

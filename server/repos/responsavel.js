@@ -22,35 +22,11 @@ const responsavel = db.define('responsavel', {
     },
     senha: {
       type: Sequelize.STRING
-    },
-    enderecoId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:"endereco",
-        key:"idendereco"
-      }
-    },
-  })
-    /*
-    criancaId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:"crianca",
-        key:"idcrianca"
-      }
-    },
-    condutorId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:"condutor",
-        key:"idcondutor"
-      }
     }
   })
-*/
-responsavel.hasOne(endereco);
-//responsavel.hasOne(condutor);
-//responsavel.belongsTo(crianca);
-
+  
+  responsavel.belongsTo(endereco, {foreignKey:'idResponsavel'})
+  responsavel.belongsToMany(crianca, {foreignKey:'idCrianca'})
+  responsavel.belongsTo(condutor, {foreignKey:'idCondutor'})
 
 module.exports = responsavel;  

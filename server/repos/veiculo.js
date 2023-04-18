@@ -15,15 +15,6 @@ const veiculo = db.define('veiculo', {
     modelo:{
       type: Sequelize.STRING
     },
-    condutorId:{
-      type: Sequelize.INTEGER,
-      references:{
-        model:"condutor",
-        key:"idcondutor"
-      }
-    }
 });
-
-veiculo.belongsTo(condutor)
 
 module.exports = veiculo;

@@ -1,6 +1,5 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
-const responsavel = require('./responsavel');
 
 const crianca = db.define('crianca', {
     nome: {
@@ -14,16 +13,7 @@ const crianca = db.define('crianca', {
     },
     escola: {
       type: Sequelize.INTEGER
-    },
-    responsavelId:{
-      type: Sequelize.INTEGER,
-      references: {
-        model: 'responsavel',
-        key:"id"
-      }
     }
   });
-
-  crianca.hasOne(responsavel)
 
   module.exports = crianca;

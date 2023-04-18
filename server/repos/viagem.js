@@ -12,22 +12,8 @@ const viagem = db.define('viagem', {
     endereco:{
       type: Sequelize.STRING
     },  
-    condutorId:{
-      type: Sequelize.INTEGER,
-      references:{
-        model:"condutor",
-        key: "idcondutor"
-      }
-    },
-    criancaId: {
-      type: Sequelize.INTEGER,
-      references:{
-        model:"crianca",
-        key:"idcrianca"
-      }
-    },
 })
 
-viagem.hasOne(condutor)
+
 
 module.exports = viagem;
