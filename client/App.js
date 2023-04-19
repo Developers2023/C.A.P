@@ -14,12 +14,8 @@ const Tab = createBottomTabNavigator();
 export default () => {
 
      return (         
-<View>
-
-      <Maps/>
 
 
-{/*
  <NavigationContainer>
   <Tab.Navigator 
       initialRouteName='Maps'
@@ -67,11 +63,11 @@ export default () => {
         )
        }}/>
   </Tab.Navigator>
-</NavigationContainer> */}
-</View>
+</NavigationContainer> 
+     )
+};
 
-     );
-}
+
 //reate a simple nodejs express server
 
 // creat a simple nodejs express server

@@ -68,7 +68,7 @@ txtBtnLogin: {
     textAlign: 'center',
     position: 'relative',
     top: 11
-},//
+},
 
 container_principal:{
     flex:1,
@@ -290,6 +290,108 @@ txtinfo: {
 },
 listCria: {
     color: '#000'
+},
+
+button:{
+    padding: 8,
+    backgroundColor: 'transparent',
+    width: "100%",
+    height: 50,
+    alignContent: 'center',
+    justifyContent: 'flex-end',
+    borderColor: '#000000',
+    borderWidth: 1,
+},
+buttonImageIconStyle: {
+    padding: 16,
+    margin: 4,
+    height: 5,
+    width: 10,
+    resizeMode: 'stretch',
+  },
+text: {
+        position: "absolute",
+        width: "100%",
+        height: 150,
+        left: 46,
+        top: 8,
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: 18,
+        lineHeight: 29,
+        color: "#000000"
+  },
+  text1: {
+    position: "absolute",
+    width: "100%",
+    height: 150,
+    left: 50,
+    top: 25,
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: 18,
+    lineHeight: 25,
+    color: "#000000"
+},
+text2: {
+position: "absolute",
+width: "100%",
+height: 50,
+left: 40,
+top: 2,
+fontStyle: "normal",
+fontWeight: "400",
+fontSize: 20,
+lineHeight: 25,
+color: "#000000"
+},
+paragraph: {
+margin: 3,
+fontSize: 15,
+position: "absolute",
+width: "100%",
+height: 100,
+left: 10,
+top: 2,
+fontWeight: "400",
+lineHeight: 20,
+color: "#000000"
+},
+title: {
+    color: '#333',
+    size: 16,
+    fontWeight: '700',
+    textTransform: 'uppercase',
+    marginVertical: 10,
+    marginLeft: 12,
+},
+container: {
+    flex: 1,
+    backgroundColor: '#fff',
+},
+Check: {
+    padding: 1,
+    backgroundColor: "transparent",
+    width: "100%",
+    height: 100,
+    justifyContent: 'center',
+    borderColor: '#000000',
+    borderWidth: 1,
+},
+Button1:{
+    padding: 8,
+    backgroundColor: "transparent",
+    width: "100%",
+    height: 50,
+    alignContent: 'center',
+    justifyContent: 'flex-end',
+},
+buttonImage: {
+    position: 'relative',
+    width: 52,
+    height: 52,
+    left: 170,
+    top: 80,
 },
 
 

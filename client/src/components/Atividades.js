@@ -1,10 +1,38 @@
-import { SafeAreaView,Text } from "react-native";
-import React from "react";
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { StyleSheet, Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
+import  Css  from './Css';
 
-export default function Atividades(){
-    return(
-<SafeAreaView>
-    <Text>Atividades</Text>
-</SafeAreaView>
+export default function Atividades({navigation}){
+    return (
+        <SafeAreaView>
+         <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('DadosPessoais')}>
+        <Text style = {Css.text}>Lista das crianças</Text>
+        <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>  
+
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('EnviarAlertas')}>
+        <Text style = {Css.text}>Enviar Alertas</Text>
+        <Image source={require('../components/images/alertas.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>  
+
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('ConsEsc')}>
+        <Text style = {Css.text}>Confirmar entrega na escola</Text>
+        <Image source={require('../components/images/escola.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity> 
+
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('ConfirmarEntregaEmCasa')}>
+        <Text style = {Css.text}>Confirmar entrega em casa</Text>
+        <Image source={require('../components/images/casa.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity> 
+
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('AlertasRec')}>
+        <Text style = {Css.text}>Alertas recebidos</Text>
+        <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity> 
+
+
+          </SafeAreaView> 
     );
 }
