@@ -9,29 +9,6 @@ const alertas = db.define('alertas', {
     faltas: {
       type: Sequelize.STRING
     },
-    criancaId: {
-      type: Sequelize.INTEGER,
-      model:"crianca",
-      key:"idcrianca"
-    },
-    condutorId: {
-      type: Sequelize.INTEGER,
-      References:{
-        model:"condutor",
-        key:"idcondutor"
-      }
-    },
-    reponsavelId: {
-      type: Sequelize.INTEGER,
-      References:{
-        model:"condutor",
-        key:"idresponsavel"
-      }
-    }
   });
-
-  condutor.hasMany(alertas);
-  alertas.belongsTo(condutor);
-
 
   module.exports = alertas;

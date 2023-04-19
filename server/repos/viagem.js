@@ -1,6 +1,5 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
-const condutor = require('./condutor');
 
 const viagem = db.define('viagem', {
     escola:{
