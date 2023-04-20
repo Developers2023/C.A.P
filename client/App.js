@@ -22,7 +22,8 @@ export default () => {
       activeColor="#fff"
       shifting={true}
       screenOptions = {{
-      tabBarStyle: {backgroundColor: '#87ceeb'},
+      tabBarShowLabel: false, 
+      tabBarStyle: {backgroundColor: '#87ceeb', height: 60},
      }}
       >
      
@@ -30,11 +31,12 @@ export default () => {
      name="Mapa" 
      component={Maps} 
      options={{
-      tabBarIcon:(color)=>(
+      tabBarActiveTintColor: "#fff",
+      tabBarIcon:()=>(
     <MaterialCommunityIcons 
     name="google-maps" 
-    color={color}
-    size={26}/>
+    color="#fff"
+    size={36}/>
       )
      }}/>
 
@@ -42,12 +44,13 @@ export default () => {
      name="Atividades" 
      component={Atividades}
       options={{
+        tabBarActiveTintColor: "#fff",
         tabBarLabel: "atividades",
-        tabBarIcon:({linkpark})=>(
+        tabBarIcon:()=>(
       <MaterialCommunityIcons 
       name="message-alert" 
-      color={linkpark} 
-      size={26}/>
+      color="#fff" 
+      size={32}/>
         )
        }}/>
 
@@ -55,11 +58,12 @@ export default () => {
      name="Perfil"
      component={Perfil} 
       options={{
-        tabBarIcon:({linkpark})=>(
+        tabBarActiveTintColor: "#fff",
+        tabBarIcon:()=>(
       <MaterialCommunityIcons
       name="face-man-profile"
-      color={linkpark} 
-      size={26}/>
+      color="#fff" 
+      size={34}/>
         )
        }}/>
   </Tab.Navigator>
