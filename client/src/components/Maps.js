@@ -6,6 +6,8 @@ import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
 import Geocoder from 'react-native-geocoding';
+const casa = require('./images/casa3.png');
+const escola = require('./images/escola2.png');
 
 LogBox.ignoreAllLogs();
 
@@ -28,8 +30,9 @@ export default () => {
      const [latitudeAtual, setLatitudeAtual] = React.useState(0); 
      const [longitudeAtual, setLongitudeAtual] = React.useState(0); 
      const [locationStr, setLocationStr] = React.useState({
-        NomeLocal: 'N Shoreline Blvd'
-     }); //Nome da rua 
+      endereco: '505 Escuela Ave, Mountain View, CA 94040, EUA'
+     }); //Nome da rua
+
         const requestLocationPermission = async () => {
           const granted = await PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -72,25 +75,28 @@ export default () => {
       
        React.useEffect(() => {
           requestLocationPermission(); //função que pega a localização atual do usuário
+          Geocoding();
        },[])
 
+    const Geocoding = () => { 
     Geocoder.init(GOOGLE_MAPS_APIKEY, {language: "pt-BR"});
-
-    Geocoder.from(locationStr.NomeLocal)
+    Geocoder.from(locationStr.endereco)// Função que pega o endereço e converte em latitude e longitude
      .then(JSON => {
-     
       let enderecoDest = JSON.results[0].geometry;
       const localLat = enderecoDest.location.lat;
-      const localLong = enderecoDest.location.lng;
-
-      console.log(localLat, localLong);
-
+      const localLong = enderecoDest.location.lng;   
       setDestino({
         latitude: localLat,
-        longitude: localLong
-      })
+        longitude: localLong,
+        latitudeDelta: 0.005,
+        longitudeDelta:0.005
+      });
+      console.log(localLat, localLong);
      })
-     .catch(error => console.warn(error)); // Função que pega o endereço e converte em latitude e longitude
+     .catch(error => console.warn(error)); 
+     }   
+
+     
 
      return (    
      <View>
@@ -111,7 +117,19 @@ export default () => {
           {destino &&
           <Marker
           coordinate={destino}
+          image={escola}
           />
+          }
+
+          {
+            Teste.coordinate.map((local) => {
+              return( 
+              <Marker
+              coordinate={local}
+              image={casa}
+              />
+              );
+            })
           }
 
     {destino &&
@@ -121,12 +139,15 @@ export default () => {
         apikey = {GOOGLE_MAPS_APIKEY}
         strokeColor = "#00f"
         strokeWidth={3}     
+        waypoints={Teste.coordinate}
         />
      } 
      </MapView> 
     </View>
   );
+     
 };
+
      
 const styles = StyleSheet.create({
   
@@ -152,7 +173,19 @@ const styles = StyleSheet.create({
     
     });
 
-
-  
-
+    
+   const Teste = {
+    coordinate: [
+      {
+        latitude:37.388175,
+        longitude: -122.097455
+      },
+      {
+        latitude: 37.395861,
+        longitude: -122.098856
+      },
+    ],
+   };
+     // '1999-1969 Latham St, Mountain View, CA 94040, EUA',
+    //'660 Hollingsworth Dr, Los Altos, CA 94022, EUA'
     
