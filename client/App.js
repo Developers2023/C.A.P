@@ -7,6 +7,8 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { View } from 'react-native';
+import { SafeAreaView } from 'react-native';
+import { Roteiro } from '.src/component/Roteiro';
 
 
 const Tab = createBottomTabNavigator();
@@ -70,6 +72,7 @@ export default () => {
 </NavigationContainer> 
      )
 };
+
 
 
 //reate a simple nodejs express server
