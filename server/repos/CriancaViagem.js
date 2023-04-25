@@ -11,6 +11,6 @@ const criancaViagem = db.define('criancaViagem', {
     },
 });
 
-criancaViagem.hasMany(crianca, {foreignKey:'idCrianca'})
+//criancaViagem.hasMany(crianca, {foreignKey:'idCrianca'})
 
 module.exports = criancaViagem;

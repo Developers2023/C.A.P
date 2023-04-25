@@ -5,6 +5,12 @@ const crianca = require('./crianca');
 const condutor = require('./condutor');
 
 const responsavel = db.define('responsavel', {
+    id:{
+      type: Sequelize.INTEGER,
+      autoIncrement: true,
+      primaryKey: true,
+      allowNull: false
+    },
     nome: {
       type: Sequelize.STRING
     },
@@ -22,11 +28,19 @@ const responsavel = db.define('responsavel', {
     },
     senha: {
       type: Sequelize.STRING
+    },
+    enderecoid: {
+      type: Sequelize.INTEGER,
+      references:{
+        model: 'endereco',
+        foreignKey:'id'
+      }
     }
   })
   
-  responsavel.belongsTo(endereco, {foreignKey:'idResponsavel'})
-  responsavel.belongsToMany(crianca, {foreignKey:'idCrianca'})
-  responsavel.belongsTo(condutor, {foreignKey:'idCondutor'})
+ //responsavel.hasMany(endereco, {foreignKey:'responsavelId'})
+ 
+ // responsavel.belongsToMany(crianca, {foreignKey:'idCrianca'})
+ // responsavel.belongsTo(condutor, {foreignKey:'idCondutor'})
 
-module.exports = responsavel;  
+module.exports = responsavel; 

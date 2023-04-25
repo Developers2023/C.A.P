@@ -13,6 +13,4 @@ const viagem = db.define('viagem', {
     },  
 })
 
-
-
 module.exports = viagem;

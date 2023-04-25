@@ -25,9 +25,9 @@ const viagem = require('./viagem');
     },   
   });
 
-  condutor.belongsTo(endereco, {foreignKey:'idCondutor'})
-  condutor.belongsTo(veiculo, {foreignKey:'idVeiculo'})
-  condutor.belongsTo(viagem, {foreignKey:'idViagem'})
-  condutor.belongsToMany(alertas, {foreignKey:'idAlertas'});
+  //condutor.belongsTo(endereco, {foreignKey:'idCondutor'})
+  //condutor.belongsTo(veiculo, {foreignKey:'idVeiculo'})
+  //condutor.belongsTo(viagem, {foreignKey:'idViagem'})
+  //condutor.belongsToMany(alertas, {foreignKey:'idAlertas'});
 
   module.exports = condutor;
