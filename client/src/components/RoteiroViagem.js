@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Maps from './Maps';
+import Maps from './Maps'
 const Stack = createStackNavigator();
 
 function MyStack() {

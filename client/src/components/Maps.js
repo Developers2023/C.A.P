@@ -188,4 +188,4 @@ const styles = StyleSheet.create({
    };
      // '1999-1969 Latham St, Mountain View, CA 94040, EUA',
     //'660 Hollingsworth Dr, Los Altos, CA 94022, EUA'
-    
+   
