@@ -1,8 +1,9 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
-const endereco = require('./endereco');
+const endereco = require('../repos/endereco');
 const crianca = require('./crianca');
 const condutor = require('./condutor');
+
 
 const responsavel = db.define('responsavel', {
     id:{
@@ -28,18 +29,11 @@ const responsavel = db.define('responsavel', {
     },
     senha: {
       type: Sequelize.STRING
-    },
-    enderecoid: {
-      type: Sequelize.INTEGER,
-      references:{
-        model: 'endereco',
-        foreignKey:'id'
-      }
     }
-  })
-  
- //responsavel.hasMany(endereco, {foreignKey:'responsavelId'})
- 
+  }, { timestamps: false })
+
+
+    
  // responsavel.belongsToMany(crianca, {foreignKey:'idCrianca'})
  // responsavel.belongsTo(condutor, {foreignKey:'idCondutor'})
 

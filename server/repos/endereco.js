@@ -22,9 +22,10 @@ const endereco = db.define('endereco', {
       foreignKey:'id'
     }
   }
-});
+}, { timestamps: false });
 
-endereco.belongsTo(responsavel, {foreignKey:'enderecoid'})
-responsavel.hasMany(endereco, {foreignKey:'responsavelId'})
+
+responsavel.hasOne(endereco)
+endereco.belongsTo(responsavel, { foreignKey:'responsavelId', onDelete: "CASCADE" })
  
 module.exports = endereco;

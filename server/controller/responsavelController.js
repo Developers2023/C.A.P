@@ -1,25 +1,25 @@
 const Responsavel = require("../entity/Responsavel");
 const Endereco = require("../entity/Endereco");
 const endereco = require("../repos/endereco");
+const responsavel = require("../repos/responsavel");
 const responsavelRepository = require("../repos/responsavel");
 const enderecoRepository = require("../repos/endereco");
 
 module.exports = {
 
-    async getById(id) {
+    async find(id) {
       const responsavel = await responsavelRepository.findOne({
         where: { id: id },
         include: { model: endereco }
       });
 
-      return responsavel.dataValues;
+      return responsavel;
     },
   
       async delete(id) {
         const responsavel = await responsavelRepository.destroy({
-          where: {
-            id: id
-          }
+          where: { id: id },
+          include: { model: endereco }
         });
         return responsavel;
       },

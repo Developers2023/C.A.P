@@ -45,8 +45,7 @@ server.delete("/responsavel/delete/:id",async function(req,res){
     })
 });
 
-
-server.post("/responsavel/getById/:id",async function(req,res){
+server.get("/responsavel/getById/:id",async function(req,res){
     const result = await responsavelController.find(req.params.id)
     res.send(result)
 });
