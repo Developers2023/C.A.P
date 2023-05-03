@@ -1,24 +1,39 @@
-const Condutor = require("../entity/Condutor");
 const Endereco = require("../entity/Endereco");
+const endereco = require("../repos/endereco");
+const enderecoRepository = require("../repos/endereco");
 const condutorRepository = require("../repos/condutor");
 
 module.exports = {
 
-      async delete(req, res) {
-        const condutor = await condutorRepository.findAll({id:req.body.cpf});
-        return res.json(condutor);
+    async find(id) {
+      const condutor = await condutorRepository.findOne({
+        where: { id: id },
+        include: { model: endereco }
+      });
+
+      return condutor;
+    },
+  
+      async delete(id) {
+        const condutor = await condutorRepository.destroy({
+          where: { id: id },
+          include: { model: endereco }
+        });
+        return condutor;
       },
 
       async update(req, res) {
-        const condutor = await condutorRepository.update({id:req.body.cpf});
+        const condutor = await condutorRepository.update(id, req.body);
         return res.json(condutor);
       },
 
     async cadastrar(body) {
-      const endereco = new Endereco(body.logradouro, body.numero, body.cidade, body.cep)
-      const condutor = new Condutor(body.nome, body.sexo, body.email, body.cpf, body.telefone, endereco, body.senha);
+      const condutor = new Condutor(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha);   
+      const response = await condutorRepository.create(condutor);
       
-      const cliente = await condutorRepository.create(condutor)
-      return res.json(cliente);
+      const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep,response.id);
+      await enderecoRepository.create(endereco);
+      
+      return response;
     }
   };

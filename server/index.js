@@ -55,19 +55,20 @@ server.post("/condutor/cadastrar",async function(req,res){
     res.send(result)
 });
 
-server.post("/condutor/update",async function(req,res){
-    const result = await condutorController.update(req.body)
+server.post("/condutor/update:id",async function(req,res){
+    const result = await condutorController.update(req.params.id, req.body)
     res.send(result)
 });
 
-server.post("/condutor/delete",async function(req,res){
-    const result = await condutorController.delete(req.body)
-    res.send(result)
+server.post("/condutor/delete/:id",async function(req,res){
+    const result = await condutorController.delete(req.params.id)
+    res.send({
+        suceso: result > 0 ? true : false
+    })
 });
 
-
-server.post("/condutor/getById",async function(req,res){
-    const result = await condutorController.find(req.body)
+server.post("/condutor/getById/:id",async function(req,res){
+    const result = await condutorController.find(req.params.id)
     res.send(result)
 });
 
