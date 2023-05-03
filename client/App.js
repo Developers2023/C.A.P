@@ -6,7 +6,9 @@ import Perfil from './src/components/Perfil'
 import DadosVeiculo from './src/components/DadosVeiculo';
 import DadosPessoais from './src/components/DadosPessoais';
 import ListaCrianca from './src/components/ListaCrianca';
-import EnviarAlertas from './src/components/EnviarAlertas';
+import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
+import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
+import RoteiroViagem from './src/components/RoteiroViagem'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -83,12 +85,14 @@ export default () => {
 
      return (         
         <NavigationContainer>
-          <Stack.Navigator  screenOptions={{ headerShown:false }}>
-            <Stack.Screen name = 'Tab' component={Tabn}/>
+          <Stack.Navigator>
+            <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
             <Stack.Screen name = 'Dados do veiculo' component={DadosVeiculo}/>
             <Stack.Screen name = 'Dados pessoais' component={DadosPessoais}/>
             <Stack.Screen name = 'Lista de criancas' component={ListaCrianca}/>
-            <Stack.Screen name = 'Alertas' component={EnviarAlertas}/>
+            <Stack.Screen name = 'Confirmar entrega na escola' component={ConfirmarEntrega_Escola}/>
+            <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
+            <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
           </Stack.Navigator>
         </NavigationContainer> 
      )

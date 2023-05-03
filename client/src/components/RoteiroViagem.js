@@ -1,74 +1,60 @@
 import * as React from 'react';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Maps from './Maps'
-const Stack = createStackNavigator();
+import { View, Button, Text, SafeAreaView, StyleSheet } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import {GOOGLE_MAPS_APIKEY} from '@env'
+import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-export default function Maps(){
-function MyStack() {
-  return (
-    <Stack.Navigator>
-      <Stack.Screen name="Home" component={HomeScreen} />
-      <Stack.Screen name="Route" component={RouteScreen} />
-      <Stack.Screen name="Stop" component={StopScreen} />
-    </Stack.Navigator>
+export default () => {
+  const navigation = useNavigation();
+
+  return(
+    <SafeAreaView style ={style.container}> 
+      <View style = {style.placeholder}>
+        <Text style = {{fontSize: 20}}>Digite o nome da escola</Text>
+ 
+        <GooglePlacesAutocomplete
+        placeholder='Nome da escola'
+        query={{
+          key: GOOGLE_MAPS_APIKEY,
+          language: "pt-BR"
+        }}
+        />     
+        
+       
+      </View>
+
+      <View style = {style.placeholder2}>
+        <Text style = {{fontSize: 20}}>Digite o endereço da criança</Text>
+        <GooglePlacesAutocomplete
+        placeholder='Endereço da criança'
+        query={{
+          key: GOOGLE_MAPS_APIKEY,
+          language: "pt-BR"
+        }}
+        />  
+      </View>
+
+    </SafeAreaView>
   );
 }
-function HomeScreen({ navigation }) {
-    return (
-      <View>
-        <Text>Selecione a rota</Text>
-        <Button
-          title="Rota 1"
-          onPress={() => navigation.navigate('Route', { routeName: 'Rota 1' })}
-        />
-        <Button
-          title="Rota 2"
-          onPress={() => navigation.navigate('Route', { routeName: 'Rota 2' })}
-        />
-      </View>
-    );
+
+const style = StyleSheet.create({
+ container: {
+  flex: 1,
+  flexDirection: 'column',
+  alignItems: 'center'
+ },
+  placeholder: {
+    position: 'relative',
+    top: 200,
+    width: 360,
+    marginBottom: 34
+    
+  },
+  placeholder2: {
+    position: 'relative',
+    top: 245,
+    width: 360
+
   }
-  
-  function RouteScreen({ navigation, route }) {
-    const { routeName } = route.params;
-  
-    return (
-      <View>
-        <Text>{routeName}</Text>
-        <Button
-          title="Adicionar parada"
-          onPress={() => navigation.navigate('Stop')}
-        />
-        <Button
-          title="Concluir rota"
-          onPress={() => navigation.navigate('Home')}
-        />
-      </View>
-    );
-  }
-  
-  function StopScreen({ navigation }) {
-    return (
-      <View>
-        <Text>Adicionar parada</Text>
-        <Button
-          title="Adicionar parada"
-          onPress={() => navigation.navigate('Stop')}
-        />
-        <Button
-          title="Concluir rota"
-          onPress={() => navigation.navigate('Route')}
-        />
-      </View>
-    );
-  }
-  function App() {
-    return (
-      <NavigationContainer>
-        <MyStack />
-      </NavigationContainer>
-    );
-  }
-  
-}
+})

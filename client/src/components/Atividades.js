@@ -21,12 +21,12 @@ export default function Atividades(){
         <Image source={require('../components/images/alertas.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('ConsEsc')}>
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Confirmar entrega na escola')}>
         <Text style = {Css.text}>Confirmar entrega na escola</Text>
         <Image source={require('../components/images/escola.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
 
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('ConfirmarEntregaEmCasa')}>
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Confirmar entrega em casa')}>
         <Text style = {Css.text}>Confirmar entrega em casa</Text>
         <Image source={require('../components/images/casa.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
@@ -36,7 +36,7 @@ export default function Atividades(){
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>
           
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('RoteiroViagem')}>
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Roteiro')}>
         <Text style = {Css.text}>Roteiro</Text>
         <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
