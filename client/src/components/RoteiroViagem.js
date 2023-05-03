@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Maps from './Maps'
 const Stack = createStackNavigator();
 
+export default function Maps(){
 function MyStack() {
   return (
     <Stack.Navigator>
@@ -70,4 +71,4 @@ function HomeScreen({ navigation }) {
     );
   }
   
-  export default App;
+}
