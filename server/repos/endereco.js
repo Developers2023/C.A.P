@@ -1,6 +1,7 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
 const responsavel = require('./responsavel');
+const condutor = require('./condutor');
 
 const endereco = db.define('endereco', {
   logradouro: {
@@ -27,5 +28,7 @@ const endereco = db.define('endereco', {
 
 responsavel.hasOne(endereco)
 endereco.belongsTo(responsavel, { foreignKey:'responsavelId', onDelete: "CASCADE" })
- 
+condutor.hasOne(endereco)
+endereco.belongsTo(condutor, { foreignKey:'condutor Id', onDelete: "CASCADE" })
+  
 module.exports = endereco;

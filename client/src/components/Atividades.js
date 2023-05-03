@@ -4,10 +4,12 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import  Css  from './Css';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export default function Atividades(){
   const navigation = useNavigation();
     return (
+      
         <SafeAreaView>
          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Lista de criancas')}>
         <Text style = {Css.text}>Lista das crianças</Text>
@@ -32,7 +34,12 @@ export default function Atividades(){
           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('AlertasRec')}>
         <Text style = {Css.text}>Alertas recebidos</Text>
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
-          </TouchableOpacity> 
+          </TouchableOpacity>
+          
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('RoteiroViagem')}>
+        <Text style = {Css.text}>Roteiro</Text>
+        <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>  
 
 
           </SafeAreaView> 

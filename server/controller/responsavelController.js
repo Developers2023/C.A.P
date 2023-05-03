@@ -1,7 +1,6 @@
 const Responsavel = require("../entity/Responsavel");
 const Endereco = require("../entity/Endereco");
 const endereco = require("../repos/endereco");
-const responsavel = require("../repos/responsavel");
 const responsavelRepository = require("../repos/responsavel");
 const enderecoRepository = require("../repos/endereco");
 
