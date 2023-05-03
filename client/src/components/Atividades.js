@@ -2,12 +2,14 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { StyleSheet, Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import  Css  from './Css';
 
-export default function Atividades({navigation}){
+export default function Atividades(){
+  const navigation = useNavigation();
     return (
         <SafeAreaView>
-         <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('DadosPessoais')}>
+         <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Lista de criancas')}>
         <Text style = {Css.text}>Lista das crianças</Text>
         <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  

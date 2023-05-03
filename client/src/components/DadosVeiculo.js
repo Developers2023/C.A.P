@@ -5,6 +5,7 @@ import { Formik } from 'formik';
 import * as yup from 'yup';
 
 
+
 const vehicleInfo=yup.object().shape({
   placa:yup.string().required("Placa é obrigatório"),
   ano:yup.string().required("Ano é obrigatório").min(4,"Insira 4 digitos"),
