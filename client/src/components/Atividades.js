@@ -1,13 +1,17 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
+import { Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
 import  Css  from './Css';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
+
+const Tab = createBottomTabNavigator();
 export default function Atividades({navigation}){
     return (
+      
         <SafeAreaView>
-         <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('DadosPessoais')}>
+         <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('ListaCrianca')}>
         <Text style = {Css.text}>Lista das crianças</Text>
         <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
@@ -30,7 +34,12 @@ export default function Atividades({navigation}){
           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('AlertasRec')}>
         <Text style = {Css.text}>Alertas recebidos</Text>
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
-          </TouchableOpacity> 
+          </TouchableOpacity>
+          
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('RoteiroViagem')}>
+        <Text style = {Css.text}>Roteiro</Text>
+        <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>  
 
 
           </SafeAreaView> 
