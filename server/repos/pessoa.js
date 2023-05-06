@@ -1,11 +1,9 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
-const endereco = require('../repos/endereco');
 const crianca = require('./crianca');
 const condutor = require('./condutor');
 
-
-const responsavel = db.define('responsavel', {
+const pessoa = db.define('responsavel', {
     id:{
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -29,6 +27,9 @@ const responsavel = db.define('responsavel', {
     },
     senha: {
       type: Sequelize.STRING
+    },
+    cidade: {
+      type: Sequelize.STRING
     }
   }, { timestamps: false })
 
@@ -37,4 +38,4 @@ const responsavel = db.define('responsavel', {
  // responsavel.belongsToMany(crianca, {foreignKey:'idCrianca'})
  // responsavel.belongsTo(condutor, {foreignKey:'idCondutor'})
 
-module.exports = responsavel; 
+module.exports = pessoa; 

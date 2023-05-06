@@ -1,6 +1,6 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
-const responsavel = require('./responsavel');
+const responsavel = require('./pessoa');
 const condutor = require('./condutor');
 
 const endereco = db.define('endereco', {

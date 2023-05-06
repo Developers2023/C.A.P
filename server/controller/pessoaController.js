@@ -1,39 +1,40 @@
+const Pessoa = require("../entity/Pessoa");
 const Endereco = require("../entity/Endereco");
 const endereco = require("../repos/endereco");
+const pessoaRepository = require("../repos/responsavel");
 const enderecoRepository = require("../repos/endereco");
-const condutorRepository = require("../repos/condutor");
 
 module.exports = {
 
     async find(id) {
-      const condutor = await condutorRepository.findOne({
+      const pessoa = await pessoaRepository.findOne({
         where: { id: id },
         include: { model: endereco }
       });
 
-      return condutor;
+      return pessoa;
     },
   
       async delete(id) {
-        const condutor = await condutorRepository.destroy({
+        const pessoa = await pessoaRepository.destroy({
           where: { id: id },
           include: { model: endereco }
         });
-        return condutor;
+        return pessoa;
       },
 
       async update(req, res) {
-        const condutor = await condutorRepository.update(id, req.body);
-        return res.json(condutor);
+        const pessoa = await pessoalRepository.update(id, req.body);
+        return res.json(pessoa);
       },
 
     async cadastrar(body) {
-      const condutor = new Condutor(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha);   
-      const response = await condutorRepository.create(condutor);
+      const pessoa = new Pessoa(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
+      const usuario = await pessoaRepository.create(pessoa);
       
       const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep,response.id);
       await enderecoRepository.create(endereco);
       
-      return response;
+      return usuario;
     }
   };
