@@ -8,6 +8,6 @@ const maps = db.define('maps', {
     latitude: {
       type: Sequelize.INTEGER
     }    
-});
+},{ timestamps: false })
 
 module.exports = maps;

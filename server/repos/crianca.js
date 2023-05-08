@@ -14,6 +14,6 @@ const crianca = db.define('crianca', {
     escola: {
       type: Sequelize.INTEGER
     }
-  });
+  },{ timestamps: false })
 
   module.exports = crianca;

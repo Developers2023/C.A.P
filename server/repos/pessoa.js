@@ -1,9 +1,8 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
 const crianca = require('./crianca');
-const condutor = require('./condutor');
 
-const pessoa = db.define('responsavel', {
+const pessoa = db.define('pessoa', {
     id:{
       type: Sequelize.INTEGER,
       autoIncrement: true,
@@ -32,10 +31,8 @@ const pessoa = db.define('responsavel', {
       type: Sequelize.STRING
     }
   }, { timestamps: false })
-
-
-    
- // responsavel.belongsToMany(crianca, {foreignKey:'idCrianca'})
- // responsavel.belongsTo(condutor, {foreignKey:'idCondutor'})
-
+  
+  pessoa.hasOne(crianca)
+  crianca.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
+   
 module.exports = pessoa; 

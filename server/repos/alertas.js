@@ -8,6 +8,6 @@ const alertas = db.define('alertas', {
     faltas: {
       type: Sequelize.STRING
     },
-  });
+  },{ timestamps: false })
 
   module.exports = alertas;

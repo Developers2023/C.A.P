@@ -1,7 +1,7 @@
 const Pessoa = require("../entity/Pessoa");
 const Endereco = require("../entity/Endereco");
 const endereco = require("../repos/endereco");
-const pessoaRepository = require("../repos/responsavel");
+const pessoaRepository = require("../repos/pessoa");
 const enderecoRepository = require("../repos/endereco");
 
 module.exports = {
@@ -24,7 +24,7 @@ module.exports = {
       },
 
       async update(req, res) {
-        const pessoa = await pessoalRepository.update(id, req.body);
+        const pessoa = await pessoaRepository.update(id, req.body);
         return res.json(pessoa);
       },
 
@@ -32,7 +32,7 @@ module.exports = {
       const pessoa = new Pessoa(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
       const usuario = await pessoaRepository.create(pessoa);
       
-      const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep,response.id);
+      const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep,usuario.id);
       await enderecoRepository.create(endereco);
       
       return usuario;

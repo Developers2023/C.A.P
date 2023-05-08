@@ -1,5 +1,5 @@
 class Crianca{
-    constructor(nome, idade,horario, escola) {
+    constructor(nome, idade, horario, escola) {
       this.nome = nome;
       this.idade = idade;
       this.horario = horario;

@@ -14,6 +14,6 @@ const veiculo = db.define('veiculo', {
     modelo:{
       type: Sequelize.STRING
     },
-});
+}, { timestamps: false })
 
 module.exports = veiculo;
