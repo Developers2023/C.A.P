@@ -5,7 +5,10 @@ const alertas = db.define('alertas', {
     atrasos: {
       type: Sequelize.STRING
     },
-    faltas: {
+    destinatario: {
+      type: Sequelize.STRING
+    },
+    remetente: {
       type: Sequelize.STRING
     },
   },{ timestamps: false })

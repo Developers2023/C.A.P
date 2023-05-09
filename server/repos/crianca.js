@@ -1,19 +1,29 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
+const pessoa = require('./pessoa');
 
 const crianca = db.define('crianca', {
     nome: {
       type: Sequelize.STRING
     },
+    sexo: {
+      type: Sequelize.STRING
+    },
     idade: {
       type: Sequelize.INTEGER
     },
-    horario: {
-      type: Sequelize.STRING
+    pessoaId: {
+      type: Sequelize.STRING,
+      references:{
+        model: 'pessoa',
+        foreignKey:'id'
+      }
     },
-    escola: {
+    escolaId: {
       type: Sequelize.INTEGER
     }
   },{ timestamps: false })
 
   module.exports = crianca;
+
+  

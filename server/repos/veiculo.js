@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
+const pessoa = require('./pessoa');
 
 const veiculo = db.define('veiculo', {
     marca:{
@@ -14,6 +15,17 @@ const veiculo = db.define('veiculo', {
     modelo:{
       type: Sequelize.STRING
     },
+    pessoaId:{
+      type: Sequelize.STRING,
+      references:{
+        model: 'pessoa',
+        foreignKey:'id'
+      }
+    },
 }, { timestamps: false })
 
 module.exports = veiculo;
+
+
+pessoa.hasOne(veiculo)
+veiculo.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })

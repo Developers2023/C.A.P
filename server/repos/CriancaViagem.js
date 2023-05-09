@@ -1,12 +1,23 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
-const crianca = require('./crianca');
 
 const criancaViagem = db.define('criancaViagem', {
     ausencia: {
       type: Sequelize.STRING
     },
-    horario: {
+    embarque: {
+      type: Sequelize.STRING
+    },
+    desembarque: {
+      type: Sequelize.STRING
+    },
+    sequencia: {
+      type: Sequelize.STRING
+    },
+    criancaId: {
+      type: Sequelize.STRING
+    },
+    viagemId: {
       type: Sequelize.STRING
     },
 });

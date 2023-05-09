@@ -22,10 +22,10 @@ const endereco = db.define('endereco', {
       foreignKey:'id'
     }
   }
-}, { timestamps: false });
+},{ timestamps: false });
 
 
 pessoa.hasOne(endereco)
 endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
-  
+
 module.exports = endereco;

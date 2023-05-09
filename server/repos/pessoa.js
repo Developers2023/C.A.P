@@ -27,12 +27,6 @@ const pessoa = db.define('pessoa', {
     senha: {
       type: Sequelize.STRING
     },
-    cidade: {
-      type: Sequelize.STRING
-    }
   }, { timestamps: false })
   
-  pessoa.hasOne(crianca)
-  crianca.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
-   
 module.exports = pessoa; 
