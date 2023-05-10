@@ -99,7 +99,7 @@ export default function CadastrarCrianca({navigation}){
 
            
               {(errors.horario && touched.horario)&&
-          <Text style={Css.errors}>{errors.horario}</Text>}
+          <Text style={Css.errors_2}>{errors.horario}</Text>}
 
     
       </KeyboardAvoidingView>
