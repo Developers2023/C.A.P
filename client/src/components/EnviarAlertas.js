@@ -27,11 +27,11 @@ const[isChecked, setIsChecked]= useState({
          /> 
         <TouchableOpacity style = {Css.Check} onPress={() => Linking.openURL('https://wa.me/5511992402307?text=Digite+sua+mensagem+pro+tio%28a%29%3A+')}>
         <Text style = {Css.text1}>Mensagem Personalizada</Text>
-        <Image source={require('../assets/imagens/zap.png')} style={Css.buttonImageIconStyle}/> 
+        <Image source={require('../components/images/zap.png')} style={Css.buttonImageIconStyle}/> 
         </TouchableOpacity> 
 
         <TouchableOpacity style = {Css.Button1} onPress={() => Linking.openURL()}>
-        <Image source={require('../assets/imagens/enviar.png')} style={Css.buttonImage}/> 
+        <Image source={require('../components/images/enviar.png')} style={Css.buttonImage}/> 
         </TouchableOpacity> 
 
 
