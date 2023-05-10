@@ -9,6 +9,7 @@ import ListaCrianca from './src/components/ListaCrianca';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import RoteiroViagem from './src/components/RoteiroViagem'
+import EnviarAlertas from './src/components/EnviarAlertas';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -89,6 +90,7 @@ export default () => {
             <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
             <Stack.Screen name = 'Dados do veiculo' component={DadosVeiculo}/>
             <Stack.Screen name = 'Dados pessoais' component={DadosPessoais}/>
+            <Stack.Screen name = 'Enviar alertas' component={EnviarAlertas}/>
             <Stack.Screen name = 'Lista de criancas' component={ListaCrianca}/>
             <Stack.Screen name = 'Confirmar entrega na escola' component={ConfirmarEntrega_Escola}/>
             <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
