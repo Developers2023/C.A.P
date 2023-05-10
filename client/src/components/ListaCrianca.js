@@ -4,11 +4,8 @@ import { SafeAreaView, View, FlatList, Text } from "react-native";
 import SearchBar from "react-native-dynamic-search-bar";
 import { ListItem } from "@react-native-material/core";
 import Css from "./Css";
-import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 
-const Tab = createBottomTabNavigator();
 
 export default () => {
     const [searchText, setSearchText] = useState('');

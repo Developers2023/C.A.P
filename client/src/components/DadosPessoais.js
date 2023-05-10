@@ -33,7 +33,7 @@ export default function DadosPessoais({navigation}){
   const sexo = 'Masc';
   const cod = 887917;
   const cpf = '5552223344';
-  const email = 'pauloputariaviciado@gmail.com';
+  const email = 'pauloconvertidopraJesus@gmail.com';
   const cel = '40028922';
   const endereco = 'Rua da Natividade Belas Pragas';
   const numero = 48;
