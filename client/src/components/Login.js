@@ -55,7 +55,7 @@ export default ({navigation}) => {
                <Text style={Css.errors_senha}>{errors.password}</Text>
                }
           </KeyboardAvoidingView>
-          <TouchableOpacity style = {Css.btnLogin} onPress={()=>{
+          <TouchableOpacity style = {Css.btn_v1} onPress={()=>{
                handleSubmit()
                navigation.navigate('CadastrarCrianca')
           }}
@@ -65,7 +65,7 @@ export default ({navigation}) => {
                </Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style = {Css.btnLogin} onPress={() => navigation.goBack()}>
+          <TouchableOpacity style = {Css.btn_v1} onPress={() => navigation.goBack()}>
                <Text style = {Css.txtBtnLogin} >
                     VOLTAR
                </Text>

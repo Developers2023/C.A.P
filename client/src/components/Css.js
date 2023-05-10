@@ -26,7 +26,7 @@ btnEntrada: {
     marginTop: 34,
     borderColor:'#000',
     borderWidth:1,
-    borderRadius:14,
+    borderRadius:4
 
 },
 
@@ -44,12 +44,14 @@ txtBtnEntrada: {
 InputLogin: {
     width: 340,
     height: 40,
-    backgroundColor: '#8CD5F099',
+    backgroundColor: '#8CD5F0',
     borderRadius: 4,
     margin: 5,
     borderColor:'#000',
     borderWidth:1,
-    borderRadius:14
+    borderRadius:4
+
+
 },
 
 btnLogin: {
@@ -61,7 +63,7 @@ btnLogin: {
     margin: 10,
     borderColor:'#000',
     borderWidth:1,
-    borderRadius:14
+    borderRadius:4
 },
 
 txtBtnLogin: {
@@ -78,7 +80,7 @@ container_principal:{
 },
 inputs:{
     backgroundColor:'#87ceeb',
-    height:29,
+    height:49,
     padding:3,
     margin:7,
     borderRadius:4,
@@ -204,6 +206,13 @@ img:{
     alignSelf:'center'
 
 },
+avatar:{
+    width:200,
+    height:200,
+    borderColor:'#000000',
+    borderWidth:1,
+    borderRadius:100,
+},
 
 search: {
     margin: 20
@@ -223,7 +232,7 @@ searchArea: {
 
 mask_cep:{
     backgroundColor:'#87ceeb',
-    height:29,
+    height:49,
     padding:3,
     margin:7,
     borderRadius:4,
@@ -233,7 +242,7 @@ mask_cep:{
 },
 mask:{
     backgroundColor:'#87ceeb',
-    height:29,
+    height:49,
     padding:3,
     margin:7,
     borderRadius:4,
@@ -243,7 +252,7 @@ mask:{
 },
 mask_time:{
     backgroundColor:'#87ceeb',
-    height:29,
+    height:49,
     padding:3,
     margin:7,
     borderRadius:4,
@@ -252,7 +261,7 @@ mask_time:{
     width:158,
     position:'relative',
     left:170,
-    bottom:70
+    bottom:76
 
 },
 errors:{
@@ -261,6 +270,17 @@ errors:{
     width:'90%',
     fontSize:14,
     marginLeft:7,
+
+},
+errors_2:{
+    fontWeight:'bold',
+    color:'red',
+    width:'90%',
+    fontSize:14,
+    marginLeft:7,
+    position:'relative',
+    left:170,
+    bottom:70
 },
 errors_senha:{
     fontWeight:'bold',
@@ -299,7 +319,7 @@ button:{
     height: 50,
     alignContent: 'center',
     justifyContent: 'flex-end',
-    borderColor: '#000000',
+    borderColor: '#ccc',
     borderWidth: 1,
 },
 buttonImageIconStyle: {
@@ -308,6 +328,16 @@ buttonImageIconStyle: {
     height: 5,
     width: 10,
     resizeMode: 'stretch',
+  },
+  buttonImageIconStyle2: {
+    padding: 16,
+    margin: 4,
+    height: 5,
+    width: 10,
+    resizeMode: 'stretch',
+    position: 'relative',
+    top: 30,
+    left: 15
   },
 text: {
         position: "absolute",
@@ -358,7 +388,7 @@ lineHeight: 20,
 color: "#000000"
 },
 title: {
-    color: '#333',
+    color: "#333",
     size: 16,
     fontWeight: '700',
     textTransform: 'uppercase',
@@ -393,6 +423,7 @@ buttonImage: {
     left: 170,
     top: 80,
 },
+
 
 
 });

@@ -9,6 +9,9 @@ import ListaCrianca from './src/components/ListaCrianca';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import RoteiroViagem from './src/components/RoteiroViagem'
+import Cadastro from './src/components/Cadastro'
+import Login from './src/components/Login'
+import CadastrarCrianca from './src/components/CadastrarCrianca'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
@@ -18,6 +21,8 @@ import { SafeAreaView } from 'react-native';
 import { Roteiro } from '.src/component/Roteiro';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
+import Upload from './src/components/Upload';
+
 
 
 
@@ -93,6 +98,10 @@ export default () => {
             <Stack.Screen name = 'Confirmar entrega na escola' component={ConfirmarEntrega_Escola}/>
             <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
             <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
+            <Stack.Screen name = 'Upload' component={Upload}/>
+            <Stack.Screen name = 'Cadastro' component={Cadastro}/>
+            <Stack.Screen name = 'Login' component={Login}/>
+            <Stack.Screen name = 'CadastrarCrianca' component={CadastrarCrianca}/>
           </Stack.Navigator>
         </NavigationContainer> 
      )
