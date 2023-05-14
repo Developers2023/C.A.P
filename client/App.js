@@ -9,13 +9,10 @@ import ListaCrianca from './src/components/ListaCrianca';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import RoteiroViagem from './src/components/RoteiroViagem'
-<<<<<<< HEAD
 import EnviarAlertas from './src/components/EnviarAlertas';
-=======
-import Cadastro from './src/components/Cadastro'
-import Login from './src/components/Login'
+import Cadastro from './src/components/Cadastro';
+import Login from './src/components/Login';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
->>>>>>> 3505de97f30bd0430fb57daa5bc92922d0dc5d77
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Text, SafeAreaView, Linking, TouchableOpacity, Image} from 'react-native';
-import CheckBox from 'react-native-check-box';
+
 import  Css  from './Css';
 
 
