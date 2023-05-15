@@ -322,6 +322,16 @@ button:{
     borderColor: '#ccc',
     borderWidth: 1,
 },
+buttone:{
+    padding: 20,
+    backgroundColor: 'transparent',
+    width: "100%",
+    height: 100,
+    alignContent: 'center',
+    justifyContent: 'flex-end',
+    borderColor: '#ccc',
+    borderWidth: 1,
+},
 buttonImageIconStyle: {
     padding: 16,
     margin: 4,
@@ -351,6 +361,18 @@ text: {
         lineHeight: 29,
         color: "#000000"
   },
+  texte: {
+    position: "absolute",
+    width: "100%",
+    height: 100,
+    left: 45,
+    top: 8,
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: 15,
+    lineHeight: 29,
+    color: "#000000"
+},
   text1: {
     position: "absolute",
     width: "100%",

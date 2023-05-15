@@ -1,40 +1,55 @@
-import React, {useState} from 'react';
-import { Text, SafeAreaView, Linking, TouchableOpacity, Image} from 'react-native';
+import React from 'react';
+import {  Text, View, Pressable, FlatList, TouchableOpacity, Image } from 'react-native';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Css from "./Css";
 
-import  Css  from './Css';
+const data = [
+    { id: 1, txt: 'Informo aos senhores pais e responsáveis que as crianças vão chegar na escola com atraso devido ao transito na estrada.', isChecked: false },
+    { id: 2, txt: 'Senhores pais e responsáveis, tive problemas com o veiculo, hoje pegarei as crianças mais tarde.', isChecked: false },
+];
 
+export default function EnviarAlertas({navigation}){
+    const [listas, setListas] = React.useState(data);
 
-export default function EnviarAlertas(){
-const[isChecked, setIsChecked]= useState({
-  id1: false,
-  id2: false,
-  id3: false,
-});
+    const handleChange = (id) => {
+        let temp = listas.map((listas) => {
+            if (id === listas.id) {
+                return { ...listas, isChecked: !listas.isChecked };
+            }
+            return listas;
+        });
+        setListas(temp);
+    };
 
-  return (
-      <SafeAreaView>
-        <CheckBox style = {Css.Check} isChecked={isChecked.id1} onClick={()=> setIsChecked({...isChecked, id1: !isChecked.id1})}
-         rightText="Senhores pais e responsáveis, informo que hoje, pegarei as crianças com antecedencia uns 05min á 10min do horario combinado."
-         checkBoxColor='#FFBC16'
-         /> 
-        <CheckBox style = {Css.Check} isChecked={isChecked.id2} onClick={()=> setIsChecked({...isChecked, id2: !isChecked.id2})}
-         rightText="Senhores pais e responsáveis, tive problemas com o veiculo, hoje pegarei as crianças mais tarde."
-         checkBoxColor='#FFBC16'
-         /> 
-        <CheckBox style = {Css.Check} isChecked={isChecked.id3} onClick={()=> setIsChecked({...isChecked, id3: !isChecked.id3})}
-         rightText="Informo aos senhores pais e responsáveis que as crianças vão chegar na escola com atraso devido ao transito na estrada."
-         checkBoxColor='#FFBC16'
-         /> 
-        <TouchableOpacity style = {Css.Check} onPress={() => Linking.openURL('https://wa.me/5511992402307?text=Digite+sua+mensagem+pro+tio%28a%29%3A+')}>
-        <Text style = {Css.text1}>Mensagem Personalizada</Text>
-        <Image source={require('../components/images/zap.png')} style={Css.buttonImageIconStyle}/> 
-        </TouchableOpacity> 
+    let selected = listas.filter((listas) => listas.isChecked);
 
-        <TouchableOpacity style = {Css.Button1} onPress={() => Linking.openURL()}>
-        <Image source={require('../components/images/enviar.png')} style={Css.buttonImage}/> 
-        </TouchableOpacity> 
+    const renderFlatList = (renderData) => {
+        return (
+            <FlatList
+                data={renderData}
+                renderItem={({ item }) => (   
+                        <View>
+                            <View>
+                                <Pressable style={Css.buttone} onPress={() => handleChange(item.id)} >
+                                    <MaterialCommunityIcons
+                                        name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
+                                </Pressable>
+                                <Text style={Css.texte}>{item.txt}</Text>
+                            </View>
+                        </View>
+                )}
+            />
+        );
+    }
 
-
-        </SafeAreaView> 
+    return (
+        <View >
+            <View>
+                {renderFlatList(listas)}
+            </View>
+            <TouchableOpacity style = {Css.Button1} onPress={() => navigation.navigate('Login')}>
+            <Image source={require('../components/images/enviar.png')} style={Css.buttonImage}/> 
+            </TouchableOpacity> 
+        </View>
   );
 };

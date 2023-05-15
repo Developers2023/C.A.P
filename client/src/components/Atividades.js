@@ -38,7 +38,7 @@ export default function Atividades(){
           
           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Roteiro')}>
         <Text style = {Css.text}>Roteiro</Text>
-        <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
+        <Image source={require('../components/images/medir-distancia.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
 
