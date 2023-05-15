@@ -34,49 +34,16 @@ const sighUpValidation = yup.object().shape({
    
 })
 
-const api = axios.create({
-  baseURL: 'https://pokeapi.co/api/v2/',
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+
 
 export default function Cadastro({navigation}) {
 
-  const [cadastro, setCadastro] = React.useState({
-  nome:'',
-  email: '',
-  cpf: '',
-  tel: '',
-  endereco: '',
-  complementoDeEndereco: '',
-  cidade: '',
-  cep: '',
-  senha: '',
-  confirmarSenha: ''
-})
-
-const data = {
-  nome: cadastro.nome,
-  email: cadastro.email,
-  cpf: cadastro.cpf,
-  tel: cadastro.tel,
-  endereco: cadastro.endereco,
-  complementoDeEndereco: cadastro.complementoDeEndereco,
-  cidade: cadastro.cidade,
-  cep: cadastro.cep,
-  senha: cadastro.senha,
-  confirmarSenha: cadastro.confirmarSenha
+const getCadastro = async () => {
+  const {data} = await axios.get(/*{url https da api}*/);
+  setCadastro(data)
 }
 
-api.post('/pessoaController', data)
-.then((res) => {
-  console.log(res.data);
-})
-.catch((error) => {
-  console.log(error);
-});
-
+const [cadastro, setCadastro] = React.useState({})
 
 
 return(
