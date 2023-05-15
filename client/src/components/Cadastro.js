@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity, ScrollView } from 'react-native';
 import Css from './Css';
 import Dropdown from './Dropdown';
@@ -6,6 +6,7 @@ import Dropdown_User from './Dropdown_User';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
+import axios from 'axios';
 
 const sighUpValidation = yup.object().shape({
      
@@ -33,8 +34,51 @@ const sighUpValidation = yup.object().shape({
    
 })
 
+const api = axios.create({
+  baseURL: 'https://pokeapi.co/api/v2/',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
 export default function Cadastro({navigation}) {
+
+  const [cadastro, setCadastro] = React.useState({
+  nome:'',
+  email: '',
+  cpf: '',
+  tel: '',
+  endereco: '',
+  complementoDeEndereco: '',
+  cidade: '',
+  cep: '',
+  senha: '',
+  confirmarSenha: ''
+})
+
+const data = {
+  nome: cadastro.nome,
+  email: cadastro.email,
+  cpf: cadastro.cpf,
+  tel: cadastro.tel,
+  endereco: cadastro.endereco,
+  complementoDeEndereco: cadastro.complementoDeEndereco,
+  cidade: cadastro.cidade,
+  cep: cadastro.cep,
+  senha: cadastro.senha,
+  confirmarSenha: cadastro.confirmarSenha
+}
+
+api.post('/pessoaController', data)
+.then((res) => {
+  console.log(res.data);
+})
+.catch((error) => {
+  console.log(error);
+});
+
+
+
 return(
   <Formik
     initialValues={{
@@ -51,7 +95,7 @@ return(
   }}
   validateOnMount={true}
   validationSchema={sighUpValidation}
-  onSubmit={values=> console.log(values)}
+  onSubmit={values=> setCadastro(values)}
 >
 {({handleSubmit,handleChange,handleBlur,values,touched,errors,isValid}) => (
   
@@ -231,6 +275,7 @@ return(
             navigation.navigate('CadastrarCrianca')}
           }
           rounded disabled={!isValid}
+
           >
             <Text style={Css.txt}>Cadastrar</Text>
           </TouchableOpacity>

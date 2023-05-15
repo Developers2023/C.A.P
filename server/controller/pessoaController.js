@@ -4,6 +4,7 @@ const endereco = require("../repos/endereco");
 const pessoaRepository = require("../repos/pessoa");
 const enderecoRepository = require("../repos/endereco");
 
+
 module.exports = {
 
     async find(id) {
@@ -37,4 +38,4 @@ module.exports = {
       
       return usuario;
     }
-  };
+  }

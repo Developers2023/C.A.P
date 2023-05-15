@@ -15,18 +15,10 @@ import Login from './src/components/Login';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import { View } from 'react-native';
-import { SafeAreaView } from 'react-native';
-import { Roteiro } from '.src/component/Roteiro';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 import Upload from './src/components/Upload';
-
-
-
-
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -85,7 +77,6 @@ const Tabn = () => {
 </Tab.Navigator>
   )
 }
-
 
 export default () => {
 

@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity } from 'react-native';
 import Css from './Css';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
 
 
 const vehicleInfo=yup.object().shape({
@@ -11,11 +10,19 @@ const vehicleInfo=yup.object().shape({
   ano:yup.string().required("Ano é obrigatório").min(4,"Insira 4 digitos"),
   marca:yup.string().required("Marca é obrigatório"),
   modelo:yup.string().required("Modelo é obrigatório")
-
 })
+
+
 export default function DadosVeiculo(){
-
-
+ 
+  const [cadastro, setCadastro]= useState ({
+    placa: '',
+    ano: '',
+    marca: '',
+    modelo: '',
+    informacoes: ''
+  })
+   
     return(
     <Formik
     initialValues={{
@@ -41,18 +48,19 @@ export default function DadosVeiculo(){
                 style={[Css.inputs,Css.input_half]}
                 placeholder='Placa: ' placeholderTextColor={'#000'}
                   inputMode='text'  autoCapitalize='characters'
-                  onChangeText={handleChange('placa')}
                   onBlur={handleBlur('placa')}
-                  value={values.placa}
+                  value={cadastro.placa}
+                  onChangeText={setCadastro}
                   />
 
                   <TextInput 
                 style={[Css.inputs,Css.input_half]}
                 placeholder='Ano: ' placeholderTextColor={'#000'}
                 inputMode='text'
-                onChangeText={handleChange('ano')}
                 onBlur={handleBlur('ano')}
-                value={values.ano} />
+                value={values.ano}
+                onChangeText={handleChange('ano')}
+                 />
               
             </View>
             {(errors.placa && touched.placa) &&
@@ -93,6 +101,7 @@ export default function DadosVeiculo(){
             navigation.navigate('Maps')
           }}
           rounded disabled={!isValid}
+
           >
               <Text style={Css.txt}>Salvar</Text>
             </TouchableOpacity>
