@@ -6,7 +6,7 @@ import Dropdown_User from './Dropdown_User';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
-import axios from 'axios';
+import api from './Api';
 
 const sighUpValidation = yup.object().shape({
      
@@ -39,8 +39,8 @@ const sighUpValidation = yup.object().shape({
 export default function Cadastro({navigation}) {
 
 const getCadastro = async () => {
-  const {data} = await axios.get(/*{url https da api}*/);
-  setCadastro(data)
+  const res = await api.get('../');
+  console.log(res)
 }
 
 const [cadastro, setCadastro] = React.useState({})
@@ -238,11 +238,11 @@ return(
     
           <TouchableOpacity style={Css.btn_v1}
           onPress={()=>{
-            handleSubmit()
+            getCadastro();
+            handleSubmit();
             navigation.navigate('CadastrarCrianca')}
           }
           rounded disabled={!isValid}
-
           >
             <Text style={Css.txt}>Cadastrar</Text>
           </TouchableOpacity>
