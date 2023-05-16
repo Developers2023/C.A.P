@@ -91,6 +91,7 @@ export default () => {
      return (         
         <NavigationContainer>
           <Stack.Navigator>
+              <Stack.Screen name = 'Cadastro' component={Cadastro}/>
             <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
             <Stack.Screen name = 'Dados do veiculo' component={DadosVeiculo}/>
             <Stack.Screen name = 'Dados pessoais' component={DadosPessoais}/>
@@ -99,10 +100,9 @@ export default () => {
             <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
             <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
             <Stack.Screen name = 'Upload' component={Upload}/>
-            <Stack.Screen name = 'Cadastro' component={Cadastro}/>
-            <Stack.Screen name = 'Login' component={Login}/>
             <Stack.Screen name = 'CadastrarCrianca' component={CadastrarCrianca}/>
-          </Stack.Navigator>
+            </Stack.Navigator>
+      
         </NavigationContainer> 
      )
 };
