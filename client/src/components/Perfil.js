@@ -18,7 +18,7 @@ export default () => {
     return(
         
         <SafeAreaView>
-          <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('Upload')}>
+          <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('Cadastro')}>
         <Text style = {Css.text}>Manual</Text>
         <Image source={require('../components/images/e-book.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  

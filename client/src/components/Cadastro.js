@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity, ScrollView } from 'react-native';
 import Css from './Css';
 import Dropdown from './Dropdown';
@@ -6,6 +6,7 @@ import Dropdown_User from './Dropdown_User';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
+import axios from 'axios';
 
 const sighUpValidation = yup.object().shape({
      
@@ -34,7 +35,17 @@ const sighUpValidation = yup.object().shape({
 })
 
 
+
 export default function Cadastro({navigation}) {
+
+const getCadastro = async () => {
+  const {data} = await axios.get(/*{url https da api}*/);
+  setCadastro(data)
+}
+
+const [cadastro, setCadastro] = React.useState({})
+
+
 return(
   <Formik
     initialValues={{
@@ -51,7 +62,7 @@ return(
   }}
   validateOnMount={true}
   validationSchema={sighUpValidation}
-  onSubmit={values=> console.log(values)}
+  onSubmit={values=> setCadastro(values)}
 >
 {({handleSubmit,handleChange,handleBlur,values,touched,errors,isValid}) => (
   
@@ -231,6 +242,7 @@ return(
             navigation.navigate('CadastrarCrianca')}
           }
           rounded disabled={!isValid}
+
           >
             <Text style={Css.txt}>Cadastrar</Text>
           </TouchableOpacity>

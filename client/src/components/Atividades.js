@@ -16,7 +16,7 @@ export default function Atividades(){
         <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('EnviarAlertas')}>
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Enviar alertas')}>
         <Text style = {Css.text}>Enviar Alertas</Text>
         <Image source={require('../components/images/alertas.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
@@ -38,7 +38,7 @@ export default function Atividades(){
           
           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Roteiro')}>
         <Text style = {Css.text}>Roteiro</Text>
-        <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
+        <Image source={require('../components/images/medir-distancia.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
 

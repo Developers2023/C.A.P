@@ -4,8 +4,20 @@ import { useNavigation } from '@react-navigation/native';
 import {GOOGLE_MAPS_APIKEY} from '@env'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
+
+
 export default () => {
   const navigation = useNavigation();
+
+  const [escola, setEscola] = React.useState({
+    latitute: 0,
+    longitude: 0,
+    endereco: '',
+    name: ''
+  });
+
+
+  const textInput1 = React.useRef(0);
 
   return(
     <SafeAreaView style ={style.container}> 
@@ -14,10 +26,30 @@ export default () => {
  
         <GooglePlacesAutocomplete
         placeholder='Nome da escola'
+        nearbyPlacesAPI='GooglePlacesSearch'
+        listViewDisplayed = "auto"
+        debounce={400}
+        minLength={2}
+        enablePoweredByContainer = {false}
+        autoFocus =  {true}
+        fetchDetails = {true}
+        ref={textInput1}
+      
         query={{
           key: GOOGLE_MAPS_APIKEY,
           language: "pt-BR"
         }}
+        
+        onPress={(data, details = null) => {
+          setEscola({
+            latitute: details.geometry.location.lat,
+            longitude: details.geometry.location.lng,
+            endereco: details.formatted_address,
+            name: details.name
+          })
+          console.log(details)
+        }}
+      
         />     
         
        
