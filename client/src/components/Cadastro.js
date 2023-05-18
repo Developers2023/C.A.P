@@ -39,8 +39,8 @@ const sighUpValidation = yup.object().shape({
 export default function Cadastro({navigation}) {
 
 const getCadastro = async () => {
-  const res = await api.get('../');
-  console.log(res)
+  const res = await api.get('/pessoa/getById/10');
+  console.log(res.data)
 }
 
 const [cadastro, setCadastro] = React.useState({})
