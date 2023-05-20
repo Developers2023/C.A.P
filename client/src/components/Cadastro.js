@@ -38,9 +38,9 @@ const sighUpValidation = yup.object().shape({
 
 export default function Cadastro({navigation}) {
 
-const cadastrarUsuario = async() => {
+const getCadastro = async () => {
   try {
-    const res = await api.post('/pessoa/cadastrar', {
+    const res = await api.get('/pessoa/getById/10', {
       nome,
       email,
       cpf,
@@ -52,11 +52,12 @@ const cadastrarUsuario = async() => {
       senha,
       confirmarSenha,
     });
-    console.log(res.data)
-  } catch (error) {
-    console.error(error);
+    console.log(res)
+  }catch(error){
+    console.log(error)
   }
 }
+
 
 const [nome, setNome] = React.useState('')
 const [email, setEmail] = React.useState('')
@@ -271,7 +272,7 @@ return(
     
           <TouchableOpacity style={Css.btn_v1}
           onPress={()=>{
-            cadastrarUsuario();
+            getCadastro();
             handleSubmit();
             navigation.navigate('CadastrarCrianca')}
           }
@@ -290,3 +291,4 @@ return(
     )}
  </Formik>  
 )}
+        
