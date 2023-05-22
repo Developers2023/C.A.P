@@ -6,3 +6,5 @@ class Veiculo{
       this.placa = placa;
   }   
 }
+
+module.exports = Veiculo;

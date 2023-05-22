@@ -6,3 +6,5 @@ class Viagem {
       this.alertas = alertas;
     }
 }
+
+module.exports = Viagem;

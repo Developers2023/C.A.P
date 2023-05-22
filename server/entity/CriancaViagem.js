@@ -4,3 +4,5 @@ class CriancaViagem {
       this.horario = horario;
     }
 }
+
+exports.module= CriancaViagem;

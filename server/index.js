@@ -1,6 +1,7 @@
 const api = require("./application/api");
 const express = require("express");
 const pessoaController = require("./controller/pessoaController");
+const criancaController = require("./controller/criancaController");
 
 const server = express();
 server.use(express.json());
@@ -24,7 +25,7 @@ server.post("/pessoa/cadastrar",async function(req,res){
     res.send(result)
 });
 
-server.put("/pessoa/update:id",async function(req,res){
+server.put("/pessoa/atualizar/:id",async function(req,res){
     const result = await pessoaController.update(req.body)
     res.send(result)
 });
@@ -40,6 +41,12 @@ server.get("/pessoa/getById/:id",async function(req,res){
     const result = await pessoaController.find(req.params.id)
     res.send(result)
 });
+
+server.post("/crianca/cadastrar/:id",async function(req,res){
+    const response = await pessoaController.find(req.params.id)
+    const result = await criancaController.cadastrar(req.body)
+    res.send(result)
+})
 
 server.listen(3000, function(error){
     if(error){

@@ -1,8 +1,9 @@
 class Crianca{
-    constructor(nome, idade, horario, escola) {
+    constructor(nome,sexo, idade) {
       this.nome = nome;
+      this.sexo = sexo;
       this.idade = idade;
-      this.horario = horario;
-      this.escola = escola;
     }
 }
+
+exports.module= Crianca;

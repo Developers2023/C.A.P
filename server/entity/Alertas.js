@@ -4,3 +4,5 @@ class Alertas {
       this.alertas = alertas;
     }
 }
+
+exports.module = Alertas;

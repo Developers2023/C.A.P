@@ -24,8 +24,11 @@ module.exports = {
         return pessoa;
       },
 
-      async update(req, res) {
-        const pessoa = await pessoaRepository.update(id, req.body);
+      async atualizar(req, res) {
+        const pessoa = await pessoaRepository.update({
+          where: { id: id },
+          include: { model: endereco }
+        });
         return res.json(pessoa);
       },
 

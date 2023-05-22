@@ -13,5 +13,5 @@ const escola = db.define('escola', {
 
   module.exports = escola;
 
-  escola.hasOne(endereco)
-  endereco.belongsTo(escola, { foreignKey:'enderecoId', onDelete: "CASCADE" }) 
+  //escola.hasOne(endereco)
+  //endereco.belongsTo(escola, { foreignKey:'enderecoId', onDelete: "CASCADE" }) 
