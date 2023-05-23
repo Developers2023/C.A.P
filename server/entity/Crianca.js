@@ -6,4 +6,4 @@ class Crianca{
     }
 }
 
-exports.module= Crianca;
+module.exports = Crianca;

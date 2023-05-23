@@ -5,4 +5,4 @@ class CriancaPessoa{
     }
 }
 
-exports.module= CriancaPessoa;
+module.exports = CriancaPessoa;

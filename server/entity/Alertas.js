@@ -5,4 +5,4 @@ class Alertas {
     }
 }
 
-exports.module = Alertas;
+module.exports = Alertas;
