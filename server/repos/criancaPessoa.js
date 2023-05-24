@@ -1,18 +1,19 @@
 const db = require ('./db_connection')
+const Sequelize = require('sequelize');
 const crianca = require('../repos/crianca')
 const pessoa = require('../repos/pessoa')
 
-const crincaPessoa = db.define('crincaPessoa', {
+const criancaPessoa = db.define('criancaPessoa', {
 
     pessoaID:{ 
-        type:Sequelize.integer,
+        type: Sequelize.INTEGER,
         references:{
             model:'pessoa',
             fereingKey:'id'
         }
     },
     criancaID: {
-        type: Sequelize.integer,
+        type: Sequelize.INTEGER,
         reference: {
             model:'crianca',
             foreingKey:'id'
@@ -20,4 +21,7 @@ const crincaPessoa = db.define('crincaPessoa', {
     }
 },{timestamps:false})
 
-module.exports = crincaPessoa;
+
+
+
+module.exports = criancaPessoa;
