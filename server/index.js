@@ -26,7 +26,7 @@ server.post("/pessoa/cadastrar",async function(req,res){
 });
 
 server.put("/pessoa/atualizar/:id",async function(req,res){
-    const result = await pessoaController.update(req.body)
+    const result = await pessoaController.update(req.params.id, req.body)
     res.send(result)
 });
 
@@ -43,8 +43,7 @@ server.get("/pessoa/getById/:id",async function(req,res){
 });
 
 server.post("/crianca/cadastrar/:id",async function(req,res){
-    const response = await pessoaController.find(req.params.id)
-    const result = await criancaController.cadastrar(req.body)
+    const result = await criancaController.cadastrar(req.params.id,req.body)
     res.send(result)
 })
 
