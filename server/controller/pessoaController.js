@@ -33,7 +33,7 @@ module.exports = {
       },
 
     async cadastrar(body) {
-      const pessoa = new Pessoa(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
+      const pessoa = new Pessoa(body.nome, body.sexo, body.idade, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
       const usuario = await pessoaRepository.create(pessoa);
       
       const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep,usuario.id);

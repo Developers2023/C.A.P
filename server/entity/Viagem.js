@@ -1,9 +1,8 @@
 class Viagem {
-    constructor(escola, endereco, condutor, alertas,pessoaId) {
-      this.escola = escola;
-      this.endereco = endereco;
-      this.condutor = condutor;
-      this.alertas = alertas;
+    constructor(viagem, data, status, pessoaId) {
+      this.viagem = viagem;
+      this.data = data;
+      this.status = status;
       this.pessoaId =pessoaId;
     }
 }

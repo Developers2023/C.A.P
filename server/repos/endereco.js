@@ -24,7 +24,8 @@ const endereco = db.define('endereco', {
   }
 },{ timestamps: false });
 
-endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
+
 pessoa.hasOne(endereco)
+endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
 
 module.exports = endereco;
