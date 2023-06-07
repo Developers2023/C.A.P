@@ -11,7 +11,7 @@ const endereco = db.define('endereco', {
   },
   cidade: {
     type: Sequelize.STRING
-  },
+  }, 
   cep: {
     type: Sequelize.INTEGER
   },
@@ -20,11 +20,12 @@ const endereco = db.define('endereco', {
     references:{
       model: 'pessoa',
       foreignKey:'id'
-    }
+    },onDelete:'cascade',
   }
-},{ timestamps: false });
+},{ timestamps: false});
 
-endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
+
 pessoa.hasOne(endereco)
+endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "cascade" , hooks:"true"})
 
 module.exports = endereco;
