@@ -13,7 +13,7 @@ server.get("/",function(req,res){
 
 server.get("/pokemon", async(req,res) => {
     try {
-        const {data} =  await api.get("pokemon/1")
+        const {data} =  await api.get("pokemon/:id")
         return res.send({name: data.name});
     } catch (error) {
         res.send({error: error.message});
@@ -26,7 +26,7 @@ server.post("/pessoa/cadastrar",async function(req,res){
 });
 
 server.put("/pessoa/atualizar/:id",async function(req,res){
-    const result = await pessoaController.update(req.params.id, req.body)
+    const result = await pessoaController.atualizar(req.params.id, req.body)
     res.send(result)
 });
 
