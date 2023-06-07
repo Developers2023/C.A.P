@@ -24,7 +24,7 @@ module.exports = {
         return pessoa;
       },
 
-      async atualizar(req, res) {
+      async atualizar(body, id, res) {
         const pessoa = await pessoaRepository.update({
           nome: req.body.nome,
           sexo: req.body.sexo,

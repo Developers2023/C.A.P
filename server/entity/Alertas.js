@@ -1,7 +1,8 @@
 class Alertas {
-    constructor( condutor, alertas) {
-      this.condutor = condutor;
-      this.alertas = alertas;
+    constructor( atrasos, destinatario, remetente) {
+      this.atrasos = atrasos;
+      this.destinatario = destinatario;
+      this.remetente = remetente;
     }
 }
 

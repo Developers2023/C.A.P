@@ -1,12 +1,12 @@
 class Pessoa{ 
-  constructor(nome, sexo, email, cpf, telefone, senha, idade) {
-    this.nome = nome;
-    this.sexo = sexo;
-    this.email = email;
-    this.cpf = cpf;
-    this.idade = idade;
-    this.telefone = telefone;
-    this.senha = senha;
+  constructor(nome, sexo, idade, email, cpf, telefone, senha) {
+    this.nome = nome
+    this.sexo = sexo
+    this.idade = idade
+    this.email = email
+    this.cpf = cpf
+    this.telefone = telefone
+    this.senha = senha
   }
 }
 

@@ -1,5 +1,6 @@
 const db = require('./db_connection');
 const Sequelize = require('sequelize');
+const endereco = require('../repos/endereco')
 
 const pessoa = db.define('pessoa', {
     id:{
@@ -30,5 +31,5 @@ const pessoa = db.define('pessoa', {
       type: Sequelize.STRING
     },
   }, { timestamps: false })
-  
+ 
 module.exports = pessoa; 

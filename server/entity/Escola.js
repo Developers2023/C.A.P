@@ -1,7 +1,8 @@
 class Escola{
-    constructor(nome,enderecoId){
-    this.nome=nome
-    this.enderecoId=enderecoId
+    constructor(nome,enderecoId, cancelado){
+    this.nome = nome
+    this.cancelado = cancelado
+    this.enderecoId = enderecoId
     }
 }
 

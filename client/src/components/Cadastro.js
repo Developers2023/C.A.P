@@ -34,60 +34,35 @@ const sighUpValidation = yup.object().shape({
    
 })
 
-
-
 export default function Cadastro({navigation}) {
 
-const getCadastro = async () => {
-  try {
-    const res = await api.get('/pessoa/getById/10', {
-      nome,
-      email,
-      cpf,
-      tel,
-      endereco,
-      complementoDeEndereco,
-      cidade,
-      cep,
-      senha,
-      confirmarSenha,
-    });
-    console.log(res)
-  }catch(error){
-    console.log(error)
-  }
-}
-
-
-const [nome, setNome] = React.useState('')
-const [email, setEmail] = React.useState('')
-const [cpf, setCpf] = React.useState('')
-const [tel, setTel] = React.useState('')
-const [endereco, setEndereco] = React.useState('')
-const [complementoDeEndereco, setComplementoDeEndereco] = React.useState('')
-const [cidade, setCidade] = React.useState('')
-const [cep, setCep] = React.useState('')
-const [senha, setSenha] = React.useState('')
-const [confirmarSenha, setConfirmarSenha] = React.useState('')
-
+  const handleFormSubmit = async (values) => {
+    try{
+      const res = await api.post('cadastro', values);
+      console.log(res.data)
+      console.warn('Sucesso')
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
 return(
   <Formik
-    initialValues={{
-      nome:'',
-      email: '',
-      cpf: '',
-      tel: '',
-      endereco: '',
-      complementoDeEndereco: '',
-      cidade: '',
-      cep: '',
-      senha: '',
-      confirmarSenha: ''
-  }}
+  initialValues={{
+  nome:'',
+  email: '',
+  cpf: '',
+  tel: '',
+  endereco: '',
+  complementoDeEndereco: '',
+  cidade: '',
+  cep: '',
+  senha: '',
+  confirmarSenha: ''
+}}
   validateOnMount={true}
   validationSchema={sighUpValidation}
-  onSubmit={values=> console.log(values)}
+  onSubmit={handleFormSubmit}
 >
 {({handleSubmit,handleChange,handleBlur,values,touched,errors,isValid}) => (
   
@@ -116,8 +91,8 @@ return(
               autoComplete='name'
               maxLength={100}
               returnKeyType='next'
-              onChangeText={setNome}
-              value={nome}
+              onChangeText={handleChange('nome')}
+              value={values.nome}
               />
             <Dropdown />
           </View>
@@ -132,8 +107,8 @@ return(
             inputMode='email' keyboardType='email-address'
             autoComplete='email'
             returnKeyType='next'
-            onChangeText={setEmail}
-            value={email}
+            onChangeText={handleChange('email')}
+            value={values.email}
             />
             {(errors.email && touched.email) &&
                   <Text style={Css.errors}>{errors.email}</Text>
@@ -147,8 +122,8 @@ return(
             placeholderTextColor={'#282B29'}
             returnKeyType='next'
             keyboardType='numeric'
-            value={cpf}
-            onChangeText={setCpf}
+            value={values.cpf}
+            onChangeText={handleChange('cpf')}
             />
             {(errors.cpf && touched.cpf) &&
                   <Text style={Css.errors}>{errors.cpf}</Text>
@@ -164,8 +139,8 @@ return(
             returnKeyType='next'
             autoComplete='tel'
             keyboardType='numeric'
-            value={tel} 
-            onChangeText={setTel}
+            value={values.tel} 
+            onChangeText={handleChange('tel')}
             />
             {(errors.tel && touched.tel) &&
               <Text style={Css.errors}>{errors.tel}</Text>
@@ -178,8 +153,8 @@ return(
               placeholder='Endereço:' placeholderTextColor={'#282B29'}
               autoComplete='street-address'
               returnKeyType='next'
-              value={endereco}
-              onChangeText={setEndereco}
+              value={values.endereco}
+              onChangeText={handleChange('endereco')}
               />
 
             <TextInput 
@@ -189,8 +164,8 @@ return(
               placeholder='Nº:' placeholderTextColor={'#282B29'}
               inputMode='text'
               returnKeyType='next'
-              value={complementoDeEndereco}
-              onChangeText={setComplementoDeEndereco}
+              value={values.complementoDeEndereco}
+              onChangeText={handleChange('complementoDeEndereco')}
               />
               
           </View>
@@ -210,8 +185,8 @@ return(
                 placeholder='Cidade:' placeholderTextColor={'#282B29'} inputMode='text'
                 returnKeyType='next'
                 maxLength={50}
-                value={cidade}
-                onChangeText={setCidade}
+                value={values.cidade}
+                onChangeText={handleChange('cidade')}
                 />
 
               <MaskedTextInput 
@@ -224,8 +199,8 @@ return(
                 autoComplete='postal-code'
                 keyboardType='numeric'
                 returnKeyType='next'
-                value={cep}
-                onChangeText={setCep}
+                value={values.cep}
+                onChangeText={handleChange('cep')}
                 />
               {/* 
                 inputMode='numeric' 
@@ -248,8 +223,8 @@ return(
             inputMode='text'
             secureTextEntry={true}
             returnKeyType='next'
-            onChangeText={setSenha}
-            value={senha}
+            onChangeText={handleChange('senha')}
+            value={values.senha}
             />
             {(errors.senha && touched.senha) &&
                   <Text style={Css.errors_senha}>{errors.senha}</Text>
@@ -261,26 +236,27 @@ return(
             placeholder='Confirmar senha:' placeholderTextColor={'#282B29'} 
             inputMode='text'
             secureTextEntry={true}
-            onChangeText={setConfirmarSenha}
-            value={confirmarSenha}
+            onChangeText={handleChange('confirmarSenha')}
+            value={values.confirmarSenha}
             />
             {(errors.confirmarSenha && touched.confirmarSenha) &&
                   <Text style={Css.errors_senha}>{errors.confirmarSenha}</Text>
                   }
         </KeyboardAvoidingView>
-    
-    
-          <TouchableOpacity style={Css.btn_v1}
-          onPress={()=>{
-            getCadastro();
-            handleSubmit();
-            navigation.navigate('CadastrarCrianca')}
-          }
-          rounded disabled={!isValid}
-          >
-            <Text style={Css.txt}>Cadastrar</Text>
-          </TouchableOpacity>
-          
+
+        <TouchableOpacity
+        style = {Css.btn_v1}
+        onPress={() => {
+          return(
+            handleSubmit(),
+            navigation.navigate('CadastrarCrianca')
+          );
+        }}
+        rounded disabled={!isValid}
+        >
+        <Text style = {Css.txt}>Cadastrar</Text>
+        </TouchableOpacity>
+
           <TouchableOpacity style={Css.btn_v1}
           onPress={() => navigation.goBack()}>
             <Text style={Css.txt}>Voltar</Text>

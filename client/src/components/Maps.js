@@ -6,6 +6,8 @@ import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
 import Geocoder from 'react-native-geocoding';
+
+
 const casa = require('./images/casa3.png');
 const escola = require('./images/escola2.png');
 
@@ -96,8 +98,7 @@ export default () => {
      .catch(error => console.warn(error)); 
      }   
 
-     
-
+    
      return (    
      <View>
        <MapView
@@ -155,21 +156,7 @@ const styles = StyleSheet.create({
        width: '100%',
        height: '100%',
      },
-     input: {
-      borderColor: "#888",
-      borderWidth: 1, 
-     },
-
-     buttonGo: {
-      alignSelf: 'center',
-      position: 'absolute',
-      top: 50,
-      backgroundColor: '#FFBC16',
-      width: 160,
-      height: 30,
-      borderRadius: 30
-     }
-     
+  
     
     });
 
