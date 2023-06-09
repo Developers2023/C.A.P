@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Text, View, Pressable, FlatList, TouchableOpacity, Image } from 'react-native';
+import {  Text, View, Pressable, FlatList, TouchableOpacity, Image, Alert } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Css from "./Css";
 
@@ -13,6 +13,16 @@ const data = [
 
 export default function ConfirmarEntrega_Escola ({navigation}){
     const [listas, setListas] = React.useState(data);
+
+    createTwoButtonAlert = () =>
+    Alert.alert('Confirmação', 'A lista está correta?', [
+      {
+        text: 'Não',
+        onPress: () => console.log('Não'),
+        style: 'cancel',
+      },
+      {text: 'Sim', onPress: () => console.log('Sim')},
+    ]);
 
     const handleChange = (id) => {
         let temp = listas.map((listas) => {
@@ -33,7 +43,7 @@ export default function ConfirmarEntrega_Escola ({navigation}){
                 renderItem={({ item }) => (   
                         <View>
                             <View>
-                                <Pressable style={Css.button} onPress={() => handleChange(item.id)} >
+                                <Pressable style={Css.button}onPress={this.createTwoButtonAlert}>
                                     <MaterialCommunityIcons
                                         name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
                                 </Pressable>

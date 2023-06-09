@@ -83,9 +83,8 @@ export default () => {
      return (         
         <NavigationContainer>
           <Stack.Navigator>
-            
+          <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
             <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
-            <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
             <Stack.Screen name = 'Dados do veiculo' component={DadosVeiculo}/>
             <Stack.Screen name = 'Dados pessoais' component={DadosPessoais}/>
             <Stack.Screen name = 'Enviar alertas' component={EnviarAlertas}/>
