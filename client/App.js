@@ -43,7 +43,7 @@ const Tabn = () => {
     tabBarActiveTintColor: "#fff",
     tabBarIcon:()=>(
   <MaterialCommunityIcons 
-  name="google-maps" 
+  name="map-marker-radius" 
   color="#fff"
   size={36}/>
     )
@@ -57,7 +57,7 @@ const Tabn = () => {
       tabBarLabel: "atividades",
       tabBarIcon:()=>(
     <MaterialCommunityIcons 
-    name="message-alert" 
+    name="content-paste" 
     color="#fff" 
     size={32}/>
       )
@@ -70,7 +70,7 @@ const Tabn = () => {
       tabBarActiveTintColor: "#fff",
       tabBarIcon:()=>(
     <MaterialCommunityIcons
-    name="face-man-profile"
+    name="account-circle"
     color="#fff" 
     size={34}/>
       )
