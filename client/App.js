@@ -13,6 +13,7 @@ import EnviarAlertas from './src/components/EnviarAlertas';
 import Cadastro from './src/components/Cadastro';
 import Login from './src/components/Login';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
+import MensagensRecebidas from './src/components/MensagensRecebidas';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -91,7 +92,7 @@ export default () => {
             <Stack.Screen name = 'Lista de criancas' component={Cadastro}/>
             <Stack.Screen name = 'Confirmar entrega na escola' component={ConfirmarEntrega_Escola}/>
             <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
-            
+            <Stack.Screen name = 'Mensagens Recebidas' component={MensagensRecebidas}/>
             <Stack.Screen name = 'Upload' component={Upload}/>
             <Stack.Screen name = 'CadastrarCrianca' component={CadastrarCrianca}/>
             </Stack.Navigator>

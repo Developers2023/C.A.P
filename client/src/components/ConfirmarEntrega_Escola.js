@@ -43,7 +43,7 @@ export default function ConfirmarEntrega_Escola ({navigation}){
                 renderItem={({ item }) => (   
                         <View>
                             <View>
-                                <Pressable style={Css.button}onPress={this.createTwoButtonAlert}>
+                                <Pressable style={Css.button} onPress={() => handleChange(item.id)} >
                                     <MaterialCommunityIcons
                                         name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
                                 </Pressable>
@@ -55,12 +55,13 @@ export default function ConfirmarEntrega_Escola ({navigation}){
         );
     }
 
+
     return (
         <View >
             <View>
                 {renderFlatList(listas)}
             </View>
-            <TouchableOpacity style = {Css.Button1} onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity style = {Css.Button1} onPress={this.createTwoButtonAlert}>
             <Image source={require('../components/images/enviar.png')} style={Css.buttonImage}/> 
             </TouchableOpacity> 
         </View>

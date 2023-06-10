@@ -31,8 +31,8 @@ export default function Atividades(){
         <Image source={require('../components/images/casa.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
 
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('AlertasRec')}>
-        <Text style = {Css.text}>Alertas recebidos</Text>
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Mensagens Recebidas')}>
+        <Text style = {Css.text}>Mensagens recebidas</Text>
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>
           
