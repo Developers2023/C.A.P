@@ -5,38 +5,19 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import MapView, { Marker } from 'react-native-maps';
 import React, { useState } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
+import Geocoder from 'react-native-geocoding';
+
+import Maps from './Maps';
+
+  export default () => {
+  
+  const [localEscola, setlocalEscola] = useState('');  
+
+  const atualizarRotas = Text => {
+    setlocalEscola(Text);
+  };
 
   
-  export default () => {
-
-  const [markerPosition, setMarkerPosition] = useState(null);
-  const [mapRef, setMapRef] = useState(null);
-  const [escola, setEscola] = useState([{
-    escola: ''
-  }]);
-
-
-  const exibir = () => {
-    console.log(escola);
-    setEscola('');
-  }
-
-  const handlePlaceSelected = (data, details) => {
-    const { lat, lng } = details.geometry.location;
-    const coordinate = { latitude: lat, longitude: lng };
-    setMarkerPosition(coordinate);
-
-    if (mapRef) {
-      mapRef.animateToRegion({
-        latitude: lat,
-        longitude: lng,
-        latitude: 0,
-          longitude: 0,
-      });
-    }
-  };
-    
-    
     return(
      <KeyboardAvoidingView>
       <ScrollView>
@@ -57,8 +38,8 @@ import { TextInput } from 'react-native-gesture-handler';
           <Text style = {{fontSize: 20, marginLeft: 10}}>Digite o nome da escola</Text>
 
          <TextInput
-         value = {escola}
-         onChangeText={setEscola}
+         value = {localEscola}
+         onChangeText={setlocalEscola}
          placeholder='Digite o nome da escola'
          style = {style.inputEscola}
          />        
@@ -74,11 +55,15 @@ import { TextInput } from 'react-native-gesture-handler';
     
     <TouchableOpacity
     style = {style.btnAdd}
-    onPress={exibir}
+    onPress={atualizarRotas}
     >
       <Text style = {style.txtAdd}>adicionar</Text>
     </TouchableOpacity>
     </View>
+
+    <>
+    <Maps localEscola = {localEscola} atualizarRotas = {atualizarRotas}/>
+    </>
    
     </SafeAreaView>
     </ScrollView>

@@ -6,14 +6,19 @@ import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
 import Geocoder from 'react-native-geocoding';
-
+import { usarDados } from './dataContextRoutes';
 
 const casa = require('./images/casa3.png');
 const escola = require('./images/escola2.png');
 
 LogBox.ignoreAllLogs();
 
-export default () => {
+export default ({localEscola, atualizarRotas}) => {
+
+     const converterRota = () => {
+      const novasRotas = localEscola
+      Geocoding(novasRotas)
+     }
 
      const [origin, setOrigin] = React.useState({
           latitude: 0,
@@ -77,12 +82,12 @@ export default () => {
       
        React.useEffect(() => {
           requestLocationPermission(); //função que pega a localização atual do usuário
-          Geocoding();
+          converterRota();
        },[])
 
-    const Geocoding = () => { 
+  const Geocoding = () => {
     Geocoder.init(GOOGLE_MAPS_APIKEY, {language: "pt-BR"});
-    Geocoder.from(locationStr.endereco)// Função que pega o endereço e converte em latitude e longitude
+    Geocoder.from(localEscola)// Função que pega o endereço e converte em latitude e longitude
      .then(JSON => {
       let enderecoDest = JSON.results[0].geometry;
       const localLat = enderecoDest.location.lat;
@@ -96,9 +101,8 @@ export default () => {
       console.log(localLat, localLong);
      })
      .catch(error => console.warn(error)); 
-     }   
+     }
 
-    
      return (    
      <View>
        <MapView
@@ -143,6 +147,7 @@ export default () => {
         waypoints={Teste.coordinate}
         />
      } 
+
      </MapView> 
     </View>
   );
@@ -151,13 +156,10 @@ export default () => {
 
      
 const styles = StyleSheet.create({
-  
      map: {
        width: '100%',
        height: '100%',
-     },
-  
-    
+     },   
     });
 
     

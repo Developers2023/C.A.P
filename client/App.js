@@ -14,6 +14,7 @@ import Cadastro from './src/components/Cadastro';
 import Login from './src/components/Login';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -84,8 +85,8 @@ export default () => {
         <NavigationContainer>
           <Stack.Navigator>
             
-            <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
             <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
+            <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
             <Stack.Screen name = 'Dados do veiculo' component={DadosVeiculo}/>
             <Stack.Screen name = 'Dados pessoais' component={DadosPessoais}/>
             <Stack.Screen name = 'Enviar alertas' component={EnviarAlertas}/>
@@ -98,6 +99,8 @@ export default () => {
             </Stack.Navigator>
       
         </NavigationContainer> 
+
+        
      )
 };
 
