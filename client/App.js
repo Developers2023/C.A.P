@@ -13,6 +13,7 @@ import EnviarAlertas from './src/components/EnviarAlertas';
 import Cadastro from './src/components/Cadastro';
 import Login from './src/components/Login';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
+import MensagensRecebidas from './src/components/MensagensRecebidas';
 
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
@@ -43,7 +44,7 @@ const Tabn = () => {
     tabBarActiveTintColor: "#fff",
     tabBarIcon:()=>(
   <MaterialCommunityIcons 
-  name="google-maps" 
+  name="map-marker-radius" 
   color="#fff"
   size={36}/>
     )
@@ -57,7 +58,7 @@ const Tabn = () => {
       tabBarLabel: "atividades",
       tabBarIcon:()=>(
     <MaterialCommunityIcons 
-    name="message-alert" 
+    name="content-paste" 
     color="#fff" 
     size={32}/>
       )
@@ -70,7 +71,7 @@ const Tabn = () => {
       tabBarActiveTintColor: "#fff",
       tabBarIcon:()=>(
     <MaterialCommunityIcons
-    name="face-man-profile"
+    name="account-circle"
     color="#fff" 
     size={34}/>
       )
@@ -93,7 +94,7 @@ export default () => {
             <Stack.Screen name = 'Lista de criancas' component={Cadastro}/>
             <Stack.Screen name = 'Confirmar entrega na escola' component={ConfirmarEntrega_Escola}/>
             <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
-            
+            <Stack.Screen name = 'Mensagens Recebidas' component={MensagensRecebidas}/>
             <Stack.Screen name = 'Upload' component={Upload}/>
             <Stack.Screen name = 'CadastrarCrianca' component={CadastrarCrianca}/>
             </Stack.Navigator>
