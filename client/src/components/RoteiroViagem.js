@@ -6,14 +6,14 @@ import MapView, { Marker } from 'react-native-maps';
 import React, { useState } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import Geocoder from 'react-native-geocoding';
-
 import Maps from './Maps';
 
-  export default () => {
-  
-  const [localEscola, setlocalEscola] = useState('');  
 
-  const atualizarRotas = Text => {
+  
+  const RoteiroViagem = () => { 
+    const [localEscola, setlocalEscola] = useState('');  
+
+  const atualizarRotas = (Text) => {
     setlocalEscola(Text);
   };
 
@@ -149,3 +149,4 @@ const style = StyleSheet.create({
 
 
 
+export default RoteiroViagem;

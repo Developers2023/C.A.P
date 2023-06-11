@@ -11,6 +11,7 @@ import { usarDados } from './dataContextRoutes';
 const casa = require('./images/casa3.png');
 const escola = require('./images/escola2.png');
 
+
 LogBox.ignoreAllLogs();
 
 export default ({localEscola, atualizarRotas}) => {
