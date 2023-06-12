@@ -10,11 +10,13 @@ import Maps from './Maps';
 
 
   
-  const RoteiroViagem = () => { 
+const RoteiroViagem = () => { 
+  
     const [localEscola, setlocalEscola] = useState('');  
 
   const atualizarRotas = (Text) => {
     setlocalEscola(Text);
+    console.log(Text)
   };
 
   
@@ -60,10 +62,6 @@ import Maps from './Maps';
       <Text style = {style.txtAdd}>adicionar</Text>
     </TouchableOpacity>
     </View>
-
-    <>
-    <Maps localEscola = {localEscola} atualizarRotas = {atualizarRotas}/>
-    </>
    
     </SafeAreaView>
     </ScrollView>

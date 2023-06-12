@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity, ScrollView } from 'react-native';
+import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacity, ScrollView, Pressable } from 'react-native';
 import Css from './Css';
 import Dropdown from './Dropdown';
 import Dropdown_User from './Dropdown_User';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
-import api from './Api';
+import { isBefore, parse } from 'date-fns';
+import DatePicker from 'react-native-date-picker';
+import axios from 'axios';
 
 const sighUpValidation = yup.object().shape({
      
@@ -30,39 +32,59 @@ const sighUpValidation = yup.object().shape({
      .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
      "A senha deve conter 8 caracteres, incluindo: uma letra maiúscula, uma minúscula, um número e um caracter especial"),
 
-     confirmarSenha:yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')],'As senhas não correspondem')
+     confirmarSenha:yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')],'As senhas não correspondem'),
+
+     dataDeNascimento: yup.string().required('A data de nascimento é obrigatória').test('data-valida', 'Esta data é invalida', value => {
+      const date = parse(value,'dd/MM/yyyy', new Date());
+      return isBefore(date, new Date());
+     })
    
-})
+});
+
+const url = "http://localhost:3000/pessoa/cadastrar"
 
 export default function Cadastro({navigation}) {
 
-  const handleFormSubmit = async (values) => {
-    try{
-      const res = await api.post('cadastro', values);
-      console.log(res.data)
-      console.warn('Sucesso')
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const [data, setData] = React.useState({
+    nome: '',
+    sexo: '',
+    dataDeNascimento: '',
+    email: '',
+    senha: '',
+    cpf: '',
+    telefone: ''
+  });
+
+  const Cadastrar = () => {
+    axios.post(url, data)
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch(error => console.log(error))
+  }
+
+  const [date, setDate] = React.useState(new Date());
+  const [open, setOpen] = React.useState(false);
+  const [dataDeNasc, setDataDeNasc] = React.useState('');
+
+  const contrair = () =>{
+    setOpen(!open)
+  }
 
 return(
   <Formik
   initialValues={{
-  nome:'',
-  email: '',
-  cpf: '',
-  tel: '',
-  endereco: '',
-  complementoDeEndereco: '',
-  cidade: '',
-  cep: '',
-  senha: '',
-  confirmarSenha: ''
+    nome: '',
+    sexo: '',
+    dataDeNascimento: '',
+    email: '',
+    senha: '',
+    cpf: '',
+    telefone: ''
 }}
   validateOnMount={true}
   validationSchema={sighUpValidation}
-  onSubmit={handleFormSubmit}
+  onSubmit={setData}
 >
 {({handleSubmit,handleChange,handleBlur,values,touched,errors,isValid}) => (
   
@@ -99,7 +121,48 @@ return(
           {(errors.nome && touched.nome) &&
             <Text style={Css.errors}>{errors.nome}</Text>
             }
-          
+
+          {!open && (
+            <Pressable
+            onPress={contrair}
+            >
+            <TextInput 
+              style={[Css.inputs,Css.inputs_all]}
+              name="dataDeNascimento"
+              onBlur={handleBlur('dataDeNascimento')}  
+              placeholder='Data de nascimento (23 jun 2023)'
+              placeholderTextColor={'#282B29'}
+              inputMode='number'
+              keyboardType='numeric'
+              autoComplete='birthdate-day'
+              returnKeyType='next'
+              onPressIn={() => setOpen(true)}
+              onChangeText={handleChange('dataDeNascimento')}
+              value={values.dataDeNascimento}
+              editable = {false}
+              />
+              {(errors.dataDeNascimento && touched.dataDeNascimento) && 
+              <Text style = {Css.errors}>{errors.dataDeNascimento}</Text>
+              }
+             </Pressable>
+          )}  
+
+            {open && (
+              <DatePicker
+              modal
+              mode = "date"
+              open = {open}
+              date = {date}
+              onConfirm={date => {
+              setOpen(false);
+              setDate(date);
+              }}
+              onCancel={() => {
+              setOpen(false)
+              }}
+              />
+            )}
+
           <TextInput style={[Css.inputs,Css.inputs_all]}
             name="email"
             onBlur={handleBlur('email')}
@@ -146,72 +209,6 @@ return(
               <Text style={Css.errors}>{errors.tel}</Text>
               }
 
-          <View style={Css.view_input}>  
-          <TextInput style={[Css.inputs,Css.input_address]}
-              name="endereco"        
-              onBlur={handleBlur('endereco')}            
-              placeholder='Endereço:' placeholderTextColor={'#282B29'}
-              autoComplete='street-address'
-              returnKeyType='next'
-              value={values.endereco}
-              onChangeText={handleChange('endereco')}
-              />
-
-            <TextInput 
-              style={[Css.inputs,Css.input_number]}
-              name="complementoDeEndereco"        
-              onBlur={handleBlur('complementoDeEndereco')} 
-              placeholder='Nº:' placeholderTextColor={'#282B29'}
-              inputMode='text'
-              returnKeyType='next'
-              value={values.complementoDeEndereco}
-              onChangeText={handleChange('complementoDeEndereco')}
-              />
-              
-          </View>
-          {(errors.endereco && touched.endereco) &&
-            <Text style={Css.errors}>{errors.endereco}</Text>
-            }
-        
-          {(errors.complementoDeEndereco && touched.complementoDeEndereco) &&
-            <Text style={Css.errors}>{errors.complementoDeEndereco}</Text>
-            }
-      
-          <View style={Css.view_input}>
-              <TextInput 
-                name="cidade"                
-                onBlur={handleBlur('cidade')}               
-                style={[Css.inputs,Css.input_city]}
-                placeholder='Cidade:' placeholderTextColor={'#282B29'} inputMode='text'
-                returnKeyType='next'
-                maxLength={50}
-                value={values.cidade}
-                onChangeText={handleChange('cidade')}
-                />
-
-              <MaskedTextInput 
-                name="cep"
-                mask='99999-999'               
-                onBlur={handleBlur('cep')}                
-                style={Css.mask_cep}
-                placeholder='CEP:' 
-                placeholderTextColor={'#282B29'}
-                autoComplete='postal-code'
-                keyboardType='numeric'
-                returnKeyType='next'
-                value={values.cep}
-                onChangeText={handleChange('cep')}
-                />
-              {/* 
-                inputMode='numeric' 
-          maxLength={9} */}
-                
-                
-          </View>
-          {(errors.cidade && touched.cidade) &&
-            <Text style={Css.errors}>{errors.cidade}</Text>
-            }
-
           {(errors.cep && touched.cep) &&
             <Text style={Css.errors}>{errors.cep}</Text>
             }
@@ -230,18 +227,6 @@ return(
                   <Text style={Css.errors_senha}>{errors.senha}</Text>
                   }
 
-          <TextInput style={[Css.inputs,Css.inputs_all]}
-            name="confirmarSenha"        
-            onBlur={handleBlur('confirmarSenha')} 
-            placeholder='Confirmar senha:' placeholderTextColor={'#282B29'} 
-            inputMode='text'
-            secureTextEntry={true}
-            onChangeText={handleChange('confirmarSenha')}
-            value={values.confirmarSenha}
-            />
-            {(errors.confirmarSenha && touched.confirmarSenha) &&
-                  <Text style={Css.errors_senha}>{errors.confirmarSenha}</Text>
-                  }
         </KeyboardAvoidingView>
 
         <TouchableOpacity
@@ -249,6 +234,7 @@ return(
         onPress={() => {
           return(
             handleSubmit(),
+            Cadastrar(),
             navigation.navigate('CadastrarCrianca')
           );
         }}
@@ -266,5 +252,8 @@ return(
       </ScrollView>
     )}
  </Formik>  
-)}
+)
+}
+
+
         

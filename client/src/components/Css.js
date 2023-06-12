@@ -445,6 +445,9 @@ buttonImage: {
     left: 170,
     top: 80,
 },
+datePicker: {
+    width: 350
+}
 
 
 

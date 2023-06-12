@@ -51,5 +51,5 @@ server.listen(3000, function(error){
     if(error){
     console.log("erro");
     }else{
-        console.log("server rodando");
+        console.log(`server rodando na porta 3000`);
     }})
