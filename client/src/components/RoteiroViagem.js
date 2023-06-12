@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import {GOOGLE_MAPS_APIKEY} from '@env'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import MapView, { Marker } from 'react-native-maps';
-import React, { useState } from 'react';
+import React, { useState,createContext, useContext  } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import Geocoder from 'react-native-geocoding';
 import Maps from './Maps';
@@ -17,7 +17,12 @@ const RoteiroViagem = () => {
   const atualizarRotas = (Text) => {
     setlocalEscola(Text);
     console.log(Text)
+const RoteiroViagem = ({ localEscola, setlocalEscola }) => {
+
+  const atualizarRotas = () => {
+    // Lógica para atualizar as rotas com o valor localEscola
   };
+
 
   
     return(
@@ -26,6 +31,7 @@ const RoteiroViagem = () => {
       <SafeAreaView style ={style.container}> 
       
         <View>
+          
         <Image source={require('./images/medir-distancia.png')} style = {{
           width: 120,
           height: 120,

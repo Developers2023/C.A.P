@@ -7,6 +7,8 @@ import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
 import Geocoder from 'react-native-geocoding';
 import { usarDados } from './dataContextRoutes';
+import RoteiroViagem from './RoteiroViagem';
+
 
 const casa = require('./images/casa3.png');
 const escola = require('./images/escola2.png');
@@ -14,10 +16,10 @@ const escola = require('./images/escola2.png');
 
 LogBox.ignoreAllLogs();
 
-export default ({localEscola, atualizarRotas}) => {
+export default ({localEscola, setlocalEscola, atualizarRotas}) => {
 
      const converterRota = () => {
-      const novasRotas = localEscola
+      const novasRotas = (localEscola, setlocalEscola);
       Geocoding(novasRotas)
      }
 
@@ -41,6 +43,11 @@ export default ({localEscola, atualizarRotas}) => {
       endereco: '505 Escuela Ave, Mountain View, CA 94040, EUA'
      }); //Nome da rua
 
+{/* Renderizar outros componentes do mapa aqui */}
+     <RoteiroViagem 
+      localEscola = {localEscola}
+      setlocalEscola= {setlocalEscola}
+      />
         const requestLocationPermission = async () => {
           const granted = await PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -136,6 +143,7 @@ export default ({localEscola, atualizarRotas}) => {
               />
               );
             })
+            
           }
 
     {destino &&
@@ -147,7 +155,13 @@ export default ({localEscola, atualizarRotas}) => {
         strokeWidth={3}     
         waypoints={Teste.coordinate}
         />
-     } 
+     }
+     
+     
+      
+
+      
+   
 
      </MapView> 
     </View>
