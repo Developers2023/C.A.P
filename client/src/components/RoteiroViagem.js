@@ -9,14 +9,6 @@ import Geocoder from 'react-native-geocoding';
 import Maps from './Maps';
 
 
-  
-const RoteiroViagem = () => { 
-  
-    const [localEscola, setlocalEscola] = useState('');  
-
-  const atualizarRotas = (Text) => {
-    setlocalEscola(Text);
-    console.log(Text)
 const RoteiroViagem = ({ localEscola, setlocalEscola }) => {
 
   const atualizarRotas = () => {
@@ -151,6 +143,6 @@ const style = StyleSheet.create({
   }
 })
 
-
-
+  
+  
 export default RoteiroViagem;

@@ -19,7 +19,7 @@ LogBox.ignoreAllLogs();
 export default ({localEscola, setlocalEscola, atualizarRotas}) => {
 
      const converterRota = () => {
-      const novasRotas = (localEscola, setlocalEscola);
+      const novasRotas = (localEscola, setlocalEscola, atualizarRotas);
       Geocoding(novasRotas)
      }
 
@@ -61,6 +61,7 @@ export default ({localEscola, setlocalEscola, atualizarRotas}) => {
           );
           if (granted === PermissionsAndroid.RESULTS.GRANTED) {
             getLocation();
+            
           } else {
             alert('Permissão de Localização negada');
           }
