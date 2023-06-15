@@ -36,14 +36,15 @@ const sighUpValidation = yup.object().shape({
 
      dataDeNascimento: yup.string().required('A data de nascimento é obrigatória').test('data-valida', 'Esta data é invalida', value => {
       const date = parse(value,'dd/MM/yyyy', new Date());
-      return isBefore(date, new Date());
-     })
-   
+      return isBefore(date, new Date()); 
+     })   
 });
 
-const url = "http://localhost:3000/pessoa/cadastrar"
-
 export default function Cadastro({navigation}) {
+
+  const cadastrar = async() => {
+    
+  }
 
   const [data, setData] = React.useState({
     nome: '',
@@ -54,14 +55,6 @@ export default function Cadastro({navigation}) {
     cpf: '',
     telefone: ''
   });
-
-  const Cadastrar = () => {
-    axios.post(url, data)
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch(error => console.log(error))
-  }
 
   const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
