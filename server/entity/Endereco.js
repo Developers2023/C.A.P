@@ -5,7 +5,7 @@ class Endereco{
       this.cidade = cidade
       this.cep = cep
       this.cancelado = cancelado
-      this.pessoaId = id
+      this.pessoaId = pessoaId
   }   
 }
 module.exports = Endereco;

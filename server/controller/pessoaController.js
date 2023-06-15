@@ -43,8 +43,9 @@ module.exports = {
       const pessoa = new Pessoa(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
       const usuario = await pessoaRepository.create(pessoa);
       
-      const endereco = new Endereco(body.logradouro, body.numero, body.cidade, body.cep,usuario.id);
-      await enderecoRepository.create(endereco);
+      const endereco = body.endereco;
+      const enderecoEntity = new Endereco(endereco.logradouro, endereco.numero, endereco.cidade, endereco.cep,null,usuario.id);
+      await enderecoRepository.create(enderecoEntity);
       
       return usuario;
     }
