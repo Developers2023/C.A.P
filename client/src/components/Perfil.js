@@ -20,7 +20,7 @@ export default () => {
         <SafeAreaView>
           <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('Cadastro')}>
         <Text style = {Css.text}>Manual</Text>
-        <Image source={require('../components/images/e-book.png')} style={Css.buttonImageIconStyle}/> 
+        <Image source={require('../components/images/manual.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
           <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('Dados do veiculo')}>
@@ -30,7 +30,7 @@ export default () => {
 
           <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('CadastrarCrianca')}>
         <Text style = {Css.text}>Dados Pessoais</Text>
-        <Image source={require('../components/images/user-interface.png')} style={Css.buttonImageIconStyle}/> 
+        <Image source={require('../components/images/utilizador.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
           
         </SafeAreaView>

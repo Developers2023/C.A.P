@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Text, View, Pressable, FlatList, TouchableOpacity, Image } from 'react-native';
+import {  Text, View, Pressable, FlatList, TouchableOpacity, Image, Alert } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Css from "./Css";
 
@@ -13,6 +13,16 @@ const data = [
 
 export default function ConfirmarEntrega_Escola ({navigation}){
     const [listas, setListas] = React.useState(data);
+
+    createTwoButtonAlert = () =>
+    Alert.alert('Confirmação', 'A lista está correta?', [
+      {
+        text: 'Não',
+        onPress: () => console.log('Não'),
+        style: 'cancel',
+      },
+      {text: 'Sim', onPress: () => console.log('Sim')},
+    ]);
 
     const handleChange = (id) => {
         let temp = listas.map((listas) => {
@@ -45,12 +55,13 @@ export default function ConfirmarEntrega_Escola ({navigation}){
         );
     }
 
+
     return (
         <View >
             <View>
                 {renderFlatList(listas)}
             </View>
-            <TouchableOpacity style = {Css.Button1} onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity style = {Css.Button1} onPress={this.createTwoButtonAlert}>
             <Image source={require('../components/images/enviar.png')} style={Css.buttonImage}/> 
             </TouchableOpacity> 
         </View>

@@ -25,7 +25,7 @@ const endereco = db.define('endereco', {
       key:'id'
     }
   }
-},{ timestamps: false});
+},{ timestamps: false})
 
 pessoa.hasOne(endereco)
 endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "cascade"})

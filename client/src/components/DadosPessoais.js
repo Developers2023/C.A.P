@@ -4,6 +4,7 @@ import Css from './Css';
 import {Formik} from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
+import axios from 'axios';
 
 const editValidation = yup.object().shape({
 
@@ -23,11 +24,14 @@ const editValidation = yup.object().shape({
      .matches( /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
      "A senha deve conter 8 caracteres, incluindo: uma letra maiúscula, uma minúscula, um número e um caracter especial"),
 
-     confirmarSenha:yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')],'As senhas não correspondem')
-   
+     confirmarSenha:yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')],'As senhas não correspondem') 
 })
 
+const url = "http://localhost3000"
+
 export default function DadosPessoais({navigation}){
+
+
 
   const nome = 'Paulo Santos Santiago';
   const sexo = 'Masc';

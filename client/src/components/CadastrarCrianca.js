@@ -6,6 +6,8 @@ import Dropdown_Turno from './Dropdown_Turno';
 import { MaskedTextInput } from 'react-native-mask-text';
 import { Formik } from 'formik';
 import * as yup from 'yup';
+import axios from 'axios';
+import api from './apiMenager/Api';
 
 const registerKids = yup.object().shape({
   nomeDaCrianca:yup.string().required('Nome da criança é obrigatório').max(100,'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/,'Insira ao menos nome e sobrenome'),
@@ -15,9 +17,23 @@ const registerKids = yup.object().shape({
 
 })
 
-
+ 
 
 export default function CadastrarCrianca({navigation}){
+
+ 
+
+  const [dadosCrianca, setCadastroCrianca] = useState({})
+  
+  useEffect(() => {
+    api
+      .post("/crianca/cadastrar")
+      .then((response) => setUser(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
 
     return(
       <Formik
@@ -29,7 +45,7 @@ export default function CadastrarCrianca({navigation}){
       }}
       validationOnMount={true}
       validationSchema={registerKids}
-      onSubmit={values=> console.log(values)}>
+      onSubmit={setCadastroCrianca}>
 
       {({handleSubmit,handleChange,handleBlur,values,touched,errors,isValid}) => (
      <ScrollView>  
@@ -107,7 +123,8 @@ export default function CadastrarCrianca({navigation}){
           
           <TouchableOpacity style={Css.btn_v1}
               onPress={() =>{ 
-                handleSubmit()
+                handleSubmit();
+                CadastroCrianca();
                 navigation.navigate('DadosPessoais')}}
               rounded disabled={!isValid}>
                 <Text style={Css.txt}>Salvar</Text>

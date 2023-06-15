@@ -1,24 +1,9 @@
-const api = require("./application/api");
 const express = require("express");
 const pessoaController = require("./controller/pessoaController");
 const criancaController = require("./controller/criancaController");
 
 const server = express();
 server.use(express.json());
-
-server.get("/",function(req,res){
-
-    res.send("/index.html");
-})
-
-server.get("/pokemon", async(req,res) => {
-    try {
-        const {data} =  await api.get("pokemon/:id")
-        return res.send({name: data.name});
-    } catch (error) {
-        res.send({error: error.message});
-    }
-});
 
 server.post("/pessoa/cadastrar",async function(req,res){
     const result = await pessoaController.cadastrar(req.body)
@@ -51,5 +36,5 @@ server.listen(3000, function(error){
     if(error){
     console.log("erro");
     }else{
-        console.log("server rodando");
+        console.log(`server rodando na porta 3000`);
     }})

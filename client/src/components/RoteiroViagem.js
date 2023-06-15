@@ -3,46 +3,35 @@ import { useNavigation } from '@react-navigation/native';
 import {GOOGLE_MAPS_APIKEY} from '@env'
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import MapView, { Marker } from 'react-native-maps';
-import React, { useState } from 'react';
+import React, { useState,createContext, useContext  } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
+import { set } from 'date-fns';
 
+<<<<<<< HEAD
   
-  export default () => {
+const RoteiroViagem = () => { 
+  
+    const [localEscola, setlocalEscola] = useState('');
+    const [recebe, setRecebe] = useState({
+      escola: ''
+    });
 
-  const [markerPosition, setMarkerPosition] = useState(null);
-  const [mapRef, setMapRef] = useState(null);
-  const [escola, setEscola] = useState([{
-    escola: ''
-  }]);
-
-
-  const exibir = () => {
-    console.log(escola);
-    setEscola('');
-  }
-
-  const handlePlaceSelected = (data, details) => {
-    const { lat, lng } = details.geometry.location;
-    const coordinate = { latitude: lat, longitude: lng };
-    setMarkerPosition(coordinate);
-
-    if (mapRef) {
-      mapRef.animateToRegion({
-        latitude: lat,
-        longitude: lng,
-        latitude: 0,
-          longitude: 0,
-      });
+    const enviarDados = () => {
+      const dados = localEscola;
+      recebe.escola = dados
+      console.log(recebe);
     }
-  };
-    
-    
+=======
+const RoteiroViagem = ({ localEscola, setlocalEscola }) => {
+>>>>>>> a50b13c46b1b6ea603e310d66ba0a5ef3335c4df
+
     return(
      <KeyboardAvoidingView>
       <ScrollView>
       <SafeAreaView style ={style.container}> 
       
         <View>
+          
         <Image source={require('./images/medir-distancia.png')} style = {{
           width: 120,
           height: 120,
@@ -57,8 +46,8 @@ import { TextInput } from 'react-native-gesture-handler';
           <Text style = {{fontSize: 20, marginLeft: 10}}>Digite o nome da escola</Text>
 
          <TextInput
-         value = {escola}
-         onChangeText={setEscola}
+         value = {localEscola}
+         onChangeText={setlocalEscola}
          placeholder='Digite o nome da escola'
          style = {style.inputEscola}
          />        
@@ -74,17 +63,18 @@ import { TextInput } from 'react-native-gesture-handler';
     
     <TouchableOpacity
     style = {style.btnAdd}
-    onPress={exibir}
+    onPress={enviarDados}
     >
       <Text style = {style.txtAdd}>adicionar</Text>
     </TouchableOpacity>
     </View>
-   
+
     </SafeAreaView>
     </ScrollView>
    </KeyboardAvoidingView>
   );
 }
+  
 
 const style = StyleSheet.create({
 
@@ -162,5 +152,6 @@ const style = StyleSheet.create({
   }
 })
 
-
-
+  
+  
+export default RoteiroViagem;
