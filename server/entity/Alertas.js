@@ -1,8 +1,8 @@
 class Alertas {
-    constructor( atrasos, destinatario, remetente) {
+    constructor( atrasos, destinatarioId, remetenteId) {
       this.atrasos = atrasos;
-      this.destinatario = destinatario;
-      this.remetente = remetente;
+      this.destinatarioId = destinatarioId;
+      this.remetenteId = remetenteId;
     }
 }
 

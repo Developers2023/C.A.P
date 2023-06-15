@@ -1,17 +1,20 @@
 const Sequelize = require('sequelize');
 const db = require('./db_connection');
-const endereco = require('./endereco');
 
 const escola = db.define('escola', {
     nome: {
       type: Sequelize.STRING
     },
-    enderecoId: {
-      type: Sequelize.STRING
-    }
+    // enderecoId: {
+    //   type: Sequelize.INTEGER,
+    //   Reference:{
+    //     model:'endereco',
+    //     key:'id'
+    //   }
+    // }
   },{ timestamps: false })
 
-  module.exports = escola;
+  // endereco.hasOne(escola)
+  // escola.belongsTo(endereco, { foreignKey:'enderecoId', onDelete: "CASCADE" }) 
 
-  //escola.hasOne(endereco)
-  //endereco.belongsTo(escola, { foreignKey:'enderecoId', onDelete: "CASCADE" }) 
+  module.exports = escola;

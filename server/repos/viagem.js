@@ -9,16 +9,18 @@ const viagem = db.define('viagem', {
     status:{
       type: Sequelize.STRING  
     },
-    pessoaId:{
-      type: Sequelize.STRING,
-      references:{
-        model: 'pessoa',
-        foreignKey:'id'
-      }
-    }
+    // pessoaId:{
+    //   type: Sequelize.INTEGER,
+    //   references:{
+    //     model: 'pessoa',
+    //     key:'id'
+    //   }
+    // }
 })
+
+//pessoa.hasOne(viagem)
+//viagem.belongsTo(pessoa, { foreignKey:'pessoaId' })
 
 module.exports = viagem;
 
-//viagem.hasOne(pessoa)
-//pessoa.belongsTo(viagem, { foreignKey:'pessoaId' })
+

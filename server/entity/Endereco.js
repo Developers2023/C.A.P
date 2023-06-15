@@ -1,5 +1,5 @@
 class Endereco{
-    constructor(logradouro, numero, cancelado, cidade, cep, pessoaId){
+    constructor(logradouro, numero, cidade, cep,cancelado, pessoaId){
       this.logradouro = logradouro
       this.numero = numero
       this.cidade = cidade
@@ -9,3 +9,4 @@ class Endereco{
   }   
 }
 module.exports = Endereco;
+

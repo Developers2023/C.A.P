@@ -15,16 +15,19 @@ const endereco = db.define('endereco', {
   cep: {
     type: Sequelize.INTEGER
   },
+  cancelado: {
+    type: Sequelize.CHAR
+  },
   pessoaId: {
     type: Sequelize.INTEGER,
     references:{
       model: 'pessoa',
-      foreignKey:'id'
-    },onDelete:'cascade',
+      key:'id'
+    }
   }
 },{ timestamps: false});
 
 pessoa.hasOne(endereco)
-endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "cascade" , hooks:"true"})
+endereco.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "cascade"})
 
 module.exports = endereco;

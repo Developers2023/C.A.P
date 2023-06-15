@@ -14,12 +14,20 @@ const criancaViagem = db.define('criancaViagem', {
     sequencia: {
       type: Sequelize.STRING
     },
-    criancaId: {
-      type: Sequelize.STRING
-    },
-    viagemId: {
-      type: Sequelize.STRING
-    },
+    // criancaId: {
+    //   type: Sequelize.INTEGER,
+    //   references:{
+    //     model:"crianca",
+    //     key:'id'
+    //   }
+    // },
+    // viagemId: {
+    //   type: Sequelize.INTEGER,
+    //   references:{
+    //     model:"viagem",
+    //     key:'id'
+    //   }
+    // },
 });
 
 //criancaViagem.hasMany(crianca, {foreignKey:'idCrianca'})

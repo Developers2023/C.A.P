@@ -16,16 +16,15 @@ const veiculo = db.define('veiculo', {
       type: Sequelize.STRING
     },
     pessoaId:{
-      type: Sequelize.STRING,
+      type: Sequelize.INTEGER,
       references:{
         model: 'pessoa',
-        foreignKey:'id'
+        key:'id'
       }
     },
 }, { timestamps: false })
 
+pessoa.hasOne(veiculo)
+veiculo.belongsTo(pessoa, { foreignKey:'pessoaId', onDelete: "CASCADE" })
+
 module.exports = veiculo;
-
-
-//veiculo.hasOne(pessoa)
-//pessoa.belongsTo(veiculo, { foreignKey:'pessoaId', onDelete: "CASCADE" })
