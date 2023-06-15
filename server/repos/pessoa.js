@@ -15,9 +15,6 @@ const pessoa = db.define('pessoa', {
     cpf: {
       type: Sequelize.INTEGER
     },
-    idade: {
-      type: Sequelize.INTEGER
-    },
     telefone: {
       type: Sequelize.INTEGER
     },

@@ -26,27 +26,25 @@ module.exports = {
 
       async atualizar(body, id, res) {
         const pessoa = await pessoaRepository.update({
-          nome: req.body.nome,
-          sexo: req.body.sexo,
-          email: req.body.email,
-          telefone: req.body.telefone,
-          senha: req.body.senha,
-          cidade: req.body.cidade,
+          nome: body.nome,
+          sexo: body.sexo,
+          email: body.email,
+          telefone: body.telefone,
+          senha: body.senha,
+          cidade: body.cidade,
         },
         {
-          
-          where: req.params.id,
-          include: { model: endereco },
-          
+          where: {id:id},
+          include: { model: endereco }, 
         });
         return res.json(pessoa);
       },
 
     async cadastrar(body) {
-      const pessoa = new Pessoa(body.nome, body.sexo, body.idade, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
+      const pessoa = new Pessoa(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
       const usuario = await pessoaRepository.create(pessoa);
       
-      const endereco = new Endereco(body.endereco.logradouro, body.endereco.numero, body.endereco.cidade, body.endereco.cep,usuario.id);
+      const endereco = new Endereco(body.logradouro, body.numero, body.cidade, body.cep,usuario.id);
       await enderecoRepository.create(endereco);
       
       return usuario;

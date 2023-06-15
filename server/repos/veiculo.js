@@ -27,5 +27,5 @@ const veiculo = db.define('veiculo', {
 module.exports = veiculo;
 
 
-//veiculo.hasOne(pessoa)
-//pessoa.belongsTo(veiculo, { foreignKey:'pessoaId', onDelete: "CASCADE" })
+veiculo.hasOne(pessoa)
+pessoa.belongsTo(veiculo, { foreignKey:'pessoaId', onDelete: "CASCADE" })
