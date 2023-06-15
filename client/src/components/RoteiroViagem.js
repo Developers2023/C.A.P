@@ -7,6 +7,7 @@ import React, { useState,createContext, useContext  } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import { set } from 'date-fns';
 
+<<<<<<< HEAD
   
 const RoteiroViagem = () => { 
   
@@ -20,6 +21,9 @@ const RoteiroViagem = () => {
       recebe.escola = dados
       console.log(recebe);
     }
+=======
+const RoteiroViagem = ({ localEscola, setlocalEscola }) => {
+>>>>>>> a50b13c46b1b6ea603e310d66ba0a5ef3335c4df
 
     return(
      <KeyboardAvoidingView>
@@ -148,6 +152,6 @@ const style = StyleSheet.create({
   }
 })
 
-
-
+  
+  
 export default RoteiroViagem;

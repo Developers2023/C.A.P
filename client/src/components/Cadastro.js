@@ -37,13 +37,16 @@ const sighUpValidation = yup.object().shape({
 
      dataDeNascimento: yup.string().required('A data de nascimento é obrigatória').test('data-valida', 'Esta data é invalida', value => {
       const date = parse(value,'dd/MM/yyyy', new Date());
-      return isBefore(date, new Date());
-     })
-   
+      return isBefore(date, new Date()); 
+     })   
 });
 
 
 export default function Cadastro({navigation}) {
+
+  const cadastrar = async() => {
+    
+  }
 
   
   const Cadastro = () => {
