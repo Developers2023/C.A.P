@@ -6,9 +6,6 @@ import {GOOGLE_MAPS_APIKEY} from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
 import Geocoder from 'react-native-geocoding';
-import { usarDados } from './dataContextRoutes';
-import RoteiroViagem from './RoteiroViagem';
-
 
 const casa = require('./images/casa3.png');
 const escola = require('./images/escola2.png');
@@ -16,7 +13,7 @@ const escola = require('./images/escola2.png');
 
 LogBox.ignoreAllLogs();
 
-export default ({localEscola, setlocalEscola, atualizarRotas}) => {
+export default () => {
 
      const converterRota = () => {
       const novasRotas = (localEscola, setlocalEscola);
@@ -44,10 +41,10 @@ export default ({localEscola, setlocalEscola, atualizarRotas}) => {
      }); //Nome da rua
 
 {/* Renderizar outros componentes do mapa aqui */}
-     <RoteiroViagem 
+    /*  <RoteiroViagem 
       localEscola = {localEscola}
       setlocalEscola= {setlocalEscola}
-      />
+      /> */
         const requestLocationPermission = async () => {
           const granted = await PermissionsAndroid.request(
             PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -156,13 +153,6 @@ export default ({localEscola, setlocalEscola, atualizarRotas}) => {
         waypoints={Teste.coordinate}
         />
      }
-     
-     
-      
-
-      
-   
-
      </MapView> 
     </View>
   );

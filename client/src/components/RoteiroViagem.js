@@ -5,26 +5,22 @@ import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplet
 import MapView, { Marker } from 'react-native-maps';
 import React, { useState,createContext, useContext  } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
-import Geocoder from 'react-native-geocoding';
-import Maps from './Maps';
-
+import { set } from 'date-fns';
 
   
 const RoteiroViagem = () => { 
   
-    const [localEscola, setlocalEscola] = useState('');  
+    const [localEscola, setlocalEscola] = useState('');
+    const [recebe, setRecebe] = useState({
+      escola: ''
+    });
 
-  const atualizarRotas = (Text) => {
-    setlocalEscola(Text);
-    console.log(Text)
-const RoteiroViagem = ({ localEscola, setlocalEscola }) => {
+    const enviarDados = () => {
+      const dados = localEscola;
+      recebe.escola = dados
+      console.log(recebe);
+    }
 
-  const atualizarRotas = () => {
-    // Lógica para atualizar as rotas com o valor localEscola
-  };
-
-
-  
     return(
      <KeyboardAvoidingView>
       <ScrollView>
@@ -63,17 +59,18 @@ const RoteiroViagem = ({ localEscola, setlocalEscola }) => {
     
     <TouchableOpacity
     style = {style.btnAdd}
-    onPress={atualizarRotas}
+    onPress={enviarDados}
     >
       <Text style = {style.txtAdd}>adicionar</Text>
     </TouchableOpacity>
     </View>
-   
+
     </SafeAreaView>
     </ScrollView>
    </KeyboardAvoidingView>
   );
 }
+  
 
 const style = StyleSheet.create({
 

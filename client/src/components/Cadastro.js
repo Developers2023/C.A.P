@@ -8,7 +8,8 @@ import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
 import { isBefore, parse } from 'date-fns';
 import DatePicker from 'react-native-date-picker';
-import axios from 'axios';
+
+import apiMenager from './api/apiMenager';
 
 const sighUpValidation = yup.object().shape({
      
@@ -41,9 +42,18 @@ const sighUpValidation = yup.object().shape({
    
 });
 
-const url = "http://localhost:3000/pessoa/cadastrar"
 
 export default function Cadastro({navigation}) {
+
+  
+  const Cadastro = () => {
+    apiMenager.post('pessoa/cadastro', data)
+    .then(reponse => {
+      console.log(reponse.data);
+    }).catch((error) => {
+      console.log(error);
+    }) 
+  }
 
   const [data, setData] = React.useState({
     nome: '',
@@ -55,13 +65,7 @@ export default function Cadastro({navigation}) {
     telefone: ''
   });
 
-  const Cadastrar = () => {
-    axios.post(url, data)
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch(error => console.log(error))
-  }
+  
 
   const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
@@ -234,11 +238,11 @@ return(
         onPress={() => {
           return(
             handleSubmit(),
-            Cadastrar(),
+            Cadastro(),
             navigation.navigate('CadastrarCrianca')
           );
         }}
-        rounded disabled={!isValid}
+        rounded disabled={isValid}
         >
         <Text style = {Css.txt}>Cadastrar</Text>
         </TouchableOpacity>

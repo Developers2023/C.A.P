@@ -2,7 +2,7 @@ import React from 'react';
 import {  Text, View, Pressable, FlatList, TouchableOpacity, Image, Alert } from 'react-native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Css from "./Css";
-
+import axios from "axios"
 const data = [
     { id: 1, txt: 'Pedro Miguel', isChecked: false },
     { id: 2, txt: 'Carlos Armando', isChecked: false },
