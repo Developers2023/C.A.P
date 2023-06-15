@@ -7,7 +7,7 @@ import { MaskedTextInput } from 'react-native-mask-text';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import axios from 'axios';
-
+import api from './apiMenager/Api';
 
 const registerKids = yup.object().shape({
   nomeDaCrianca:yup.string().required('Nome da criança é obrigatório').max(100,'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/,'Insira ao menos nome e sobrenome'),
@@ -17,19 +17,23 @@ const registerKids = yup.object().shape({
 
 })
 
-const url = "http://localhost3000/crianca/cadastrar"
+ 
 
 export default function CadastrarCrianca({navigation}){
 
-  const CadastroCrianca = () => {
-    axios.post(url, dadosCrianca)
-    .then(responese => {
-      console.log(responese)
-    })
-    .catch(error => console.log(error))  
-  };
-  
+ 
+
   const [dadosCrianca, setCadastroCrianca] = useState({})
+  
+  useEffect(() => {
+    api
+      .post("/crianca/cadastrar")
+      .then((response) => setUser(response.data))
+      .catch((err) => {
+        console.error("ops! ocorreu um erro" + err);
+      });
+  }, []);
+
 
     return(
       <Formik
