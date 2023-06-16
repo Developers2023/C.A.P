@@ -2,6 +2,7 @@ const Crianca = require("../entity/Crianca")
 const CriancaPessoa = require("../entity/CriancaPessoa")
 const criancaRepository = require("../repos/crianca")
 const criancaPessoaRepository = require("../repos/criancaPessoa")
+const pessoaController = require("./pessoaController")
 
 
 module.exports = {
@@ -10,8 +11,12 @@ module.exports = {
         const response = await criancaRepository.create(crianca)
 
         const result = new CriancaPessoa(response.id, id)
-        const res = await criancaPessoaRepository.create(result)
-        return res
+        return await criancaPessoaRepository.create(result)
+        
+    },
+    async delete(id){
+        return await criancaRepository.delete(id)
+
     }
 }
 
