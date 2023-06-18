@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { KeyboardAvoidingView, View, SafeAreaView, Text, TextInput, TouchableOpacity, ScrollView, Pressable } from 'react-native';
+import { KeyboardAvoidingView, View, SafeAreaView, Text, TextInput, TouchableOpacity, SectionList, ScrollView } from 'react-native';
 import Css from './Css';
 import Dropdown from './Dropdown';
 import Dropdown_User from './Dropdown_User';
@@ -34,10 +34,7 @@ const sighUpValidation = yup.object().shape({
 
   confirmarSenha: yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')], 'As senhas não correspondem'),
 
-  dataDeNascimento: yup.string().required('A data de nascimento é obrigatória').test('data-valida', 'Esta data é invalida', value => {
-    const date = parse(value, 'dd/MM/yyyy', new Date());
-    return isBefore(date, new Date());
-  })
+  dataDeNascimento: yup.string().required('A data de nascimento é obrigatória')
 });
 
 export default function Cadastro({ navigation }) {
@@ -79,21 +76,20 @@ export default function Cadastro({ navigation }) {
       })
   }
 
-  const [data, setData] = React.useState({
-    nome: '',
-    sexo: '',
-    dataDeNascimento: '',
-    email: '',
-    senha: '',
-    cpf: '',
-    telefone: ''
-  });
+  const [data, setData] = React.useState([
+    {
+      nome: '',
+      sexo: '',
+      dataDeNascimento: dateString,
+      email: '',
+      senha: '',
+      cpf: '',
+      telefone: ''
+    }
+  ]);
 
 
   const [dateString, setDateString] = React.useState('');
-  const [open, setOpen] = React.useState(false);
-  console.log(dateString);
-  const diaAtual = new Date()
 
   return (
 
@@ -112,158 +108,159 @@ export default function Cadastro({ navigation }) {
       onSubmit={setData}
     >
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
+        <SafeAreaView style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 50
+        }}>
+          <SectionList
 
-        <ScrollView>
-          <SafeAreaView style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 50
+          />
+          <View style={{
+            zIndex: 2,
+            width: 257,
+            height: 47,
+            marginBottom: 20
           }}>
 
-            <View style={{
-              zIndex: 2,
-              width: 257,
-              height: 47,
-              marginBottom: 20
-            }}>
-              <Dropdown_User />
-            </View>
-            <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
-              <View style={[Css.view_input, Css.view_drop]}>
-                <TextInput
-                  style={[Css.inputs, Css.input_name]}
-                  name="nome"
-                  onBlur={handleBlur('nome')}
-                  placeholder='Nome:' placeholderTextColor={'#282B29'}
-                  inputMode='text'
-                  autoComplete='name'
-                  maxLength={100}
-                  returnKeyType='next'
-                  onChangeText={handleChange('nome')}
-                  value={values.nome}
-                />
-                <Dropdown />
-              </View>
-              {(errors.nome && touched.nome) &&
-                <Text style={Css.errors}>{errors.nome}</Text>
-              }
-
-              <Text style={{
-                position: 'relative',
-                left: 20
-              }}>Selecione sua data de nascimento</Text>
-              <DatePicker
-                style={{
-                  height: 190,
-                  width: 300,
-                  alignSelf: 'center',
-                  borderRadius: 10
-                }}
-                selected={diaAtual}
-                mode="calendar"
-                onSelectedChange={date => {
-                  [
-                    setDateString(date),
-                    handleChange('dataDeNascimento')
-                  ]
-                }}
-                onBlur={handleBlur('dataDeNascimento')}
-                value={values.dataDeNascimento}
-              />
-              {
-                (errors.dataDeNascimento && touched.dataDeNascimento) &&
-                <Text style={Css.errors}>{errors.dataDeNascimento}</Text>
-              }
-
-              <TextInput style={[Css.inputs, Css.inputs_all]}
-                name="email"
-                onBlur={handleBlur('email')}
-                placeholder='E-mail:' placeholderTextColor={'#282B29'}
-                inputMode='email' keyboardType='email-address'
-                autoComplete='email'
-                returnKeyType='next'
-                onChangeText={handleChange('email')}
-                value={values.email}
-              />
-              {(errors.email && touched.email) &&
-                <Text style={Css.errors}>{errors.email}</Text>
-              }
-
-              <MaskedTextInput style={Css.mask}
-                name="cpf"
-                mask='999.999.999-99'
-                onBlur={handleBlur('cpf')}
-                placeholder='CPF:'
-                placeholderTextColor={'#282B29'}
-                returnKeyType='next'
-                keyboardType='numeric'
-                value={values.cpf}
-                onChangeText={handleChange('cpf')}
-              />
-              {(errors.cpf && touched.cpf) &&
-                <Text style={Css.errors}>{errors.cpf}</Text>
-              }
-
-              <MaskedTextInput
-                style={Css.mask}
-                name="tel"
-                mask="(+99) 99 99999-9999"
-                onBlur={handleBlur('tel')}
-                placeholder='Celular:'
-                placeholderTextColor={'#282B29'}
-                returnKeyType='next'
-                autoComplete='tel'
-                keyboardType='numeric'
-                value={values.tel}
-                onChangeText={handleChange('tel')}
-              />
-              {(errors.tel && touched.tel) &&
-                <Text style={Css.errors}>{errors.tel}</Text>
-              }
-
-              {(errors.cep && touched.cep) &&
-                <Text style={Css.errors}>{errors.cep}</Text>
-              }
-
-              <TextInput style={[Css.inputs, Css.inputs_all]}
-                name="senha"
-                onBlur={handleBlur('senha')}
-                placeholder='Senha:' placeholderTextColor={'#282B29'}
+            <Dropdown_User />
+          </View>
+          <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
+            <View style={[Css.view_input, Css.view_drop]}>
+              <TextInput
+                style={[Css.inputs, Css.input_name]}
+                name="nome"
+                onBlur={handleBlur('nome')}
+                placeholder='Nome:' placeholderTextColor={'#282B29'}
                 inputMode='text'
-                secureTextEntry={true}
+                autoComplete='name'
+                maxLength={100}
                 returnKeyType='next'
-                onChangeText={handleChange('senha')}
-                value={values.senha}
+                onChangeText={handleChange('nome')}
+                value={values.nome}
               />
-              {(errors.senha && touched.senha) &&
-                <Text style={Css.errors_senha}>{errors.senha}</Text>
-              }
+              <Dropdown />
+            </View>
+            {(errors.nome && touched.nome) &&
+              <Text style={Css.errors}>{errors.nome}</Text>
+            }
 
-            </KeyboardAvoidingView>
-
-            <TouchableOpacity
-              style={Css.btn_v1}
-              onPress={() => {
+            <Text style={{
+              position: 'relative',
+              left: 20
+            }}>Selecione sua data de nascimento</Text>
+            <DatePicker
+              style={{
+                height: 190,
+                width: 300,
+                alignSelf: 'center',
+                borderRadius: 10
+              }}
+              selected='2023/06/18'
+              mode="calendar"
+              onSelectedChange={date => {
                 [
-                  handleSubmit(),
-                  cadastrar()
+                  setDateString(date),
+                  handleChange('dataDeNascimento')
                 ]
-              }
-              }
-              rounded disabled={isValid}
-            >
-              <Text style={Css.txt}>Cadastrar</Text>
-            </TouchableOpacity>
+              }}
+              onBlur={handleBlur('dataDeNascimento')}
+              value={values.dataDeNascimento}
+            />
+            {
+              (errors.dataDeNascimento && touched.dataDeNascimento) &&
+              <Text style={Css.errors}>{errors.dataDeNascimento}</Text>
+            }
 
-            <TouchableOpacity style={Css.btn_v1}
-              onPress={() => navigation.goBack()}>
-              <Text style={Css.txt}>Voltar</Text>
-            </TouchableOpacity>
+            <TextInput style={[Css.inputs, Css.inputs_all]}
+              name="email"
+              onBlur={handleBlur('email')}
+              placeholder='E-mail:' placeholderTextColor={'#282B29'}
+              inputMode='email' keyboardType='email-address'
+              autoComplete='email'
+              returnKeyType='next'
+              onChangeText={handleChange('email')}
+              value={values.email}
+            />
+            {(errors.email && touched.email) &&
+              <Text style={Css.errors}>{errors.email}</Text>
+            }
 
-          </SafeAreaView>
-        </ScrollView>
+            <MaskedTextInput style={Css.mask}
+              name="cpf"
+              mask='999.999.999-99'
+              onBlur={handleBlur('cpf')}
+              placeholder='CPF:'
+              placeholderTextColor={'#282B29'}
+              returnKeyType='next'
+              keyboardType='numeric'
+              value={values.cpf}
+              onChangeText={handleChange('cpf')}
+            />
+            {(errors.cpf && touched.cpf) &&
+              <Text style={Css.errors}>{errors.cpf}</Text>
+            }
+
+            <MaskedTextInput
+              style={Css.mask}
+              name="tel"
+              mask="(+99) 99 99999-9999"
+              onBlur={handleBlur('tel')}
+              placeholder='Celular:'
+              placeholderTextColor={'#282B29'}
+              returnKeyType='next'
+              autoComplete='tel'
+              keyboardType='numeric'
+              value={values.tel}
+              onChangeText={handleChange('tel')}
+            />
+            {(errors.tel && touched.tel) &&
+              <Text style={Css.errors}>{errors.tel}</Text>
+            }
+
+            {(errors.cep && touched.cep) &&
+              <Text style={Css.errors}>{errors.cep}</Text>
+            }
+
+            <TextInput style={[Css.inputs, Css.inputs_all]}
+              name="senha"
+              onBlur={handleBlur('senha')}
+              placeholder='Senha:' placeholderTextColor={'#282B29'}
+              inputMode='text'
+              secureTextEntry={true}
+              returnKeyType='next'
+              onChangeText={handleChange('senha')}
+              value={values.senha}
+            />
+            {(errors.senha && touched.senha) &&
+              <Text style={Css.errors_senha}>{errors.senha}</Text>
+            }
+
+          </KeyboardAvoidingView>
+
+          <TouchableOpacity
+            style={Css.btn_v1}
+            onPress={() => {
+              [
+                handleSubmit(),
+                cadastrar()
+              ]
+            }
+            }
+            rounded disabled={isValid}
+          >
+            <Text style={Css.txt}>Cadastrar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={Css.btn_v1}
+            onPress={() => navigation.goBack()}>
+            <Text style={Css.txt}>Voltar</Text>
+          </TouchableOpacity>
+
+        </SafeAreaView>
       )}
     </Formik>
+
   )
 }

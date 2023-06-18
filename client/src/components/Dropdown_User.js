@@ -10,6 +10,7 @@ export default function Dropdown_User() {
     { label: 'Motorista', value: 'motorista' },
     { label: 'Responsável', value: 'responsavel' }
   ]);
+
   return (
     <DropDownPicker
       open={userOpen}
