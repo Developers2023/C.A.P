@@ -83,12 +83,14 @@ inputs:{
     height:49,
     padding:3,
     margin:7,
+    marginLeft: 190,
     borderRadius:4,
     borderWidth:1,
-    textAlign:'left'
+    textAlign:'left',
+    alignItems: 'center'
 },
 inputs_all:{
-    width:330
+    width:330,
 },
 input_half:{
     width:161
@@ -171,7 +173,7 @@ view_input:{
     flexDirection:'row'
 },
 view_drop:{
-    zIndex:3
+    zIndex:3,
 },
 txt:{
     fontSize:18,
@@ -238,7 +240,7 @@ mask_cep:{
     borderRadius:4,
     borderWidth:1,
     textAlign:'left',
-    width:117
+    width:117,
 },
 mask:{
     backgroundColor:'#87ceeb',
@@ -248,7 +250,9 @@ mask:{
     borderRadius:4,
     borderWidth:1,
     textAlign:'left',
-    width:330
+    width:330,
+    position: 'relative',
+    left: 183,
 },
 mask_time:{
     backgroundColor:'#87ceeb',

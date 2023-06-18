@@ -27,7 +27,6 @@ export default function Dropdown_User() {
       selectedItemLabelStyle={{
         fontWeight: "bold",
         color: '#FFBC16'
-
       }}
     />
   );
