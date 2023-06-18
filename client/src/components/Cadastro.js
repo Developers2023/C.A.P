@@ -62,7 +62,6 @@ export default function Cadastro({ navigation }) {
       } catch (error) {
         console.log(error);
       } */
-
     axios.post('/pessoa/cadastrar', JSON.stringify(
       data.cpf,
       data.dataDeNascimento,
@@ -78,9 +77,6 @@ export default function Cadastro({ navigation }) {
       .catch(error => {
         console.log(JSON.stringify(error))
       })
-
-    
-
   }
 
   const [data, setData] = React.useState({
@@ -95,13 +91,9 @@ export default function Cadastro({ navigation }) {
 
 
   const [dateString, setDateString] = React.useState('');
-  const [date, setDate] = React.useState(new Date());
   const [open, setOpen] = React.useState(false);
   console.log(dateString);
-
-  const contrair = () => {
-    setOpen(!open)
-  }
+  const diaAtual = new Date()
 
   return (
 
@@ -168,10 +160,15 @@ export default function Cadastro({ navigation }) {
                   alignSelf: 'center',
                   borderRadius: 10
                 }}
-                selected={date.getDate}
+                selected={diaAtual}
                 mode="calendar"
-                minuteInterval={30}
-                onSelectedChange={date => setDateString(date)}
+                onSelectedChange={date => {
+                  [
+                    setDateString(date),
+                    handleChange('dataDeNascimento')
+                  ]
+                }}
+                onBlur={handleBlur('dataDeNascimento')}
                 value={values.dataDeNascimento}
               />
               {
@@ -270,5 +267,3 @@ export default function Cadastro({ navigation }) {
     </Formik>
   )
 }
-
-
