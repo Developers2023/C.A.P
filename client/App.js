@@ -26,83 +26,83 @@ const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
 const Tabn = () => {
-  return(
-    <Tab.Navigator 
-    initialRouteName='Maps'
-    activeColor="#fff"
-    shifting={true}
-    screenOptions = {{
-    tabBarShowLabel: false, 
-    tabBarStyle: {backgroundColor: '#87ceeb', height: 60},
-  }}
-    >  
+  return (
+    <Tab.Navigator
+      initialRouteName='Maps'
+      activeColor="#fff"
+      shifting={true}
+      screenOptions={{
+        tabBarShowLabel: false,
+        tabBarStyle: { backgroundColor: '#87ceeb', height: 60 },
+      }}
+    >
 
-  <Tab.Screen 
-  name="Mapa" 
-  component={Maps} 
-  options={{
-    tabBarActiveTintColor: "#fff",
-    tabBarIcon:()=>(
-  <MaterialCommunityIcons 
-  name="map-marker-radius" 
-  color="#fff"
-  size={36}/>
-    )
-  }}/>
+      <Tab.Screen
+        name="Mapa"
+        component={Maps}
+        options={{
+          tabBarActiveTintColor: "#fff",
+          tabBarIcon: () => (
+            <MaterialCommunityIcons
+              name="map-marker-radius"
+              color="#fff"
+              size={36} />
+          )
+        }} />
 
-  <Tab.Screen 
-  name="Atividades" 
-  component={Atividades}
-    options={{
-      tabBarActiveTintColor: "#fff",
-      tabBarLabel: "atividades",
-      tabBarIcon:()=>(
-    <MaterialCommunityIcons 
-    name="content-paste" 
-    color="#fff" 
-    size={32}/>
-      )
-    }}/>
+      <Tab.Screen
+        name="Atividades"
+        component={Atividades}
+        options={{
+          tabBarActiveTintColor: "#fff",
+          tabBarLabel: "atividades",
+          tabBarIcon: () => (
+            <MaterialCommunityIcons
+              name="content-paste"
+              color="#fff"
+              size={32} />
+          )
+        }} />
 
-  <Tab.Screen 
-  name="Perfil"
-  component={Perfil} 
-    options={{
-      tabBarActiveTintColor: "#fff",
-      tabBarIcon:()=>(
-    <MaterialCommunityIcons
-    name="account-circle"
-    color="#fff" 
-    size={34}/>
-      )
-    }}/>
-</Tab.Navigator>
+      <Tab.Screen
+        name="Perfil"
+        component={Perfil}
+        options={{
+          tabBarActiveTintColor: "#fff",
+          tabBarIcon: () => (
+            <MaterialCommunityIcons
+              name="account-circle"
+              color="#fff"
+              size={34} />
+          )
+        }} />
+    </Tab.Navigator>
   )
 }
 
 export default () => {
 
-     return (         
-        <NavigationContainer>
-          <Stack.Navigator>
-           
-            <Stack.Screen name = 'Tab' component={Tabn} options={{headerShown:false}}/>
-             <Stack.Screen name = 'Lista de criancas' component={Cadastro}/>
-            <Stack.Screen name = 'Roteiro' component={RoteiroViagem}/>
-            <Stack.Screen name = 'Dados do veiculo' component={DadosVeiculo}/>
-            <Stack.Screen name = 'Dados pessoais' component={DadosPessoais}/>
-            <Stack.Screen name = 'Enviar alertas' component={EnviarAlertas}/>
-            <Stack.Screen name = 'Confirmar entrega na escola' component={ConfirmarEntrega_Escola}/>
-            <Stack.Screen name = 'Confirmar entrega em casa' component={ConfirmarEntrega_Casa}/>
-            <Stack.Screen name = 'Mensagens Recebidas' component={MensagensRecebidas}/>
-            <Stack.Screen name = 'Upload' component={Upload}/>
-            <Stack.Screen name = 'CadastrarCrianca' component={CadastrarCrianca}/>
-            </Stack.Navigator>
-      
-        </NavigationContainer> 
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
 
-        
-     )
+        <Stack.Screen name='Lista de criancas' component={Cadastro} />
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
+        <Stack.Screen name='Roteiro' component={RoteiroViagem} />
+        <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
+        <Stack.Screen name='Dados pessoais' component={DadosPessoais} />
+        <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
+        <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
+        <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
+        <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
+        <Stack.Screen name='Upload' component={Upload} />
+      </Stack.Navigator>
+
+    </NavigationContainer>
+
+
+  )
 };
 
 
