@@ -27,7 +27,7 @@ const editValidation = yup.object().shape({
      confirmarSenha:yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')],'As senhas não correspondem') 
 })
 
-const url = "http://localhost3000"
+
 
 export default function DadosPessoais({navigation}){
 
