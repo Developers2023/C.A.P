@@ -2,29 +2,35 @@ const Pessoa = require("../entity/Pessoa");
 const Endereco = require("../entity/Endereco");
 const pessoaRepository = require("../repos/pessoa");
 const enderecoRepository = require("../repos/endereco");
+const pessoa = require("../repos/pessoa");
 
 
 module.exports = {
 
-    async find(id) {
-      const pessoa = await pessoaRepository.findOne({
-        where: { id: id },
-        include: { model: enderecoRepository }
+    async buscarTodos(body) {
+      let data = await pessoaRepository.findAll({
+        where: {
+          name: {
+            $like: body.nome
+          }
+        }
+      
       });
 
-      return pessoa;
+      return data
     },
   
       async delete(id) {
         const pessoa = await pessoaRepository.destroy({
-          where: { id: id },
-          include: { model: endereco }
+          where: {  id: id},
+          include: { model: enderecoRepository }
         });
         return pessoa;
       },
 
       async atualizar(body, id, res) {
         const pessoa = await pessoaRepository.update({
+          where: {id:id},
           nome: body.nome,
           sexo: body.sexo,
           email: body.email,
@@ -34,13 +40,13 @@ module.exports = {
         },
         {
           where: {id:id},
-          include: { model: endereco }, 
+          include: { model: enderecoRepository }, 
         });
         return res.json(pessoa);
       },
 
     async cadastrar(body) {
-      const pessoa = new Pessoa(body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
+      const pessoa = new Pessoa(body.tipo, body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
       const usuario = await pessoaRepository.create(pessoa);
       
       const endereco = body.endereco;

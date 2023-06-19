@@ -9,6 +9,9 @@ const pessoa = db.define('pessoa', {
       primaryKey: true,
       allowNull: false
     },
+    tipo: {
+      type: Sequelize.STRING
+    },
     nome: {
       type: Sequelize.STRING
     },

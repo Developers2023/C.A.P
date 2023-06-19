@@ -22,8 +22,8 @@ server.delete("/pessoa/delete/:id",async function(req,res){
     })
 });
 
-server.get("/pessoa/getById/:id",async function(req,res){
-    const result = await pessoaController.find(req.params.id)
+server.get("/pessoa/buscarTodos",async function(req,res){
+    const result = await pessoaController.buscarTodos(req.body)
     res.send(result)
 });
 

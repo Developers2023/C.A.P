@@ -1,5 +1,6 @@
 class Pessoa{ 
-  constructor(nome, sexo, email, cpf, telefone, senha) {
+  constructor(tipo,nome, sexo, email, cpf, telefone, senha) {
+    this.tipo = tipo
     this.nome = nome
     this.sexo = sexo
     this.email = email
