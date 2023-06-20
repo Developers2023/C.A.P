@@ -5,13 +5,11 @@ import Atividades from './src/components/Atividades'
 import Perfil from './src/components/Perfil'
 import DadosVeiculo from './src/components/DadosVeiculo';
 import DadosPessoais from './src/components/DadosPessoais';
-import ListaCrianca from './src/components/ListaCrianca';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import RoteiroViagem from './src/components/RoteiroViagem';
 import EnviarAlertas from './src/components/EnviarAlertas';
 import Cadastro from './src/components/Cadastro';
-import Login from './src/components/Login';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
 
@@ -86,9 +84,9 @@ export default () => {
     <NavigationContainer>
       <Stack.Navigator>
 
-        <Stack.Screen name='Lista de criancas' component={Cadastro} />
-        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='Lista de criancas' component={Cadastro} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Dados pessoais' component={DadosPessoais} />

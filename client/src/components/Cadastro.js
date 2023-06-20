@@ -38,57 +38,15 @@ const sighUpValidation = yup.object().shape({
 
 export default function Cadastro({ navigation }) {
 
-  const cadastrar = () => {
-    /*   try {
-        const response = axios.post('pessoa/cadastro', JSON.stringify(
-          data.cpf,
-          data.dataDeNascimento,
-          data.email,
-          data.nome,
-          data.senha,
-          data.sexo,
-          data.telefone
-        ),
-          {
-            headers: { 'Content-Type': 'application/json' },
-            withCredentials: true
-          }
-        );
-        console.log(response)
-      } catch (error) {
-        console.log(error);
-      } */
-    axios.post('/pessoa/cadastrar', JSON.stringify(
-      data.cpf,
-      data.dataDeNascimento,
-      data.email,
-      data.nome,
-      data.senha,
-      data.sexo,
-      data.telefone
-    ))
-      .then((response) => {
-        console.log(response.data)
-      })
-      .catch(error => {
-        console.log(JSON.stringify(error))
-      })
+  const cadastrar = (values) => {
+   axios.post('pessoa/cadastro', JSON.stringify(values))
+   .then((response) => {
+    console.log(response);
+   })
+   .catch((error) => {
+    console.log(JSON.stringify(error));
+   });
   };
-
-
-  const [data, setData] = React.useState([
-    {
-      nome: '',
-      sexo: '',
-      dataDeNascimento: dateString,
-      email: '',
-      senha: '',
-      cpf: '',
-      telefone: ''
-    }
-  ]);
-
-
 
   const [dateString, setDateString] = React.useState('');
 
@@ -127,7 +85,7 @@ export default function Cadastro({ navigation }) {
       }}
       validateOnMount={true}
       validationSchema={sighUpValidation}
-      onSubmit={setData}
+      onSubmit={cadastrar}
 
     >
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (

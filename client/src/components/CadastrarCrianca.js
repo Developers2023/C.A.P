@@ -6,8 +6,7 @@ import Dropdown_Turno from './Dropdown_Turno';
 import { MaskedTextInput } from 'react-native-mask-text';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import axios from 'axios';
-import api from './apiMenager/Api';
+import axios from './apiMenager/Api'
 
 const registerKids = yup.object().shape({
   nomeDaCrianca: yup.string().required('Nome da criança é obrigatório').max(100, 'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/, 'Insira ao menos nome e sobrenome'),
@@ -21,19 +20,16 @@ const registerKids = yup.object().shape({
 
 export default function CadastrarCrianca({ navigation }) {
 
-
-  const [user, setUser] = React.useState([])
-  const [dadosCrianca, setCadastroCrianca] = useState({})
-
-  React.useEffect(() => {
-    api
-      .post("/crianca/cadastrar")
-      .then((response) => setUser(response.data))
-      .catch((err) => {
-        console.error("ops! ocorreu um erro" + err);
-      });
-  }, []);
-
+  const cadastrarC = (values) => {
+    axios
+    .post('/crianca/cadastrar/:id', JSON.stringify(values))
+    .then(response => {
+      console.log(response.data)
+    })
+    .catch((error) => {
+      console.log(JSON.stringify(error));
+    });
+  };
 
   return (
     <Formik
@@ -45,95 +41,94 @@ export default function CadastrarCrianca({ navigation }) {
       }}
       validationOnMount={true}
       validationSchema={registerKids}
-      onSubmit={setCadastroCrianca}>
+      onSubmit={cadastrarC}>
 
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
-        <ScrollView>
-          <SafeAreaView style={{
-            flex: 1,
-            alignItems: 'center',
-            justifyContent: 'center',
-            marginTop: 178
-          }}>
 
-            <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
-              <TextInput
-                style={[Css.inputs, Css.inputs_all]}
-                placeholder='Nome:' placeholderTextColor={'#282B29'}
-                inputMode='text'
-                onChangeText={handleChange('nomeDaCrianca')}
-                onBlur={handleBlur('nomeDaCrianca')}
-                value={values.nomeDaCrianca} />
-              {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
-                <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
+        <SafeAreaView style={{
+          flex: 1,
+          alignItems: 'center',
+          justifyContent: 'center',
+          marginTop: 178
+        }}>
 
-              <TextInput
-                style={[Css.inputs, Css.inputs_all]}
-                placeholder='Escola:' placeholderTextColor={'#282B29'}
-                inputMode='text'
-                onChangeText={handleChange('instituicaoDeEnsino')}
-                onBlur={handleBlur('instituicaoDeEnsino')}
-                value={values.instituicaoDeEnsino}
-              />
-              {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
-                <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
+          <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder='Nome:' placeholderTextColor={'#282B29'}
+              inputMode='text'
+              onChangeText={handleChange('nomeDaCrianca')}
+              onBlur={handleBlur('nomeDaCrianca')}
+              value={values.nomeDaCrianca} />
+            {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
+              <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
 
-              <TextInput
-                style={[Css.inputs, Css.inputs_all]}
-                placeholder='Cidade:' placeholderTextColor={'#282B29'}
-                inputMode='text'
-                onChangeText={handleChange('cidadeDaCrianca')}
-                onBlur={handleBlur('cidadeDaCrianca')}
-                value={values.cidadeDaCrianca}
-              />
-              {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
-                <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>}
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder='Escola:' placeholderTextColor={'#282B29'}
+              inputMode='text'
+              onChangeText={handleChange('instituicaoDeEnsino')}
+              onBlur={handleBlur('instituicaoDeEnsino')}
+              value={values.instituicaoDeEnsino}
+            />
+            {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
+              <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
 
-              <View style={{
-                zIndex: 2,
-                width: 158,
-                height: 50,
-                marginBottom: 20,
-                marginLeft: 7,
-                marginTop: 7
-              }}>
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder='Cidade:' placeholderTextColor={'#282B29'}
+              inputMode='text'
+              onChangeText={handleChange('cidadeDaCrianca')}
+              onBlur={handleBlur('cidadeDaCrianca')}
+              value={values.cidadeDaCrianca}
+            />
+            {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
+              <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>}
 
-                <Dropdown_Turno />
-              </View>
-              {(errors.turno && touched.turno) &&
-                <Text style={Css.errors}>{errors.turno}</Text>}
+            <View style={{
+              zIndex: 2,
+              width: 158,
+              height: 50,
+              marginBottom: 20,
+              marginLeft: 7,
+              marginTop: 7
+            }}>
 
-              <MaskedTextInput
-                style={Css.mask_time}
-                mask="99:99"
-                placeholder='Horário:' placeholderTextColor={'#282B29'}
-                keyboardType='numeric'
-                onChangeText={handleChange('horario')}
-                onBlur={handleBlur('horario')}
-                value={values.horario}
-              />
+              <Dropdown_Turno />
+            </View>
+            {(errors.turno && touched.turno) &&
+              <Text style={Css.errors}>{errors.turno}</Text>}
 
-
+            <MaskedTextInput
+              style={Css.mask_time}
+              mask="99:99"
+              placeholder='Horário:' placeholderTextColor={'#282B29'}
+              keyboardType='numeric'
+              onChangeText={handleChange('horario')}
+              onBlur={handleBlur('horario')}
+              value={values.horario}
+            />
 
 
-              {(errors.horario && touched.horario) &&
-                <Text style={Css.errors_2}>{errors.horario}</Text>}
 
 
-            </KeyboardAvoidingView>
+            {(errors.horario && touched.horario) &&
+              <Text style={Css.errors_2}>{errors.horario}</Text>}
 
 
-            <TouchableOpacity style={Css.btn_v1}
-              onPress={() => {
-                handleSubmit();
-                navigation.navigate('DadosPessoais')
-              }}
-              rounded disabled={!isValid}>
-              <Text style={Css.txt}>Salvar</Text>
-            </TouchableOpacity>
+          </KeyboardAvoidingView>
 
-          </SafeAreaView>
-        </ScrollView>
+
+          <TouchableOpacity style={Css.btn_v1}
+            onPress={() => {
+              handleSubmit();
+              /* navigation.navigate('DadosPessoais') */
+            }}
+            rounded disabled={!isValid}>
+            <Text style={Css.txt}>Salvar</Text>
+          </TouchableOpacity>
+
+        </SafeAreaView>
       )}
     </Formik>
   );

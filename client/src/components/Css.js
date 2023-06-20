@@ -83,11 +83,9 @@ inputs:{
     height:49,
     padding:3,
     margin:7,
-    marginLeft: 190,
     borderRadius:4,
     borderWidth:1,
     textAlign:'left',
-    alignItems: 'center'
 },
 inputs_all:{
     width:330,
