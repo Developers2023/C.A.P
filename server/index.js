@@ -1,6 +1,7 @@
 const express = require("express");
 const pessoaController = require("./controller/pessoaController");
 const criancaController = require("./controller/criancaController");
+const vaiculoController= require('./controller/veiculoController')
 
 const server = express();
 server.use(express.json());
@@ -15,13 +16,6 @@ server.put("/pessoa/atualizar/:id",async function(req,res){
     res.send(result)
 });
 
-server.delete("/pessoa/delete/:id",async function(req,res){
-    const result = await pessoaController.delete(req.params.id)
-    res.send({
-        suceso: result > 0 ? true : false
-    })
-});
-
 server.get("/pessoa/buscarTodos",async function(req,res){
     const result = await pessoaController.buscarTodos(req.body)
     res.send(result)
@@ -29,6 +23,10 @@ server.get("/pessoa/buscarTodos",async function(req,res){
 
 server.post("/crianca/cadastrar/:id",async function(req,res){
     const result = await criancaController.cadastrar(req.params.id,req.body)
+    res.send(result)
+})
+server.post("/veiculo/cadastrar/:id",async function(req,res){
+    const result = await vaiculoController.cadastrar(req.params.id,req.body)
     res.send(result)
 })
 

@@ -10,29 +10,17 @@ module.exports = {
     async buscarTodos(body) {
       let data = await pessoaRepository.findAll({
         where: {
-          name: {
+          nome: {
             $like: body.nome
           }
-        }
-      
+        }   
       });
-
       return data
     },
-  
-      async delete(id) {
-        const pessoa = await pessoaRepository.destroy({
-          where: {  id: id},
-          include: { model: enderecoRepository }
-        });
-        return pessoa;
-      },
-
       async atualizar(body, id, res) {
         const pessoa = await pessoaRepository.update({
           where: {id:id},
           nome: body.nome,
-          sexo: body.sexo,
           email: body.email,
           telefone: body.telefone,
           senha: body.senha,
