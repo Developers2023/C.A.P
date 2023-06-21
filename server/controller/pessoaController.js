@@ -46,7 +46,7 @@ module.exports = {
       },
 
     async cadastrar(body) {
-      const pessoa = new Pessoa(body.tipo, body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, body.cidade);   
+      const pessoa = new Pessoa(body.tipo, body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, null, null, body.nascimento);   
       const usuario = await pessoaRepository.create(pessoa);
       
       const endereco = body.endereco;

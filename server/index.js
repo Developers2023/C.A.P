@@ -32,9 +32,9 @@ server.post("/crianca/cadastrar/:id",async function(req,res){
     res.send(result)
 })
 
-server.listen(3000, function(error){
+server.listen(3001, function(error){
     if(error){
     console.log("erro");
     }else{
-        console.log(`server rodando na porta 3000`);
+        console.log(`server rodando na porta 3001`);
     }})

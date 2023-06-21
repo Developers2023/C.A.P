@@ -15,21 +15,30 @@ const pessoa = db.define('pessoa', {
     nome: {
       type: Sequelize.STRING
     },
+    sexo: {
+      type: Sequelize.STRING
+    },
+    email: {
+      type: Sequelize.STRING
+    },
     cpf: {
       type: Sequelize.INTEGER
     },
     telefone: {
       type: Sequelize.INTEGER
     },
-    email: {
-      type: Sequelize.STRING
-    },
-    sexo: {
-      type: Sequelize.STRING
-    },
     senha: {
       type: Sequelize.STRING
     },
+    code: {
+      type: Sequelize.CHAR
+    },
+    cancelado: {
+      type: Sequelize.STRING
+    },
+    nascimento: {
+      type: Sequelize.STRING
+    }
   }, { timestamps: false })
 
   // pessoa.belongsToMany(crianca, {
