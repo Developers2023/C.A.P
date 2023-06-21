@@ -34,7 +34,7 @@ const pessoa = db.define('pessoa', {
       type: Sequelize.CHAR
     },
     cancelado: {
-      type: Sequelize.STRING
+      type: Sequelize.TINYINT
     },
     nascimento: {
       type: Sequelize.STRING
