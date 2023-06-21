@@ -22,14 +22,20 @@ export default function CadastrarCrianca({ navigation }) {
 
   const cadastrarC = (values) => {
     axios
-    .post('/crianca/cadastrar/:id', JSON.stringify(values))
-    .then(response => {
-      console.log(response.data)
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error));
-    });
+      .post('/crianca/cadastrar/:id', JSON.stringify(values))
+      .then(response => {
+        console.log(response.data);
+        return response.data;
+      })
+      .catch((error) => {
+        console.log(JSON.stringify(error));
+      });
   };
+
+  const [nomeC, setNomeC] = useState('');
+  const [instEnsino, setInstEnsino] = useState('');
+  const [cidade, setCidade] = useState('');
+
 
   return (
     <Formik
@@ -57,9 +63,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Nome:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={handleChange('nomeDaCrianca')}
+              onChangeText={[handleChange('nomeDaCrianca'), setNomeC]}
               onBlur={handleBlur('nomeDaCrianca')}
-              value={values.nomeDaCrianca} />
+              value={[values.nomeDaCrianca, nomeC]} />
             {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
               <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
 
@@ -67,9 +73,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Escola:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={handleChange('instituicaoDeEnsino')}
+              onChangeText={[handleChange('instituicaoDeEnsino'), setInstEnsino]}
               onBlur={handleBlur('instituicaoDeEnsino')}
-              value={values.instituicaoDeEnsino}
+              value={[values.instituicaoDeEnsino, instEnsino]}
             />
             {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
               <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
@@ -78,9 +84,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Cidade:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={handleChange('cidadeDaCrianca')}
+              onChangeText={[handleChange('cidadeDaCrianca'), setCidade]}
               onBlur={handleBlur('cidadeDaCrianca')}
-              value={values.cidadeDaCrianca}
+              value={[values.cidadeDaCrianca, cidade]}
             />
             {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
               <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>}
@@ -108,16 +114,10 @@ export default function CadastrarCrianca({ navigation }) {
               onBlur={handleBlur('horario')}
               value={values.horario}
             />
-
-
-
-
             {(errors.horario && touched.horario) &&
               <Text style={Css.errors_2}>{errors.horario}</Text>}
 
-
           </KeyboardAvoidingView>
-
 
           <TouchableOpacity style={Css.btn_v1}
             onPress={() => {

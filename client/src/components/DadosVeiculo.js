@@ -3,7 +3,7 @@ import { KeyboardAvoidingView,View, SafeAreaView,Text, TextInput,TouchableOpacit
 import Css from './Css';
 import { Formik } from 'formik';
 import * as yup from 'yup';
-
+import axios from './apiMenager/Api'
 
 const vehicleInfo=yup.object().shape({
   placa:yup.string().required("Placa é obrigatório"),
@@ -15,13 +15,9 @@ const vehicleInfo=yup.object().shape({
 
 export default function DadosVeiculo(){
  
-  const [cadastro, setCadastro]= useState ({
-    placa: '',
-    ano: '',
-    marca: '',
-    modelo: '',
-    informacoes: ''
-  })
+  const cadastroVeiculo = (valor) => {
+    axios.post('')
+  }
    
     return(
       

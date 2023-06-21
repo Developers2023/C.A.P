@@ -39,16 +39,15 @@ const sighUpValidation = yup.object().shape({
 export default function Cadastro({ navigation }) {
 
   const cadastrar = (values) => {
-   axios.post('pessoa/cadastro', JSON.stringify(values))
-   .then((response) => {
-    console.log(response);
-   })
-   .catch((error) => {
-    console.log(JSON.stringify(error));
-   });
+    axios.post('pessoa/cadastro', JSON.stringify(values))
+      .then((response) => {
+        console.log(response.data)
+        return response.data;
+      })
+      .catch((error) => {
+        console.log(JSON.stringify(error));
+      });
   };
-
-  const [dateString, setDateString] = React.useState('');
 
 
   const [userOpen, setUserOpen] = React.useState(false);
@@ -70,6 +69,14 @@ export default function Cadastro({ navigation }) {
 
   const { handleSubmit, control } = useForm();
 
+
+  const [nome, setNome] = React.useState('');
+  const [sexo, setSexo] = React.useState('');
+  const [email, setEmail] = React.useState('');
+  const [senha, setSenha] = React.useState('');
+  const [cpf, setCpf] = React.useState('');
+  const [telefone, setTelefone] = React.useState('');
+  const [dateString, setDateString] = React.useState('');
 
 
   return (
@@ -94,206 +101,206 @@ export default function Cadastro({ navigation }) {
           alignItems: 'center',
           marginTop: 20,
         }}>
-            <View style={{
-              zIndex: 2,
-              width: 257,
-              height: 47,
-              marginBottom: 20
-            }}>
+          <View style={{
+            zIndex: 2,
+            width: 257,
+            height: 47,
+            marginBottom: 20
+          }}>
+            <Controller
+              name="selecione um usuario"
+              defaultValue=""
+              control={control}
+              render={({ field: { onChange, value } }) => (
+                <DropDownPicker
+                  open={userOpen}
+                  value={userValue}
+                  items={userItems}
+                  setOpen={setUserOpen}
+                  setValue={setUserValue}
+                  setItems={setUserItems}
+                  loading={loading}
+                  style={{ backgroundColor: '#87ceeb', fontWeight: 'bold' }}
+                  translation={{ PLACEHOLDER: 'Selecione um usuário' }}
+                  placeholderStyle={{ fontWeight: 'bold' }}
+                  closeAfterSelecting={true}
+                  selectedItemLabelStyle={{
+                    fontWeight: "bold",
+                    color: '#FFBC16'
+                  }}
+                />
+              )}
+            />
+          </View>
+          <KeyboardAvoidingView style={
+            {
+              zIndex: 1,
+              marginHorizontal: 50
+            }
+          }>
+            <View style={
+              [
+                Css.view_input,
+                Css.view_drop
+              ]
+            }>
+              <TextInput
+                style={[Css.inputs, Css.input_name]}
+                name="nome"
+                onBlur={handleBlur('nome')}
+                placeholder='Nome:' placeholderTextColor={'#282B29'}
+                inputMode='text'
+                autoComplete='name'
+                maxLength={100}
+                returnKeyType='next'
+                onChangeText={[handleChange('nome'), setNome]}
+                value={[values.nome, nome]}
+              />
               <Controller
-                name="selecione um usuario"
+                name="selecione seu sexo"
                 defaultValue=""
                 control={control}
-                render={({ field: { onChange, value } }) => (
+                render={({ field: { onchange, value } }) => (
                   <DropDownPicker
-                    open={userOpen}
-                    value={userValue}
-                    items={userItems}
-                    setOpen={setUserOpen}
-                    setValue={setUserValue}
-                    setItems={setUserItems}
-                    loading={loading}
-                    style={{ backgroundColor: '#87ceeb', fontWeight: 'bold' }}
-                    translation={{ PLACEHOLDER: 'Selecione um usuário' }}
+                    open={open}
+                    value={sexValue}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={[setsexValue, setSexo]}
+                    setItems={setItems}
+                    style={{
+                      backgroundColor: '#87ceeb',
+                      fontWeight: 'bold',
+                      position: 'relative',
+                      top: 6,
+                      width: 90
+                    }}
+                    translation={{ PLACEHOLDER: 'Sexo' }}
                     placeholderStyle={{ fontWeight: 'bold' }}
                     closeAfterSelecting={true}
                     selectedItemLabelStyle={{
                       fontWeight: "bold",
-                      color: '#FFBC16'
+                      color: '#FFBC16',
                     }}
+
                   />
                 )}
               />
+
             </View>
-            <KeyboardAvoidingView style={
-              {
-                zIndex: 1,
-                marginHorizontal: 50
-              }
-            }>
-              <View style={
-                [
-                  Css.view_input,
-                  Css.view_drop
-                ]
-              }>
-                <TextInput
-                  style={[Css.inputs, Css.input_name]}
-                  name="nome"
-                  onBlur={handleBlur('nome')}
-                  placeholder='Nome:' placeholderTextColor={'#282B29'}
-                  inputMode='text'
-                  autoComplete='name'
-                  maxLength={100}
-                  returnKeyType='next'
-                  onChangeText={handleChange('nome')}
-                  value={values.nome}
-                />
-                <Controller
-                  name="selecione um usuario"
-                  defaultValue=""
-                  control={control}
-                  render={({ field: { onchange, value } }) => (
-                    <DropDownPicker
-                      open={open}
-                      value={sexValue}
-                      items={items}
-                      setOpen={setOpen}
-                      setValue={setsexValue}
-                      setItems={setItems}
-                      style={{
-                        backgroundColor: '#87ceeb',
-                        fontWeight: 'bold',
-                        position: 'relative',
-                        top: 6,
-                        width: 90
-                      }}
-                      translation={{ PLACEHOLDER: 'Sexo' }}
-                      placeholderStyle={{ fontWeight: 'bold' }}
-                      closeAfterSelecting={true}
-                      selectedItemLabelStyle={{
-                        fontWeight: "bold",
-                        color: '#FFBC16',
-                      }}
-
-                    />
-                  )}
-                />
-
-              </View>
-              {(errors.nome && touched.nome) &&
-                <Text style={Css.errors}>{errors.nome}</Text>
-              }
-              <Text style={{
+            {(errors.nome && touched.nome) &&
+              <Text style={Css.errors}>{errors.nome}</Text>
+            }
+            <Text style={{
+              alignSelf: 'center',
+            }}>Selecione sua data de nascimento</Text>
+            <DatePicker
+              style={{
+                height: 190,
+                width: 300,
                 alignSelf: 'center',
-              }}>Selecione sua data de nascimento</Text>
-              <DatePicker
-                style={{
-                  height: 190,
-                  width: 300,
-                  alignSelf: 'center',
-                  borderRadius: 10
-                }}
-                selected='2023/06/18'
-                mode="calendar"
-                onSelectedChange={date => {
-                  [
-                    setDateString(date),
-                    handleChange('dataDeNascimento')
-                  ]
-                }}
-                onBlur={handleBlur('dataDeNascimento')}
-                value={values.dataDeNascimento}
-              />
-              {
-                (errors.dataDeNascimento && touched.dataDeNascimento) &&
-                <Text style={Css.errors}>{errors.dataDeNascimento}</Text>
-              }
-
-              <TextInput style={[Css.inputs, Css.inputs_all]}
-                name="email"
-                onBlur={handleBlur('email')}
-                placeholder='E-mail:' placeholderTextColor={'#282B29'}
-                inputMode='email' keyboardType='email-address'
-                autoComplete='email'
-                returnKeyType='next'
-                onChangeText={handleChange('email')}
-                value={values.email}
-              />
-              {(errors.email && touched.email) &&
-                <Text style={Css.errors}>{errors.email}</Text>
-              }
-
-              <MaskedTextInput style={Css.mask}
-                name="cpf"
-                mask='999.999.999-99'
-                onBlur={handleBlur('cpf')}
-                placeholder='CPF:'
-                placeholderTextColor={'#282B29'}
-                returnKeyType='next'
-                keyboardType='numeric'
-                value={values.cpf}
-                onChangeText={handleChange('cpf')}
-              />
-              {(errors.cpf && touched.cpf) &&
-                <Text style={Css.errors}>{errors.cpf}</Text>
-              }
-
-              <MaskedTextInput
-                style={Css.mask}
-                name="tel"
-                mask="(+99) 99 99999-9999"
-                onBlur={handleBlur('tel')}
-                placeholder='Celular:'
-                placeholderTextColor={'#282B29'}
-                returnKeyType='next'
-                autoComplete='tel'
-                keyboardType='numeric'
-                value={values.tel}
-                onChangeText={handleChange('tel')}
-              />
-              {(errors.tel && touched.tel) &&
-                <Text style={Css.errors}>{errors.tel}</Text>
-              }
-
-              {(errors.cep && touched.cep) &&
-                <Text style={Css.errors}>{errors.cep}</Text>
-              }
-
-              <TextInput style={[Css.inputs, Css.inputs_all]}
-                name="senha"
-                onBlur={handleBlur('senha')}
-                placeholder='Senha:' placeholderTextColor={'#282B29'}
-                inputMode='text'
-                secureTextEntry={true}
-                returnKeyType='next'
-                onChangeText={handleChange('senha')}
-                value={values.senha}
-              />
-              {(errors.senha && touched.senha) &&
-                <Text style={Css.errors_senha}>{errors.senha}</Text>
-              }
-
-            </KeyboardAvoidingView>
-
-            <TouchableOpacity
-              style={Css.btn_v1}
-              onPress={() => {
+                borderRadius: 10
+              }}
+              selected='2023/06/18'
+              mode="calendar"
+              onSelectedChange={date => {
                 [
-                  handleSubmit(),
-                  cadastrar()
+                  setDateString(date),
+                  handleChange('dataDeNascimento')
                 ]
-              }
-              }
-              rounded disabled={isValid}
-            >
-              <Text style={Css.txt}>Cadastrar</Text>
-            </TouchableOpacity>
+              }}
+              onBlur={handleBlur('dataDeNascimento')}
+              value={values.dataDeNascimento}
+            />
+            {
+              (errors.dataDeNascimento && touched.dataDeNascimento) &&
+              <Text style={Css.errors}>{errors.dataDeNascimento}</Text>
+            }
 
-            <TouchableOpacity style={Css.btn_v1}
-              onPress={() => navigation.goBack()}>
-              <Text style={Css.txt}>Voltar</Text>
-            </TouchableOpacity>
+            <TextInput style={[Css.inputs, Css.inputs_all]}
+              name="email"
+              onBlur={handleBlur('email')}
+              placeholder='E-mail:' placeholderTextColor={'#282B29'}
+              inputMode='email' keyboardType='email-address'
+              autoComplete='email'
+              returnKeyType='next'
+              onChangeText={[handleChange('email'), setEmail]}
+              value={[values.email, email]}
+            />
+            {(errors.email && touched.email) &&
+              <Text style={Css.errors}>{errors.email}</Text>
+            }
+
+            <MaskedTextInput style={Css.mask}
+              name="cpf"
+              mask='999.999.999-99'
+              onBlur={handleBlur('cpf')}
+              placeholder='CPF:'
+              placeholderTextColor={'#282B29'}
+              returnKeyType='next'
+              keyboardType='numeric'
+              value={[values.cpf, cpf]}
+              onChangeText={[handleChange('cpf', setCpf)]}
+            />
+            {(errors.cpf && touched.cpf) &&
+              <Text style={Css.errors}>{errors.cpf}</Text>
+            }
+
+            <MaskedTextInput
+              style={Css.mask}
+              name="tel"
+              mask="(+99) 99 99999-9999"
+              onBlur={handleBlur('tel')}
+              placeholder='Celular:'
+              placeholderTextColor={'#282B29'}
+              returnKeyType='next'
+              autoComplete='tel'
+              keyboardType='numeric'
+              value={[values.tel, telefone]}
+              onChangeText={[handleChange('tel'), setTelefone]}
+            />
+            {(errors.tel && touched.tel) &&
+              <Text style={Css.errors}>{errors.tel}</Text>
+            }
+
+            {(errors.cep && touched.cep) &&
+              <Text style={Css.errors}>{errors.cep}</Text>
+            }
+
+            <TextInput style={[Css.inputs, Css.inputs_all]}
+              name="senha"
+              onBlur={handleBlur('senha')}
+              placeholder='Senha:' placeholderTextColor={'#282B29'}
+              inputMode='text'
+              secureTextEntry={true}
+              returnKeyType='next'
+              onChangeText={[handleChange('senha'), setSenha]}
+              value={[values.senha, senha]}
+            />
+            {(errors.senha && touched.senha) &&
+              <Text style={Css.errors_senha}>{errors.senha}</Text>
+            }
+
+          </KeyboardAvoidingView>
+
+          <TouchableOpacity
+            style={Css.btn_v1}
+            onPress={() => {
+              [
+                handleSubmit(),
+                cadastrar()
+              ]
+            }
+            }
+            rounded disabled={isValid}
+          >
+            <Text style={Css.txt}>Cadastrar</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={Css.btn_v1}
+            onPress={() => navigation.goBack()}>
+            <Text style={Css.txt}>Voltar</Text>
+          </TouchableOpacity>
         </SafeAreaView>
       )}
     </Formik>
