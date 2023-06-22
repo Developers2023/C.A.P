@@ -13,12 +13,25 @@ const vehicleInfo=yup.object().shape({
 })
 
 
-export default function DadosVeiculo(){
+export default function DadosVeiculo({navigation}){
  
   const cadastroVeiculo = (valor) => {
-    axios.post('')
+    axios.post('/veiculo/cadastrar/:id', JSON.stringify(valor))
+    .then(response => {
+      console.log(response.data);
+      return response.data
+    })
+    .catch(error => {
+      console.log(JSON.stringify(error));
+    })
   }
    
+
+  const [placa, setPlaca] = useState('')
+  const [ano, setAno] = useState('')
+  const [marca, setMarca] = useState('')
+  const [modelo, setModelo] = useState('')
+
     return(
       
     <Formik
@@ -30,7 +43,7 @@ export default function DadosVeiculo(){
     }}
     validateOnMount={true}
     validationSchema={vehicleInfo}
-    onSubmit={values=> console.log(values)}
+    onSubmit={cadastroVeiculo}
     >
       {({handleBlur,handleChange,handleSubmit,values,touched,errors,isValid})=>(
       <SafeAreaView style={{flex:1,
@@ -46,8 +59,8 @@ export default function DadosVeiculo(){
                 placeholder='Placa: ' placeholderTextColor={'#000'}
                   inputMode='text'  autoCapitalize='characters'
                   onBlur={handleBlur('placa')}
-                  value={cadastro.placa}
-                  onChangeText={setCadastro}
+                  value={values.placa}
+                  onChangeText={[handleChange('placa'), setPlaca]}
                   />
 
                   <TextInput 
@@ -56,7 +69,7 @@ export default function DadosVeiculo(){
                 inputMode='text'
                 onBlur={handleBlur('ano')}
                 value={values.ano}
-                onChangeText={handleChange('ano')}
+                onChangeText={[handleChange('ano'), setAno]}
                  />
               
             </View>
@@ -70,7 +83,7 @@ export default function DadosVeiculo(){
             style={[Css.inputs,Css.inputs_all]}
             placeholder='Marca: ' placeholderTextColor={'#000'}
             inputMode='text'
-            onChangeText={handleChange('marca')}
+            onChangeText={[handleChange('marca'), setMarca]}
             onBlur={handleBlur('marca')}
             value={values.marca} />
             {(errors.marca && touched.marca) &&
@@ -79,7 +92,7 @@ export default function DadosVeiculo(){
           <TextInput style={[Css.inputs,Css.inputs_all]}
            placeholder='Modelo: ' placeholderTextColor={'#000'}
             inputMode='text'
-            onChangeText={handleChange('modelo')}
+            onChangeText={[handleChange('modelo'), setModelo]}
             onBlur={handleBlur('modelo')}
             value={values.modelo}/>
             {(errors.modelo && touched.modelo) &&

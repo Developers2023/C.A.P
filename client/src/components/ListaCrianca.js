@@ -11,42 +11,42 @@ export default () => {
     const [searchText, setSearchText] = useState('');
     const [lista, setLista] = useState(CONTENT);
 
-    useEffect (() => {
-        if(searchText === ''){
+    useEffect(() => {
+        if (searchText === '') {
             setLista(CONTENT)
         } else {
-            setLista(     
-                CONTENT.filter((item) => 
-                        item.name.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1)
-                );
+            setLista(
+                CONTENT.filter((item) =>
+                    item.name.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1)
+            );
         }
     }, [searchText]);
 
     return (
         <SafeAreaView>
-            <View style ={Css.searchArea}>
-            <SearchBar
-            placeholder="Pesquise aqui..."
-            style = {Css.search}
-            value = {searchText}
-            onChangeText={(t) => setSearchText(t)}
-            />
+            <View style={Css.searchArea}>
+                <SearchBar
+                    placeholder="Pesquise aqui..."
+                    style={Css.search}
+                    value={searchText}
+                    onChangeText={(t) => setSearchText(t)}
+                />
             </View>
-            <Text style = {Css.txtCria}>
+            <Text style={Css.txtCria}>
                 Lista de crianças
             </Text>
-    <FlatList
-    data={lista}    
-    style = {Css.list}
-    renderItem={({item}) => <ListItem data={item} title={item.name}/>}
-    keyExtractor={(item) => item.id}
-    />
+            <FlatList
+                data={lista}
+                style={Css.list}
+                renderItem={({ item }) => <ListItem data={item} title={item.name} />}
+                keyExtractor={(item) => item.id}
+            />
 
-    
-       
-   
 
-    </SafeAreaView>
+
+
+
+        </SafeAreaView>
     );
 
 
