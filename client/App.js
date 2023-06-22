@@ -12,7 +12,7 @@ import EnviarAlertas from './src/components/EnviarAlertas';
 import Cadastro from './src/components/Cadastro';
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
-
+import Endereco from './src/components/endereco/Endereco';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -84,8 +84,9 @@ export default () => {
     <NavigationContainer>
       <Stack.Navigator>
 
-        <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
+        <Stack.Screen name='Endereco' component={Endereco}/>
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Lista de criancas' component={Cadastro} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />

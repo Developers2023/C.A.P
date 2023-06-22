@@ -9,10 +9,10 @@ const vehicleValidation = yup.object().shape({
     Cidade: yup.string().required('O campo cidade é obrigatório'),
     Cep: yup.string().required('O campo CEP é obrigatório'),
     Numero: yup.string().required('inserir o numero da residência é obrigatório'),
-    logradouro: yup.string().required('Informar o nome da rua é obrigatório')
+    Logradouro: yup.string().required('Informar o nome da rua é obrigatório')
 })
 
-export default ({ navigation }) => {
+export default function Endereco({ navigation }) {
 
     const cadastrarEndereco = (value) => {
         axios.post('pessoa/cadastro', JSON.stringify(value))
@@ -37,7 +37,7 @@ export default ({ navigation }) => {
                     Cidade: '',
                     Cep: '',
                     Numero: '',
-                    logradouro: '',
+                    Logradouro: '',
                 }
             }
             validateOnMount={true}
@@ -46,9 +46,16 @@ export default ({ navigation }) => {
         >
             {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
                 <SafeAreaView>
-                    <View>
+                    <View
+                        style={{
+                            flex: 1,
+                            alignItems: 'center',
+                            marginTop: 100
+                        }}
+                    >
                         <KeyboardAvoidingView>
                             <TextInput
+                                style={[Css.inputs, Css.inputs_all]}
                                 placeholder="Cidade: "
                                 inputMode="text"
                                 onBlur={handleBlur('cidade')}
@@ -60,6 +67,7 @@ export default ({ navigation }) => {
                             }
 
                             <TextInput
+                                style={[Css.inputs, Css.inputs_all]}
                                 placeholder="Cep: "
                                 inputMode="numeric"
                                 onChangeText={[handleChange('Cep'), setCep]}
@@ -71,6 +79,7 @@ export default ({ navigation }) => {
                             }
 
                             <TextInput
+                                style={[Css.inputs, Css.inputs_all]}
                                 placeholder="Numero: "
                                 inputMode="numeric"
                                 onChangeText={[handleChange('Numero'), setNumero]}
@@ -82,33 +91,41 @@ export default ({ navigation }) => {
                             }
 
                             <TextInput
+                                style={[Css.inputs, Css.inputs_all]}
                                 placeholder="Nome da rua"
                                 inputMode="text"
                                 onChangeText={[handleChange('logradouro'), setLogradouro]}
                                 onBlur={handleBlur('logradouro')}
-                                value={values.logradouro}
+                                value={values.Logradouro}
                             />
-                            {(errors.logradouro && touched.logradouro) &&
-                                <Text style={Css.errors}>{errors.logradouro}</Text>
+                            {(errors.Logradouro && touched.Logradouro) &&
+                                <Text style={Css.errors}>{errors.Logradouro}</Text>
                             }
-
-                            <TouchableOpacity
-                                onPress={
-                                    handleSubmit()
-                                }
-                                rounded desable={!isValid}
+                            <View
+                            style = {{
+                                position: 'relative',
+                                left: 35
+                            }}
                             >
-                                <Text>Enviar</Text>
-                            </TouchableOpacity>
+                                <TouchableOpacity
+                                    style={Css.btn_v1}
+                                    onPress={() => {
+                                        handleSubmit();
+                                    }}
+                                    rounded desable={!isValid}
+                                >
+                                    <Text>Enviar</Text>
+                                </TouchableOpacity>
 
-                            <TouchableOpacity
-                                onPress={
-                                    () => navigation.navigate('Cadastro')
-                                }
-                            >
-                                <Text>Voltar</Text>
-                            </TouchableOpacity>
-
+                                <TouchableOpacity
+                                    style={Css.btn_v1}
+                                    onPress={
+                                        () => navigation.navigate('Cadastro')
+                                    }
+                                >
+                                    <Text>Voltar</Text>
+                                </TouchableOpacity>
+                            </View>
                         </KeyboardAvoidingView>
                     </View>
                 </SafeAreaView>
