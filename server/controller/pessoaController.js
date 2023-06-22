@@ -2,8 +2,6 @@ const Pessoa = require("../entity/Pessoa");
 const Endereco = require("../entity/Endereco");
 const pessoaRepository = require("../repos/pessoa");
 const enderecoRepository = require("../repos/endereco");
-const pessoa = require("../repos/pessoa");
-
 
 module.exports = {
 

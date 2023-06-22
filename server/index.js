@@ -26,7 +26,7 @@ server.post("/crianca/cadastrar/:id",async function(req,res){
     res.send(result)
 })
 
-server.patch("/crianca/aualizar/:id",async function(req,res){
+server.patch("/crianca/atualizar/:id",async function(req,res){
     const result = await criancaController.cadastrar(req.params.id,req.body)
     res.send(result)
 })

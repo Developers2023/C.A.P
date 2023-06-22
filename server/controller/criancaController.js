@@ -9,7 +9,7 @@ const pessoaRepository = require("../repos/pessoa")
 module.exports = {
     async cadastrar(body,id){
         const pessoa = await pessoaRepository.findOne(id)
-        const crianca = new Crianca(body.nome, body.sexo, body.instituicao, body.nascimento, body.periodo, pessoa.enderecoId)
+        const crianca = new Crianca(body.nome, body.sexo, body.instituicao, body.nascimento, body.periodo, 2)
         const response = await criancaRepository.create(crianca)
 
         const result = new CriancaPessoa(response.id, id)
