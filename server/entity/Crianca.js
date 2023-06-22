@@ -1,10 +1,11 @@
 class Crianca{
-    constructor(nome, sexo, idade, pessoaId, escolaId) {
-      this.nome = nome;
-      this.sexo = sexo;
-      this.idade = idade;
-      this.pessoaId = pessoaId
-      this.escolaId = escolaId
+    constructor(nome, sexo, instituicao, nascimento, periodo, enderecoId) {
+      this.nome = nome
+      this.sexo = sexo
+      this.instituicao = instituicao
+      this.nascimento = nascimento
+      this.periodo = periodo
+      this.enderecoId = enderecoId
     }
 }
 
