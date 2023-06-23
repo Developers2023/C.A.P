@@ -22,11 +22,14 @@ module.exports = {
           email: body.email,
           telefone: body.telefone,
           senha: body.senha,
-          cidade: body.cidade,
         },
         {
           where: {id:id},
           include: { model: enderecoRepository }, 
+          logradouro: body.logradouro,
+          numero: body.numero,
+          cidade: body.cidade,
+          cep: body.cep
         });
         return res.json(pessoa);
       },

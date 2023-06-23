@@ -11,6 +11,8 @@ server.post("/pessoa/cadastrar",async function(req,res){
     res.send(result)
 });
 
+
+
 server.put("/pessoa/atualizar/:id",async function(req,res){
     const result = await pessoaController.atualizar(req.params.id, req.body)
     res.send(result)
