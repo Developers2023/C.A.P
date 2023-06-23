@@ -2,18 +2,18 @@ const Pessoa = require("../entity/Pessoa");
 const Endereco = require("../entity/Endereco");
 const pessoaRepository = require("../repos/pessoa");
 const enderecoRepository = require("../repos/endereco");
-
+const Sequelize = require('sequelize')
 module.exports = {
 
     async buscarTodos(body) {
+      const Op = Sequelize.Op;
       let data = await pessoaRepository.findAll({
         where: {
-          nome: {
-            $like: body.nome
+          nome: { [Op.like]: `${body.nome}%` },
           }
         }   
-      });
-      return data? data : ''
+      );
+      return data
     },
       async atualizar(body, id, res) {
         const pessoa = await pessoaRepository.update({
@@ -22,11 +22,14 @@ module.exports = {
           email: body.email,
           telefone: body.telefone,
           senha: body.senha,
-          cidade: body.cidade,
         },
         {
-          where: {id:id},
+          where: {pessoaId:id},
           include: { model: enderecoRepository }, 
+          logradouro: body.logradouro,
+          numero: body.numero,
+          cidade: body.cidade,
+          cep: body.cep
         });
         return res.json(pessoa);
       },
@@ -40,5 +43,10 @@ module.exports = {
       await enderecoRepository.create(enderecoEntity);
       
       return usuario;
+    },
+
+    async deletar(id){
+      const result = await pessoaRepository.update({where: {id:1}},{cancelado: id})
+      return result
     }
   }
