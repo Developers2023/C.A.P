@@ -161,7 +161,7 @@ btn_v2:{
     borderColor:'#000000',
     borderWidth:1,
     borderRadius:25,
-    margin:7
+    margin:7,
 },
 title:{
     color:'#FFBC16',

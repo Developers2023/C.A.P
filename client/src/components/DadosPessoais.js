@@ -15,7 +15,7 @@ const editValidation = yup.object().shape({
 
   endereco: yup.string().required('Endereço (nome da rua) é obrigatório'),
 
-  complemento: yup.string().required('Complemento é obrigatório'),
+  numero: yup.string().required('Complemento é obrigatório'),
 
   cidade: yup.string().required('Nome da cidade/estado é obrigatório'),
 
@@ -37,13 +37,15 @@ export default function DadosPessoais({ navigation }) {
   const nome = 'Paulo Santos Santiago';
   const sexo = 'Masc';
   const cod = 887917;
+  const data = '02/02/2002'
   const cpf = '5552223344';
   const email = 'pauloconvertidopraJesus@gmail.com';
-  const cel = '40028922';
+  const cel = '551140028922';
   const endereco = 'Rua da Natividade Belas Pragas';
   const numero = 48;
-  const cidade = 'Cidade: São Paulo/SP';
+  const cidade = 'São Paulo/SP';
   const cep = '02548895';
+  const complemento = 'apto 66'
 
 
 
@@ -95,12 +97,12 @@ export default function DadosPessoais({ navigation }) {
                 
                 <MaskedTextInput
                 style={Css.mask_cep}
-                name="cel"
+                name="data"
                 mask="99/99/9999"
-                onChangeText={handleChange('cel')}
-                onBlur={handleBlur('cel')}
+                onChangeText={handleChange('data')}
+                onBlur={handleBlur('data')}
                 value={null}
-                placeholder='Data: ' placeholderTextColor={'#000'}
+                placeholder={'Data de nasc: '+ data} placeholderTextColor={'#000'}
                 inputMode='numeric'
                 keyboardType='numeric' />
 
@@ -128,7 +130,7 @@ export default function DadosPessoais({ navigation }) {
                 onChangeText={handleChange('cel')}
                 onBlur={handleBlur('cel')}
                 value={values.cel}
-                placeholder='Celular: ' placeholderTextColor={'#000'}
+                placeholder={'Celular: ' + cel} placeholderTextColor={'#000'}
                 inputMode='numeric' />
 
               <View style={Css.view_input}>
@@ -139,17 +141,19 @@ export default function DadosPessoais({ navigation }) {
                   onChangeText={handleChange('endereco')}
                   onBlur={handleBlur('endereco')}
                   value={values.endereco}
-                  placeholder='Endereço:' placeholderTextColor={'#282B29'}
+                  placeholder={'Endereço:'+ endereco} placeholderTextColor={'#000'}
                   returnKeyType='next'
                   autoComplete='street-address' />
 
+               <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:302}}/>
                 <TextInput
                   style={[Css.inputs, Css.input_number]}
-                  name="complemento"
-                  onChangeText={handleChange('complemento')}
-                  onBlur={handleBlur('complemento')}
-                  value={values.complemento}
-                  placeholder='Nº:' placeholderTextColor={'#282B29'}
+                  name="numero"
+                  onChangeText={handleChange('numero')}
+                  onBlur={handleBlur('numero')}
+                  value={values.numero}
+                  placeholder={'Nº:'+ numero} placeholderTextColor={'#000'}
                   inputMode='text'
                   returnKeyType='next' />
 
@@ -171,7 +175,7 @@ export default function DadosPessoais({ navigation }) {
                   onBlur={handleBlur('cidade')}
                   value={values.cidade}
                   style={[Css.inputs, Css.input_city]}
-                  placeholder='Cidade:' placeholderTextColor={'#282B29'} inputMode='text'
+                  placeholder={'Cidade:' + cidade} placeholderTextColor={'#000'} inputMode='text'
                   returnKeyType='next'
                   maxLength={50} />
 
@@ -184,7 +188,7 @@ export default function DadosPessoais({ navigation }) {
                   onBlur={handleBlur('cep')}
                   value={values.cep}
                   style={Css.mask_cep}
-                  placeholder='CEP:' placeholderTextColor={'#282B29'}
+                  placeholder={'CEP:'+ cep} placeholderTextColor={'#000'}
                   keyboardType='numeric'
                   returnKeyType='next'
                   autoComplete='postal-code' />
@@ -197,9 +201,21 @@ export default function DadosPessoais({ navigation }) {
               {(errors.cep && touched.cep) &&
                 <Text style={Css.errors}>{errors.cep}</Text>
               }
+
+              <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:481,zIndex:1,left:302}}/>
+              <TextInput style={[Css.inputs, Css.inputs_all,]}
+                name="complemento"
+                onChangeText={handleChange('complemento')}
+                onBlur={handleBlur('complemento')}
+                value={values.complemento}
+                placeholder={'Complemento: ' + complemento } placeholderTextColor={'#000'} 
+                inputMode='email' keyboardType='email-address'
+                
+              />
  
               <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:482,zIndex:1,left:303}}/>
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:545,zIndex:1,left:303}}/>
               <TextInput style={[Css.inputs, Css.inputs_all]}
                 name="senha"
                 onChangeText={handleChange('senha')}
