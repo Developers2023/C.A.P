@@ -10,7 +10,7 @@ const vehicleValidation = yup.object().shape({
     Cep: yup.string().required('O campo CEP é obrigatório'),
     Numero: yup.string().required('inserir o numero da residência é obrigatório'),
     Logradouro: yup.string().required('Informar o nome da rua é obrigatório')
-})
+});
 
 export default function Endereco({ navigation }) {
 
@@ -92,7 +92,7 @@ export default function Endereco({ navigation }) {
 
                             <TextInput
                                 style={[Css.inputs, Css.inputs_all]}
-                                placeholder="Nome da rua"
+                                placeholder="Nome da rua: "
                                 inputMode="text"
                                 onChangeText={[handleChange('logradouro'), setLogradouro]}
                                 onBlur={handleBlur('logradouro')}
@@ -101,11 +101,12 @@ export default function Endereco({ navigation }) {
                             {(errors.Logradouro && touched.Logradouro) &&
                                 <Text style={Css.errors}>{errors.Logradouro}</Text>
                             }
+
                             <View
-                            style = {{
-                                position: 'relative',
-                                left: 35
-                            }}
+                                style={{
+                                    position: 'relative',
+                                    left: 35
+                                }}
                             >
                                 <TouchableOpacity
                                     style={Css.btn_v1}
@@ -120,7 +121,7 @@ export default function Endereco({ navigation }) {
                                 <TouchableOpacity
                                     style={Css.btn_v1}
                                     onPress={
-                                        () => navigation.navigate('Cadastro')
+                                        () => navigation.navigate('Lista de criancas')
                                     }
                                 >
                                     <Text>Voltar</Text>

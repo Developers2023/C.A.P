@@ -31,9 +31,10 @@ const sighUpValidation = yup.object().shape({
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       "A senha deve conter 8 caracteres, incluindo: uma letra maiúscula, uma minúscula, um número e um caracter especial"),
 
-  confirmarSenha: yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')], 'As senhas não correspondem'),
+  dataDeNascimento: yup.string().required('A data de nascimento é obrigatória'),
 
-  dataDeNascimento: yup.string().required('A data de nascimento é obrigatória')
+  Numero: yup.string().required('inserir o numero da residência é obrigatório'),
+
 });
 
 export default function Cadastro({ navigation }) {
@@ -77,6 +78,12 @@ export default function Cadastro({ navigation }) {
   const [cpf, setCpf] = React.useState('');
   const [telefone, setTelefone] = React.useState('');
   const [dateString, setDateString] = React.useState('');
+
+
+  const [cidade, setCidade] = React.useState('');
+  const [cep, setCep] = React.useState('');
+  const [numero, setNumero] = React.useState('');
+  const [logradouro, setLogradouro] = React.useState('');
 
 
   return (
@@ -279,6 +286,54 @@ export default function Cadastro({ navigation }) {
             />
             {(errors.senha && touched.senha) &&
               <Text style={Css.errors_senha}>{errors.senha}</Text>
+            }
+
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder="Cidade: "
+              inputMode="text"
+              onBlur={handleBlur('cidade')}
+              onChangeText={[handleChange('Cidade'), setCidade]}
+              value={values.Cidade}
+            />
+            {(errors.Cidade && touched.Cidade) &&
+              <Text style={Css.errors}>{errors.Cidade}</Text>
+            }
+
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder="Cep: "
+              inputMode="numeric"
+              onChangeText={[handleChange('Cep'), setCep]}
+              onBlur={handleBlur('Cep')}
+              value={values.Cep}
+            />
+            {(errors.Cep && touched.Cep) &&
+              <Text style={Css.errors}>{errors.Cep}</Text>
+            }
+
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder="Numero: "
+              inputMode="numeric"
+              onChangeText={[handleChange('Numero'), setNumero]}
+              onBlur={handleBlur('Numero')}
+              value={values.Numero}
+            />
+            {(errors.Numero && touched.Numero) &&
+              <Text style={Css.errors}>{errors.Numero}</Text>
+            }
+
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder="Nome da rua"
+              inputMode="text"
+              onChangeText={[handleChange('logradouro'), setLogradouro]}
+              onBlur={handleBlur('logradouro')}
+              value={values.Logradouro}
+            />
+            {(errors.Logradouro && touched.Logradouro) &&
+              <Text style={Css.errors}>{errors.Logradouro}</Text>
             }
 
           </KeyboardAvoidingView>
