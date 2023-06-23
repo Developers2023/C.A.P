@@ -42,7 +42,7 @@ export default function CadastrarCrianca({ navigation }) {
       initialValues={{
         nomeDaCrianca: '',
         instituicaoDeEnsino: '',
-        cidadeDaCrianca: '',
+        sexo: '',
         horario: ''
       }}
       validationOnMount={true}
