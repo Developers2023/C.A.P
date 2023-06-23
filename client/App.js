@@ -84,9 +84,8 @@ export default () => {
     <NavigationContainer>
       <Stack.Navigator>
 
-        <Stack.Screen name='Endereço' component={Endereco}/>
-        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='Lista de criancas' component={Cadastro} />
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />

@@ -5,7 +5,7 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
-import DatePicker from 'react-native-modern-datepicker';
+import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import axios from './apiMenager/Api'
 import { Controller, useForm } from 'react-hook-form';
 
@@ -70,20 +70,23 @@ export default function Cadastro({ navigation }) {
 
   const { handleSubmit, control } = useForm();
 
-
-  const [nome, setNome] = React.useState('');
-  const [sexo, setSexo] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [senha, setSenha] = React.useState('');
-  const [cpf, setCpf] = React.useState('');
-  const [telefone, setTelefone] = React.useState('');
-  const [dateString, setDateString] = React.useState('');
+  const [date, setDate] = React.useState(new Date(0));
 
 
-  const [cidade, setCidade] = React.useState('');
-  const [cep, setCep] = React.useState('');
-  const [numero, setNumero] = React.useState('');
-  const [logradouro, setLogradouro] = React.useState('');
+  const onChange = (event, selectedDate) => {
+    selectedDate && setDate(selectedDate)
+  }
+  const modoMostrar = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChange,
+      display: 'calendar',
+      mode: currentMode,
+    })
+  }
+  const mostrarDate = () => {
+    modoMostrar('date')
+  }
 
 
   return (
@@ -95,7 +98,11 @@ export default function Cadastro({ navigation }) {
         email: '',
         senha: '',
         cpf: '',
-        telefone: ''
+        telefone: '',
+        cidade: '',
+        cep: '',
+        numero: '',
+        logradouro: '',
       }}
       validateOnMount={true}
       validationSchema={sighUpValidation}
@@ -105,8 +112,9 @@ export default function Cadastro({ navigation }) {
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
         <SafeAreaView style={{
           flex: 1,
-          alignItems: 'center',
-          marginTop: 20,
+          flexDirection: 'column',
+          marginTop: 40,
+          marginLeft: -10
         }}>
           <View style={{
             zIndex: 2,
@@ -127,7 +135,12 @@ export default function Cadastro({ navigation }) {
                   setValue={setUserValue}
                   setItems={setUserItems}
                   loading={loading}
-                  style={{ backgroundColor: '#87ceeb', fontWeight: 'bold' }}
+                  style={{
+                    backgroundColor: '#87ceeb',
+                    fontWeight: 'bold',
+                    position: 'relative',
+                    left: 83
+                  }}
                   translation={{ PLACEHOLDER: 'Selecione um usuário' }}
                   placeholderStyle={{ fontWeight: 'bold' }}
                   closeAfterSelecting={true}
@@ -145,12 +158,7 @@ export default function Cadastro({ navigation }) {
               marginHorizontal: 50
             }
           }>
-            <View style={
-              [
-                Css.view_input,
-                Css.view_drop
-              ]
-            }>
+            <View style={[Css.view_input, Css.view_drop]}>
               <TextInput
                 style={[Css.inputs, Css.input_name]}
                 name="nome"
@@ -160,8 +168,8 @@ export default function Cadastro({ navigation }) {
                 autoComplete='name'
                 maxLength={100}
                 returnKeyType='next'
-                onChangeText={[handleChange('nome'), setNome]}
-                value={[values.nome, nome]}
+                onChangeText={handleChange('nome')}
+                value={values.nome}
               />
               <Controller
                 name="selecione seu sexo"
@@ -173,7 +181,7 @@ export default function Cadastro({ navigation }) {
                     value={sexValue}
                     items={items}
                     setOpen={setOpen}
-                    setValue={[setsexValue, setSexo]}
+                    setValue={setsexValue}
                     setItems={setItems}
                     style={{
                       backgroundColor: '#87ceeb',
@@ -198,31 +206,14 @@ export default function Cadastro({ navigation }) {
             {(errors.nome && touched.nome) &&
               <Text style={Css.errors}>{errors.nome}</Text>
             }
-            <Text style={{
-              alignSelf: 'center',
-            }}>Selecione sua data de nascimento</Text>
-            <DatePicker
-              style={{
-                height: 190,
-                width: 300,
-                alignSelf: 'center',
-                borderRadius: 10
-              }}
-              selected='2023/06/18'
-              mode="calendar"
-              onSelectedChange={date => {
-                [
-                  setDateString(date),
-                  handleChange('dataDeNascimento')
-                ]
-              }}
-              onBlur={handleBlur('dataDeNascimento')}
-              value={values.dataDeNascimento}
-            />
-            {
-              (errors.dataDeNascimento && touched.dataDeNascimento) &&
-              <Text style={Css.errors}>{errors.dataDeNascimento}</Text>
-            }
+
+            <View>
+              <TouchableOpacity
+              onPress={mostrarDate}
+              >
+                <Text>insira sua data de nascimento</Text>
+              </TouchableOpacity>
+            </View>
 
             <TextInput style={[Css.inputs, Css.inputs_all]}
               name="email"
@@ -231,48 +222,61 @@ export default function Cadastro({ navigation }) {
               inputMode='email' keyboardType='email-address'
               autoComplete='email'
               returnKeyType='next'
-              onChangeText={[handleChange('email'), setEmail]}
-              value={[values.email, email]}
+              onChangeText={handleChange('email')}
+              value={values.email}
             />
             {(errors.email && touched.email) &&
               <Text style={Css.errors}>{errors.email}</Text>
             }
 
-            <MaskedTextInput style={Css.mask}
-              name="cpf"
-              mask='999.999.999-99'
-              onBlur={handleBlur('cpf')}
-              placeholder='CPF:'
-              placeholderTextColor={'#282B29'}
-              returnKeyType='next'
-              keyboardType='numeric'
-              value={[values.cpf, cpf]}
-              onChangeText={[handleChange('cpf', setCpf)]}
-            />
+            <View
+              style={{
+                position: 'relative',
+                right: 184
+              }}
+            >
+              <MaskedTextInput
+                style={Css.mask}
+                name="cpf"
+                mask='999.999.999-99'
+                onBlur={handleBlur('cpf')}
+                placeholder='CPF:'
+                placeholderTextColor={'#282B29'}
+                returnKeyType='next'
+                keyboardType='numeric'
+                value={values.cpf}
+                onChangeText={handleChange('cpf')}
+              />
+
+            </View>
             {(errors.cpf && touched.cpf) &&
               <Text style={Css.errors}>{errors.cpf}</Text>
             }
 
-            <MaskedTextInput
-              style={Css.mask}
-              name="tel"
-              mask="(+99) 99 99999-9999"
-              onBlur={handleBlur('tel')}
-              placeholder='Celular:'
-              placeholderTextColor={'#282B29'}
-              returnKeyType='next'
-              autoComplete='tel'
-              keyboardType='numeric'
-              value={[values.tel, telefone]}
-              onChangeText={[handleChange('tel'), setTelefone]}
-            />
+            <View
+              style={{
+                position: 'relative',
+                right: 184
+              }}
+            >
+              <MaskedTextInput
+                style={Css.mask}
+                name="tel"
+                mask="(+99) 99 99999-9999"
+                onBlur={handleBlur('tel')}
+                placeholder='Celular:'
+                placeholderTextColor={'#282B29'}
+                returnKeyType='next'
+                autoComplete='tel'
+                keyboardType='numeric'
+                value={values.tel}
+                onChangeText={handleChange('tel')}
+              />
+            </View>
             {(errors.tel && touched.tel) &&
               <Text style={Css.errors}>{errors.tel}</Text>
             }
 
-            {(errors.cep && touched.cep) &&
-              <Text style={Css.errors}>{errors.cep}</Text>
-            }
 
             <TextInput style={[Css.inputs, Css.inputs_all]}
               name="senha"
@@ -281,8 +285,8 @@ export default function Cadastro({ navigation }) {
               inputMode='text'
               secureTextEntry={true}
               returnKeyType='next'
-              onChangeText={[handleChange('senha'), setSenha]}
-              value={[values.senha, senha]}
+              onChangeText={handleChange('senha')}
+              value={values.senha}
             />
             {(errors.senha && touched.senha) &&
               <Text style={Css.errors_senha}>{errors.senha}</Text>
@@ -290,50 +294,54 @@ export default function Cadastro({ navigation }) {
 
             <TextInput
               style={[Css.inputs, Css.inputs_all]}
-              placeholder="Cidade: "
+              placeholder="Cidade:"
+              placeholderTextColor={'#282B29'}
               inputMode="text"
               onBlur={handleBlur('cidade')}
-              onChangeText={[handleChange('Cidade'), setCidade]}
-              value={values.Cidade}
+              onChangeText={handleChange('Cidade')}
+              value={values.cidade}
             />
-            {(errors.Cidade && touched.Cidade) &&
-              <Text style={Css.errors}>{errors.Cidade}</Text>
+            {(errors.cidade && touched.cidade) &&
+              <Text style={Css.errors}>{errors.cidade}</Text>
             }
 
             <TextInput
               style={[Css.inputs, Css.inputs_all]}
-              placeholder="Cep: "
+              placeholder="Cep:"
+              placeholderTextColor={'#282B29'}
               inputMode="numeric"
-              onChangeText={[handleChange('Cep'), setCep]}
+              onChangeText={handleChange('Cep')}
               onBlur={handleBlur('Cep')}
-              value={values.Cep}
+              value={values.cep}
             />
-            {(errors.Cep && touched.Cep) &&
-              <Text style={Css.errors}>{errors.Cep}</Text>
+            {(errors.cep && touched.cep) &&
+              <Text style={Css.errors}>{errors.cep}</Text>
             }
 
             <TextInput
               style={[Css.inputs, Css.inputs_all]}
-              placeholder="Numero: "
+              placeholder="Numero:"
+              placeholderTextColor={'#282B29'}
               inputMode="numeric"
-              onChangeText={[handleChange('Numero'), setNumero]}
+              onChangeText={handleChange('Numero')}
               onBlur={handleBlur('Numero')}
-              value={values.Numero}
+              value={values.numero}
             />
-            {(errors.Numero && touched.Numero) &&
-              <Text style={Css.errors}>{errors.Numero}</Text>
+            {(errors.numero && touched.numero) &&
+              <Text style={Css.errors}>{errors.numero}</Text>
             }
 
             <TextInput
               style={[Css.inputs, Css.inputs_all]}
               placeholder="Nome da rua"
+              placeholderTextColor={'#282B29'}
               inputMode="text"
-              onChangeText={[handleChange('logradouro'), setLogradouro]}
+              onChangeText={handleChange('logradouro')}
               onBlur={handleBlur('logradouro')}
-              value={values.Logradouro}
+              value={values.logradouro}
             />
-            {(errors.Logradouro && touched.Logradouro) &&
-              <Text style={Css.errors}>{errors.Logradouro}</Text>
+            {(errors.logradouro && touched.logradouro) &&
+              <Text style={Css.errors}>{errors.logradouro}</Text>
             }
 
           </KeyboardAvoidingView>
@@ -341,10 +349,7 @@ export default function Cadastro({ navigation }) {
           <TouchableOpacity
             style={Css.btn_v1}
             onPress={() => {
-              [
-                handleSubmit(),
-                cadastrar()
-              ]
+              handleSubmit;
             }
             }
             rounded disabled={isValid}
