@@ -6803,6 +6803,11 @@ react-native-image-picker@^5.3.1:
   resolved "https://registry.npmjs.org/react-native-image-picker/-/react-native-image-picker-5.3.1.tgz"
   integrity sha512-zRCjtlE3KOeaWDM8gXzTwXfvo3ZeF2XMkHceU7CVCtKRleKxna/E4XWIPu/lXO2qlMdnSx1WvfPSbqzAX0qxpA==
 
+react-native-location@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.npmjs.org/react-native-location/-/react-native-location-2.5.0.tgz"
+  integrity sha512-myT54tZuFmN6d5RruMVfoa8eY+voJWkSd73xUVhjzJDnQr5uu5MFoH7hMg3trHF1CAkaY/2gIneOspUdGxv59Q==
+
 react-native-maps-directions@^1.9.0:
   version "1.9.0"
   resolved "https://registry.npmjs.org/react-native-maps-directions/-/react-native-maps-directions-1.9.0.tgz"
@@ -6879,7 +6884,7 @@ react-native-vector-icons@*, react-native-vector-icons@^9.2.0, "react-native-vec
     prop-types "^15.7.2"
     yargs "^16.1.1"
 
-react-native@*, "react-native@>= 0.59", "react-native@>= 0.60.0", "react-native@>= 0.62", "react-native@>= 0.64.3", react-native@>=0.63.3, react-native@0.70.0:
+react-native@*, "react-native@>= 0.46", "react-native@>= 0.59", "react-native@>= 0.60.0", "react-native@>= 0.62", "react-native@>= 0.64.3", react-native@>=0.63.3, react-native@0.70.0:
   version "0.70.0"
   resolved "https://registry.npmjs.org/react-native/-/react-native-0.70.0.tgz"
   integrity sha512-QjXLbrK9f+/B2eCzn6kAvglLV/8nwPuFGaFv7ggPpAzFRyx5bVN1dwQLHL3MrP7iXR/M7Jc6Nnid7tmRSic6vA==

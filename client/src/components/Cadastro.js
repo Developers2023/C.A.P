@@ -70,7 +70,7 @@ export default function Cadastro({ navigation }) {
 
   const { handleSubmit, control } = useForm();
 
-  const [date, setDate] = React.useState(new Date(0));
+  const [date, setDate] = React.useState(new Date());
 
 
   const onChange = (event, selectedDate) => {
@@ -209,9 +209,18 @@ export default function Cadastro({ navigation }) {
 
             <View>
               <TouchableOpacity
-              onPress={mostrarDate}
+                onPress={mostrarDate}
+                style={{
+                  backgroundColor: '#87ceeb',
+                  height: 49,
+                  width: 200,
+                  padding: 3,
+                  margin: 7,
+                  borderRadius: 4,
+                  borderWidth: 1,
+                }}
               >
-                <Text>insira sua data de nascimento</Text>
+                <Text style={{ color: '#282B29', marginTop: 11 }}>insira sua data de nascimento</Text>
               </TouchableOpacity>
             </View>
 
