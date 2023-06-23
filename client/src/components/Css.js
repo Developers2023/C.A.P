@@ -252,6 +252,16 @@ mask:{
     position: 'relative',
     left: 183,
 },
+mask_tel:{
+    backgroundColor:'#87ceeb',
+    height:49,
+    padding:3,
+    margin:7,
+    borderRadius:4,
+    borderWidth:1,
+    textAlign:'left',
+    width:330,
+},
 mask_time:{
     backgroundColor:'#87ceeb',
     height:49,

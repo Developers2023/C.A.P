@@ -13,7 +13,7 @@ module.exports = {
           }
         }   
       });
-      return data
+      return data? data : ''
     },
       async atualizar(body, id, res) {
         const pessoa = await pessoaRepository.update({

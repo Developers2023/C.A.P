@@ -7,10 +7,10 @@ const veiculo = db.define('veiculo', {
       type: Sequelize.STRING
     },
     placa:{
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     ano:{
-      type: Sequelize.INTEGER
+      type: Sequelize.CHAR
     },
     modelo:{
       type: Sequelize.STRING

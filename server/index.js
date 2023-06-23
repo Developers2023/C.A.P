@@ -1,7 +1,7 @@
 const express = require("express");
 const pessoaController = require("./controller/pessoaController");
 const criancaController = require("./controller/criancaController");
-const vaiculoController= require('./controller/veiculoController')
+const veiculoController= require('./controller/veiculoController')
 
 const server = express();
 server.use(express.json());
@@ -27,12 +27,12 @@ server.post("/crianca/cadastrar/:id",async function(req,res){
 })
 
 server.patch("/crianca/atualizar/:id",async function(req,res){
-    const result = await criancaController.cadastrar(req.params.id,req.body)
+    const result = await criancaController.atualizar(req.params.id,req.body)
     res.send(result)
 })
 
 server.post("/veiculo/cadastrar/:id",async function(req,res){
-    const result = await vaiculoController.cadastrar(req.params.id,req.body)
+    const result = await veiculoController.cadastrar(req.params.id,req.body)
     res.send(result)
 })
 
