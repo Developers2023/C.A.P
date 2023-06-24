@@ -18,7 +18,7 @@ server.patch("/pessoa/deletar/:id",async function(req,res){
 });
 
 server.patch("/pessoa/atualizar/:id",async function(req,res){
-    const result = await pessoaController.atualizar(req.params.id, req.body)
+    const result = await pessoaController.atualizar(req.body,req.params.id)
     res.send(result)
 });
 
