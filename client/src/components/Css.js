@@ -204,6 +204,7 @@ img:{
     height:'30%',
     padding:100,
     alignSelf:'center'
+    
     },
     inputs: {
         backgroundColor: '#87ceeb',
@@ -258,6 +259,8 @@ img:{
         borderWidth: 1,
         textAlign: 'justify',
         flexDirection: 'row'
+=======
+>>>>>>> 235b2734311c8810b8dec1ca6332e7a5e0738e4b
 
 
     },
