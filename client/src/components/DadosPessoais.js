@@ -15,7 +15,7 @@ const editValidation = yup.object().shape({
 
   endereco: yup.string().required('Endereço (nome da rua) é obrigatório'),
 
-  numero: yup.string().required('Complemento é obrigatório'),
+  numero: yup.string().required('Número do endereço é obrigatório'),
 
   cidade: yup.string().required('Nome da cidade/estado é obrigatório'),
 
@@ -25,7 +25,7 @@ const editValidation = yup.object().shape({
     .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
       "A senha deve conter 8 caracteres, incluindo: uma letra maiúscula, uma minúscula, um número e um caracter especial"),
 
-  confirmarSenha: yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')], 'As senhas não correspondem')
+ // confirmarSenha: yup.string().required('Confirmar senha é obrigatório').oneOf([yup.ref('senha')], 'As senhas não correspondem')
 })
 
 
@@ -105,9 +105,9 @@ export default function DadosPessoais({ navigation }) {
                 placeholder={'Data de nasc: '+ data} placeholderTextColor={'#000'}
                 inputMode='numeric'
                 keyboardType='numeric' />
-
+                
+                
               </View>
-
 
               <MaterialCommunityIcons
               name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:231,zIndex:1,left:302}}/>
