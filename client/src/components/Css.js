@@ -204,63 +204,6 @@ img:{
     height:'30%',
     padding:100,
     alignSelf:'center'
-    
-    },
-    inputs: {
-        backgroundColor: '#87ceeb',
-        height: 49,
-        padding: 3,
-        margin: 7,
-        borderRadius: 4,
-        borderWidth: 1,
-        textAlign: 'left',
-    },
-    inputs_all: {
-        width: 330,
-    },
-    input_half: {
-        width: 161
-    },
-    input_cod: {
-        width: 113,
-        marginBottom: -20
-    },
-    input_name: {
-        width: 235
-    },
-    input_sex: {
-        width: 60
-    },
-    input_sexNoEdit: {
-        width: 80
-    },
-    input_address: {
-        width: 256
-    },
-    input_number: {
-        width: 60
-    },
-    input_city: {
-        width: 199
-    },
-    input_cep: {
-        width: 117
-    },
-    input_info: {
-        width: 158
-    },
-    input_moreInfo: {
-        backgroundColor: '#87ceeb',
-        width: 330,
-        height: 100,
-        padding: 3,
-        margin: 7,
-        borderRadius: 4,
-        borderWidth: 1,
-        textAlign: 'justify',
-        flexDirection: 'row'
-=======
->>>>>>> 235b2734311c8810b8dec1ca6332e7a5e0738e4b
 
 
     },
@@ -405,6 +348,16 @@ img:{
         left: 170,
         bottom: 76
 
+    },
+    mask_city:{
+        backgroundColor: '#87ceeb',
+        height: 49,
+        padding: 3,
+        margin: 7,
+        borderRadius: 4,
+        borderWidth: 1,
+        textAlign: 'left',
+        width: 199
     },
     errors: {
         fontWeight: 'bold',
@@ -596,4 +549,3 @@ img:{
 });
 
 export default Css;
-

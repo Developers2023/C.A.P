@@ -7,8 +7,8 @@ export default function Dropdown() {
     const [open, setOpen] = useState(false);
     const [value, setValue] = useState(null);
     const [items, setItems] = useState([
-        { label: 'F', value: 'f' },
-        { label: 'M', value: 'm' }
+        { label: 'Fem', value: 'f' },
+        { label: 'Masc', value: 'm' }
     ]);
     return (
         <View style={{

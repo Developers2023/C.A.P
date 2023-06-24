@@ -1,5 +1,8 @@
 import React,{useState} from 'react';
+import {View} from 'react-native'
 import DropDownPicker from "react-native-dropdown-picker";
+import Css from './Css';
+
 
 export default function Dropdown_Turno(){
     
@@ -12,6 +15,11 @@ export default function Dropdown_Turno(){
   ]);
 
     return(
+      <View style={{
+        width: 88,
+        height: 29,
+        marginBottom: 20
+    }}>
         <DropDownPicker  
         open={open}
         value={value}
@@ -19,7 +27,7 @@ export default function Dropdown_Turno(){
         setOpen={setOpen}
         setValue={setValue}
         setItems={setItems}
-        style={{backgroundColor:'#87ceeb',fontWeight:'bold'}}
+        style={Css.mask_cep}
         translation={{  PLACEHOLDER:'Turno'}}
         placeholderStyle={{fontWeight:'bold'}}
         closeAfterSelecting={true}
@@ -27,5 +35,6 @@ export default function Dropdown_Turno(){
         fontWeight: "bold",
         color:'#FFBC16'               
       }}/> 
+      </View>
     );
 }

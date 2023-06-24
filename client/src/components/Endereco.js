@@ -2,7 +2,9 @@ import react, { useState } from "react";
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import axios from './apiMenager/Api'
-import { SafeAreaView, TextInput, TouchableOpacity, View } from "react-native";
+import { SafeAreaView, TextInput, TouchableOpacity, View, Text } from "react-native";
+import Css from './Css';
+import { MaskedTextInput } from 'react-native-mask-text';
 
 const enderecoSchema = yup.object().shape({
     endereco: yup.string().required('Endereço é obrigatório'),
@@ -37,11 +39,19 @@ const cadastrarEnderreco = (value) => {
         onSubmit={cadastrarEnderreco}
     >
         {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
-            <SafeAreaView>
+            <SafeAreaView style={{
+                flex: 1,
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginTop: 50
+              }}>
+
+                <Text style = {Css.cap}>Adicione seu endereço</Text>
                 <View>
 
+                <View style={Css.view_input}>
                     <TextInput
-                        style={[Css.inputs, Css.inputs_all]}
+                        style={[Css.inputs, Css.input_city]}
                         placeholder="Cidade:"
                         placeholderTextColor={'#282B29'}
                         inputMode="text"
@@ -53,21 +63,34 @@ const cadastrarEnderreco = (value) => {
                         <Text style={Css.errors}>{errors.cidade}</Text>
                     }
 
-                    <TextInput
-                        style={[Css.inputs, Css.inputs_all]}
-                        placeholder="Cep:"
-                        placeholderTextColor={'#282B29'}
-                        inputMode="numeric"
-                        onChangeText={handleChange('Cep')}
-                        onBlur={handleBlur('Cep')}
-                        value={values.cep}
-                    />
-                    {(errors.cep && touched.cep) &&
-                        <Text style={Css.errors}>{errors.cep}</Text>
-                    }
+                    <MaskedTextInput
+                    mask='99999-999'
+                    name="cep"
+                    onChangeText={handleChange('cep')}
+                    onBlur={handleBlur('cep')}
+                    value={values.cep}
+                    style={Css.mask_cep}
+                    placeholder='CEP:' placeholderTextColor={'#000'}
+                    keyboardType='numeric'
+                    returnKeyType='next'
+                    autoComplete='postal-code' />
+                        {(errors.cep && touched.cep) &&
+                            <Text style={Css.errors}>{errors.cep}</Text>
+                        }
+                </View>
 
+                <View style={Css.view_input}>
+                <TextInput
+                        style={[Css.inputs, Css.input_address]}
+                        placeholder="Nome da rua"
+                        placeholderTextColor={'#282B29'}
+                        inputMode="text"
+                        onChangeText={handleChange('logradouro')}
+                        onBlur={handleBlur('logradouro')}
+                        value={values.logradouro}
+                    />
                     <TextInput
-                        style={[Css.inputs, Css.inputs_all]}
+                        style={[Css.inputs, Css.input_number]}
                         placeholder="Numero:"
                         placeholderTextColor={'#282B29'}
                         inputMode="numeric"
@@ -79,36 +102,41 @@ const cadastrarEnderreco = (value) => {
                         <Text style={Css.errors}>{errors.numero}</Text>
                     }
 
-                    <TextInput
-                        style={[Css.inputs, Css.inputs_all]}
-                        placeholder="Nome da rua"
-                        placeholderTextColor={'#282B29'}
-                        inputMode="text"
-                        onChangeText={handleChange('logradouro')}
-                        onBlur={handleBlur('logradouro')}
-                        value={values.logradouro}
-                    />
+                    
                     {(errors.logradouro && touched.logradouro) &&
                         <Text style={Css.errors}>{errors.logradouro}</Text>
                     }
-
-                    <TouchableOpacity
-                    onPress={() => {
-                        handleSubmit();
-                    }}
-                    >
-                        <Text>Enviar</Text>
-                    </TouchableOpacity>
-
-                    <TouchableOpacity
-                    onPress={() => {
-                        navigation.navigate('Cadastro')
-                    }}
-                    >
-                        <Text>Voltar</Text>
-                    </TouchableOpacity>
+                </View>
+                    <TextInput
+                        style={[Css.inputs, Css.inputs_all]}
+                        placeholder="Complemento:"
+                        placeholderTextColor={'#282B29'}
+                        inputMode="text"
+                        onBlur={handleBlur('complemento')}
+                        onChangeText={handleChange('complemento')}
+                        value={values.complemento}
+                    />
+                    {(errors.complemento && touched.complemento) &&
+                        <Text style={Css.errors}>{errors.complemento}</Text>
+                    }
 
                 </View>
+                
+                    <TouchableOpacity
+                        style={Css.btn_v1}
+                        onPress={() => {
+                        handleSubmit;
+                        }
+                        }
+                        rounded disabled={isValid}
+                    >
+                        <Text style={Css.txt}>Cadastrar</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity style={Css.btn_v1}
+                        onPress={() => navigation.goBack()}>
+                        <Text style={Css.txt}>Voltar</Text>
+                    </TouchableOpacity>
             </SafeAreaView>
         )}
     </Formik>
