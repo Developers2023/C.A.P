@@ -9,35 +9,44 @@ import axios from "./apiMenager/Api";
 
 export default () => {
     const [searchText, setSearchText] = useState('');
-    const [lista, setLista] = useState(CONTENT);
+    /* const [lista, setLista] = useState(CONTENT); */
+
+    /*  useEffect(() => {
+         if (searchText === '') {
+             setLista(CONTENT)
+         } else {
+             setLista(
+                 CONTENT.filter((item) =>
+                     item.name.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1)
+             );
+         }
+ 
+     }, [searchText]); */
+
+
+    const [dataLista, setDataLista] = useState([]);
+
+    const mostrarLista = () => {
+        axios.get('/crianca/cadastrar/:id')
+            .then(response => {
+                setDataLista(response.data.nome)
+            })
+            .catch(error => console.log(JSON.stringify(error)));
+    };
 
     useEffect(() => {
+        mostrarLista();
         if (searchText === '') {
-            setLista(CONTENT)
+            setDataLista()
         } else {
-            setLista(
-                CONTENT.filter((item) =>
-                    item.name.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1)
+            setDataLista(
+                dataLista.filter((item) =>
+                    item.nome.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1)
             );
         }
     }, [searchText]);
 
-    const inserir = async () => {
-        
-        for(let i = 1; i <= id.length; i++){
-            setId + i
-        }
-        
-        try{
-            const response = await axios.get(`/crianca/cadastrar/${id}`)
 
-
-        } catch (error) {
-            console.log(JSON.stringify(error));
-        }
-        }
-
-    const [id, setId] = useState([]);
 
     return (
         <SafeAreaView>
@@ -52,12 +61,13 @@ export default () => {
             <Text style={Css.txtCria}>
                 Lista de crianças
             </Text>
-            <FlatList
-                data={lista}
-                style={Css.list}
-                renderItem={({ item }) => <ListItem data={item} title={item.name} />}
-                keyExtractor={(item) => item.id}
-            />
+
+            <View>
+                {dataLista.map(item => (
+                    <Text key={item.id}>{item.nome}</Text>
+                ))}
+            </View>
+
         </SafeAreaView>
     );
 
@@ -66,7 +76,7 @@ export default () => {
 
 
 // DUMMY
-const CONTENT = [
+/* const CONTENT = [
     {
         id: 1,
         name: "Luiz Felipe Tavares de Souza"
@@ -81,4 +91,4 @@ const CONTENT = [
         name: "Lucas Barbalho"
     }
 
-]
+] */
