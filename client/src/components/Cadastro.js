@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { KeyboardAvoidingView, View, SafeAreaView, Text, TextInput, TouchableOpacity, SectionList, ScrollView, FlatList } from 'react-native';
+import { KeyboardAvoidingView, View, SafeAreaView, Text, TextInput, TouchableOpacity } from 'react-native';
 import Css from './Css';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
 import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
-import axios from './apiMenager/Api'
+import axios from './apiMenager/Api';
 import { Controller, useForm } from 'react-hook-form';
 
 const sighUpValidation = yup.object().shape({
@@ -300,61 +300,7 @@ export default function Cadastro({ navigation }) {
             {(errors.senha && touched.senha) &&
               <Text style={Css.errors_senha}>{errors.senha}</Text>
             }
-
-            <TextInput
-              style={[Css.inputs, Css.inputs_all]}
-              placeholder="Cidade:"
-              placeholderTextColor={'#282B29'}
-              inputMode="text"
-              onBlur={handleBlur('cidade')}
-              onChangeText={handleChange('Cidade')}
-              value={values.cidade}
-            />
-            {(errors.cidade && touched.cidade) &&
-              <Text style={Css.errors}>{errors.cidade}</Text>
-            }
-
-            <TextInput
-              style={[Css.inputs, Css.inputs_all]}
-              placeholder="Cep:"
-              placeholderTextColor={'#282B29'}
-              inputMode="numeric"
-              onChangeText={handleChange('Cep')}
-              onBlur={handleBlur('Cep')}
-              value={values.cep}
-            />
-            {(errors.cep && touched.cep) &&
-              <Text style={Css.errors}>{errors.cep}</Text>
-            }
-
-            <TextInput
-              style={[Css.inputs, Css.inputs_all]}
-              placeholder="Numero:"
-              placeholderTextColor={'#282B29'}
-              inputMode="numeric"
-              onChangeText={handleChange('Numero')}
-              onBlur={handleBlur('Numero')}
-              value={values.numero}
-            />
-            {(errors.numero && touched.numero) &&
-              <Text style={Css.errors}>{errors.numero}</Text>
-            }
-
-            <TextInput
-              style={[Css.inputs, Css.inputs_all]}
-              placeholder="Nome da rua"
-              placeholderTextColor={'#282B29'}
-              inputMode="text"
-              onChangeText={handleChange('logradouro')}
-              onBlur={handleBlur('logradouro')}
-              value={values.logradouro}
-            />
-            {(errors.logradouro && touched.logradouro) &&
-              <Text style={Css.errors}>{errors.logradouro}</Text>
-            }
-
           </KeyboardAvoidingView>
-
           <TouchableOpacity
             style={Css.btn_v1}
             onPress={() => {
