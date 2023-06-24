@@ -83,11 +83,11 @@ export default () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-
-        <Stack.Screen name='Lista de criancas' component={Cadastro} />
+      <Stack.Screen name='Lista de criancas' component={DadosPessoais} />
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />
+        <Stack.Screen name='Lista de criancas' component={Cadastro} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />

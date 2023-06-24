@@ -77,7 +77,6 @@ const Css = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
 
-<<<<<<< HEAD
 },
 inputs:{
     backgroundColor:'#87ceeb',
@@ -205,7 +204,6 @@ img:{
     height:'30%',
     padding:100,
     alignSelf:'center'
-=======
     },
     inputs: {
         backgroundColor: '#87ceeb',
@@ -260,7 +258,6 @@ img:{
         borderWidth: 1,
         textAlign: 'justify',
         flexDirection: 'row'
->>>>>>> 1cc16d96770450325c0bcce19dd337e4d047c4d7
 
 
     },
