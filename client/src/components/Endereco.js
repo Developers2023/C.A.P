@@ -5,21 +5,19 @@ import axios from './apiMenager/Api'
 import { SafeAreaView, View } from "react-native";
 
 const enderecoSchema = yup.object().shape({
-    Nome: yup.string().required('Nome é obrigatório').matches(/(\w.+\s).+/, 'Insira ao menos nome e sobrenome'),
-    Sexo: yup.string().required('Campo sexo é obrigaório'),
-    Deficiencia: yup.string().required('Campo de deficiência é obrigatório'),
-    Instituicao: yup.string().required('Campo de instituição é obrigatório'),
-    Periodo: yup.string().required('Periodo é obrigaório'),
+    endereco: yup.string().required('Endereço é obrigatório'),
+    cidade: yup.string().required('nome da cidade/estado é obrigatório'),
+    cep: yup.string().required('CEP é obrigatório').min(8, 'O CEP deve conter 8 dígitos'),
+    Numero: yup.string().required('inserir o numero da residência é obrigatório'),
 })
 
 export default () => {
     <Formik
         initialValues={{
-            Nome: '',
-            Sexo: '',
-            Deficiencia: '',
-            Instituicao: '',
-            Periodo: ''
+           cidade: '',
+           cep: '',
+           numero: '',
+           logradouro: '',
         }}
         validateOnMount={true}
         validationSchema={enderecoSchema}
