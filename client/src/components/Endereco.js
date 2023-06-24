@@ -2,7 +2,7 @@ import react, { useState } from "react";
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import axios from './apiMenager/Api'
-import { SafeAreaView, View } from "react-native";
+import { SafeAreaView, TextInput, TouchableOpacity, View } from "react-native";
 
 const enderecoSchema = yup.object().shape({
     endereco: yup.string().required('Endereço é obrigatório'),
@@ -11,7 +11,20 @@ const enderecoSchema = yup.object().shape({
     Numero: yup.string().required('inserir o numero da residência é obrigatório'),
 })
 
-export default () => {
+export default ({navigation}) => {
+
+const cadastrarEnderreco = (value) => {
+    axios.post('pessoa/cadastro', JSON.stringify(value))
+    .then(response => {
+        console.log(response.data);
+        return response.data
+    }).catch(errors => {
+        console.log(JSON.stringify(errors))
+    })
+    
+}
+
+    return(
     <Formik
         initialValues={{
            cidade: '',
@@ -21,6 +34,7 @@ export default () => {
         }}
         validateOnMount={true}
         validationSchema={enderecoSchema}
+        onSubmit={cadastrarEnderreco}
     >
         {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
             <SafeAreaView>
@@ -78,8 +92,25 @@ export default () => {
                         <Text style={Css.errors}>{errors.logradouro}</Text>
                     }
 
+                    <TouchableOpacity
+                    onPress={() => {
+                        handleSubmit();
+                    }}
+                    >
+                        <Text>Enviar</Text>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                    onPress={() => {
+                        navigation.navigate('Cadastro')
+                    }}
+                    >
+                        <Text>Voltar</Text>
+                    </TouchableOpacity>
+
                 </View>
             </SafeAreaView>
         )}
     </Formik>
+)
 }
