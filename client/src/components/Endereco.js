@@ -96,6 +96,7 @@ const cadastrarEnderreco = (value) => {
                     onPress={() => {
                         handleSubmit();
                     }}
+                    rounded disabled={!isValid}
                     >
                         <Text>Enviar</Text>
                     </TouchableOpacity>

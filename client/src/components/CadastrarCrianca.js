@@ -25,7 +25,6 @@ export default function CadastrarCrianca({ navigation }) {
       .post('/crianca/cadastrar/:id', JSON.stringify(values))
       .then(response => {
         console.log(response.data);
-        return response.data;
       })
       .catch((error) => {
         console.log(JSON.stringify(error));
@@ -63,9 +62,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Nome:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={[handleChange('nomeDaCrianca'), setNomeC]}
+              onChangeText={handleChange('nomeDaCrianca')}
               onBlur={handleBlur('nomeDaCrianca')}
-              value={[values.nomeDaCrianca, nomeC]} />
+              value={values.nomeDaCrianca} />
             {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
               <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
 
@@ -73,9 +72,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Escola:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={[handleChange('instituicaoDeEnsino'), setInstEnsino]}
+              onChangeText={handleChange('instituicaoDeEnsino')}
               onBlur={handleBlur('instituicaoDeEnsino')}
-              value={[values.instituicaoDeEnsino, instEnsino]}
+              value={values.instituicaoDeEnsino}
             />
             {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
               <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
@@ -84,9 +83,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Cidade:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={[handleChange('cidadeDaCrianca'), setCidade]}
+              onChangeText={handleChange('cidadeDaCrianca')}
               onBlur={handleBlur('cidadeDaCrianca')}
-              value={[values.cidadeDaCrianca, cidade]}
+              value={values.cidadeDaCrianca}
             />
             {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
               <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>}

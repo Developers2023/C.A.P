@@ -76,6 +76,7 @@ export default function Cadastro({ navigation }) {
   const onChange = (event, selectedDate) => {
     selectedDate && setDate(selectedDate)
   }
+
   const modoMostrar = (currentMode) => {
     DateTimePickerAndroid.open({
       value: date,
@@ -84,10 +85,10 @@ export default function Cadastro({ navigation }) {
       mode: currentMode,
     })
   }
+
   const mostrarDate = () => {
     modoMostrar('date')
   }
-
 
   return (
     <Formik
