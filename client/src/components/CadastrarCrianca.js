@@ -28,7 +28,6 @@ export default function CadastrarCrianca({ navigation }) {
       .post('/crianca/cadastrar/:id', JSON.stringify(values))
       .then(response => {
         console.log(response.data);
-        return response.data;
       })
       .catch((error) => {
         console.log(JSON.stringify(error));
@@ -78,9 +77,9 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.input_name]}
               placeholder='Nome:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={[handleChange('nomeDaCrianca'), setNomeC]}
+              onChangeText={handleChange('nomeDaCrianca')}
               onBlur={handleBlur('nomeDaCrianca')}
-              value={[values.nomeDaCrianca, nomeC]} />
+              value={values.nomeDaCrianca} />
             {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
               <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
 
@@ -121,14 +120,40 @@ export default function CadastrarCrianca({ navigation }) {
               style={[Css.inputs, Css.input_city]}
               placeholder='Escola:' placeholderTextColor={'#282B29'}
               inputMode='text'
-              onChangeText={[handleChange('instituicaoDeEnsino'), setInstEnsino]}
+              onChangeText={handleChange('instituicaoDeEnsino')}
               onBlur={handleBlur('instituicaoDeEnsino')}
-              value={[values.instituicaoDeEnsino, instEnsino]}
+              value={values.instituicaoDeEnsino}
             />
             {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
               <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
+
             
             <DropDown_Turno/> 
+
+
+            <TextInput
+              style={[Css.inputs, Css.inputs_all]}
+              placeholder='Cidade:' placeholderTextColor={'#282B29'}
+              inputMode='text'
+              onChangeText={handleChange('cidadeDaCrianca')}
+              onBlur={handleBlur('cidadeDaCrianca')}
+              value={values.cidadeDaCrianca}
+            />
+            {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
+              <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>}
+
+            <View style={{
+              zIndex: 2,
+              width: 158,
+              height: 50,
+              marginBottom: 20,
+              marginLeft: 7,
+              marginTop: 7
+            }}>
+
+              <Dropdown_Turno />
+            </View>
+
             {(errors.turno && touched.turno) &&
               <Text style={Css.errors}>{errors.turno}</Text>}
         </View>

@@ -119,16 +119,12 @@ const cadastrarEnderreco = (value) => {
                     {(errors.complemento && touched.complemento) &&
                         <Text style={Css.errors}>{errors.complemento}</Text>
                     }
-
                 </View>
                 
                     <TouchableOpacity
-                        style={Css.btn_v1}
-                        onPress={() => {
-                        handleSubmit;
-                        }
-                        }
-                        rounded disabled={isValid}
+                    onPress={() => {
+                        handleSubmit();
+                    }}
                     >
                         <Text style={Css.txt}>Cadastrar</Text>
                     </TouchableOpacity>

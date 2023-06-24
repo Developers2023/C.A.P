@@ -4,7 +4,7 @@ import { SafeAreaView, View, FlatList, Text } from "react-native";
 import SearchBar from "react-native-dynamic-search-bar";
 import { ListItem } from "@react-native-material/core";
 import Css from "./Css";
-
+import axios from "./apiMenager/Api";
 
 
 export default () => {
@@ -21,6 +21,23 @@ export default () => {
             );
         }
     }, [searchText]);
+
+    const inserir = async () => {
+        
+        for(let i = 1; i <= id.length; i++){
+            setId + i
+        }
+        
+        try{
+            const response = await axios.get(`/crianca/cadastrar/${id}`)
+
+
+        } catch (error) {
+            console.log(JSON.stringify(error));
+        }
+        }
+
+    const [id, setId] = useState([]);
 
     return (
         <SafeAreaView>
@@ -41,11 +58,6 @@ export default () => {
                 renderItem={({ item }) => <ListItem data={item} title={item.name} />}
                 keyExtractor={(item) => item.id}
             />
-
-
-
-
-
         </SafeAreaView>
     );
 

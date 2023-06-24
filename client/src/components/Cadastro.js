@@ -12,6 +12,37 @@ export default function Dropdown_User() {
     { label: 'Responsável', value: 'responsavel' }
   ]);
 
+
+  const [open, setOpen] = React.useState(false);
+  const [sexValue, setsexValue] = React.useState(null);
+  const [items, setItems] = React.useState([
+    { label: 'F', value: 'f' },
+    { label: 'M', value: 'm' }
+  ]);
+
+
+  const { handleSubmit, control } = useForm();
+
+  const [date, setDate] = React.useState(new Date());
+
+
+  const onChange = (event, selectedDate) => {
+    selectedDate && setDate(selectedDate)
+  }
+
+  const modoMostrar = (currentMode) => {
+    DateTimePickerAndroid.open({
+      value: date,
+      onChange,
+      display: 'calendar',
+      mode: currentMode,
+    })
+  }
+
+  const mostrarDate = () => {
+    modoMostrar('date')
+  }
+
   return (
     <SafeAreaView style={{
       flex: 1,
