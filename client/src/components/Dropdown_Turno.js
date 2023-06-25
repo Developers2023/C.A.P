@@ -13,7 +13,7 @@ export default function Dropdown_Turno(){
     {label: 'Tarde', value: 'tarde'},
     {label: 'Integral', value: 'integral'}
   ]);
-
+  
     return(
       <View style={{
         width: 88,

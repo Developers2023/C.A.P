@@ -110,7 +110,7 @@ export default function Cadastro({ navigation }) {
           marginTop: 50
         }}>
 
-        <Text style = {Css.cap}>Cadastre-se </Text>
+          <Text style={Css.cap}>Cadastre-se </Text>
 
           <KeyboardAvoidingView style={
             {
@@ -135,11 +135,11 @@ export default function Cadastro({ navigation }) {
                 value={values.nome}
               />
               <View style={{
-            zIndex: 2,
-            width: 88,
-            height: 47,
-            marginBottom: 20
-          }}>
+                zIndex: 2,
+                width: 88,
+                height: 47,
+                marginBottom: 20
+              }}>
                 <Controller
                   name="selecione seu sexo"
                   defaultValue=""
@@ -152,9 +152,11 @@ export default function Cadastro({ navigation }) {
                       setOpen={setOpen}
                       setValue={setsexValue}
                       setItems={setItems}
-                      style={{backgroundColor: '#87ceeb',
-                      fontWeight: 'bold',width: 88,
-                      height: 29,marginTop: 5}
+                      style={{
+                        backgroundColor: '#87ceeb',
+                        fontWeight: 'bold', width: 88,
+                        height: 29, marginTop: 5
+                      }
                       }
                       translation={{ PLACEHOLDER: 'Sexo' }}
                       placeholderStyle={{ fontWeight: 'bold' }}
@@ -173,8 +175,8 @@ export default function Cadastro({ navigation }) {
             {(errors.nome && touched.nome) &&
               <Text style={Css.errors}>{errors.nome}</Text>
             }
-          <View style={Css.view_input}>
-             <MaskedTextInput
+            <View style={Css.view_input}>
+              <MaskedTextInput
                 style={Css.mask_city}
                 name="cpf"
                 mask='999.999.999-99'
@@ -186,15 +188,15 @@ export default function Cadastro({ navigation }) {
                 value={values.cpf}
                 onChangeText={handleChange('cpf')}
               />
-            <View>
-              <TouchableOpacity
-                onPress={mostrarDate}
-                style={Css.mask_cep}
-              >
-                <Text style={{ color: '#282B29', marginTop: 11 }}>insira sua data de nascimento</Text>
-              </TouchableOpacity>
+              <View>
+                <TouchableOpacity
+                  onPress={mostrarDate}
+                  style={Css.mask_cep}
+                >
+                  <Text style={{ color: '#282B29', marginTop: 11 }}>insira sua data de nascimento</Text>
+                </TouchableOpacity>
+              </View>
             </View>
-          </View>
             <TextInput style={[Css.inputs, Css.inputs_all]}
               name="email"
               onBlur={handleBlur('email')}
@@ -215,7 +217,7 @@ export default function Cadastro({ navigation }) {
                 right: 184
               }}
             >
-             
+
 
             </View>
             {(errors.cpf && touched.cpf) &&
@@ -260,22 +262,23 @@ export default function Cadastro({ navigation }) {
             {(errors.senha && touched.senha) &&
               <Text style={Css.errors_senha}>{errors.senha}</Text>
             }
-          </KeyboardAvoidingView>
-          <TouchableOpacity
-            style={Css.btn_v1}
-            onPress={() => {
-              handleSubmit;
-            }
-            }
-            rounded disabled={isValid}
-          >
-            <Text style={Css.txt}>Cadastrar</Text>
-          </TouchableOpacity>
 
-          <TouchableOpacity style={Css.btn_v1}
-            onPress={() => navigation.goBack()}>
-            <Text style={Css.txt}>Voltar</Text>
-          </TouchableOpacity>
+            <TouchableOpacity
+              style={Css.btn_v1}
+              onPress={() => {
+                handleSubmit;
+              }
+              }
+              rounded disabled={isValid}
+            >
+              <Text style={Css.txt}>Cadastrar</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={Css.btn_v1}
+              onPress={() => navigation.goBack()}>
+              <Text style={Css.txt}>Voltar</Text>
+            </TouchableOpacity>
+          </KeyboardAvoidingView>
         </SafeAreaView>
       )}
     </Formik>
