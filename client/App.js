@@ -83,25 +83,19 @@ export default () => {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>    
-        
+      <Stack.Navigator>
+
+        <Stack.Screen name='Lista de criancas' component={Cadastro} options={{ headerShown: false }} />
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
-        <Stack.Screen name='Endereco' component={Endereco} options={{ headerShown: false }} />
-        
         <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />
-        <Stack.Screen name='Dados Pessoais' component={Cadastro} />
-        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Endereco' component={Endereco} options={{ headerShown: false }} />
-        <Stack.Screen name='Roteiro' component={RoteiroViagem} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
-        <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
-        <Stack.Screen name='Upload' component={Upload} /> 
-        <Stack.Screen name='Lista de criancas' component={Cadastro} options={{ headerShown: false }} />
+        <Stack.Screen name='Upload' component={Upload} />
       </Stack.Navigator>
 
     </NavigationContainer>

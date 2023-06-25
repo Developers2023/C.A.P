@@ -39,15 +39,13 @@ const sighUpValidation = yup.object().shape({
 
 export default function Cadastro({ navigation }) {
 
-  const cadastrar = (values) => {
-    axios.post('pessoa/cadastro', JSON.stringify(values))
-      .then((response) => {
-        console.log(response.data)
-        return response.data;
-      })
-      .catch((error) => {
-        console.log(JSON.stringify(error));
-      });
+  const cadastrar = async (values) => {
+    try {
+      await axios.post('/pessoa/cadastrar', values);
+      console.log('Cadastro realizado com sucesso')
+    } catch (error) {
+      console.log(JSON.stringify(error))
+    } 
   };
 
 
@@ -64,7 +62,7 @@ export default function Cadastro({ navigation }) {
   const { handleSubmit, control } = useForm();
 
   const [date, setDate] = React.useState(new Date());
-
+  const diaString = JSON.stringify(date)
 
   const onChange = (event, selectedDate) => {
     selectedDate && setDate(selectedDate)
@@ -73,7 +71,7 @@ export default function Cadastro({ navigation }) {
     DateTimePickerAndroid.open({
       value: date,
       onChange,
-      display: 'calendar',
+      display: 'spinner',
       mode: currentMode,
     })
   }
@@ -100,9 +98,8 @@ export default function Cadastro({ navigation }) {
       validateOnMount={true}
       validationSchema={sighUpValidation}
       onSubmit={cadastrar}
-
     >
-      {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
+      {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid, isSubmitting }) => (
         <SafeAreaView style={{
           flex: 1,
           alignItems: 'center',
@@ -190,6 +187,7 @@ export default function Cadastro({ navigation }) {
               />
               <View>
                 <TouchableOpacity
+                  value={diaString}
                   onPress={mostrarDate}
                   style={Css.mask_cep}
                 >
@@ -265,11 +263,8 @@ export default function Cadastro({ navigation }) {
 
             <TouchableOpacity
               style={Css.btn_v1}
-              onPress={() => {
-                handleSubmit;
-              }
-              }
-              rounded disabled={isValid}
+              onPress={cadastrar}
+              disabled = {isValid}
             >
               <Text style={Css.txt}>Cadastrar</Text>
             </TouchableOpacity>
