@@ -45,8 +45,11 @@ const cadastrarEnderreco = (value) => {
                 justifyContent: 'center',
                 marginTop: 50
               }}>
-
+                <View>
                 <Text style = {Css.cap}>Adicione seu endereço</Text>
+                </View>
+
+                
                 <View>
 
                 <View style={Css.view_input}>
@@ -59,9 +62,7 @@ const cadastrarEnderreco = (value) => {
                         onChangeText={handleChange('Cidade')}
                         value={values.cidade}
                     />
-                    {(errors.cidade && touched.cidade) &&
-                        <Text style={Css.errors}>{errors.cidade}</Text>
-                    }
+                    
 
                     <MaskedTextInput
                     mask='99999-999'
@@ -74,11 +75,14 @@ const cadastrarEnderreco = (value) => {
                     keyboardType='numeric'
                     returnKeyType='next'
                     autoComplete='postal-code' />
-                        {(errors.cep && touched.cep) &&
+                        
+                </View>
+                {(errors.cidade && touched.cidade) &&
+                        <Text style={Css.errors}>{errors.cidade}</Text>
+                    }
+                    {(errors.cep && touched.cep) &&
                             <Text style={Css.errors}>{errors.cep}</Text>
                         }
-                </View>
-
                 <View style={Css.view_input}>
                 <TextInput
                         style={[Css.inputs, Css.input_address]}
@@ -98,6 +102,8 @@ const cadastrarEnderreco = (value) => {
                         onBlur={handleBlur('Numero')}
                         value={values.numero}
                     />
+                   
+                </View>
                     {(errors.numero && touched.numero) &&
                         <Text style={Css.errors}>{errors.numero}</Text>
                     }
@@ -106,7 +112,7 @@ const cadastrarEnderreco = (value) => {
                     {(errors.logradouro && touched.logradouro) &&
                         <Text style={Css.errors}>{errors.logradouro}</Text>
                     }
-                </View>
+
                     <TextInput
                         style={[Css.inputs, Css.inputs_all]}
                         placeholder="Complemento:"
@@ -116,11 +122,11 @@ const cadastrarEnderreco = (value) => {
                         onChangeText={handleChange('complemento')}
                         value={values.complemento}
                     />
-                    {(errors.complemento && touched.complemento) &&
+                    
+                </View>
+                {(errors.complemento && touched.complemento) &&
                         <Text style={Css.errors}>{errors.complemento}</Text>
                     }
-                </View>
-                
                     <TouchableOpacity
                     onPress={() => {
                         handleSubmit();
