@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const api = axios.create({
-    baseURL: "https://pallium.serveo.net"
+    baseURL: "http://localhost:3010"
 })
 
 export default api;

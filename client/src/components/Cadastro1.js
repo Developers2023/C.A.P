@@ -5,7 +5,6 @@ import DropDownPicker from 'react-native-dropdown-picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
-import { DateTimePickerAndroid } from '@react-native-community/datetimepicker';
 import axios from './apiMenager/Api';
 import { Controller, useForm } from 'react-hook-form';
 
@@ -39,13 +38,14 @@ const sighUpValidation = yup.object().shape({
 
 export default function Cadastro({ navigation }) {
 
-  const cadastrar = async (values) => {
-    try {
-      await axios.post('/pessoa/cadastrar', values);
-      console.log('Cadastro realizado com sucesso')
-    } catch (error) {
-      console.log(JSON.stringify(error))
-    } 
+  const cadastrar = (values) => {
+    axios.post('/pessoa/cadastrar', values)
+    .then((response) => {
+      console.log(response.data);
+      console.log("cadastro feito");
+    }).catch((error) => {
+      console.log(error);
+    })
   };
 
 
@@ -263,7 +263,7 @@ export default function Cadastro({ navigation }) {
 
             <TouchableOpacity
               style={Css.btn_v1}
-              onPress={cadastrar}
+              onPress={() => {handleSubmit}}
               disabled = {isValid}
             >
               <Text style={Css.txt}>Cadastrar</Text>

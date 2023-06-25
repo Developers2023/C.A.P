@@ -3,57 +3,59 @@ import { View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, ScrollVi
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Css from './Css';
 import DropDownPicker from "react-native-dropdown-picker";
-import Dropdown_Turno from './Dropdown_Turno'
+import Dropdown_Turno from './Dropdown_Turno';
 import Dropdown from './Dropdown'
+import { Formik } from 'formik'
 import { MaskedTextInput } from 'react-native-mask-text';
-import { Formik } from 'formik';
 import * as yup from 'yup';
-import axios from './apiMenager/Api'
+import axios from './apiMenager/Api';
 
 const registerKids = yup.object().shape({
   nomeDaCrianca: yup.string().required('Nome da criança é obrigatório').max(100, 'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/, 'Insira ao menos nome e sobrenome'),
   /* sexo: yup.string().required('Sexo da criança é obrigatório'),
   pdc: yup.string().required('Informar se é pdc é obrigatório'), */
   instituicaoDeEnsino: yup.string().required('Nome da instituição é obrigatório').max(100, 'O nome da instituição não pode ultrapassar 100 caracteres'),
-  periodo: yup.string().required('Horário é obrigatório').min(5, 'Insira os 4 digitos correspondentes a hora e minuto')
-
+  periodo: yup.string().required('Horário é obrigatório').min(5, 'Insira os 4 digitos correspondentes a hora e minuto'),
+  dataDeNascimento: yup.string().required('Data de nascimento é obrigatório')
 })
 
 
 
 export default function CadastrarCrianca({ navigation }) {
 
-  const cadastrarC = (values) => {
-    axios.post('/crianca/cadastrar/:id', values)
-    .then((response) => {
+  const cadastrarC = async (values) => {
+    try {
+      const response = await axios.post('/crianca/cadastrar/:id', values)
       console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error))
-    })
+    } catch (error) {
+      console.log(error.response.data);
+    }
   };
 
 
   //PDC
-  const [openPdc, setOpenPdc] = useState(false);
-  const [valuePdc, setValuePdc] = useState(null);
-  const [itemsPdc, setItemsPdc] = useState([
-    { label: 'Sim', value: 's' },
-    { label: 'Nao', value: 'n' }
-  ]);
+  /*   const [openPdc, setOpenPdc] = useState(false);
+    const [valuePdc, setValuePdc] = useState(null);
+    const [itemsPdc, setItemsPdc] = useState([
+      { label: 'Sim', value: 's' },
+      { label: 'Nao', value: 'n' }
+    ]); */
+
+
 
   return (
     <Formik
       initialValues={{
         nomeDaCrianca: '',
         sexo: '',
-        pdc: '',
+        /* pdc: '', */
         instituicaoDeEnsino: '',
-        periodo: ''
+        /* periodo: '', */
+        dataDeNascimento: '',
       }}
       validationOnMount={true}
       validationSchema={registerKids}
-      onSubmit={cadastrarC()}>
+      onSubmit={cadastrarC}>
 
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
 
@@ -82,7 +84,30 @@ export default function CadastrarCrianca({ navigation }) {
                 <Text style={Css.errors}>{errors.sexo}</Text>}
             </View>
 
-            <View style={{
+            <View
+              style={{
+                position: 'relative',
+                right: 184
+              }}
+            >
+              <MaskedTextInput
+                style={Css.mask}
+                name="data de nascimento"
+                mask="99/99/9999"
+                onBlur={handleBlur('dataDeNascimento')}
+                placeholder='Data de nascimento: '
+                placeholderTextColor={'#282B29'}
+                returnKeyType='next'
+                keyboardType='numeric'
+                value={values.dataDeNascimento}
+                onChangeText={handleChange('dataDeNascimento')}
+              />
+            </View>
+            {(errors.tel && touched.tel) &&
+              <Text style={Css.errors}>{errors.tel}</Text>
+            }
+
+            {/*  <View style={{
               zIndex: 2,
               width: 100,
               height: 50,
@@ -105,9 +130,9 @@ export default function CadastrarCrianca({ navigation }) {
                   fontWeight: "bold",
                   color: '#FFBC16'
                 }} />
-            </View>
+            </View> 
             {(errors.pdc && touched.pdc) &&
-              <Text style={Css.errors}>{errors.pdc}</Text>}
+              <Text style={Css.errors}>{errors.pdc}</Text>}*/}
 
             <View style={Css.view_input}>
               <TextInput
@@ -120,9 +145,9 @@ export default function CadastrarCrianca({ navigation }) {
               />
               {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
                 <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
+            </View>
 
-
-              {/*  <TextInput
+            {/*  <TextInput
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Cidade:' placeholderTextColor={'#282B29'}
               inputMode='text'
@@ -133,7 +158,7 @@ export default function CadastrarCrianca({ navigation }) {
             {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
               <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>} */}
 
-              <View stryle={{
+            {/*      <View stryle={{
                 zIndex: 2,
                 width: 158,
                 height: 50,
@@ -147,14 +172,12 @@ export default function CadastrarCrianca({ navigation }) {
 
               {(errors.turno && touched.turno) &&
                 <Text style={Css.errors}>{errors.turno}</Text>}
-            </View>
+            </View> */}
           </KeyboardAvoidingView>
 
-          <TouchableOpacity style={Css.btn_v1}
-            onPress={() => {
-              handleSubmit();
-              /* navigation.navigate('DadosPessoais') */
-            }}
+          <TouchableOpacity
+            style={Css.btn_v1}
+            onPress={handleSubmit}
             rounded disabled={isValid}>
             <Text style={Css.txt}>Salvar</Text>
           </TouchableOpacity>
