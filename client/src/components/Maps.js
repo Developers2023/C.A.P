@@ -6,6 +6,9 @@ import { GOOGLE_MAPS_APIKEY } from '@env'
 import { LogBox } from 'react-native';
 import Geolocation from 'react-native-geolocation-service'
 import Geocoder from 'react-native-geocoding';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
+import Icon from 'react-native-vector-icons/FontAwesome';
+
 
 const casa = require('./images/casa3.png');
 const escola = require('./images/escola2.png');
@@ -14,11 +17,17 @@ const escola = require('./images/escola2.png');
 LogBox.ignoreAllLogs();
 
 export default () => {
-
+  
+  const localEscola = 'Avenida Deputado Cantídio Sampaio, São Paulo - SP';
   const converterRota = () => {
-    const novasRotas = (localEscola, setlocalEscola, atualizarRotas);
+    const novasRotas = localEscola
     Geocoding(novasRotas)
-  }
+   }
+
+   const handleButtonPress = () => {
+    // Lógica do botão aqui
+    console.log('Botão pressionado!');
+  };
 
   const [origin, setOrigin] = React.useState({
     latitude: 0,
@@ -40,11 +49,6 @@ export default () => {
     endereco: '505 Escuela Ave, Mountain View, CA 94040, EUA'
   }); //Nome da rua
 
-  {/* Renderizar outros componentes do mapa aqui */ }
-  /*  <RoteiroViagem 
-    localEscola = {localEscola}
-    setlocalEscola= {setlocalEscola}
-    /> */
   const requestLocationPermission = async () => {
     const granted = await PermissionsAndroid.request(
       PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
@@ -112,6 +116,7 @@ export default () => {
   return (
     <View>
       <MapView
+      
         provider={PROVIDER_GOOGLE}
         region={origin}
         style={styles.map}
@@ -154,11 +159,32 @@ export default () => {
             waypoints={Teste.coordinate}
           />
         }
+         
       </MapView>
+      <TouchableOpacity
+        style={{
+          position: 'absolute',
+          bottom: 16,
+          right: 16,
+          backgroundColor: '#87ceeb',
+          padding: 10,
+          borderRadius: 8,
+          flexDirection: 'row',
+          alignItems: 'center',
+        }}
+        onPress={handleButtonPress}
+      >
+        <Text style={{ color: 'white', fontWeight: 'bold', marginRight: 20, }}>
+          Proxima Rota
+        </Text>
+        <Icon name="angle-right" size={20} color="white" />
+        
+      </TouchableOpacity>
     </View>
   );
 
 };
+
 
 
 const styles = StyleSheet.create({
@@ -172,12 +198,12 @@ const styles = StyleSheet.create({
 const Teste = {
   coordinate: [
     {
-      latitude: 37.388175,
-      longitude: -122.097455
+      latitude: -23.4355165,
+      longitude: -46.7222448
     },
     {
-      latitude: 37.395861,
-      longitude: -122.098856
+      latitude: -23.4549641,
+      longitude: -46.6981486
     },
   ],
 };

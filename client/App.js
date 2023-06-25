@@ -9,7 +9,7 @@ import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import RoteiroViagem from './src/components/RoteiroViagem';
 import EnviarAlertas from './src/components/EnviarAlertas';
-import Cadastro from './src/components/Cadastro';
+import Cadastro from './src/components/Cadastro1'
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
 import Endereco from './src/components/Endereco'
@@ -83,21 +83,25 @@ export default () => {
 
   return (
     <NavigationContainer>
+
       <Stack.Navigator>  
         <Stack.Screen name='Lista de criancas' component={Cadastro} options={{ headerShown: false }} />
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />   
         <Stack.Screen name='Endereco' component={Endereco} options={{ headerShown: false }} />  
-     
+        <Stack.Screen name='Lista de criancas' component={Cadastro} options={{ headerShown: false }} />
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
+        <Stack.Screen name='Roteiro' component={RoteiroViagem} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
+        <Stack.Screen name='Endereco' component={Endereco} options={{ headerShown: false }} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
-        <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
         <Stack.Screen name='Upload' component={Upload} /> 
-      
+        <Stack.Screen name='Upload' component={Upload} />
       </Stack.Navigator>
 
     </NavigationContainer>
