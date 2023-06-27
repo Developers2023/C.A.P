@@ -50,16 +50,16 @@ export default function Atividades(){
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
 
-          <TouchableOpacity style = {Css.button} onPress={this.createTwoButtonAlert}>
+          {/* <TouchableOpacity style = {Css.button} onPress={this.createTwoButtonAlert}>
         <Text style = {Css.texet}>Dados do perueiro</Text>
         <Image source={require('../components/images/condutor.png')} style={Css.buttonImageIconStyle}/> 
-          </TouchableOpacity>
+          </TouchableOpacity> */}
 
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Informa')}>
+          {/* <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Informa')}>
         <Text style = {Css.texet}>Responsáveis cadastrados</Text>
         <Image source={require('../components/images/pais.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
-          
+           */}
 
 
 
