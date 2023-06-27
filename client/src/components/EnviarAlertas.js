@@ -25,7 +25,10 @@ export default function EnviarAlertas({ navigation }) {
         setListas(temp);
     };
 
-    let selected = listas.filter((listas) => listas.isChecked);
+    let selected = listas.filter((listas) =>
+     listas.isChecked);
+
+
 
     const renderFlatList = (renderData) => {
         return (
@@ -33,32 +36,51 @@ export default function EnviarAlertas({ navigation }) {
                 data={renderData}
                 renderItem={({ item }) => (
                     <View>
-                        <View>
-                            <Pressable style={Css.button} onPress={() => handleChange(item.id)} >
+                        <View >
+                            {/* <Pressable style={Css.button} onPress={() => handleChange(item.id)} >
                                 <MaterialCommunityIcons
-                                    name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
-                            </Pressable>
+                                    name={item.isChecked ? 'checkbox-marked'  : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
+                            </Pressable> */}
+                            <TouchableOpacity style={Css.button} onPress={() => {
+                                  if (item.id == 1){Linking.openURL('https://wa.me/5511992402307?text=As+crianças+vão+chegar+na+escola+com+atraso.')
+                            }else if (item.id == 2){Linking.openURL('https://wa.me/5511992402307?text=Tive+problemas+com+o+veiculo..')
+                            }else if (item.id == 3){Linking.openURL('https://wa.me/5511992402307?text=Transito+na+estrada,+pode+ocorrer+atraso+nas+rotas...')
+                            }else if (item.id == 4){Linking.openURL('https://wa.me/5511992402307?text=Haverá+atraso+ao+buscar+as+crianças+hoje.')
+                            }else {Linking.openURL('https://wa.me/5511992402307?text=O+transporte+não+vai+circular+hoje.')}
+                             }}>
+                            <Image source={require('../components/images/zap.png')} style={Css.buttonImageIconStyle} />
+                            </TouchableOpacity>
+                            
                             <Text style={Css.texte}>{item.txt}</Text>
                         </View>
+                        < View style={{height:0.1,backgroundColor: '#d3d3d3',}}></View>
                     </View>
+
+                    
+ 
                 )}
             />
         );
     }
 
+
+    
+
     return (
-        <View >
-            <View>
+        <View>
+            <View >           
                 {renderFlatList(listas)}
             </View>
+            
             <TouchableOpacity style={Css.button} onPress={() => Linking.openURL('https://wa.me/5511992402307?text=Digite+sua+mensagem+pro+tio%28a%29%3A+')}>
                 <Text style={Css.texte}>Mensagem Personalizada</Text>
                 <Image source={require('../components/images/zap.png')} style={Css.buttonImageIconStyle} />
             </TouchableOpacity>
+            < View style={{height:1,backgroundColor: '#d3d3d3',}}></View>
 
-            <TouchableOpacity style={Css.Button1} onPress={() => Alert.alert('Alerta enviado!')}>
+            {/* <TouchableOpacity style={Css.Button1}>
                 <Image source={require('../components/images/enviar.png')} style={Css.buttonImage} />
-            </TouchableOpacity>
+            </TouchableOpacity> */}
         </View>
     );
 };

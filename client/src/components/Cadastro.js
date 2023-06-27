@@ -67,6 +67,7 @@ export default function Cadastro({ navigation }) {
   /* console.log(nome + sexValue + email + senha + nascimento + cpf + telefone); */
 
   const cadastrar = async (values) => {
+    console.log("a")
     try {
       const response = await axios.post('http://10.0.2.2:3002/pessoa/cadastrar', {
         tipo: values.tipo,
@@ -128,7 +129,6 @@ export default function Cadastro({ navigation }) {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
-      marginTop: 2
     }}>
       <Controller
         control={control}
@@ -160,13 +160,10 @@ export default function Cadastro({ navigation }) {
             />
           </View>
         )}
-        name='nome'
+        name='tipo'
         defaultValue=''
       />
-      <View style={{
-        flexDirection: 'row',
-        marginLeft: 158
-      }}>
+      <View style={{width: 500}}>
         <Controller
           control={control}
           rules={{ required: true }}
@@ -215,6 +212,7 @@ export default function Cadastro({ navigation }) {
           defaultValue=""
         />
       </View>
+
       {(errors.nome) &&
         <Text style={Css.errors}>{errors.nome.message}</Text>
       }
@@ -450,7 +448,8 @@ export default function Cadastro({ navigation }) {
 
       <View>
         <TouchableOpacity
-          onPress={() =>{ navigation.navigate('Login') 
+          onPress={() =>{
+           navigation.navigate('Login') 
           handleSubmit}}
 
           style={Css.btn_v1}

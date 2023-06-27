@@ -3,18 +3,17 @@ import { View, Text, KeyboardAvoidingView, TextInput, TouchableOpacity, ScrollVi
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Css from './Css';
 import DropDownPicker from "react-native-dropdown-picker";
-import Dropdown_Turno from './Dropdown_Turno'
-import Dropdown from './Dropdown'
 import { MaskedTextInput } from 'react-native-mask-text';
-import { Formik } from 'formik';
 import * as yup from 'yup';
-import axios from './apiMenager/Api'
+import axios from 'axios'
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Controller, useForm } from 'react-hook-form';
 
 const registerKids = yup.object().shape({
   nomeDaCrianca: yup.string().required('Nome da criança é obrigatório').max(100, 'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/, 'Insira ao menos nome e sobrenome'),
-  /* sexo: yup.string().required('Sexo da criança é obrigatório'),
-  pdc: yup.string().required('Informar se é pdc é obrigatório'), */
-  instituicaoDeEnsino: yup.string().required('Nome da instituição é obrigatório').max(100, 'O nome da instituição não pode ultrapassar 100 caracteres'),
+  sexo: yup.string().required('Sexo da criança é obrigatório'),
+  nascimento: yup.string().required('Data de nascimento é obrigatório'), 
+  instituicao: yup.string().required('Nome da instituição é obrigatório').max(100, 'O nome da instituição não pode ultrapassar 100 caracteres'),
   periodo: yup.string().required('Horário é obrigatório').min(5, 'Insira os 4 digitos correspondentes a hora e minuto')
 
 })
@@ -23,40 +22,59 @@ const registerKids = yup.object().shape({
 
 export default function CadastrarCrianca({ navigation }) {
 
-
-
-
-  //PDC
-  const [openPdc, setOpenPdc] = useState(false);
-  const [valuePdc, setValuePdc] = useState(null);
-  const [itemsPdc, setItemsPdc] = useState([
-    { label: 'Sim', value: 's' },
-    { label: 'Nao', value: 'n' }
+  const [open, setOpen] = useState(false);
+  const [sexo, setSexo] = useState(null);
+  const [items, setItems] = useState([
+      { label: 'Fem', value: 'f' },
+      { label: 'Masc', value: 'm' }
   ]);
 
-  return (
-    <Formik
-      initialValues={{
-        nomeDaCrianca: '',
-        sexo: '',
-        pdc: '',
-        instituicaoDeEnsino: '',
-        periodo: ''
-      }}
-      validationOnMount={true}
-      validationSchema={registerKids}
-      onSubmit = {(values) => {
-          axios.post('/crianca/cadastrar/:id', values)
-          .then((response) => {
-            console.log("FUNFOU");
-          })
-          .catch((error) => {
-            console.log('Nao funfa')
-          })
-      }}
-      >
+  const [openP,setOpenP] = useState(false);
+  const [periodo, setPeriodo] = useState(null);
+  const [itemsP,setItemsP] = useState([
+    {label: 'Manhã', value: 'manha'},
+    {label: 'Tarde', value: 'tarde'},
+    {label: 'Integral', value: 'integral'}
+  ]);
 
-      {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
+  const { control, formState: { errors } } = useForm({
+    resolver: yupResolver(registerKids),
+  });
+
+  
+  const cadastrar = async (values) => {
+    try {
+      const response = await axios.post('http://10.0.2.2:3002/crianca/cadastrar/:id', {
+        nome: values.nome,
+        sexo: values.sexo,
+        instituicao: values.instituicao,
+        nascimento: values.nascimento,
+        periodo: values.periodo
+      })
+      console.log('cadastro feito');
+      console.log(response.data);
+    } catch (error) {
+      return console.log(JSON.stringify(error));
+    }
+  };
+
+  const [nome, setNome] = useState('');
+  const [instituicao, setInstituicao] = useState('');
+  const [nascimento, setNascimento] = useState('');
+
+  const handleSubmit = () => {
+    const dados = {
+      nome,
+      sexo,
+      instituicao,
+      nascimento,
+      periodo
+    }
+    console.log(dados);
+    cadastrar(dados);
+  };
+
+  return (
 
         <SafeAreaView style={{
           flex: 1,
@@ -67,60 +85,106 @@ export default function CadastrarCrianca({ navigation }) {
           <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
 
             <View style={Css.view_input}>
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 style={[Css.inputs, Css.input_name]}
                 placeholder='Nome:' placeholderTextColor={'#282B29'}
                 inputMode='text'
-                onChangeText={handleChange('nomeDaCrianca')}
+                onChangeText={(t) => { setNome(t) }}
                 onBlur={handleBlur('nomeDaCrianca')}
-                value={values.nomeDaCrianca} />
-
-              {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
-                <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
-
-              <Dropdown />
-              {(errors.sexo && touched.sexo) &&
-                <Text style={Css.errors}>{errors.sexo}</Text>}
-            </View>
-
-            <View style={{
-              zIndex: 2,
-              width: 100,
-              height: 50,
-              marginTop: 7,
-              marginBottom: 20
-            }}>
-
+                value={nome} />
+                )}
+                name='nome'
+                defaultValue=''
+              />
+              
+        <Controller
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
               <DropDownPicker
-                open={openPdc}
-                value={valuePdc}
-                items={itemsPdc}
-                setOpen={setOpenPdc}
-                setValue={setValuePdc}
-                setItems={setItemsPdc}
-                style={[Css.inputs, Css.inputs_all]}
-                translation={{ PLACEHOLDER: 'PDC?' }}
+                open={open}
+                value={sexo}
+                items={items}
+                setOpen={setOpen}
+                setValue={setSexo}
+                setItems={setItems}
+                style={{
+                    backgroundColor: '#87ceeb',
+                    fontWeight: 'bold',
+                    position: 'relative',
+                    top: 6
+                }}
+                translation={{ PLACEHOLDER: 'Sexo' }}
                 placeholderStyle={{ fontWeight: 'bold' }}
                 closeAfterSelecting={true}
                 selectedItemLabelStyle={{
-                  fontWeight: "bold",
-                  color: '#FFBC16'
-                }} />
+                    fontWeight: "bold",
+                    color: '#FFBC16',
+                }}/>
+          )}
+          name="sexo"
+          defaultValue=""
+        />
+
             </View>
-            {(errors.pdc && touched.pdc) &&
-              <Text style={Css.errors}>{errors.pdc}</Text>}
+            {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
+                <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
+              {(errors.sexo && touched.sexo) &&
+                <Text style={Css.errors}>{errors.sexo}</Text>}
+
+          <Controller
+                  control={control}
+                  rules={{ required: true }}
+                  render={({ field: { onChange, onBlur, value } }) => (
+                    <View style={Css.view_input}>
+                      <MaskedTextInput
+                        style={{
+                          backgroundColor: '#87ceeb',
+                          height: 35,
+                          padding: 3,
+                          margin: 7,
+                          borderRadius: 4,
+                          borderWidth: 1,
+                          textAlign: 'left',
+                          width: 330,
+                        }}
+                        mask='99/99/9999'
+                        placeholder='Data de nascimento:'
+                        placeholderTextColor={'#282B29'}
+                        keyboardType='numeric'
+                        value={nascimento}
+                        onChangeText={(t) => { setNascimento(t) }}
+                      />
+                    </View>
+                  )}
+                  name='nascimento'
+                  defaultValue=''
+                />
+
 
             <View style={Css.view_input}>
+            <Controller
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 style={[Css.inputs, Css.input_city]}
                 placeholder='Escola:' placeholderTextColor={'#282B29'}
                 inputMode='text'
-                onChangeText={handleChange('instituicaoDeEnsino')}
-                onBlur={handleBlur('instituicaoDeEnsino')}
-                value={values.instituicaoDeEnsino}
+                onChangeText={(t) => { setInstituicao(t) }}
+                onBlur={handleBlur('instituicao')}
+                value={instituicao}
               />
-              {(errors.instituicaoDeEnsino && touched.instituicaoDeEnsino) &&
-                <Text style={Css.errors}>{errors.instituicaoDeEnsino}</Text>}
+              )}
+              name='instituicao'
+              defaultValue=''
+            />
+              {(errors.instituicao && touched.instituicao) &&
+                <Text style={Css.errors}>{errors.instituicao}</Text>}
 
 
               {/*  <TextInput
@@ -134,17 +198,40 @@ export default function CadastrarCrianca({ navigation }) {
             {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
               <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>} */}
 
-              <View stryle={{
-                zIndex: 2,
-                width: 158,
-                height: 50,
-                marginBottom: 20,
-                marginLeft: 7,
-                marginTop: 7
-              }}>
+    <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={{
+            zIndex: 2,
+            width: 257,
+            height: 37,
+            marginBottom: 20,
+            alignSelf: "center"
+          }}>
 
-                <Dropdown_Turno />
+                <DropDownPicker  
+                        open={openP}
+                        value={periodo}
+                        items={itemsP}
+                        setOpen={setOpenP}
+                        setValue={setPeriodo}
+                        setItems={setItemsP}
+                        style={Css.mask_cep}
+                        translation={{  PLACEHOLDER:'Turno'}}
+                        placeholderStyle={{fontWeight:'bold'}}
+                        closeAfterSelecting={true}
+                        selectedItemLabelStyle={{
+                        fontWeight: "bold",
+                        color:'#FFBC16'               
+                      }}/> 
               </View>
+            )}
+            name='periodo'
+            defaultValue=''
+          />
+
+
 
               {(errors.turno && touched.turno) &&
                 <Text style={Css.errors}>{errors.turno}</Text>}
@@ -153,8 +240,8 @@ export default function CadastrarCrianca({ navigation }) {
 
           <TouchableOpacity style={Css.btn_v1}
             onPress={() => {
-              handleSubmit;
-              /* navigation.navigate('DadosPessoais') */
+              navigation.navigate('ListaCrianca')
+              handleSubmit 
             }}
             rounded disabled={isValid}>
             <Text style={Css.txt}>Salvar</Text>
@@ -162,6 +249,4 @@ export default function CadastrarCrianca({ navigation }) {
 
         </SafeAreaView>
       )}
-    </Formik>
-  );
-};
+    

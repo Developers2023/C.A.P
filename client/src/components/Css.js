@@ -89,7 +89,7 @@ const Css = StyleSheet.create({
     },
     inputs_all: {
         width: 330,
-        height: 35
+        height: 50
     },
     input_half: {
         width: 161
@@ -153,8 +153,8 @@ const Css = StyleSheet.create({
         margin: 7,
     },
     btn_v2: {
-        width: 170,
-        height: 45,
+        width: 250,
+        height: 51,
         alignItems: 'center',
         justifyContent: 'center',
         backgroundColor: '#FFBC16',
@@ -429,7 +429,7 @@ const Css = StyleSheet.create({
     },
     buttonImageIconStyle: {
         padding: 16,
-        margin: 4,
+        margin: 0,
         height: 5,
         width: 10,
         resizeMode: 'stretch',
@@ -449,7 +449,7 @@ const Css = StyleSheet.create({
         width: "100%",
         height: 150,
         left: 46,
-        top: 8,
+        top: 100,
         fontStyle: "normal",
         fontWeight: "400",
         fontSize: 18,
@@ -458,15 +458,16 @@ const Css = StyleSheet.create({
     },
     texte: {
         position: "absolute",
-        width: "100%",
+        width: 300,
         height: 100,
         left: 45,
-        top: 8,
+        top: 4,
         fontStyle: "normal",
         fontWeight: "400",
         fontSize: 15,
-        lineHeight: 29,
-        color: "#000000"
+        color: "#000000",
+        padding: 5,
+        marginBottom: 30
     },
     text1: {
         position: "absolute",

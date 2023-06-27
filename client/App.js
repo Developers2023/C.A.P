@@ -11,7 +11,6 @@ import EnviarAlertas from './src/components/EnviarAlertas';
 import Cadastro from './src/components/Cadastro'
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
-import Endereco from './src/components/Endereco'
 import Login from './src/components/Login'
 import TelaInicial from './src/components/Entrada'
 import CopiarID from './src/components/CopiarID';
@@ -87,7 +86,7 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>
-        state.userToken
+        
         {/*NAO ACESSO */}
         <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
         <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
@@ -102,7 +101,7 @@ export default () => {
         <Stack.Screen name='Dados do Veiculo' component={DadosVeiculo} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
-        <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
+        <Stack.Screen name='EnviarAlertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
 

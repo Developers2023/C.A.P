@@ -60,13 +60,13 @@ export default ({navigation}) => {
                navigation.navigate('Maps')
           }}
           rounded disabled={!isValid}>
-               <Text style = {Css.txtBtnLogin}>
+               <Text style = {Css.txt}>
                ACESSAR
                </Text>
           </TouchableOpacity>
 
           <TouchableOpacity style = {Css.btn_v1} onPress={() => navigation.goBack()}>
-               <Text style = {Css.txtBtnLogin} >
+               <Text style = {Css.txt} >
                     VOLTAR
                </Text>
           </TouchableOpacity>
