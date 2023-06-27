@@ -4,14 +4,12 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import Css from "./Css";
 
 const data = [
-    { id: 1, txt: 'As crianças vão chegar na escola com atraso.', isChecked: false },
-    { id: 2, txt: 'Tive problemas com o veiculo.', isChecked: false },
-    { id: 3, txt: 'Transito na estrada, pode ocorrer atraso nas rotas.', isChecked: false },
-    { id: 4, txt: 'Haverá atraso a buscar as crianças hoje.', isChecked: false },
-    { id: 5, txt: 'O transporte não vai circular hoje.', isChecked: false },
+    { id: 1, txt: 'Levarei o aluno hoje, porém preciso que busque.', isChecked: false },
+    { id: 2, txt: 'O aluno não vai comparecer na aula hoje.', isChecked: false },
+    { id: 3, txt: 'O aluno está doente não precisa buscar', isChecked: false },
 ];
 
-export default function EnviarAlertas({ navigation }) {
+export default function EnviarAlertasRes({ navigation }) {
     const [listas, setListas] = React.useState(data);
 
 
@@ -37,16 +35,11 @@ export default function EnviarAlertas({ navigation }) {
                 renderItem={({ item }) => (
                     <View>
                         <View >
-                            {/* <Pressable style={Css.button} onPress={() => handleChange(item.id)} >
-                                <MaterialCommunityIcons
-                                    name={item.isChecked ? 'checkbox-marked'  : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
-                            </Pressable> */}
                             <TouchableOpacity style={Css.button} onPress={() => {
-                                  if (item.id == 1){Linking.openURL('https://wa.me/5511992662779?text=As+crianças+vão+chegar+na+escola+com+atraso.')
-                            }else if (item.id == 2){Linking.openURL('https://wa.me/5511992662779?text=Tive+problemas+com+o+veiculo..')
-                            }else if (item.id == 3){Linking.openURL('https://wa.me/5511992662779?text=Transito+na+estrada,+pode+ocorrer+atraso+nas+rotas...')
-                            }else if (item.id == 4){Linking.openURL('https://wa.me/5511992662779?text=Haverá+atraso+ao+buscar+as+crianças+hoje.')
-                            }else {Linking.openURL('https://wa.me/5511992662779?text=O+transporte+não+vai+circular+hoje.')}
+                                  if (item.id == 1){Linking.openURL('https://wa.me/5511992402307?text=Levarei+o+aluno+hoje,+porém+preciso+que+busque.')
+                            }else if (item.id == 2){Linking.openURL('https://wa.me/5511992402307?text=O+aluno+não+vai+comparecer+na+aula+hoje..')
+                            }else if (item.id == 3){Linking.openURL('https://wa.me/5511992402307?text=O+aluno+está+doente+não+precisa+buscar..')
+                            }else {Linking.openURL('https://wa.me/5511992402307?text=O+transporte+não+vai+circular+hoje.')}
                              }}>
                             <Image source={require('../components/images/zap.png')} style={Css.buttonImageIconStyle} />
                             </TouchableOpacity>
@@ -78,9 +71,6 @@ export default function EnviarAlertas({ navigation }) {
             </TouchableOpacity>
             < View style={{height:1,backgroundColor: '#d3d3d3',}}></View>
 
-            {/* <TouchableOpacity style={Css.Button1}>
-                <Image source={require('../components/images/enviar.png')} style={Css.buttonImage} />
-            </TouchableOpacity> */}
         </View>
     );
 };

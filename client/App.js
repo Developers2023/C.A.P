@@ -24,8 +24,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 
-
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -90,8 +88,6 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>
-        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
-        <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
         <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='CadastroMo' component={CadastroMo} options={{headerShown: false}} />  
         {/* <Stack.Screen name='CadastroRe' component={CadastroRes} options={{headerShown: false}} /> */}
@@ -109,7 +105,9 @@ export default () => {
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
+        <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
+
       </Stack.Navigator>
 
     </NavigationContainer>

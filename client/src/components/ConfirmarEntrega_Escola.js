@@ -47,7 +47,7 @@ export default function ConfirmarEntrega_Escola ({navigation}){
                                     <MaterialCommunityIcons
                                         name={item.isChecked ? 'checkbox-marked' : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
                                 </Pressable>
-                                <Text style={Css.text}>{item.txt}</Text>
+                                <Text style={Css.texet}>{item.txt}</Text>
                             </View>
                         </View>
                 )}
