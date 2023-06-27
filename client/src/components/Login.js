@@ -57,7 +57,7 @@ export default ({navigation}) => {
           </KeyboardAvoidingView>
           <TouchableOpacity style = {Css.btn_v1} onPress={()=>{
                handleSubmit()
-               navigation.navigate('CadastrarCrianca')
+               navigation.navigate('Maps')
           }}
           rounded disabled={!isValid}>
                <Text style = {Css.txtBtnLogin}>
