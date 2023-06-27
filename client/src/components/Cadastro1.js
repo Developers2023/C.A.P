@@ -1,12 +1,14 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, View, SafeAreaView, Text, TextInput, TouchableOpacity } from 'react-native';
 import Css from './Css';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
-import axios from './apiMenager/Api';
+import api from './apiMenager/Api';
 import { Controller, useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import axios from 'axios';
 
 const sighUpValidation = yup.object().shape({
 
@@ -29,220 +31,308 @@ const sighUpValidation = yup.object().shape({
 
 export default function Cadastro({ navigation }) {
 
-  const cadastrar = (values) => {
-    axios.post('/pessoa/cadastrar', values)
-      .then((response) => {
-        console.log(response.data);
-        console.log("cadastro feito");
-      }).catch((error) => {
-        console.log(error);
-      })
-  };
-
 
   const [open, setOpen] = React.useState(false);
-  const [sexValue, setsexValue] = React.useState(null);
+  const [sexo, setSexo] = React.useState(null);
   const [items, setItems] = React.useState([
     { label: 'Fem', value: 'f' },
     { label: 'Masc', value: 'm' }
   ]);
 
 
-  const handleSubmit = (values) => {
-    console.log(values);
+  const [userOpen, setUserOpen] = useState(false);
+  const [tipo, setTipo] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [userItems, setUserItems] = useState([
+    { label: 'Motorista', value: 'motorista' },
+    { label: 'Responsável', value: 'responsavel' }
+  ]);
+
+
+
+  const { control, formState: { errors } } = useForm({
+    resolver: yupResolver(sighUpValidation),
+  });
+
+
+
+  /* console.log(nome + sexValue + email + senha + nascimento + cpf + telefone); */
+
+  const cadastrar = async (values) => {
+    try {
+      const response = await axios.post('http://10.0.2.2:3002/pessoa/cadastrar', {
+        tipo: values.tipo,
+        nome: values.nome,
+        sexo: values.sexo,
+        email: values.email,
+        senha: values.senha,
+        nascimento: values.nascimento,
+        cpf: values.cpf,
+        telefone: values.telefone,
+      })
+      console.log('cadastro feito');
+      console.log(response.data);
+    } catch (error) {
+      return console.log(JSON.stringify(error));
+    }
   };
 
+  const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
+  const [nascimento, setNascimento] = useState('');
+  const [cpf, setCpf] = useState('');
+  const [telefone, setTelefone] = useState('');
+
+
+  const handleSubmit = () => {
+    const dados = {
+      tipo,
+      nome,
+      sexo,
+      email,
+      senha,
+      nascimento,
+      cpf,
+      telefone
+    }
+    console.log(dados);
+    cadastrar(dados);
+  };
+
+
   return (
-    <Formik
-      initialValues={{
-        nome: '',
-        sexo: '',
-        email: '',
-        cpf: '',
-        nascimento: '',
-        telefone: '',
-        senha: '',
-      }}
-      validateOnMount={true}
-      validationSchema={sighUpValidation}
-      onSubmit={cadastrar}
-    >
-      {({ handleChange, handleSubmit, values, errors, touched, isValid }) => (
-        <SafeAreaView style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center',
-          marginTop: 2
-        }}>
-          <Text style={Css.cap}>Cadastrar</Text>
-
-          <KeyboardAvoidingView>
-            <View
-            style={{
-              position:'relative',
-              left: 154
-            }}
-            >
-              <View
-                style={{
-                  position: 'relative',
-                  top: 3
-                }}
-              >
-                <View
-                  style={Css.view_input}
-                >
-                  <TextInput
-                    onChangeText={handleChange('nome')}
-                    value={values.nome}
-                    placeholder='Nome:'
-                    style={[Css.inputs, Css.input_name]}
-                    placeholderTextColor={'#282B29'}
-                  />
-                  <DropDownPicker
-                    open={open}
-                    value={values.sexo}
-                    onChangeSearchText={handleChange('sexo')}
-                    items={items}
-                    setOpen={setOpen}
-                    setValue={setsexValue}
-                    setItems={setItems}
-                    style={{
-                      backgroundColor: '#87ceeb',
-                      fontWeight: 'bold', width: 88,
-                      height: 29, marginTop: 5
-                    }
-                    }
-                    translation={{ PLACEHOLDER: 'Sexo' }}
-                    placeholderStyle={{ fontWeight: 'bold' }}
-                    closeAfterSelecting={true}
-                    selectedItemLabelStyle={{
-                      fontWeight: "bold",
-                      color: '#FFBC16',
-                    }}
-
-                  />
-                </View>
-                {(errors.nome && touched.nome) &&
-                  <Text style={Css.errors}>{errors.nome}</Text>
-                }
-
-              </View>
-              <View>
-                <TextInput
-                  onChangeText={handleChange('email')}
-                  value={values.email}
-                  placeholder='Email:'
-                  keyboardType='email-address'
-                  placeholderTextColor={'#282B29'}
-                  style={[Css.inputs_all, Css.inputs]}
-                />
-              </View>
-              {(errors.email && touched.email) &&
-                <Text style={Css.errors}>{errors.email}</Text>
-              }
-
-              <View>
-                <MaskedTextInput
-                  style={{
-                    backgroundColor: '#87ceeb',
-                    height: 49,
-                    padding: 3,
-                    margin: 7,
-                    borderRadius: 4,
-                    borderWidth: 1,
-                    textAlign: 'left',
-                    width: 330,
-                  }}
-                  mask='999.999.999-99'
-                  placeholder='CPF:'
-                  placeholderTextColor={'#282B29'}
-                  keyboardType='numeric'
-                  value={values.cpf}
-                  onChangeText={handleChange('cpf')}
-                />
-              </View>
-              {(errors.cpf && touched.cpf) &&
-                <Text style={Css.errors}>{errors.cpf}</Text>
-              }
-
-              <View>
-                <MaskedTextInput
-                  style={{
-                    backgroundColor: '#87ceeb',
-                    height: 49,
-                    padding: 3,
-                    margin: 7,
-                    borderRadius: 4,
-                    borderWidth: 1,
-                    textAlign: 'left',
-                    width: 330,
-                  }}
-                  mask='99/99/9999'
-                  placeholder='Data de nascimento:'
-                  placeholderTextColor={'#282B29'}
-                  keyboardType='numeric'
-                  value={values.nascimento}
-                  onChangeText={handleChange('nascimento')}
-                />
-              </View>
-              {(errors.nascimento && touched.nascimento) &&
-                <Text style={Css.errors}>{errors.nascimento}</Text>
-              }
-
-              <View style={{
-                position: 'relative',
-                right: 183
-              }}>
-                <MaskedTextInput
-                  style={Css.mask}
-                  mask="(+99) 99 99999-9999"
-                  placeholder='Celular:'
-                  placeholderTextColor={'#282B29'}
-                  returnKeyType='next'
-                  autoComplete='tel'
-                  keyboardType='numeric'
-                  value={values.tel}
-                  onChangeText={handleChange('telefone')}
-                />
-              </View>
-              {(errors.telefone && touched.telefone) &&
-                <Text style={Css.errors}>{errors.telefone}</Text>
-              }
-
-              <View>
-                <TextInput
-                  onChangeText={handleChange('senha')}
-                  value={values.senha}
-                  placeholder='Senha'
-                  style={[Css.inputs, Css.inputs_all]}
-                  placeholderTextColor={'#282B29'}
-                  secureTextEntry
-                />
-              </View>
-              {(errors.senha && touched.senha) &&
-                <Text style={Css.errors}>{errors.senha}</Text>
-              }
-            </View>
-            <View
-              style={{
-                alignItems: 'center'
+    <SafeAreaView style={{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 2
+    }}>
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={{
+            zIndex: 2,
+            width: 257,
+            height: 47,
+            marginBottom: 20,
+            alignSelf: "center"
+          }}>
+            <DropDownPicker
+              open={userOpen}
+              value={tipo}
+              items={userItems}
+              setOpen={setUserOpen}
+              setValue={setTipo}
+              setItems={setUserItems}
+              loading={loading}
+              style={{ backgroundColor: '#87ceeb', fontWeight: 'bold' }}
+              translation={{ PLACEHOLDER: 'Selecione um usuário' }}
+              placeholderStyle={{ fontWeight: 'bold' }}
+              closeAfterSelecting={true}
+              selectedItemLabelStyle={{
+                fontWeight: "bold",
+                color: '#FFBC16'
               }}
-            >
-              <TouchableOpacity
-                onPress={handleSubmit}
-                style={Css.btn_v1}
-                rounded disabled={isValid}
-              >
-                <Text style={Css.txt}>Cadastrar</Text>
-              </TouchableOpacity>
-
-              <TouchableOpacity
-                style={Css.btn_v1}
-              >
-                <Text style={Css.txt}>Voltar</Text>
-              </TouchableOpacity>
+            />
+          </View>
+        )}
+        name='nome'
+        defaultValue=''
+      />
+      <View style={{
+        flexDirection: 'row',
+        marginLeft: 158
+      }}>
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <View>
+              <TextInput
+                onBlur={onBlur}
+                onChangeText={(t) => { setNome(t) }}
+                value={nome}
+                placeholder='Nome:'
+                style={[Css.inputs, Css.input_name]}
+                placeholderTextColor={'#282B29'}
+              />
             </View>
+          )}
+          name='nome'
+          defaultValue=''
+        />
+
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <DropDownPicker
+              open={open}
+              value={sexo}
+              items={items}
+              setOpen={setOpen}
+              setValue={setSexo}
+              setItems={setItems}
+              style={{
+                backgroundColor: '#87ceeb',
+                fontWeight: 'bold', width: 88,
+                height: 29, marginTop: 5
+              }}
+              translation={{ PLACEHOLDER: 'Sexo' }}
+              placeholderStyle={{ fontWeight: 'bold' }}
+              closeAfterSelecting={true}
+              selectedItemLabelStyle={{
+                fontWeight: "bold",
+                color: '#FFBC16',
+              }}
+            />
+          )}
+          name="sexo"
+          defaultValue=""
+        />
+      </View>
+      {(errors.nome) &&
+        <Text style={Css.errors}>{errors.nome.message}</Text>
+      }
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={(t) => { setEmail(t) }}
+              value={[value, email]}
+              placeholder='E-mail:'
+              style={[Css.inputs, Css.inputs_all]}
+              placeholderTextColor={'#282B29'}
+            />
+          </View>
+        )}
+        name='email'
+        defaultValue=''
+      />
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <MaskedTextInput
+              style={{
+                backgroundColor: '#87ceeb',
+                height: 49,
+                padding: 3,
+                margin: 7,
+                borderRadius: 4,
+                borderWidth: 1,
+                textAlign: 'left',
+                width: 330,
+              }}
+              mask='999.999.999-99'
+              placeholder='CPF:'
+              placeholderTextColor={'#282B29'}
+              keyboardType='numeric'
+              value={cpf}
+              onChangeText={(t) => { setCpf(t) }}
+            />
+          </View>
+        )}
+        name='cpf'
+        defaultValue=''
+      />
+      {(errors.cpf) &&
+        <Text style={Css.errors}>{errors.cpf.message}</Text>
+      }
+
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <MaskedTextInput
+              style={{
+                backgroundColor: '#87ceeb',
+                height: 49,
+                padding: 3,
+                margin: 7,
+                borderRadius: 4,
+                borderWidth: 1,
+                textAlign: 'left',
+                width: 330,
+              }}
+              mask='99/99/9999'
+              placeholder='Data de nascimento:'
+              placeholderTextColor={'#282B29'}
+              keyboardType='numeric'
+              value={nascimento}
+              onChangeText={(t) => { setNascimento(t) }}
+            />
+          </View>
+        )}
+        name='nascimento'
+        defaultValue=''
+      />
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={{
+            position: 'relative',
+            right: 183
+          }}>
+            <MaskedTextInput
+              style={Css.mask}
+              mask="(+99) 99 99999-9999"
+              placeholder='Celular:'
+              placeholderTextColor={'#282B29'}
+              keyboardType='numeric'
+              value={telefone}
+              onChangeText={(t) => { setTelefone(t) }}
+            />
+          </View>
+        )}
+        name='telefone'
+        defaultValue=''
+      />
+      {(errors.telefone) &&
+        <Text style={Css.errors}>{errors.telefone.message}</Text>
+      }
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <TextInput
+              onChangeText={(t) => { setSenha(t) }}
+              value={[value, senha]}
+              placeholder='Senha:'
+              style={[Css.inputs, Css.inputs_all]}
+              placeholderTextColor={'#282B29'}
+              secureTextEntry
+            />
+          </View>
+        )}
+        name='senha'
+        defaultValue=''
+      />
+      {(errors.senha) &&
+        <Text style={Css.errors}>{errors.senha.message}</Text>
+      }
+
+      <View>
+        <TouchableOpacity
+          onPress={handleSubmit}
+          style={Css.btn_v1}
+        >
+          <Text style={Css.txt}>Cadastrar</Text>
+        </TouchableOpacity>
+      </View>
 
     </SafeAreaView>
   )
