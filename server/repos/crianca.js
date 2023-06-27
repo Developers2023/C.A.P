@@ -11,10 +11,10 @@ const crianca = db.define('crianca', {
       type: Sequelize.STRING
     },
     instituicao: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     nascimento: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     periodo: {
       type: Sequelize.STRING
