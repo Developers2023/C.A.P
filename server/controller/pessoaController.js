@@ -17,6 +17,15 @@ module.exports = {
     return usuario
   },
 
+  async login(body) {
+    const pessoa = await pessoaRepository.findOne({
+      where: {
+        email: body.email, 
+        senha:body.senha
+      }})
+      return pessoa
+  },
+
   async atualizar(body, id) {
     const pessoa = await pessoaRepository.update({
       tipo: body.tipo,
