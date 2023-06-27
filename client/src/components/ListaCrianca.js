@@ -29,7 +29,7 @@ export default () => {
     const mostrarLista = () => {
         axios.get('/crianca/cadastrar/:id')
             .then(response => {
-                setDataLista(response.data.nome)
+                setDataLista(response.data)
             })
             .catch(error => console.log(JSON.stringify(error)));
     };
