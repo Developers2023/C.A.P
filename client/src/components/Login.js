@@ -148,7 +148,7 @@ export default ({ navigation }) => {
                               <TouchableOpacity
                                    style={Css.btn_v1}
                                    onPress={() => {
-                                        navigation.navigate('Cadastro');
+                                        navigation.navigate('TelaInicial');
                                    } }
                               >
                                    <Text
@@ -156,7 +156,7 @@ export default ({ navigation }) => {
                                              color: '#000',
                                              fontSize: 16
                                         }}
-                                   >Cadastre-se</Text>
+                                   >Voltar</Text>
                               </TouchableOpacity>
                          </View>
                     </KeyboardAvoidingView>
