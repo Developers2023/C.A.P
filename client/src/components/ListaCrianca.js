@@ -27,12 +27,13 @@ export default () => {
     const [dataLista, setDataLista] = useState([]);
 
     const mostrarLista = () => {
-        axios.get('/crianca/cadastrar/:id')
+        axios.patch('/pessoa/buscarTodos')
             .then(response => {
                 setDataLista(response.data.nome)
             })
             .catch(error => console.log(JSON.stringify(error)));
     };
+
 
     useEffect(() => {
         mostrarLista();

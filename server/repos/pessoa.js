@@ -28,7 +28,7 @@ const pessoa = db.define('pessoa', {
       type: Sequelize.STRING
     },
     telefone: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     senha: {
       type: Sequelize.STRING

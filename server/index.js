@@ -42,9 +42,9 @@ server.post("/veiculo/cadastrar/:id",async function(req,res){
     res.send(result)
 })
 
-server.listen(3001, function(error){
+server.listen(3002, function(error){
     if(error){
     console.log("erro");
     }else{
-        console.log(`server rodando na porta 3001`);
+        console.log(`server rodando na porta 3002`);
     }})
