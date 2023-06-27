@@ -91,6 +91,7 @@ export default () => {
 
       <Stack.Navigator>
 
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='Entrada' component={Autentificacao} options={{headerShown: false}} />
         <Stack.Screen name='Mapa' component={Maps} />
         <Stack.Screen name='EnviarAlertas' component={EnviarAlertas} />
@@ -99,7 +100,6 @@ export default () => {
 
         {/*NAO ACESSO */}
         <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
 
 
         {/*COM  ACESSO */}
