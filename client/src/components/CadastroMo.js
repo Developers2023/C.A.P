@@ -84,6 +84,7 @@ export default function Cadastro({ navigation }) {
       })
       console.log('cadastro feito');
       console.log(response.data);
+      navigation.navigate("Login")
     } catch (error) {
       return console.log(JSON.stringify(error));
     }
@@ -447,8 +448,7 @@ export default function Cadastro({ navigation }) {
 
       <View>
         <TouchableOpacity
-          onPress= {handleSubmit}
-          
+          onPress = {handleSubmit}
 
           style={Css.btn_v1}
         >

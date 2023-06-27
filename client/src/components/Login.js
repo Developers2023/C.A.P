@@ -151,13 +151,15 @@ export default ({ navigation }) => {
                                    onPress={() => {
                                         navigation.navigate('Cadastro');
                                    }}
+                                        navigation.navigate('TelaInicial');
+                                   } }
                               >
                                    <Text
                                         style={{
                                              color: '#000',
                                              fontSize: 16
                                         }}
-                                   >Cadastre-se</Text>
+                                   >Voltar</Text>
                               </TouchableOpacity>
                          </View>
                     </KeyboardAvoidingView>
