@@ -89,6 +89,7 @@ const Css = StyleSheet.create({
     },
     inputs_all: {
         width: 330,
+        height: 35
     },
     input_half: {
         width: 161
