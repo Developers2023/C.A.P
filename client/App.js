@@ -88,22 +88,28 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>
-      
+
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
-      <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
-      
-      <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
-        <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
+
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='Login' component={Login} />
         <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
         <Stack.Screen name='CadastroRe' component={CadastroRes} options={{ headerShown: false }} />
         <Stack.Screen name='CadastroMo' component={CadastroMo} options={{ headerShown: false }} />
         <Stack.Screen name='Maps' component={Maps} options={{ headerShown: false }} />
         {/*NAO ACESSO */}
+
+
+        {/* <Stack.Screen name='CadastroRe' component={CadastroRes} options={{headerShown: false}} /> */}
+        {/* <Stack.Screen name='Entrada' component={Autentificacao} options={{headerShown: false}} /> */}
+
+        <Stack.Screen name='Mapa' component={Maps} />
+
         {/*COM  ACESSO */}
-        <Stack.Screen name='Dados Pessoais' component={DadosPessoais} /> 
+        <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
         <Stack.Screen name='CopiarCod' component={CopiarID} />
         <Stack.Screen name='Dados do Veiculo' component={DadosVeiculo} />
-        <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar Alertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />

@@ -31,7 +31,7 @@ export default ({ navigation }) => {
 
           try {
             //const response = await axios.get(`http://10.0.2.2:3002/pessoa/login/${values.email}/${values.senha}`);
-               const response = await axios.post(`http://10.0.2.2:3002/pessoa/login`,{
+                await axios.post(`http://10.0.2.2:3002/pessoa/login`,{
                     email: values.email,
                     senha: values.senha
                })
@@ -146,7 +146,7 @@ export default ({ navigation }) => {
                               <TouchableOpacity
                                    style={Css.btn_v1}
                                    onPress={() => {
-                                        navigation.navigate('Cadastro');
+                                        navigation.goBack();
                                    }}
                               >
                                    <Text
