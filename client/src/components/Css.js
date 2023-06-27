@@ -80,7 +80,7 @@ const Css = StyleSheet.create({
     },
     inputs: {
         backgroundColor: '#87ceeb',
-        height: 49,
+        height: 35,
         padding: 3,
         margin: 7,
         borderRadius: 4,
@@ -89,7 +89,6 @@ const Css = StyleSheet.create({
     },
     inputs_all: {
         width: 330,
-        height: 50
     },
     input_half: {
         width: 161
@@ -305,7 +304,7 @@ const Css = StyleSheet.create({
 
     mask_cep: {
         backgroundColor: '#87ceeb',
-        height: 49,
+        height: 35,
         padding: 3,
         margin: 7,
         borderRadius: 4,

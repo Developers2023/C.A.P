@@ -27,11 +27,11 @@ export default ({ navigation }) => {
      const [senha, setSenha] = useState('');
 
 
-     const login = async (campos) => {
+     const login = async () => {
           try {
                const response = await axios.get('http://10.0.2.2:3002/pessoa/login', {
-                    email: campos.email,
-                    senha: campos.senha
+                    email,
+                    senha
                });
 
                if (response.data) {
@@ -46,14 +46,14 @@ export default ({ navigation }) => {
                console.log(JSON.stringify(error));
           }
      };
-
+ 
      const handleSubmit = () => {
           const campos = {
-               email,
-               senha,
+                    email,
+                    senha,
+               }
+               login(campos);
           } 
-          login(campos);
-     }
 
      return (
           <ScrollView>
@@ -74,7 +74,7 @@ export default ({ navigation }) => {
                                         <View>
                                              <TextInput
                                                   onBlur={onBlur}
-                                                  onChangeText={(t) => { setEmail(t); } }
+                                                  onChangeText={(t) => { setEmail(t); }}
                                                   value={email}
                                                   placeholder='Email:'
                                                   style={{
@@ -100,7 +100,7 @@ export default ({ navigation }) => {
                                         <View>
                                              <TextInput
                                                   onBlur={onBlur}
-                                                  onChangeText={(t) => { setSenha(t); } }
+                                                  onChangeText={(t) => { setSenha(t); }}
                                                   value={senha}
                                                   placeholder='Senha:'
                                                   style={{
@@ -145,45 +145,24 @@ export default ({ navigation }) => {
                                         }}
                                    >Login</Text>
                               </TouchableOpacity>
+                              
                               <TouchableOpacity
                                    style={Css.btn_v1}
                                    onPress={() => {
                                         navigation.navigate('Cadastro');
-                                   } }
+                                   }}
                               >
                                    <Text
                                         style={{
                                              color: '#000',
                                              fontSize: 16
                                         }}
-                                   >Cadastre-se</Text>
+                                   >Voltar</Text>
                               </TouchableOpacity>
                          </View>
                     </KeyboardAvoidingView>
                </View>
+          </ScrollView>
+     )
+};
 
-               {/* <TextInput
-                    name="password"
-                    onChangeText={handleChange('password')}
-                    onBlur={handleBlur('password')}
-                    value={values.password}
-                    placeholder='Senha:'
-                    style={Css.InputLogin}
-                    secureTextEntry={true} />
-               {(errors.password && touched.password) &&
-                    <Text style={Css.errors_senha}>{errors.password}</Text>}
-                    <TouchableOpacity style={Css.btn_v1} onPress={() => {
-               handleSubmit();
-               navigation.navigate('Maps'); } }
-               rounded disabled={!isValid}>
-                    <Text style={Css.txt}>
-                         ACESSAR
-                    </Text>
-               </TouchableOpacity>
-               <TouchableOpacity style={Css.btn_v1} onPress={() => navigation.goBack()}>
-                    <Text style={Css.txt}>
-                         VOLTAR
-                    </Text>
-               </TouchableOpacity> */}
-     </ScrollView>
-     )}

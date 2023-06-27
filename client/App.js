@@ -8,18 +8,25 @@ import DadosPessoais from './src/components/DadosPessoais';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import EnviarAlertas from './src/components/EnviarAlertas';
-import Cadastro from './src/components/Cadastro'
+import CadastroMo from './src/components/CadastroMo';
+import CadastroRes from './src/components/CadastroRe'
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
 import Login from './src/components/Login'
 import TelaInicial from './src/components/Entrada'
 import CopiarID from './src/components/CopiarID';
 import ListaCrianca from './src/components/ListaCrianca'
+import Autentificacao from './src/components/autenticacao';
+
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 681a6d478b9fd4795968dca999e4a2c5b2d3b958
 
 
 const Tab = createBottomTabNavigator();
@@ -86,6 +93,7 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>
+<<<<<<< HEAD
       
       <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='Login' component={Login}/>
@@ -107,9 +115,36 @@ export default () => {
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar Alertas' component={EnviarAlertas} />
+=======
+
+        <Stack.Screen name='Mapa' component={Maps} />
+        <Stack.Screen name='CadastroMo' component={CadastroMo} options={{headerShown: false}} />
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+        <Stack.Screen name='Entrada' component={Autentificacao} options={{headerShown: false}} />
+        <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />    
+        {/* <Stack.Screen name='CadastroRe' component={CadastroRes} options={{headerShown: false}} /> */}
+        {/* <Stack.Screen name='Entrada' component={Autentificacao} options={{headerShown: false}} /> */}
+        <Stack.Screen name='EnviarAlertas' component={EnviarAlertas} />
+        <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+
+        {/*NAO ACESSO */}
+
+
+        {/*COM  ACESSO */}
+       
+        <Stack.Screen name='CopiarCod' component={CopiarID} />
+        <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
+        <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
+        <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
+>>>>>>> 681a6d478b9fd4795968dca999e4a2c5b2d3b958
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 681a6d478b9fd4795968dca999e4a2c5b2d3b958
       </Stack.Navigator>
 
     </NavigationContainer>

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { KeyboardAvoidingView, View, SafeAreaView, Text, TextInput, TouchableOpacity } from 'react-native';
 import Css from './Css';
 import DropDownPicker from 'react-native-dropdown-picker';
-import { Formik } from 'formik';
 import * as yup from 'yup';
 import { MaskedTextInput } from 'react-native-mask-text';
-import api from './apiMenager/Api';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
@@ -67,7 +65,6 @@ export default function Cadastro({ navigation }) {
   /* console.log(nome + sexValue + email + senha + nascimento + cpf + telefone); */
 
   const cadastrar = async (values) => {
-    console.log("a")
     try {
       const response = await axios.post('http://10.0.2.2:3002/pessoa/cadastrar', {
         tipo: values.tipo,
@@ -78,12 +75,12 @@ export default function Cadastro({ navigation }) {
         nascimento: values.nascimento,
         cpf: values.cpf,
         telefone: values.telefone,
-          endereco: {
-            logradouro: values.logradouro,
-            numero: values.numero,
-            cidade: values.cidade,
-            cep: values.cep,
-          }
+        endereco: {
+          logradouro: values.logradouro,
+          numero: values.numero,
+          cidade: values.cidade,
+          cep: values.cep,
+        }
       })
       console.log('cadastro feito');
       console.log(response.data);
@@ -129,6 +126,7 @@ export default function Cadastro({ navigation }) {
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center',
+      marginTop: 2
     }}>
       <Controller
         control={control}
@@ -160,10 +158,13 @@ export default function Cadastro({ navigation }) {
             />
           </View>
         )}
-        name='tipo'
+        name='nome'
         defaultValue=''
       />
-      <View style={{width: 500}}>
+      <View style={{
+        flexDirection: 'row',
+        marginLeft: 158
+      }}>
         <Controller
           control={control}
           rules={{ required: true }}
@@ -212,61 +213,58 @@ export default function Cadastro({ navigation }) {
           defaultValue=""
         />
       </View>
-
       {(errors.nome) &&
         <Text style={Css.errors}>{errors.nome.message}</Text>
       }
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={Css.view_input}>
-            <TextInput
-              onBlur={onBlur}
-              onChangeText={(t) => { setEmail(t) }}
-              value={[value, email]}
-              placeholder='E-mail:'
-              style={[Css.inputs, Css.inputs_all]}
-              placeholderTextColor={'#282B29'}
-            />
-          </View>
-        )}
-        name='email'
-        defaultValue=''
-      />
 
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={Css.view_input}>
-            <MaskedTextInput
-              style={{
-                backgroundColor: '#87ceeb',
-                height: 35,
-                padding: 3,
-                margin: 7,
-                borderRadius: 4,
-                borderWidth: 1,
-                textAlign: 'left',
-                width: 330,
-              }}
-              mask='999.999.999-99'
-              placeholder='CPF:'
-              placeholderTextColor={'#282B29'}
-              keyboardType='numeric'
-              value={cpf}
-              onChangeText={(t) => { setCpf(t) }}
-            />
-          </View>
-        )}
-        name='cpf'
-        defaultValue=''
-      />
-      {(errors.cpf) &&
-        <Text style={Css.errors}>{errors.cpf.message}</Text>
-      }
+      <View
+        style={{
+          flexDirection: 'row',
+          marginTop: 10
+        }}
+      >
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <View style={Css.view_input}>
+              <MaskedTextInput
+                style={Css.mask_cep}
+                mask='999.999.999-99'
+                placeholder='CPF:'
+                placeholderTextColor={'#282B29'}
+                keyboardType='numeric'
+                value={cpf}
+                onChangeText={(t) => { setCpf(t) }}
+              />
+            </View>
+          )}
+          name='cpf'
+          defaultValue=''
+        />
+        {(errors.cpf) &&
+          <Text style={Css.errors}>{errors.cpf.message}</Text>
+        }
 
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <View style={Css.view_input}>
+              <TextInput
+                onChangeText={(t) => { setCidade(t) }}
+                value={cidade}
+                placeholder='Cidade:'
+                style={[Css.inputs, Css.input_city]}
+                placeholderTextColor={'#282B29'}
+              />
+            </View>
+          )}
+          name='cidade'
+          defaultValue=''
+        />
+
+      </View>
 
       <Controller
         control={control}
@@ -332,67 +330,27 @@ export default function Cadastro({ navigation }) {
         <Text style={Css.errors}>{errors.telefone.message}</Text>
       }
 
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={Css.view_input}>
-            <TextInput
-              onChangeText={(t) => { setSenha(t) }}
-              value={[value, senha]}
-              placeholder='Senha:'
-              style={[Css.inputs, Css.inputs_all]}
-              placeholderTextColor={'#282B29'}
-              secureTextEntry
-            />
-          </View>
-        )}
-        name='senha'
-        defaultValue=''
-      />
-      {(errors.senha) &&
-        <Text style={Css.errors}>{errors.senha.message}</Text>
-      }
-
-      <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={Css.view_input}>
-            <TextInput
-              onChangeText={(t) => { setLogradouro(t) }}
-              value={logradouro}
-              placeholder='Rua:'
-              style={[Css.inputs, Css.inputs_all]}
-              placeholderTextColor={'#282B29'}
-            />
-          </View>
-        )}
-        name='logradouro'
-        defaultValue=''
-      />
-
-
       <View
         style={{
           flexDirection: 'row'
         }}
       >
+
         <Controller
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, onBlur, value } }) => (
             <View style={Css.view_input}>
               <TextInput
-                onChangeText={(t) => { setCidade(t) }}
-                value={cidade}
-                placeholder='Cidade:'
-                style={[Css.inputs, Css.input_city]}
+                onChangeText={(t) => { setLogradouro(t) }}
+                value={logradouro}
+                placeholder='Rua:'
+                style={[Css.inputs, Css.input_address]}
                 placeholderTextColor={'#282B29'}
               />
             </View>
           )}
-          name='cidade'
+          name='logradouro'
           defaultValue=''
         />
 
@@ -446,11 +404,51 @@ export default function Cadastro({ navigation }) {
         defaultValue=''
       />
 
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <TextInput
+              onBlur={onBlur}
+              onChangeText={(t) => { setEmail(t) }}
+              value={[value, email]}
+              placeholder='E-mail:'
+              style={[Css.inputs, Css.inputs_all]}
+              placeholderTextColor={'#282B29'}
+            />
+          </View>
+        )}
+        name='email'
+        defaultValue=''
+      />
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <TextInput
+              onChangeText={(t) => { setSenha(t) }}
+              value={[value, senha]}
+              placeholder='Senha:'
+              style={[Css.inputs, Css.inputs_all]}
+              placeholderTextColor={'#282B29'}
+              secureTextEntry
+            />
+          </View>
+        )}
+        name='senha'
+        defaultValue=''
+      />
+      {(errors.senha) &&
+        <Text style={Css.errors}>{errors.senha.message}</Text>
+      }
+
       <View>
         <TouchableOpacity
-          onPress={() =>{
-           navigation.navigate('Login') 
-          handleSubmit}}
+          onPress= {handleSubmit}
+          
 
           style={Css.btn_v1}
         >

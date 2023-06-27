@@ -10,15 +10,15 @@ export default ({ navigation }) => {
                 <Text style={Css.cap}>C.A.P - CADÊ A PERUA</Text>
             </>
 
-            <TouchableOpacity style={Css.btnEntrada} onPress={() => navigation.navigate('Login')}>
+            <TouchableOpacity style={Css.btnEntrada} onPress={() => navigation.navigate('CadastroMo')}>
                 <Text style={Css.txtBtnEntrada} >
-                    LOGIN
+                    MOTORISTA
                 </Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={Css.btnEntrada} onPress={() => navigation.navigate('CadastroMo')}>
+            <TouchableOpacity style={Css.btnEntrada} onPress={() => navigation.navigate('CadastroRe')}>
                 <Text style={Css.txtBtnEntrada} >
-                    CADASTRO
+                    RESPONSAVEL
                 </Text>
             </TouchableOpacity>
 
