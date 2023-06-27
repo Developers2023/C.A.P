@@ -7,16 +7,16 @@ const endereco = db.define('endereco', {
     type: Sequelize.STRING
   },
   numero: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   cidade: {
     type: Sequelize.STRING
   }, 
   cep: {
-    type: Sequelize.INTEGER
+    type: Sequelize.STRING
   },
   cancelado: {
-    type: Sequelize.CHAR
+    type: Sequelize.STRING
   },
   pessoaId: {
     type: Sequelize.INTEGER,

@@ -1,10 +1,11 @@
 import react, { useState } from "react";
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import axios from './apiMenager/Api'
+/* import axios from './apiMenager/Api' */
 import { SafeAreaView, TextInput, TouchableOpacity, View, Text } from "react-native";
 import Css from './Css';
 import { MaskedTextInput } from 'react-native-mask-text';
+import axios from 'axios'
 
 const enderecoSchema = yup.object().shape({
     endereco: yup.string().required('Endereço é obrigatório'),
@@ -15,15 +16,12 @@ const enderecoSchema = yup.object().shape({
 
 export default ({navigation}) => {
 
-const cadastrarEnderreco = (value) => {
-    axios.post('pessoa/cadastro', JSON.stringify(value))
-    .then(response => {
-        console.log(response.data);
-        return response.data
-    }).catch(errors => {
-        console.log(JSON.stringify(errors))
-    })
-    
+const cadastrarEnderreco = async (value) => {
+    try{
+        const response = await axios.post('http://10.2.2:3002/pessoa/cadastrar')
+    } catch{
+        
+    }
 }
 
     return(

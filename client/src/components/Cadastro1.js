@@ -26,7 +26,15 @@ const sighUpValidation = yup.object().shape({
 
   nascimento: yup.string().required('A data de nascimento é obrigatória'),
 
-  sexo: yup.string().required('O campo sexo é obrigatório')
+  sexo: yup.string().required('O campo sexo é obrigatório'),
+
+  endereco: yup.string().required('Endereço é obrigatório'),
+
+  cidade: yup.string().required('nome da cidade/estado é obrigatório'),
+
+  cep: yup.string().required('CEP é obrigatório').min(8, 'O CEP deve conter 8 dígitos'),
+
+  Numero: yup.string().required('inserir o numero da residência é obrigatório'),
 });
 
 export default function Cadastro({ navigation }) {
@@ -69,6 +77,12 @@ export default function Cadastro({ navigation }) {
         nascimento: values.nascimento,
         cpf: values.cpf,
         telefone: values.telefone,
+          endereco: {
+            logradouro: values.logradouro,
+            numero: values.numero,
+            cidade: values.cidade,
+            cep: values.cep,
+          }
       })
       console.log('cadastro feito');
       console.log(response.data);
@@ -83,6 +97,10 @@ export default function Cadastro({ navigation }) {
   const [nascimento, setNascimento] = useState('');
   const [cpf, setCpf] = useState('');
   const [telefone, setTelefone] = useState('');
+  const [logradouro, setLogradouro] = useState('');
+  const [numero, setNumero] = useState('');
+  const [cidade, setCidade] = useState('');
+  const [cep, setCep] = useState('');
 
 
   const handleSubmit = () => {
@@ -94,7 +112,11 @@ export default function Cadastro({ navigation }) {
       senha,
       nascimento,
       cpf,
-      telefone
+      telefone,
+      logradouro,
+      numero,
+      cidade,
+      cep
     }
     console.log(dados);
     cadastrar(dados);
@@ -115,7 +137,7 @@ export default function Cadastro({ navigation }) {
           <View style={{
             zIndex: 2,
             width: 257,
-            height: 47,
+            height: 37,
             marginBottom: 20,
             alignSelf: "center"
           }}>
@@ -178,7 +200,7 @@ export default function Cadastro({ navigation }) {
               style={{
                 backgroundColor: '#87ceeb',
                 fontWeight: 'bold', width: 88,
-                height: 29, marginTop: 5
+                height: 19, marginTop: 5
               }}
               translation={{ PLACEHOLDER: 'Sexo' }}
               placeholderStyle={{ fontWeight: 'bold' }}
@@ -223,7 +245,7 @@ export default function Cadastro({ navigation }) {
             <MaskedTextInput
               style={{
                 backgroundColor: '#87ceeb',
-                height: 49,
+                height: 35,
                 padding: 3,
                 margin: 7,
                 borderRadius: 4,
@@ -256,7 +278,7 @@ export default function Cadastro({ navigation }) {
             <MaskedTextInput
               style={{
                 backgroundColor: '#87ceeb',
-                height: 49,
+                height: 35,
                 padding: 3,
                 margin: 7,
                 borderRadius: 4,
@@ -283,10 +305,19 @@ export default function Cadastro({ navigation }) {
         render={({ field: { onChange, onBlur, value } }) => (
           <View style={{
             position: 'relative',
-            right: 183
+            left: 1
           }}>
             <MaskedTextInput
-              style={Css.mask}
+              style={{
+                backgroundColor: '#87ceeb',
+                padding: 3,
+                margin: 7,
+                borderRadius: 4,
+                borderWidth: 1,
+                textAlign: 'left',
+                width: 330,
+                height: 35,
+              }}
               mask="(+99) 99 99999-9999"
               placeholder='Celular:'
               placeholderTextColor={'#282B29'}
@@ -325,9 +356,102 @@ export default function Cadastro({ navigation }) {
         <Text style={Css.errors}>{errors.senha.message}</Text>
       }
 
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <TextInput
+              onChangeText={(t) => { setLogradouro(t) }}
+              value={logradouro}
+              placeholder='Rua:'
+              style={[Css.inputs, Css.inputs_all]}
+              placeholderTextColor={'#282B29'}
+            />
+          </View>
+        )}
+        name='logradouro'
+        defaultValue=''
+      />
+
+
+      <View
+        style={{
+          flexDirection: 'row'
+        }}
+      >
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <View style={Css.view_input}>
+              <TextInput
+                onChangeText={(t) => { setCidade(t) }}
+                value={cidade}
+                placeholder='Cidade:'
+                style={[Css.inputs, Css.input_city]}
+                placeholderTextColor={'#282B29'}
+              />
+            </View>
+          )}
+          name='cidade'
+          defaultValue=''
+        />
+
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <View style={Css.view_input}>
+              <TextInput
+                onChangeText={(t) => { setNumero(t) }}
+                value={numero}
+                placeholder='Numero:'
+                style={[Css.inputs, Css.input_number]}
+                placeholderTextColor={'#282B29'}
+              />
+            </View>
+          )}
+          name='numero'
+          defaultValue=''
+        />
+
+      </View>
+
+      <Controller
+        control={control}
+        rules={{ required: true }}
+        render={({ field: { onChange, onBlur, value } }) => (
+          <View style={Css.view_input}>
+            <MaskedTextInput
+              mask='99999-999'
+              name="cep"
+              onChangeText={(t) => { setCep(t) }}
+              value={cep}
+              style={{
+                backgroundColor: '#87ceeb',
+                padding: 3,
+                margin: 7,
+                borderRadius: 4,
+                borderWidth: 1,
+                textAlign: 'left',
+                width: 330,
+                height: 35,
+              }}
+              placeholder={'CEP:' + cep} placeholderTextColor={'#000'}
+              keyboardType='numeric'
+              returnKeyType='next'
+              autoComplete='postal-code' />
+          </View>
+        )}
+        name='cep'
+        defaultValue=''
+      />
+
       <View>
         <TouchableOpacity
           onPress={handleSubmit}
+
           style={Css.btn_v1}
         >
           <Text style={Css.txt}>Cadastrar</Text>
