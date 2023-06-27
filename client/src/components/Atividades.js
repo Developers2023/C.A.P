@@ -1,16 +1,29 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { StyleSheet, Text, Image, SafeAreaView, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, Image, SafeAreaView, TouchableOpacity, Alert} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import  Css  from './Css';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 export default function Atividades(){
+  createTwoButtonAlert = () =>
+  Alert.alert('Tela de responsável', 'Sem acesso', [
+      {
+          text: 'Fechar',
+          onPress: () => console.log('Não'),
+          style: 'cancel',
+      },
+      { text: 'Continuar', onPress: () => console.log('Sim') },
+  ]);
   const navigation = useNavigation();
     return (
       
         <SafeAreaView>
+        <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('CadastrarCrianca')}>
+        <Text style = {Css.texet}>Cadastrar crianças</Text>
+        <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>  
 
          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Lista de criancas')}>
         <Text style = {Css.texet}>Lista das crianças</Text>
@@ -36,6 +49,16 @@ export default function Atividades(){
         <Text style = {Css.texet}>Mensagens recebidas</Text>
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
+
+          <TouchableOpacity style = {Css.button} onPress={this.createTwoButtonAlert}>
+        <Text style = {Css.texet}>Dados do perueiro</Text>
+        <Image source={require('../components/images/condutor.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>
+
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Informa')}>
+        <Text style = {Css.texet}>Responsáveis cadastrados</Text>
+        <Image source={require('../components/images/pais.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>  
           
 
 
