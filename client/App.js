@@ -20,6 +20,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
+import Login from './src/components/Login';
 
 
 const Tab = createBottomTabNavigator();
@@ -86,7 +87,16 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>
+<<<<<<< HEAD
         
+=======
+<<<<<<< HEAD
+        <Stack.Screen name='Dados Pessoais' component={Login}/>
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
+=======
+        state.userToken
+>>>>>>> 6749ea02c4a977ee812f58abeb0afaa352abcf8b
         {/*NAO ACESSO */}
         <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
         <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
@@ -99,12 +109,16 @@ export default () => {
         <Stack.Screen name='CopiarCod' component={CopiarID} />
         <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
         <Stack.Screen name='Dados do Veiculo' component={DadosVeiculo} />
+>>>>>>> 7e40da8d1681d5c4951f230fbac8119ed58292f5
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='EnviarAlertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
+<<<<<<< HEAD
+=======
 
+>>>>>>> 7e40da8d1681d5c4951f230fbac8119ed58292f5
       </Stack.Navigator>
 
     </NavigationContainer>
