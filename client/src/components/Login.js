@@ -35,7 +35,7 @@ export default ({ navigation }) => {
                     email: values.email,
                     senha: values.senha
                })
-               navigation.navigate('Mapa')
+               navigation.navigate('Tab')
           }catch(error) {
             console.log('Erro durante o login');
             console.log(JSON.stringify(error));

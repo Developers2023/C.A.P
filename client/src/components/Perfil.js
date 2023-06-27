@@ -28,7 +28,7 @@ export default () => {
         <Image source={require('../components/images/bus.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
-          <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('CadastrarCrianca')}>
+          <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('Dados Pessoais')}>
         <Text style = {Css.texet}>Dados Pessoais</Text>
         <Image source={require('../components/images/utilizador.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 

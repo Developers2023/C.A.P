@@ -109,8 +109,8 @@ export default function DadosPessoais({ navigation }) {
                 
               </View>
 
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:231,zIndex:1,left:302}}/>
+              {/* <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:231,zIndex:1,left:302}}/> */}
               <TextInput style={[Css.inputs, Css.inputs_all,]}
                 name="email"
                 onChangeText={handleChange('email')}
@@ -121,8 +121,8 @@ export default function DadosPessoais({ navigation }) {
                 
               />
               
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:293,zIndex:1,left:302}}/>
+          {/*     <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:293,zIndex:1,left:302}}/> */}
               <MaskedTextInput
                 style={Css.mask_tel}
                 name="cel"
@@ -134,8 +134,8 @@ export default function DadosPessoais({ navigation }) {
                 inputMode='numeric' />
 
               <View style={Css.view_input}>
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:227}}/>
+             {/*  <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:227}}/> */}
                 <TextInput style={[Css.inputs, Css.input_address]}
                   name="endereco"
                   onChangeText={handleChange('endereco')}
@@ -145,8 +145,8 @@ export default function DadosPessoais({ navigation }) {
                   returnKeyType='next'
                   autoComplete='street-address' />
 
-               <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:302}}/>
+             {/*   <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:302}}/> */}
                 <TextInput
                   style={[Css.inputs, Css.input_number]}
                   name="numero"
@@ -167,8 +167,8 @@ export default function DadosPessoais({ navigation }) {
               }
 
               <View style={Css.view_input}>
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:172}}/>
+             {/*  <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:19,zIndex:1,left:172}}/> */}
                 <TextInput
                   name="cidade"
                   onChangeText={handleChange('cidade')}
@@ -179,8 +179,8 @@ export default function DadosPessoais({ navigation }) {
                   returnKeyType='next'
                   maxLength={50} />
 
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:18,zIndex:1,left:303}}/>
+              {/* <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:18,zIndex:1,left:303}}/> */}
                 <MaskedTextInput
                   mask='99999-999'
                   name="cep"
@@ -202,8 +202,8 @@ export default function DadosPessoais({ navigation }) {
                 <Text style={Css.errors}>{errors.cep}</Text>
               }
 
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:481,zIndex:1,left:302}}/>
+             {/*  <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:481,zIndex:1,left:302}}/> */}
               <TextInput style={[Css.inputs, Css.inputs_all,]}
                 name="complemento"
                 onChangeText={handleChange('complemento')}
@@ -214,8 +214,8 @@ export default function DadosPessoais({ navigation }) {
                 
               />
  
-              <MaterialCommunityIcons
-              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:545,zIndex:1,left:303}}/>
+              {/* <MaterialCommunityIcons
+              name='square-edit-outline' size={25} color="#FFBC16" style={{position: 'absolute',top:545,zIndex:1,left:303}}/> */}
               <TextInput style={[Css.inputs, Css.inputs_all]}
                 name="senha"
                 onChangeText={handleChange('senha')}
