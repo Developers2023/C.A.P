@@ -543,7 +543,19 @@ const Css = StyleSheet.create({
     },
     datePicker: {
         width: 350
-    }
+    },
+    texet: {
+        position: "absolute",
+        width: "100%",
+        height: 150,
+        left: 46,
+        top: 8,
+        fontStyle: "normal",
+        fontWeight: "400",
+        fontSize: 18,
+        lineHeight: 29,
+        color: "#000000"
+  }
 
 
 

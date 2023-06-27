@@ -9,32 +9,32 @@ export default function Atividades({navigation}){
         <SafeAreaView>
 
         <TouchableOpacity style = {css.button} onPress={() => navigation.navigate('CadastrarCrianca')}>
-        <Text style = {css.text}>Cadastrar crianças</Text>
+        <Text style = {css.texet}>Cadastrar crianças</Text>
         <Image source={require('../assets/imagens/crianças.png')} style={css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
          <TouchableOpacity style = {css.button} onPress={() => navigation.navigate('ListaCrianca')}>
-        <Text style = {css.text}>Lista das crianças</Text>
+        <Text style = {css.texet}>Lista das crianças</Text>
         <Image source={require('../assets/imagens/crianças.png')} style={css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
           <TouchableOpacity style = {css.button} onPress={() => navigation.navigate('EnviarAlertasRes')}>
-        <Text style = {css.text}>Enviar Alertas</Text>
+        <Text style = {css.texet}>Enviar Alertas</Text>
         <Image source={require('../assets/imagens/alertas.png')} style={css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
           <TouchableOpacity style = {css.button} onPress={() => navigation.navigate('ConfirmarEntregaEmCasa')}>
-        <Text style = {css.text}>Confirmar entrega em casa</Text>
+        <Text style = {css.texet}>Confirmar entrega em casa</Text>
         <Image source={require('../assets/imagens/casa.png')} style={css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
 
           <TouchableOpacity style = {css.button} onPress={() => navigation.navigate('Mensagens recebidas')}>
-        <Text style = {css.text}>Mensagens recebidas</Text>
+        <Text style = {css.texet}>Mensagens recebidas</Text>
         <Image source={require('../assets/imagens/batepapo.png')} style={css.buttonImageIconStyle}/> 
           </TouchableOpacity>
           
           <TouchableOpacity style = {css.button} onPress={() => navigation.navigate('Mensagens recebidas')}>
-        <Text style = {css.text}>Dados do perueiro</Text>
+        <Text style = {css.texet}>Dados do perueiro</Text>
         <Image source={require('../assets/imagens/condutor(1).png')} style={css.buttonImageIconStyle}/> 
           </TouchableOpacity>
         

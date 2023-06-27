@@ -42,11 +42,11 @@ export default function EnviarAlertas({ navigation }) {
                                     name={item.isChecked ? 'checkbox-marked'  : 'checkbox-blank-outline'} size={25} color="#FFBC16" />
                             </Pressable> */}
                             <TouchableOpacity style={Css.button} onPress={() => {
-                                  if (item.id == 1){Linking.openURL('https://wa.me/5511992402307?text=As+crianças+vão+chegar+na+escola+com+atraso.')
-                            }else if (item.id == 2){Linking.openURL('https://wa.me/5511992402307?text=Tive+problemas+com+o+veiculo..')
-                            }else if (item.id == 3){Linking.openURL('https://wa.me/5511992402307?text=Transito+na+estrada,+pode+ocorrer+atraso+nas+rotas...')
-                            }else if (item.id == 4){Linking.openURL('https://wa.me/5511992402307?text=Haverá+atraso+ao+buscar+as+crianças+hoje.')
-                            }else {Linking.openURL('https://wa.me/5511992402307?text=O+transporte+não+vai+circular+hoje.')}
+                                  if (item.id == 1){Linking.openURL('https://wa.me/5511992662779?text=As+crianças+vão+chegar+na+escola+com+atraso.')
+                            }else if (item.id == 2){Linking.openURL('https://wa.me/5511992662779?text=Tive+problemas+com+o+veiculo..')
+                            }else if (item.id == 3){Linking.openURL('https://wa.me/5511992662779?text=Transito+na+estrada,+pode+ocorrer+atraso+nas+rotas...')
+                            }else if (item.id == 4){Linking.openURL('https://wa.me/5511992662779?text=Haverá+atraso+ao+buscar+as+crianças+hoje.')
+                            }else {Linking.openURL('https://wa.me/5511992662779?text=O+transporte+não+vai+circular+hoje.')}
                              }}>
                             <Image source={require('../components/images/zap.png')} style={Css.buttonImageIconStyle} />
                             </TouchableOpacity>

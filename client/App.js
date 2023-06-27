@@ -20,7 +20,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
-import Login from './src/components/Login';
 
 
 const Tab = createBottomTabNavigator();
@@ -89,26 +88,27 @@ export default () => {
       <Stack.Navigator>
       
       <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
-        <Stack.Screen name='Dados Pessoais' component={Login}/>
-        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='Login' component={Login}/>
+
         <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
 
         {/*NAO ACESSO */}
         <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
-        <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+
+
 
 
         {/*COM  ACESSO */}
-        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+
         <Stack.Screen name='Dados Pessoais' component={DadosPessoais} /> 
         <Stack.Screen name='CopiarCod' component={CopiarID} />
         <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
         <Stack.Screen name='Dados do Veiculo' component={DadosVeiculo} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
-        <Stack.Screen name='EnviarAlertas' component={EnviarAlertas} />
+        <Stack.Screen name='Enviar Alertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
+        <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
       </Stack.Navigator>
 

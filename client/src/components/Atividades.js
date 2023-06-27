@@ -11,40 +11,32 @@ export default function Atividades(){
     return (
       
         <SafeAreaView>
-           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('CopiarID')}>
-        <Text style = {Css.text}>Copiar/Colar Código</Text>
-        <Image source={require('../components/images/medir-distancia.png')} style={Css.buttonImageIconStyle}/> 
-          </TouchableOpacity>
 
          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Lista de criancas')}>
-        <Text style = {Css.text}>Lista das crianças</Text>
+        <Text style = {Css.texet}>Lista das crianças</Text>
         <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Enviar alertas')}>
-        <Text style = {Css.text}>Enviar Alertas</Text>
+          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Enviar Alertas')}>
+        <Text style = {Css.texet}>Enviar Alertas</Text>
         <Image source={require('../components/images/alertas.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
 
           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Confirmar entrega na escola')}>
-        <Text style = {Css.text}>Confirmar entrega na escola</Text>
+        <Text style = {Css.texet}>Confirmar entrega na escola</Text>
         <Image source={require('../components/images/escola.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
 
           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Confirmar entrega em casa')}>
-        <Text style = {Css.text}>Confirmar entrega em casa</Text>
+        <Text style = {Css.texet}>Confirmar entrega em casa</Text>
         <Image source={require('../components/images/casa.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
 
-          {/* <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Mensagens Recebidas')}>
-        <Text style = {Css.text}>Mensagens recebidas</Text>
+           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Mensagens Recebidas')}>
+        <Text style = {Css.texet}>Mensagens recebidas</Text>
         <Image source={require('../components/images/batepapo.png')} style={Css.buttonImageIconStyle}/> 
-          </TouchableOpacity> */}
+          </TouchableOpacity> 
           
-          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Roteiro')}>
-        <Text style = {Css.text}>Roteiro</Text>
-        <Image source={require('../components/images/medir-distancia.png')} style={Css.buttonImageIconStyle}/> 
-          </TouchableOpacity>  
 
 
 

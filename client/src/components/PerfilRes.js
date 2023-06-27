@@ -19,12 +19,12 @@ export default () => {
         
         <SafeAreaView>
           <TouchableOpacity style = {Css.button} onPress={() => Linking.openURL('https://drive.google.com/file/d/1YMXQRUjjOJGJZ1nHiiBRSz7nSXuAGmy6/view?usp=sharing')}>
-        <Text style = {Css.text}>Manual</Text>
+        <Text style = {Css.texet}>Manual</Text>
         <Image source={require('../components/images/manual.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>   
 
           <TouchableOpacity style = {Css.button} onPress={() => Navigation.navigate('CadastrarCrianca')}>
-        <Text style = {Css.text}>Dados Pessoais</Text>
+        <Text style = {Css.texet}>Dados Pessoais</Text>
         <Image source={require('../components/images/utilizador.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity> 
           
