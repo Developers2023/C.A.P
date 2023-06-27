@@ -8,10 +8,14 @@ import DadosPessoais from './src/components/DadosPessoais';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import EnviarAlertas from './src/components/EnviarAlertas';
-import Cadastro from './src/components/Cadastro1'
+import Cadastro from './src/components/Cadastro'
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
 import Endereco from './src/components/Endereco'
+import Login from './src/components/Login'
+import TelaInicial from './src/components/Entrada'
+import CopiarID from './src/components/CopiarID';
+import ListaCrianca from './src/components/ListaCrianca'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -84,14 +88,34 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>
+<<<<<<< HEAD
         <Stack.Screen name='Dados Pessoais' component={Login}/>
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
+=======
+        state.userToken
+        {/*NAO ACESSO */}
+        <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
+        <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
+        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
+
+
+        {/*COM  ACESSO */}
+        <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+        <Stack.Screen name='Dados Pessoais' component={DadosPessoais} /> 
+        <Stack.Screen name='CopiarCod' component={CopiarID} />
+        <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
+        <Stack.Screen name='Dados do Veiculo' component={DadosVeiculo} />
+>>>>>>> 7e40da8d1681d5c4951f230fbac8119ed58292f5
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7e40da8d1681d5c4951f230fbac8119ed58292f5
       </Stack.Navigator>
 
     </NavigationContainer>

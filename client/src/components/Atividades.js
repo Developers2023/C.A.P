@@ -11,6 +11,11 @@ export default function Atividades(){
     return (
       
         <SafeAreaView>
+           <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('CopiarID')}>
+        <Text style = {Css.text}>Copiar/Colar Código</Text>
+        <Image source={require('../components/images/medir-distancia.png')} style={Css.buttonImageIconStyle}/> 
+          </TouchableOpacity>
+
          <TouchableOpacity style = {Css.button} onPress={() => navigation.navigate('Lista de criancas')}>
         <Text style = {Css.text}>Lista das crianças</Text>
         <Image source={require('../components/images/crianças.png')} style={Css.buttonImageIconStyle}/> 
@@ -40,6 +45,7 @@ export default function Atividades(){
         <Text style = {Css.text}>Roteiro</Text>
         <Image source={require('../components/images/medir-distancia.png')} style={Css.buttonImageIconStyle}/> 
           </TouchableOpacity>  
+
 
 
           </SafeAreaView> 
