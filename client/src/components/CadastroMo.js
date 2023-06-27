@@ -179,6 +179,7 @@ export default function Cadastro({ navigation }) {
                 style={[Css.inputs, Css.input_name]}
                 placeholderTextColor={'#282B29'}
               />
+            {errors.nome && <Text>{errors.nome.message}</Text>}
             </View>
           )}
           name='nome'

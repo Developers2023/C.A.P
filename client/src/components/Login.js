@@ -35,7 +35,7 @@ export default ({ navigation }) => {
                     email: values.email,
                     senha: values.senha
                })
-               navigation.navigate('Maps')
+               navigation.navigate('Mapa')
           }catch(error) {
             console.log('Erro durante o login');
             console.log(JSON.stringify(error));
@@ -71,7 +71,7 @@ export default ({ navigation }) => {
                                         <View>
                                              <TextInput
                                                   onBlur={onBlur}
-                                                  onChangeText={(t) => { setEmail(t); } }
+                                                  onChangeText={(t) => { setEmail(t); }}
                                                   value={email}
                                                   placeholder='Email:'
                                                   style={{
@@ -97,7 +97,7 @@ export default ({ navigation }) => {
                                         <View>
                                              <TextInput
                                                   onBlur={onBlur}
-                                                  onChangeText={(t) => { setSenha(t); } }
+                                                  onChangeText={(t) => { setSenha(t); }}
                                                   value={senha}
                                                   placeholder='Senha:'
                                                   style={{
@@ -142,11 +142,12 @@ export default ({ navigation }) => {
                                         }}
                                    >Login</Text>
                               </TouchableOpacity>
+                              
                               <TouchableOpacity
                                    style={Css.btn_v1}
                                    onPress={() => {
-                                        navigation.navigate('TelaInicial');
-                                   } }
+                                        navigation.navigate('Cadastro');
+                                   }}
                               >
                                    <Text
                                         style={{
