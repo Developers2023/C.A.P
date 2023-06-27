@@ -10,9 +10,9 @@ module.exports = {
     const pessoa = new Pessoa(body.tipo, body.nome, body.sexo, body.email, body.cpf, body.telefone, body.senha, null, null, body.nascimento) 
     const usuario = await pessoaRepository.create(pessoa)
     
-    const endereco = body.endereco
+    /* const endereco = body.endereco
     const enderecoEntity = new Endereco(endereco.logradouro, endereco.numero, endereco.cidade, endereco.cep,null,usuario.id)
-    await enderecoRepository.create(enderecoEntity)
+    await enderecoRepository.create(enderecoEntity) */
     
     return usuario
   },

@@ -19,7 +19,7 @@ const pessoa = db.define('pessoa', {
       type: Sequelize.STRING
     },
     cpf: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     nascimento: {
       type: Sequelize.STRING
@@ -28,16 +28,16 @@ const pessoa = db.define('pessoa', {
       type: Sequelize.STRING
     },
     telefone: {
-      type: Sequelize.INTEGER
+      type: Sequelize.STRING
     },
     senha: {
       type: Sequelize.STRING
     },
     code: {
-      type: Sequelize.CHAR
+      type: Sequelize.STRING
     },
     cancelado: {
-      type: Sequelize.TINYINT
+      type: Sequelize.STRING
     },
     
   }, { timestamps: false })
