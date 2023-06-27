@@ -3,24 +3,27 @@ import { NavigationContainer } from '@react-navigation/native';
 import Maps from './src/components/Maps';
 import Atividades from './src/components/Atividades'
 import Perfil from './src/components/Perfil'
-import DadosVeiculo from './src/components/DadosVeiculo';
+{/*import DadosVeiculo from './src/components/DadosVeiculo';
 import DadosPessoais from './src/components/DadosPessoais';
 import ConfirmarEntrega_Escola from './src/components/ConfirmarEntrega_Escola';
 import ConfirmarEntrega_Casa from './src/components/ConfirmarEntrega_Casa'
 import RoteiroViagem from './src/components/RoteiroViagem';
 import EnviarAlertas from './src/components/EnviarAlertas';
+<<<<<<< HEAD
 import Cadastro from './src/components/test'
+=======
+import Upload from './src/components/Upload';
+>>>>>>> af31cedf4d23ce3948bc7f57ae57f577fcf8912a
 import CadastrarCrianca from './src/components/CadastrarCrianca'
 import MensagensRecebidas from './src/components/MensagensRecebidas';
-import Endereco from './src/components/Endereco'
-
+import Endereco from './src/components/Endereco'*/}
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
-import Upload from './src/components/Upload';
 
+import Cadastro from './src/components/Cadastro'
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
@@ -85,18 +88,27 @@ export default () => {
     <NavigationContainer>
 
       <Stack.Navigator>  
-        <Stack.Screen name='Lista de criancas' component={Cadastro} options={{ headerShown: false }} />
+        <Stack.Screen name='Cadastro' component={Cadastro} options={{ headerShown: false }} />
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
+<<<<<<< HEAD
         <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
         <Stack.Screen name='Roteiro' component={RoteiroViagem} />    
+=======
+        {/*<Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
+        <Stack.Screen name='Roteiro' component={RoteiroViagem} />
+>>>>>>> af31cedf4d23ce3948bc7f57ae57f577fcf8912a
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Endereco' component={Endereco} options={{ headerShown: false }} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar alertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
+<<<<<<< HEAD
         <Stack.Screen name='Upload' component={Upload} /> 
         
+=======
+        <Stack.Screen name='Upload' component={Upload} />*/ }
+>>>>>>> af31cedf4d23ce3948bc7f57ae57f577fcf8912a
       </Stack.Navigator>
 
     </NavigationContainer>

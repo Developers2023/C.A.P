@@ -23,15 +23,7 @@ const registerKids = yup.object().shape({
 
 export default function CadastrarCrianca({ navigation }) {
 
-  const cadastrarC = (values) => {
-    axios.post('/crianca/cadastrar/:id', values)
-    .then((response) => {
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.log(JSON.stringify(error))
-    })
-  };
+
 
 
   //PDC
@@ -53,7 +45,16 @@ export default function CadastrarCrianca({ navigation }) {
       }}
       validationOnMount={true}
       validationSchema={registerKids}
-      onSubmit={cadastrarC()}>
+      onSubmit = {(values) => {
+          axios.post('/crianca/cadastrar/:id', values)
+          .then((response) => {
+            console.log("FUNFOU");
+          })
+          .catch((error) => {
+            console.log('Nao funfa')
+          })
+      }}
+      >
 
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
 
@@ -152,7 +153,7 @@ export default function CadastrarCrianca({ navigation }) {
 
           <TouchableOpacity style={Css.btn_v1}
             onPress={() => {
-              handleSubmit();
+              handleSubmit;
               /* navigation.navigate('DadosPessoais') */
             }}
             rounded disabled={isValid}>
