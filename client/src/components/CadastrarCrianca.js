@@ -44,7 +44,7 @@ export default function CadastrarCrianca({ navigation }) {
 
   const cadastrar = async (values) => {
     try {
-      const response = await axios.post('http://10.0.2.2:3002/crianca/cadastrar/:id', {
+      const response = await axios.post('http://10.0.2.2:3002/crianca/cadastrar/1', {
         nome: values.nome,
         sexo: values.sexo,
         instituicao: values.instituicao,
@@ -53,6 +53,7 @@ export default function CadastrarCrianca({ navigation }) {
       })
       console.log('cadastro feito');
       console.log(response.data);
+      navigation.goBack();
     } catch (error) {
       return console.log(JSON.stringify(error));
     }
@@ -247,10 +248,8 @@ export default function CadastrarCrianca({ navigation }) {
       </KeyboardAvoidingView>
 
       <TouchableOpacity style={Css.btn_v1}
-        onPress={() => {
-          navigation.navigate('ListaCrianca')
-          handleSubmit
-        }}>
+        onPress={handleSubmit}
+        >
         <Text style={Css.txt}>Salvar</Text>
       </TouchableOpacity>
 

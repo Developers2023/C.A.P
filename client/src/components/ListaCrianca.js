@@ -34,7 +34,7 @@ export default () => {
             .catch(error => console.log(JSON.stringify(error)));
     };
 
-
+/* 
     useEffect(() => {
         mostrarLista();
         if (searchText === '') {
@@ -45,7 +45,7 @@ export default () => {
                     item.nome.toLocaleLowerCase().indexOf(searchText.toLocaleLowerCase()) > -1)
             );
         }
-    }, [searchText]);
+    }, [searchText]); */
 
 
 
