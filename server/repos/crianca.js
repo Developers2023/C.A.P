@@ -10,9 +10,16 @@ const crianca = db.define('crianca', {
     sexo: {
       type: Sequelize.STRING
     },
-    idade: {
+    instituicao: {
       type: Sequelize.INTEGER
-    }
+    },
+    nascimento: {
+      type: Sequelize.INTEGER
+    },
+    periodo: {
+      type: Sequelize.STRING
+    },
+
   },{ timestamps: false })
 
   // crianca.belongsToMany(pessoa, {

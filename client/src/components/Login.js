@@ -74,7 +74,7 @@ export default ({ navigation }) => {
                                         <View>
                                              <TextInput
                                                   onBlur={onBlur}
-                                                  onChangeText={(t) => { setEmail(t) }}
+                                                  onChangeText={(t) => { setEmail(t); } }
                                                   value={email}
                                                   placeholder='Email:'
                                                   style={{
@@ -87,22 +87,20 @@ export default ({ navigation }) => {
                                                        borderWidth: 1,
                                                        textAlign: 'left',
                                                   }}
-                                                  placeholderTextColor={'#282B29'}
-                                             />
+                                                  placeholderTextColor={'#282B29'} />
                                         </View>
                                    )}
                                    name='email'
-                                   defaultValue=''
-                              />
+                                   defaultValue='' />
 
                               <Controller
                                    control={control}
                                    rules={{ required: true }}
-                                   render={({ field: { onChange, onBlur, value } }) => (
+                                   render={({ field: { onChange, onBlur } }) => (
                                         <View>
                                              <TextInput
                                                   onBlur={onBlur}
-                                                  onChangeText={(t) => { setSenha(t) }}
+                                                  onChangeText={(t) => { setSenha(t); } }
                                                   value={senha}
                                                   placeholder='Senha:'
                                                   style={{
@@ -116,13 +114,11 @@ export default ({ navigation }) => {
                                                        textAlign: 'left',
                                                   }}
                                                   placeholderTextColor={'#282B29'}
-                                                  secureTextEntry
-                                             />
+                                                  secureTextEntry />
                                         </View>
                                    )}
                                    name='senha'
-                                   defaultValue=''
-                              />
+                                   defaultValue='' />
                          </View>
                          <View style={{
                               position: 'relative',
@@ -152,8 +148,8 @@ export default ({ navigation }) => {
                               <TouchableOpacity
                                    style={Css.btn_v1}
                                    onPress={() => {
-                                        navigation.navigate('Cadastro')
-                                   }}
+                                        navigation.navigate('Cadastro');
+                                   } }
                               >
                                    <Text
                                         style={{

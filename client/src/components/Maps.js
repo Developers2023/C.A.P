@@ -18,20 +18,9 @@ LogBox.ignoreAllLogs();
 
 export default () => {
   
-  const localEscola = 'Avenida Deputado Cantídio Sampaio, São Paulo - SP';
-  const converterRota = () => {
-    const novasRotas = localEscola
-    Geocoding(novasRotas)
-   }
-
-   const handleButtonPress = () => {
-    // Lógica do botão aqui
-    console.log('Botão pressionado!');
-  };
-
   const [origin, setOrigin] = React.useState({
-    latitude: 0,
-    longitude: 0,
+    latitude: -23.469348,
+    longitude: -46.713462,
     latitudeDelta: 0.005,
     longitudeDelta: 0.005
   }); //Origem do motorista
@@ -46,7 +35,7 @@ export default () => {
   const [latitudeAtual, setLatitudeAtual] = React.useState(0);
   const [longitudeAtual, setLongitudeAtual] = React.useState(0);
   const [locationStr, setLocationStr] = React.useState({
-    endereco: '505 Escuela Ave, Mountain View, CA 94040, EUA'
+    endereco: "ETEC Paulistano"
   }); //Nome da rua
 
   const requestLocationPermission = async () => {
@@ -68,7 +57,7 @@ export default () => {
     }
   };
 
-  const getLocation = () => {
+ /*  const getLocation = () => {
     Geolocation.getCurrentPosition(position => {
       const currentLatitude = (position.coords.latitude);
       const currentLongitude = (position.coords.longitude);
@@ -89,15 +78,15 @@ export default () => {
     );
 
   }
-
+ */
   React.useEffect(() => {
     requestLocationPermission(); //função que pega a localização atual do usuário
-    converterRota();
+    Geocoding();
   }, [])
 
   const Geocoding = () => {
     Geocoder.init(GOOGLE_MAPS_APIKEY, { language: "pt-BR" });
-    Geocoder.from(localEscola)// Função que pega o endereço e converte em latitude e longitude
+    Geocoder.from(locationStr.endereco)// Função que pega o endereço e converte em latitude e longitude
       .then(JSON => {
         let enderecoDest = JSON.results[0].geometry;
         const localLat = enderecoDest.location.lat;
@@ -116,7 +105,6 @@ export default () => {
   return (
     <View>
       <MapView
-      
         provider={PROVIDER_GOOGLE}
         region={origin}
         style={styles.map}
@@ -161,25 +149,7 @@ export default () => {
         }
          
       </MapView>
-      <TouchableOpacity
-        style={{
-          position: 'absolute',
-          bottom: 16,
-          right: 16,
-          backgroundColor: '#87ceeb',
-          padding: 10,
-          borderRadius: 8,
-          flexDirection: 'row',
-          alignItems: 'center',
-        }}
-        onPress={handleButtonPress}
-      >
-        <Text style={{ color: 'white', fontWeight: 'bold', marginRight: 20, }}>
-          Proxima Rota
-        </Text>
-        <Icon name="angle-right" size={20} color="white" />
-        
-      </TouchableOpacity>
+     
     </View>
   );
 
@@ -198,12 +168,12 @@ const styles = StyleSheet.create({
 const Teste = {
   coordinate: [
     {
-      latitude: -23.4355165,
-      longitude: -46.7222448
+      latitude: -23.474191,
+      longitude: -46.717390
     },
     {
-      latitude: -23.4549641,
-      longitude: -46.6981486
+      latitude: -23.480920,
+      longitude: -46.702794
     },
   ],
 };

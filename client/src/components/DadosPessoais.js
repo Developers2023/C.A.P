@@ -231,14 +231,14 @@ export default function DadosPessoais({ navigation }) {
              
 
             </KeyboardAvoidingView>
-
+            <View style={{padding: 40}}>
             <TouchableOpacity style={Css.btn_v2} onPress={() => {
               handleChange()
               navigation.navigate('CadastrarCrianca')
             }}>
               <Text style={Css.txt}>Salvar</Text>
             </TouchableOpacity>
-           
+           </View>
           </SafeAreaView>
         </ScrollView>
       )}
