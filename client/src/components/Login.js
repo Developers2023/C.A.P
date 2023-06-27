@@ -95,7 +95,6 @@ export default ({ navigation }) => {
                                    defaultValue=''
                               />
 
-<<<<<<< HEAD
                               <Controller
                                    control={control}
                                    rules={{ required: true }}
@@ -169,39 +168,4 @@ export default ({ navigation }) => {
           </ScrollView>
      )
 };
-=======
-               <TextInput
-               name="password"
-               onChangeText={handleChange('password')}
-               onBlur={handleBlur('password')}
-               value={values.password}
-               placeholder='Senha:'
-               style = {Css.InputLogin}
-               secureTextEntry={true}
-               />
-               {(errors.password && touched.password) &&
-               <Text style={Css.errors_senha}>{errors.password}</Text>
-               }
-          </KeyboardAvoidingView>
-          <TouchableOpacity style = {Css.btn_v1} onPress={()=>{
-               handleSubmit()
-               navigation.navigate('Maps')
-          }}
-          rounded disabled={!isValid}>
-               <Text style = {Css.txtBtnLogin}>
-               ACESSAR
-               </Text>
-          </TouchableOpacity>
-
-          <TouchableOpacity style = {Css.btn_v1} onPress={() => navigation.goBack()}>
-               <Text style = {Css.txtBtnLogin} >
-                    VOLTAR
-               </Text>
-          </TouchableOpacity>
-     </View>
-     </ScrollView>
-     )}
-     </Formik>
- )};
->>>>>>> 7e40da8d1681d5c4951f230fbac8119ed58292f5
 
