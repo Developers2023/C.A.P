@@ -24,7 +24,6 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 import { createStackNavigator } from '@react-navigation/stack';
 import 'react-native-gesture-handler';
 
-
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 

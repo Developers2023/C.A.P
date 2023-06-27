@@ -27,33 +27,30 @@ export default ({ navigation }) => {
      const [senha, setSenha] = useState('');
 
 
-     const login = async () => {
+     const login = async (values) => {
+
           try {
-               const response = await axios.get('http://10.0.2.2:3002/pessoa/login', {
-                    email,
-                    senha
-               });
-
-               if (response.data) {
-                    console.log('Login Bem-sucedido');
-                    console.log(response.data);
-               } else {
-                    console.log('credenciais inválidas');
-               }
-
-          } catch (error) {
-               console.log('Erro durante o login');
-               console.log(JSON.stringify(error));
+            //const response = await axios.get(`http://10.0.2.2:3002/pessoa/login/${values.email}/${values.senha}`);
+               const response = await axios.post(`http://10.0.2.2:3002/pessoa/login`,{
+                    email: values.email,
+                    senha: values.senha
+               })
+               navigation.navigate('Mapa')
+          }catch(error) {
+            console.log('Erro durante o login');
+            console.log(JSON.stringify(error));
           }
-     };
- 
+        };
+        
+
      const handleSubmit = () => {
-          const campos = {
-                    email,
-                    senha,
-               }
-               login(campos);
-          } 
+          const dados = {
+            email,
+            senha
+          }
+          console.log(dados);
+          login(dados);
+        };
 
      return (
           <ScrollView>
