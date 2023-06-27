@@ -12,7 +12,7 @@ import { Controller, useForm } from 'react-hook-form';
 const registerKids = yup.object().shape({
   nomeDaCrianca: yup.string().required('Nome da criança é obrigatório').max(100, 'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/, 'Insira ao menos nome e sobrenome'),
   sexo: yup.string().required('Sexo da criança é obrigatório'),
-  nascimento: yup.string().required('Data de nascimento é obrigatório'), 
+  nascimento: yup.string().required('Data de nascimento é obrigatório'),
   instituicao: yup.string().required('Nome da instituição é obrigatório').max(100, 'O nome da instituição não pode ultrapassar 100 caracteres'),
   periodo: yup.string().required('Horário é obrigatório').min(5, 'Insira os 4 digitos correspondentes a hora e minuto')
 
@@ -25,23 +25,23 @@ export default function CadastrarCrianca({ navigation }) {
   const [open, setOpen] = useState(false);
   const [sexo, setSexo] = useState(null);
   const [items, setItems] = useState([
-      { label: 'Fem', value: 'f' },
-      { label: 'Masc', value: 'm' }
+    { label: 'Fem', value: 'f' },
+    { label: 'Masc', value: 'm' }
   ]);
 
-  const [openP,setOpenP] = useState(false);
+  const [openP, setOpenP] = useState(false);
   const [periodo, setPeriodo] = useState(null);
-  const [itemsP,setItemsP] = useState([
-    {label: 'Manhã', value: 'manha'},
-    {label: 'Tarde', value: 'tarde'},
-    {label: 'Integral', value: 'integral'}
+  const [itemsP, setItemsP] = useState([
+    { label: 'Manhã', value: 'manha' },
+    { label: 'Tarde', value: 'tarde' },
+    { label: 'Integral', value: 'integral' }
   ]);
 
   const { control, formState: { errors } } = useForm({
     resolver: yupResolver(registerKids),
   });
 
-  
+
   const cadastrar = async (values) => {
     try {
       const response = await axios.post('http://10.0.2.2:3002/crianca/cadastrar/:id', {
@@ -76,32 +76,31 @@ export default function CadastrarCrianca({ navigation }) {
 
   return (
 
-        <SafeAreaView style={{
-          flex: 1,
-          alignItems: 'center',
-          justifyContent: 'center'
-        }}>
+    <SafeAreaView style={{
+      flex: 1,
+      alignItems: 'center',
+      justifyContent: 'center'
+    }}>
 
-          <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
+      <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
 
-            <View style={Css.view_input}>
-            <Controller
-              control={control}
-              rules={{ required: true }}
-              render={({ field: { onChange, onBlur, value } }) => (
+        <View style={Css.view_input}>
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
               <TextInput
                 style={[Css.inputs, Css.input_name]}
                 placeholder='Nome:' placeholderTextColor={'#282B29'}
                 inputMode='text'
                 onChangeText={(t) => { setNome(t) }}
-                onBlur={handleBlur('nomeDaCrianca')}
                 value={nome} />
-                )}
-                name='nome'
-                defaultValue=''
-              />
-              
-        <Controller
+            )}
+            name='nome'
+            defaultValue=''
+          />
+
+          <Controller
             control={control}
             rules={{ required: true }}
             render={({ field: { onChange, onBlur, value } }) => (
@@ -113,61 +112,61 @@ export default function CadastrarCrianca({ navigation }) {
                 setValue={setSexo}
                 setItems={setItems}
                 style={{
-                    backgroundColor: '#87ceeb',
-                    fontWeight: 'bold',
-                    position: 'relative',
-                    top: 6
+                  backgroundColor: '#87ceeb',
+                  fontWeight: 'bold',
+                  position: 'relative',
+                  top: 6
                 }}
                 translation={{ PLACEHOLDER: 'Sexo' }}
                 placeholderStyle={{ fontWeight: 'bold' }}
                 closeAfterSelecting={true}
                 selectedItemLabelStyle={{
-                    fontWeight: "bold",
-                    color: '#FFBC16',
-                }}/>
-          )}
-          name="sexo"
-          defaultValue=""
-        />
+                  fontWeight: "bold",
+                  color: '#FFBC16',
+                }} />
+            )}
+            name="sexo"
+            defaultValue=""
+          />
 
-            </View>
-            {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
+        </View>
+        {/*    {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
                 <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
               {(errors.sexo && touched.sexo) &&
                 <Text style={Css.errors}>{errors.sexo}</Text>}
-
-          <Controller
-                  control={control}
-                  rules={{ required: true }}
-                  render={({ field: { onChange, onBlur, value } }) => (
-                    <View style={Css.view_input}>
-                      <MaskedTextInput
-                        style={{
-                          backgroundColor: '#87ceeb',
-                          height: 35,
-                          padding: 3,
-                          margin: 7,
-                          borderRadius: 4,
-                          borderWidth: 1,
-                          textAlign: 'left',
-                          width: 330,
-                        }}
-                        mask='99/99/9999'
-                        placeholder='Data de nascimento:'
-                        placeholderTextColor={'#282B29'}
-                        keyboardType='numeric'
-                        value={nascimento}
-                        onChangeText={(t) => { setNascimento(t) }}
-                      />
-                    </View>
-                  )}
-                  name='nascimento'
-                  defaultValue=''
-                />
-
-
+ */}
+        <Controller
+          control={control}
+          rules={{ required: true }}
+          render={({ field: { onChange, onBlur, value } }) => (
             <View style={Css.view_input}>
-            <Controller
+              <MaskedTextInput
+                style={{
+                  backgroundColor: '#87ceeb',
+                  height: 35,
+                  padding: 3,
+                  margin: 7,
+                  borderRadius: 4,
+                  borderWidth: 1,
+                  textAlign: 'left',
+                  width: 330,
+                }}
+                mask='99/99/9999'
+                placeholder='Data de nascimento:'
+                placeholderTextColor={'#282B29'}
+                keyboardType='numeric'
+                value={nascimento}
+                onChangeText={(t) => { setNascimento(t) }}
+              />
+            </View>
+          )}
+          name='nascimento'
+          defaultValue=''
+        />
+
+
+        <View style={Css.view_input}>
+          <Controller
             control={control}
             rules={{ required: true }}
             render={({ field: { onChange, onBlur, value } }) => (
@@ -179,15 +178,15 @@ export default function CadastrarCrianca({ navigation }) {
                 onBlur={handleBlur('instituicao')}
                 value={instituicao}
               />
-              )}
-              name='instituicao'
-              defaultValue=''
-            />
-              {(errors.instituicao && touched.instituicao) &&
+            )}
+            name='instituicao'
+            defaultValue=''
+          />
+          {/*       {(errors.instituicao && touched.instituicao) &&
                 <Text style={Css.errors}>{errors.instituicao}</Text>}
 
-
-              {/*  <TextInput
+ */}
+          {/*  <TextInput
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Cidade:' placeholderTextColor={'#282B29'}
               inputMode='text'
@@ -198,33 +197,33 @@ export default function CadastrarCrianca({ navigation }) {
             {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
               <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>} */}
 
-    <Controller
-        control={control}
-        rules={{ required: true }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <View style={{
-            zIndex: 2,
-            width: 257,
-            height: 37,
-            marginBottom: 20,
-            alignSelf: "center"
-          }}>
+          <Controller
+            control={control}
+            rules={{ required: true }}
+            render={({ field: { onChange, onBlur, value } }) => (
+              <View style={{
+                zIndex: 2,
+                width: 257,
+                height: 37,
+                marginBottom: 20,
+                alignSelf: "center"
+              }}>
 
-                <DropDownPicker  
-                        open={openP}
-                        value={periodo}
-                        items={itemsP}
-                        setOpen={setOpenP}
-                        setValue={setPeriodo}
-                        setItems={setItemsP}
-                        style={Css.mask_cep}
-                        translation={{  PLACEHOLDER:'Turno'}}
-                        placeholderStyle={{fontWeight:'bold'}}
-                        closeAfterSelecting={true}
-                        selectedItemLabelStyle={{
-                        fontWeight: "bold",
-                        color:'#FFBC16'               
-                      }}/> 
+                <DropDownPicker
+                  open={openP}
+                  value={periodo}
+                  items={itemsP}
+                  setOpen={setOpenP}
+                  setValue={setPeriodo}
+                  setItems={setItemsP}
+                  style={Css.mask_cep}
+                  translation={{ PLACEHOLDER: 'Turno' }}
+                  placeholderStyle={{ fontWeight: 'bold' }}
+                  closeAfterSelecting={true}
+                  selectedItemLabelStyle={{
+                    fontWeight: "bold",
+                    color: '#FFBC16'
+                  }} />
               </View>
             )}
             name='periodo'
@@ -232,21 +231,20 @@ export default function CadastrarCrianca({ navigation }) {
           />
 
 
-
+          {/* 
               {(errors.turno && touched.turno) &&
-                <Text style={Css.errors}>{errors.turno}</Text>}
-            </View>
-          </KeyboardAvoidingView>
+                <Text style={Css.errors}>{errors.turno}</Text>} */}
+        </View>
+      </KeyboardAvoidingView>
 
-          <TouchableOpacity style={Css.btn_v1}
-            onPress={() => {
-              navigation.navigate('ListaCrianca')
-              handleSubmit 
-            }}
-            rounded disabled={isValid}>
-            <Text style={Css.txt}>Salvar</Text>
-          </TouchableOpacity>
+      <TouchableOpacity style={Css.btn_v1}
+        onPress={() => {
+          navigation.navigate('ListaCrianca')
+          handleSubmit
+        }}
+      > <Text style={Css.txt}>Salvar</Text>
+      </TouchableOpacity>
 
-        </SafeAreaView>
-      )}
-    
+    </SafeAreaView>
+  )
+}
