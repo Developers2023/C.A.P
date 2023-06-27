@@ -83,110 +83,118 @@ export default function CadastrarCrianca({ navigation }) {
     }}>
 
       <KeyboardAvoidingView style={{ zIndex: 1, marginHorizontal: 50 }}>
+        <View
+        style = {{
+          marginLeft: 110
+        }}
+        >
+          <View style={Css.view_input}>
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <TextInput
+                  style={[Css.inputs, Css.input_name]}
+                  placeholder='Nome:' placeholderTextColor={'#282B29'}
+                  inputMode='text'
+                  onChangeText={(t) => { setNome(t) }}
+                  value={nome} />
+              )}
+              name='nome'
+              defaultValue=''
+            />
+            <View
+              style={{
+                width: 90
+              }}
+            >
+              <Controller
+                control={control}
+                rules={{ required: true }}
+                render={({ field: { onChange, onBlur, value } }) => (
+                  <DropDownPicker
+                    open={open}
+                    value={sexo}
+                    items={items}
+                    setOpen={setOpen}
+                    setValue={setSexo}
+                    setItems={setItems}
+                    style={{
+                      backgroundColor: '#87ceeb',
+                      fontWeight: 'bold',
+                      position: 'relative',
+                      top: 6
+                    }}
+                    translation={{ PLACEHOLDER: 'Sexo' }}
+                    placeholderStyle={{ fontWeight: 'bold' }}
+                    closeAfterSelecting={true}
+                    selectedItemLabelStyle={{
+                      fontWeight: "bold",
+                      color: '#FFBC16',
+                    }} />
+                )}
+                name="sexo"
+                defaultValue=""
+              />
+            </View>
 
-        <View style={Css.view_input}>
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={[Css.inputs, Css.input_name]}
-                placeholder='Nome:' placeholderTextColor={'#282B29'}
-                inputMode='text'
-                onChangeText={(t) => { setNome(t) }}
-                value={nome} />
-            )}
-            name='nome'
-            defaultValue=''
-          />
-
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <DropDownPicker
-                open={open}
-                value={sexo}
-                items={items}
-                setOpen={setOpen}
-                setValue={setSexo}
-                setItems={setItems}
-                style={{
-                  backgroundColor: '#87ceeb',
-                  fontWeight: 'bold',
-                  position: 'relative',
-                  top: 6
-                }}
-                translation={{ PLACEHOLDER: 'Sexo' }}
-                placeholderStyle={{ fontWeight: 'bold' }}
-                closeAfterSelecting={true}
-                selectedItemLabelStyle={{
-                  fontWeight: "bold",
-                  color: '#FFBC16',
-                }} />
-            )}
-            name="sexo"
-            defaultValue=""
-          />
-
-        </View>
-        {/*    {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
+          </View>
+          {/*    {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
                 <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
               {(errors.sexo && touched.sexo) &&
                 <Text style={Css.errors}>{errors.sexo}</Text>}
  */}
-        <Controller
-          control={control}
-          rules={{ required: true }}
-          render={({ field: { onChange, onBlur, value } }) => (
-            <View style={Css.view_input}>
-              <MaskedTextInput
-                style={{
-                  backgroundColor: '#87ceeb',
-                  height: 35,
-                  padding: 3,
-                  margin: 7,
-                  borderRadius: 4,
-                  borderWidth: 1,
-                  textAlign: 'left',
-                  width: 330,
-                }}
-                mask='99/99/9999'
-                placeholder='Data de nascimento:'
-                placeholderTextColor={'#282B29'}
-                keyboardType='numeric'
-                value={nascimento}
-                onChangeText={(t) => { setNascimento(t) }}
-              />
-            </View>
-          )}
-          name='nascimento'
-          defaultValue=''
-        />
-
-
-        <View style={Css.view_input}>
           <Controller
             control={control}
             rules={{ required: true }}
             render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                style={[Css.inputs, Css.input_city]}
-                placeholder='Escola:' placeholderTextColor={'#282B29'}
-                inputMode='text'
-                onChangeText={(t) => { setInstituicao(t) }}
-                onBlur={handleBlur('instituicao')}
-                value={instituicao}
-              />
+              <View style={Css.view_input}>
+                <MaskedTextInput
+                  style={{
+                    backgroundColor: '#87ceeb',
+                    height: 35,
+                    padding: 3,
+                    margin: 7,
+                    borderRadius: 4,
+                    borderWidth: 1,
+                    textAlign: 'left',
+                    width: 330,
+                  }}
+                  mask='99/99/9999'
+                  placeholder='Data de nascimento:'
+                  placeholderTextColor={'#282B29'}
+                  keyboardType='numeric'
+                  value={nascimento}
+                  onChangeText={(t) => { setNascimento(t) }}
+                />
+              </View>
             )}
-            name='instituicao'
+            name='nascimento'
             defaultValue=''
           />
-          {/*       {(errors.instituicao && touched.instituicao) &&
+
+
+          <View style={Css.view_input}>
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <TextInput
+                  style={[Css.inputs, Css.input_city]}
+                  placeholder='Escola:' placeholderTextColor={'#282B29'}
+                  inputMode='text'
+                  onChangeText={(t) => { setInstituicao(t) }}
+                  value={instituicao}
+                />
+              )}
+              name='instituicao'
+              defaultValue=''
+            />
+            {/*       {(errors.instituicao && touched.instituicao) &&
                 <Text style={Css.errors}>{errors.instituicao}</Text>}
 
  */}
-          {/*  <TextInput
+            {/*  <TextInput
               style={[Css.inputs, Css.inputs_all]}
               placeholder='Cidade:' placeholderTextColor={'#282B29'}
               inputMode='text'
@@ -197,43 +205,44 @@ export default function CadastrarCrianca({ navigation }) {
             {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
               <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>} */}
 
-          <Controller
-            control={control}
-            rules={{ required: true }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <View style={{
-                zIndex: 2,
-                width: 257,
-                height: 37,
-                marginBottom: 20,
-                alignSelf: "center"
-              }}>
+            <Controller
+              control={control}
+              rules={{ required: true }}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <View style={{
+                  zIndex: 2,
+                  width: 257,
+                  height: 37,
+                  marginBottom: 20,
+                  alignSelf: "center"
+                }}>
 
-                <DropDownPicker
-                  open={openP}
-                  value={periodo}
-                  items={itemsP}
-                  setOpen={setOpenP}
-                  setValue={setPeriodo}
-                  setItems={setItemsP}
-                  style={Css.mask_cep}
-                  translation={{ PLACEHOLDER: 'Turno' }}
-                  placeholderStyle={{ fontWeight: 'bold' }}
-                  closeAfterSelecting={true}
-                  selectedItemLabelStyle={{
-                    fontWeight: "bold",
-                    color: '#FFBC16'
-                  }} />
-              </View>
-            )}
-            name='periodo'
-            defaultValue=''
-          />
+                  <DropDownPicker
+                    open={openP}
+                    value={periodo}
+                    items={itemsP}
+                    setOpen={setOpenP}
+                    setValue={setPeriodo}
+                    setItems={setItemsP}
+                    style={Css.mask_cep}
+                    translation={{ PLACEHOLDER: 'Turno' }}
+                    placeholderStyle={{ fontWeight: 'bold' }}
+                    closeAfterSelecting={true}
+                    selectedItemLabelStyle={{
+                      fontWeight: "bold",
+                      color: '#FFBC16'
+                    }} />
+                </View>
+              )}
+              name='periodo'
+              defaultValue=''
+            />
 
 
-          {/* 
+            {/* 
               {(errors.turno && touched.turno) &&
                 <Text style={Css.errors}>{errors.turno}</Text>} */}
+          </View>
         </View>
       </KeyboardAvoidingView>
 
@@ -241,8 +250,8 @@ export default function CadastrarCrianca({ navigation }) {
         onPress={() => {
           navigation.navigate('ListaCrianca')
           handleSubmit
-        }}
-      > <Text style={Css.txt}>Salvar</Text>
+        }}>
+        <Text style={Css.txt}>Salvar</Text>
       </TouchableOpacity>
 
     </SafeAreaView>

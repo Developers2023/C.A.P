@@ -63,11 +63,11 @@ export default () => {
                 Lista de crianças
             </Text>
 
-            <View>
+         {/*    <View>
                 {dataLista.map(item => (
                     <Text key={item.id}>{item.nome}</Text>
                 ))}
-            </View>
+            </View> */}
 
         </SafeAreaView>
     );

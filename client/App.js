@@ -89,6 +89,7 @@ export default () => {
 
       <Stack.Navigator>
       
+        <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
       <Stack.Screen name='Lista de criancas' component={ListaCrianca} />
       
       <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
@@ -102,7 +103,6 @@ export default () => {
         <Stack.Screen name='Dados Pessoais' component={DadosPessoais} /> 
         <Stack.Screen name='CopiarCod' component={CopiarID} />
         <Stack.Screen name='Dados do Veiculo' component={DadosVeiculo} />
-        <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
         <Stack.Screen name='Enviar Alertas' component={EnviarAlertas} />
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
