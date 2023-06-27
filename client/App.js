@@ -91,20 +91,18 @@ export default () => {
 
       <Stack.Navigator>
 
+        <Stack.Screen name='Mapa' component={Maps} />
+        <Stack.Screen name='CadastroMo' component={CadastroMo} options={{headerShown: false}} />
         <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
         <Stack.Screen name='Entrada' component={Autentificacao} options={{headerShown: false}} />
-        <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
-        <Stack.Screen name='Login' component={Login} options={{ headerShown: false }} />
-        <Stack.Screen name='CadastroMo' component={CadastroMo} options={{headerShown: false}} />
+        <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />    
         {/* <Stack.Screen name='CadastroRe' component={CadastroRes} options={{headerShown: false}} /> */}
         {/* <Stack.Screen name='Entrada' component={Autentificacao} options={{headerShown: false}} /> */}
-        <Stack.Screen name='Mapa' component={Maps} />
         <Stack.Screen name='EnviarAlertas' component={EnviarAlertas} />
         <Stack.Screen name='Dados Pessoais' component={DadosPessoais} />
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
 
         {/*NAO ACESSO */}
-        <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
 
 
         {/*COM  ACESSO */}

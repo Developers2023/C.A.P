@@ -151,8 +151,6 @@ export default ({ navigation }) => {
                                    onPress={() => {
                                         navigation.navigate('Cadastro');
                                    }}
-                                        navigation.navigate('TelaInicial');
-                                   } }
                               >
                                    <Text
                                         style={{

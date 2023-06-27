@@ -50,7 +50,7 @@ export default () => {
       }
     );
     if (granted === PermissionsAndroid.RESULTS.GRANTED) {
-      getLocation();
+     /*  getLocation(); */
 
     } else {
       alert('Permissão de Localização negada');
