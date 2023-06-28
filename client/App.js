@@ -89,7 +89,7 @@ export default () => {
 
       <Stack.Navigator>
 
-       
+      
         <Stack.Screen name='TelaInicial' component={TelaInicial} options={{ headerShown: false }} />
         <Stack.Screen name='Tab' component={Tabn} options={{ headerShown: false }} />
         <Stack.Screen name='CadastrarCrianca' component={CadastrarCrianca} />
@@ -110,7 +110,7 @@ export default () => {
         <Stack.Screen name='Confirmar entrega em casa' component={ConfirmarEntrega_Casa} />
         <Stack.Screen name='Confirmar entrega na escola' component={ConfirmarEntrega_Escola} />
         <Stack.Screen name='Mensagens Recebidas' component={MensagensRecebidas} />
-        <Stack.Screen name='informa' component={Informa} />
+        <Stack.Screen name='Informa' component={Informa} />
         <Stack.Screen name='Dados do veiculo' component={DadosVeiculo} />
       </Stack.Navigator>
 

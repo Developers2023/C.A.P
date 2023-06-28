@@ -11,7 +11,6 @@ server.post("/pessoa/cadastrar",async function(req,res){
     res.send(result)
 });
 
-server.post("/pessoa/login",async function(req,res){
 server.post('/pessoa/login', async (req, res) => {
     //const result = pessoaController.login(req.params)
     const result = await pessoaController.login(req.body)
