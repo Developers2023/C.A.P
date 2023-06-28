@@ -7,6 +7,7 @@ import { MaskedTextInput } from 'react-native-mask-text';
 import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
+import api from './apiMenager/Api';
 
 const sighUpValidation = yup.object().shape({
 
@@ -66,7 +67,7 @@ export default function Cadastro({ navigation }) {
 
   const cadastrar = async (values) => {
     try {
-      const response = await axios.post('http://10.0.2.2:3002/pessoa/cadastrar', {
+      const response = await api.post('/pessoa/cadastrar', {
         tipo: values.tipo,
         nome: values.nome,
         sexo: values.sexo,

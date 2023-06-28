@@ -94,8 +94,8 @@ const Css = StyleSheet.create({
         width: 161
     },
     input_cod: {
-        width: 113,
-        marginBottom: -20
+        width: 330,
+        marginBottom: 10
     },
     input_name: {
         width: 235

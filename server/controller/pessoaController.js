@@ -18,12 +18,10 @@ module.exports = {
   },
 
   async login(body) {
-    const { senha, email } = body
-    console.log(body)
     const pessoa = await pessoaRepository.findOne({
       where: {
-        email: email,
-        senha: senha
+        email: body.email,
+        senha: body.senha
       }
     })
     return pessoa

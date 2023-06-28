@@ -8,6 +8,7 @@ import * as yup from 'yup';
 import axios from 'axios'
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Controller, useForm } from 'react-hook-form';
+import api from './apiMenager/Api';
 
 const registerKids = yup.object().shape({
   nomeDaCrianca: yup.string().required('Nome da criança é obrigatório').max(100, 'O nome não pode ultrapassar 100 caracteres').matches(/(\w.+\s).+/, 'Insira ao menos nome e sobrenome'),
@@ -41,21 +42,15 @@ export default function CadastrarCrianca({ navigation }) {
     resolver: yupResolver(registerKids),
   });
 
-  // faz um teste aí pra eu entender oq tá acontecendo
-  // entendi, perai, vou mexer
-
-
   const cadastrar = async (values) => {
     try {
-      const response = await axios.post('http://10.0.2.2:3002/crianca/cadastrar/1', {
+      const response = await api.post('/crianca/cadastrar/1', {
         nome: values.nome,
         sexo: values.sexo,
         instituicao: values.instituicao,
         nascimento: values.nascimento,
         periodo: values.periodo
       })
-      console.log('cadastro feito');
-      console.log(response.data);
       navigation.goBack();
     } catch (error) {
       return console.log(JSON.stringify(error));
@@ -141,13 +136,7 @@ export default function CadastrarCrianca({ navigation }) {
                 defaultValue=""
               />
             </View>
-
           </View>
-          {/*    {(errors.nomeDaCrianca && touched.nomeDaCrianca) &&
-                <Text style={Css.errors}>{errors.nomeDaCrianca}</Text>}
-              {(errors.sexo && touched.sexo) &&
-                <Text style={Css.errors}>{errors.sexo}</Text>}
- */}
           <Controller
             control={control}
             rules={{ required: true }}
@@ -194,21 +183,6 @@ export default function CadastrarCrianca({ navigation }) {
               name='instituicao'
               defaultValue=''
             />
-            {/*       {(errors.instituicao && touched.instituicao) &&
-                <Text style={Css.errors}>{errors.instituicao}</Text>}
-
- */}
-            {/*  <TextInput
-              style={[Css.inputs, Css.inputs_all]}
-              placeholder='Cidade:' placeholderTextColor={'#282B29'}
-              inputMode='text'
-              onChangeText={handleChange('cidadeDaCrianca')}
-              onBlur={handleBlur('cidadeDaCrianca')}
-              value={values.cidadeDaCrianca}
-            />
-            {(errors.cidadeDaCrianca && touched.cidadeDaCrianca) &&
-              <Text style={Css.errors}>{errors.cidadeDaCrianca}</Text>} */}
-
             <Controller
               control={control}
               rules={{ required: true }}
@@ -241,11 +215,6 @@ export default function CadastrarCrianca({ navigation }) {
               name='periodo'
               defaultValue=''
             />
-
-
-            {/* 
-              {(errors.turno && touched.turno) &&
-                <Text style={Css.errors}>{errors.turno}</Text>} */}
           </View>
         </View>
       </KeyboardAvoidingView>
