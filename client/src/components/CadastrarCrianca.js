@@ -44,7 +44,7 @@ export default function CadastrarCrianca({ navigation }) {
 
   const cadastrar = async (values) => {
     try {
-      const response = await api.post('/crianca/cadastrar/1', {
+      await api.post('/crianca/cadastrar', {
         nome: values.nome,
         sexo: values.sexo,
         instituicao: values.instituicao,

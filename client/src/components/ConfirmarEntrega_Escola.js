@@ -7,8 +7,8 @@ const data = [
     { id: 1, txt: 'Pedro Miguel', isChecked: false },
     { id: 2, txt: 'Carlos Armando', isChecked: false },
     { id: 3, txt: 'Paulo Vinicius', isChecked: false },
-    { id: 4, txt: 'Sabrinex Ginga', isChecked: false },
-    { id: 5, txt: 'Milguelzin Cacatua', isChecked: false },
+    { id: 4, txt: 'Sabrina Pereira', isChecked: false },
+    { id: 5, txt: 'Milguel Arcanjo', isChecked: false },
 ];
 
 export default function ConfirmarEntrega_Escola ({navigation}){

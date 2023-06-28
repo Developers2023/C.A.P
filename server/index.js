@@ -35,8 +35,8 @@ server.get("/pessoa/buscarTodos",async function(req,res){
     res.send(result)
 });
 
-server.post("/crianca/cadastrar/:id",async function(req,res){
-    const result = await criancaController.cadastrar(req.params.id,req.body)
+server.post("/crianca/cadastrar",async function(req,res){
+    const result = await criancaController.cadastrar(req.body)
     res.send(result)
 })
 
