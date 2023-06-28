@@ -33,21 +33,20 @@ const editValidation = yup.object().shape({
 export default function DadosPessoais({ navigation }) {
 
 
-
-  const nome = 'Paulo Santos Santiago';
-  const sexo = 'Masc';
-  const cod = 887917;
-  const data = '02/02/2002'
-  const cpf = '5552223344';
-  const email = 'pauloconvertidopraJesus@gmail.com';
-  const cel = '551140028922';
-  const endereco = 'Rua da Natividade Belas Pragas';
-  const numero = 48;
-  const cidade = 'São Paulo/SP';
-  const cep = '02548895';
-  const complemento = 'apto 66'
-
-
+  const data ={
+    nome :'Paulo Santos Santiago',
+    sexo : 'Masc',
+    cod : 887917,
+    data : '02/02/2002',
+    cpf : '5552223344',
+    email : 'pauloconvertidopraJesus@gmail.com',
+    cel : '551140028922',
+    endereco : 'Rua da Natividade Belas Pragas',
+    numero : 48,
+    cidade : 'São Paulo/SP',
+    cep : '02548895',
+    complemento : 'apto'
+  }
 
   return (
     <Formik
@@ -56,8 +55,10 @@ export default function DadosPessoais({ navigation }) {
       onSubmit={values => console.log(values)}
       validationSchema={editValidation}
     >
+      
       {({ handleSubmit, handleChange, handleBlur, values, touched, errors, isValid }) => (
         <ScrollView>
+          
           <SafeAreaView style={{
             flex: 1,
             alignItems: 'center',
@@ -70,19 +71,20 @@ export default function DadosPessoais({ navigation }) {
 
               <TextInput
                 style={[Css.inputs, Css.input_cod]}
-                placeholder={'Cód: ' + cod} placeholderTextColor={'#000'}
-                readOnly={true} />
-              <TextInput />
-
+                placeholder={'Cód: ' + data.cod} 
+                placeholderTextColor={'#000'}
+                readOnly={true} 
+              />
               <View style={Css.view_input}>
                 <TextInput
                   style={[Css.inputs, Css.input_name]}
-                  placeholder={'Nome: ' + nome} placeholderTextColor={'#000'}
+                  placeholder={'Nome: ' + data.nome} 
+                  placeholderTextColor={'#000'}
                   readOnly={true} />
 
                 <TextInput
                   style={[Css.inputs, Css.input_sexNoEdit]}
-                  placeholder={sexo} placeholderTextColor={'#000'}
+                  placeholder={data.sexo} placeholderTextColor={'#000'}
                   readOnly={true} />
 
               </View>
@@ -91,7 +93,7 @@ export default function DadosPessoais({ navigation }) {
 
             <View style={Css.view_input}>
                  <TextInput style={[Css.inputs, Css.input_city]}
-                placeholder={'CPF: ' + cpf} placeholderTextColor={'#000'}
+                placeholder={'CPF: ' + data.cpf} placeholderTextColor={'#000'}
                 readOnly={true}
                 maxLength={11} />
                 
@@ -102,7 +104,7 @@ export default function DadosPessoais({ navigation }) {
                 onChangeText={handleChange('data')}
                 onBlur={handleBlur('data')}
                 value={null}
-                placeholder={'Data de nasc: '+ data} placeholderTextColor={'#000'}
+                placeholder={'Data: '+ data.data} placeholderTextColor={'#000'}
                 inputMode='numeric'
                 keyboardType='numeric' />
                 
@@ -116,7 +118,7 @@ export default function DadosPessoais({ navigation }) {
                 onChangeText={handleChange('email')}
                 onBlur={handleBlur('email')}
                 value={values.email}
-                placeholder={'E-mail: ' + email } placeholderTextColor={'#000'} 
+                placeholder={'E-mail: ' + data.email } placeholderTextColor={'#000'} 
                 inputMode='email' keyboardType='email-address'
                 
               />
@@ -130,7 +132,7 @@ export default function DadosPessoais({ navigation }) {
                 onChangeText={handleChange('cel')}
                 onBlur={handleBlur('cel')}
                 value={values.cel}
-                placeholder={'Celular: ' + cel} placeholderTextColor={'#000'}
+                placeholder={'Celular: ' + data.cel} placeholderTextColor={'#000'}
                 inputMode='numeric' />
 
               <View style={Css.view_input}>
@@ -141,7 +143,7 @@ export default function DadosPessoais({ navigation }) {
                   onChangeText={handleChange('endereco')}
                   onBlur={handleBlur('endereco')}
                   value={values.endereco}
-                  placeholder={'Endereço:'+ endereco} placeholderTextColor={'#000'}
+                  placeholder={'Endereço:'+ data.endereco} placeholderTextColor={'#000'}
                   returnKeyType='next'
                   autoComplete='street-address' />
 
@@ -153,7 +155,7 @@ export default function DadosPessoais({ navigation }) {
                   onChangeText={handleChange('numero')}
                   onBlur={handleBlur('numero')}
                   value={values.numero}
-                  placeholder={'Nº:'+ numero} placeholderTextColor={'#000'}
+                  placeholder={'Nº:'+ data.numero} placeholderTextColor={'#000'}
                   inputMode='text'
                   returnKeyType='next' />
 
@@ -175,7 +177,7 @@ export default function DadosPessoais({ navigation }) {
                   onBlur={handleBlur('cidade')}
                   value={values.cidade}
                   style={[Css.inputs, Css.input_city]}
-                  placeholder={'Cidade:' + cidade} placeholderTextColor={'#000'} inputMode='text'
+                  placeholder={'Cidade:' + data.cidade} placeholderTextColor={'#000'} inputMode='text'
                   returnKeyType='next'
                   maxLength={50} />
 
@@ -188,7 +190,7 @@ export default function DadosPessoais({ navigation }) {
                   onBlur={handleBlur('cep')}
                   value={values.cep}
                   style={Css.mask_cep}
-                  placeholder={'CEP:'+ cep} placeholderTextColor={'#000'}
+                  placeholder={'CEP:'+ data.cep} placeholderTextColor={'#000'}
                   keyboardType='numeric'
                   returnKeyType='next'
                   autoComplete='postal-code' />
@@ -209,7 +211,7 @@ export default function DadosPessoais({ navigation }) {
                 onChangeText={handleChange('complemento')}
                 onBlur={handleBlur('complemento')}
                 value={values.complemento}
-                placeholder={'Complemento: ' + complemento } placeholderTextColor={'#000'} 
+                placeholder={'Complemento: ' + data.complemento } placeholderTextColor={'#000'} 
                 inputMode='email' keyboardType='email-address'
                 
               />

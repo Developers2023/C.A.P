@@ -5,6 +5,7 @@ import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import axios from 'axios';
 import * as yup from 'yup';
+import api from './apiMenager/Api';
 
 
 const loginValidation = yup.object().shape({
@@ -28,10 +29,8 @@ export default ({ navigation }) => {
 
 
      const login = async (values) => {
-
           try {
-            //const response = await axios.get(`http://10.0.2.2:3002/pessoa/login/${values.email}/${values.senha}`);
-                await axios.post(`http://10.0.2.2:3002/pessoa/login`,{
+                await api.post(`/pessoa/login`,{
                     email: values.email,
                     senha: values.senha
                })

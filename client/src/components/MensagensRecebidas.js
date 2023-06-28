@@ -9,8 +9,8 @@ import ListItem from '../components/informacao/ListItem';
   export default function MensagensRecebidas() {
 
     const mensagem = [
-      {id: '1', mensagem: 'Responsável:  Paula Matos de Feitas \n Aluno: Paulo Marcos de Feitas \n Data: 02/11/2022 \n Mensagem: Não vai pra aula hoje.'},
-      {id: '2', mensagem: 'Responsável:  Madalena \n Aluno: Fantasminha Camarada \n Data: 01/06/2023 \n Mensagem: Hoje vou deixar o Fantasminha na aula, você pode busca-lo na saída.'},
+      {id: '1', mensagem: 'Responsável:  Paula Matos de Freitas \n Aluno: Paulo Marcos de Feitas \n Data: 28/06/2023 \n Mensagem: Não vai pra aula hoje.'},
+      {id: '2', mensagem: 'Responsável:  Madalena Sampaio da Costa\n Aluno: Pedro Pereira da Silva \n Data: 28/06/2023 \n Mensagem: Hoje vou deixar o Pedro na aula, você pode busca-lo na saída.'},
 
     ];
   
