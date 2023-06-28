@@ -41,6 +41,9 @@ export default function CadastrarCrianca({ navigation }) {
     resolver: yupResolver(registerKids),
   });
 
+  // faz um teste aí pra eu entender oq tá acontecendo
+  // entendi, perai, vou mexer
+
 
   const cadastrar = async (values) => {
     try {
