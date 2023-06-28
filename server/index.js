@@ -11,16 +11,12 @@ server.post("/pessoa/cadastrar",async function(req,res){
     res.send(result)
 });
 
-server.post("/pessoa/login",async function(req,res){
 server.post('/pessoa/login', async (req, res) => {
-    //const result = pessoaController.login(req.params)
     const result = await pessoaController.login(req.body)
-    console.log( "entrou", result)
     if(result){
         res.status(200).json({ message: "Login bem-sucedido" });
         return
     }
-    
     res.status(401).json({ message: "Credenciais inválidas" });
 });
 
