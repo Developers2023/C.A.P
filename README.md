@@ -184,13 +184,13 @@ node index.js
 <h2 id="colab">🗞 Diagramas</h2>
 
 ARQUITETURA DE SOFTWARE
-<img src="./img/ArquiteturaDeSoftware.PNG" alt="Diagrama 1">
+<img src="./documentacao/img/ArquiteturaDeSoftware.PNG" alt="Diagrama 1">
 
 CASO DE USO
-<img src="./img/DiagramaDeCasoDeUso.PNG" alt="Diagrama 2">
+<img src="./documentacao/img/DiagramaDeCasoDeUso.PNG" alt="Diagrama 2">
 
 DIAGRAMA DE CLASSE
-<img src="./img/DiagramaDeClasse.PNG" alt="Diagrama 3">
+<img src="./documentacao/img/DiagramaDeClasse.PNG" alt="Diagrama 3">
 
 <h2 id="colab">🤝 Contribuidores</h2>
 
