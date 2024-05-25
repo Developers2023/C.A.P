@@ -6,6 +6,7 @@
   <a href="#routes">API Endpoints</a> •
  <a href="#colab">Contribuidores</a> •
  <a href="#contribute">Contribuir</a>
+ <a href="./documentacao/CAP-Cadê a perua-Documentação.pdf">Documentação PDF</a>
 </p>
 
 <p align="center">
@@ -179,6 +180,17 @@ node index.js
   "senha": "4444444"
 }
 ```
+
+<h2 id="colab">🗞 Diagramas</h2>
+
+ARQUITETURA DE SOFTWARE
+<img src="./img/ArquiteturaDeSoftware.PNG" alt="Diagrama 1">
+
+CASO DE USO
+<img src="./img/DiagramaDeCasoDeUso.PNG" alt="Diagrama 2">
+
+DIAGRAMA DE CLASSE
+<img src="./img/DiagramaDeClasse.PNG" alt="Diagrama 3">
 
 <h2 id="colab">🤝 Contribuidores</h2>
 
